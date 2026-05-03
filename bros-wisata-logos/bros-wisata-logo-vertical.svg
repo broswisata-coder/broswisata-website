@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&amp;display=swap');
+      .brand-name-v {
+        font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+        font-weight: 800;
+        font-size: 38px;
+        fill: #0A2E70;
+        letter-spacing: -0.5px;
+        text-anchor: middle;
+      }
+      .tagline-v {
+        font-family: 'Bricolage Grotesque', 'Arial', sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+        fill: #0F47B0;
+        letter-spacing: 4px;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <!-- Centered icon -->
+  <g transform="translate(140, 70)">
+    <rect x="0" y="0" width="120" height="120" fill="#0F47B0" rx="3"/>
+    <path d="M 22 94 L 46 46 L 60 67 L 77 36 L 94 60 L 106 94"
+          stroke="white"
+          stroke-width="6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+  </g>
+
+  <!-- Centered text below -->
+  <text x="200" y="245" class="brand-name-v">BROS WISATA</text>
+  <text x="200" y="275" class="tagline-v">HUB OF SUMATRA</text>
+</svg>

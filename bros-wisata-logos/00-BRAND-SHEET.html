@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BROS WISATA — Logo Asset Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #FAF7F2;
+    color: #1F2937;
+    line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 60px 40px; }
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 56px;
+    color: #0A2E70;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  h1 em { font-weight: 300; font-style: italic; color: #0F47B0; }
+  h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #0A2E70;
+    margin-top: 60px;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    color: #0F47B0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .description {
+    font-size: 16px;
+    color: #4B5563;
+    margin-bottom: 32px;
+    max-width: 700px;
+  }
+  .logo-card {
+    background: white;
+    padding: 50px;
+    border: 1px solid rgba(31,41,55,0.08);
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .logo-card.dark { background: #0A2E70; }
+  .logo-card img { max-width: 100%; height: auto; }
+  .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6B7280;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+  .label.light { color: rgba(255,255,255,0.6); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  .usage-table {
+    background: white;
+    border: 1px solid rgba(31,41,55,0.08);
+    margin-top: 32px;
+  }
+  .usage-table table { width: 100%; border-collapse: collapse; }
+  .usage-table th {
+    background: #0A2E70;
+    color: white;
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .usage-table td {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(31,41,55,0.08);
+    font-size: 14px;
+  }
+  .usage-table tr:hover { background: #FAF7F2; }
+  .usage-table strong { color: #0A2E70; font-weight: 700; }
+
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    padding: 16px 24px;
+    border: 1px solid rgba(31,41,55,0.08);
+    margin-bottom: 8px;
+  }
+  .color-swatch {
+    width: 60px; height: 60px;
+    border-radius: 4px;
+    border: 1px solid rgba(31,41,55,0.1);
+    flex-shrink: 0;
+  }
+  .color-info { flex: 1; }
+  .color-name { font-weight: 700; color: #0A2E70; font-size: 14px; }
+  .color-codes { font-size: 12px; color: #6B7280; font-family: 'Courier New', monospace; margin-top: 4px; }
+  .color-use { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1px; }
+
+  .icon-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+  }
+  .icon-mini-grid > div { background: white; padding: 24px; }
+  .icon-mini-grid img { display: block; margin: 0 auto; }
+
+  .note {
+    background: #0F47B0;
+    color: white;
+    padding: 20px 24px;
+    margin: 32px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .note strong { color: #E8A317; }
+
+  .accent-divider {
+    height: 4px;
+    background: linear-gradient(90deg, #0F47B0 0%, #E8A317 100%);
+    margin: 80px 0 16px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="subtitle">✦ BROS Wisata Brand</div>
+  <h1>Logo Asset <em>Sheet.</em></h1>
+  <p class="description">
+    Panduan lengkap penggunaan logo BROS WISATA — dari header website, social media, sampai print. Semua file vector (.svg) dan raster (.png) siap pakai dalam folder ini.
+  </p>
+
+  <div class="note">
+    <strong>📌 Catatan penting:</strong> Aset ini adalah versi <em>simplified mark</em> untuk kebutuhan digital (web, social, favicon). Untuk identitas brand utama BROS WISATA — terutama untuk brosur, business card, dan merchandise printed — gunakan logo asli yang sudah ada (dengan ilustrasi pegunungan Sumatra penuh).
+  </div>
+
+  <!-- HORIZONTAL LOGO -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">01 / Primary Logo</div>
+  <h2>Horizontal — Default</h2>
+  <p class="description">Versi paling sering dipakai. Untuk header website, email signature, kop surat, dan presentasi.</p>
+
+  <div class="logo-card">
+    <img src="bros-wisata-logo-horizontal-medium-800px.png" alt="BROS Wisata logo horizontal" style="max-width: 600px;"/>
+    <div class="label">Default · Light Background</div>
+  </div>
+
+  <div class="logo-card dark">
+    <img src="bros-wisata-logo-horizontal-white-medium-800px.png" alt="BROS Wisata logo white" style="max-width: 600px;"/>
+    <div class="label light">White Version · Dark Background</div>
+  </div>
+
+  <!-- VERTICAL -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">02 / Stacked Logo</div>
+  <h2>Vertical — Square Spaces</h2>
+  <p class="description">Ketika ruang horizontal terbatas — seperti Instagram post, business card depan, atau merchandise.</p>
+
+  <div class="grid-2">
+    <div class="logo-card">
+      <img src="bros-wisata-logo-vertical-medium-500px.png" alt="Vertical logo" style="max-width: 320px;"/>
+      <div class="label">Vertical Lockup</div>
+    </div>
+    <div class="logo-card" style="display: flex; flex-direction: column; justify-content: center;">
+      <div style="font-size: 14px; color: #4B5563; line-height: 1.7;">
+        <strong style="color: #0A2E70; display: block; margin-bottom: 12px;">Best for:</strong>
+        • Instagram post & profile<br/>
+        • Business card<br/>
+        • Square ads<br/>
+        • Square stickers<br/>
+        • Merchandise (totebag, tshirt)
+      </div>
+    </div>
+  </div>
+
+  <!-- ICONS -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">03 / Icon Mark</div>
+  <h2>Icon — Compact Mark</h2>
+  <p class="description">Versi paling kecil — saat hanya ada ruang untuk simbol. Untuk favicon, app icon, social profile picture.</p>
+
+  <div class="icon-mini-grid">
+    <div>
+      <img src="bros-wisata-icon-square-favicon-32px.png" width="32" height="32" alt="Favicon 32px"/>
+      <div style="font-size: 10px; color: #9CA3AF; margin-top: 12px; letter-spacing: 1px;">32px</div>
+    </div>
+    <div>
+      <img src="bros-wisata-icon-square-favicon-64px.png" width="64" height="64" alt="Favicon 64px"/>
+      <div style="font-size: 10px; color: #9CA3AF; margin-top: 12px; letter-spacing: 1px;">64px</div>
+    </div>
+    <div>
+      <img src="bros-wisata-icon-square-medium-256px.png" width="120" height="120" alt="Icon 256px"/>
+      <div style="font-size: 10px; color: #9CA3AF; margin-top: 12px; letter-spacing: 1px;">256px</div>
+    </div>
+    <div>
+      <img src="bros-wisata-icon-square-large-512px.png" width="160" height="160" alt="Icon 512px"/>
+      <div style="font-size: 10px; color: #9CA3AF; margin-top: 12px; letter-spacing: 1px;">512px</div>
+    </div>
+    <div style="background: #0A2E70 !important;">
+      <img src="bros-wisata-icon-square-large-512px.png" width="160" height="160" alt="Icon on dark"/>
+      <div style="font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 12px; letter-spacing: 1px;">ON DARK</div>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 60px;">Round Avatar</h2>
+  <p class="description">Untuk Instagram, Facebook, WhatsApp Business profile picture, dan tempat lain dengan crop bulat otomatis.</p>
+
+  <div class="grid-3">
+    <div class="logo-card">
+      <img src="bros-wisata-icon-round-medium-256px.png" alt="Round 256" style="width: 180px;"/>
+      <div class="label">256 × 256 px</div>
+    </div>
+    <div class="logo-card">
+      <img src="bros-wisata-icon-round-large-512px.png" alt="Round 512" style="width: 180px;"/>
+      <div class="label">512 × 512 px</div>
+    </div>
+    <div class="logo-card">
+      <img src="bros-wisata-icon-round-instagram-1080px.png" alt="Round 1080" style="width: 180px;"/>
+      <div class="label">1080 × 1080 (IG)</div>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">04 / Brand Colors</div>
+  <h2>Color Palette</h2>
+  <p class="description">Warna resmi BROS WISATA. Pakai exactly nilai HEX ini untuk konsistensi di semua media.</p>
+
+  <div style="margin-top: 24px;">
+    <div class="color-row">
+      <div class="color-swatch" style="background: #0F47B0;"></div>
+      <div class="color-info">
+        <div class="color-name">BROS Blue (Primary)</div>
+        <div class="color-codes">HEX: #0F47B0 · RGB: 15, 71, 176 · CMYK: 92, 60, 0, 31</div>
+      </div>
+      <div class="color-use">CTA · Logo · Headers</div>
+    </div>
+
+    <div class="color-row">
+      <div class="color-swatch" style="background: #0A2E70;"></div>
+      <div class="color-info">
+        <div class="color-name">BROS Navy (Deep)</div>
+        <div class="color-codes">HEX: #0A2E70 · RGB: 10, 46, 112 · CMYK: 91, 59, 0, 56</div>
+      </div>
+      <div class="color-use">Footer · Dark Sections · Text</div>
+    </div>
+
+    <div class="color-row">
+      <div class="color-swatch" style="background: #E8A317;"></div>
+      <div class="color-info">
+        <div class="color-name">Sumatra Gold (Accent)</div>
+        <div class="color-codes">HEX: #E8A317 · RGB: 232, 163, 23 · CMYK: 0, 30, 90, 9</div>
+      </div>
+      <div class="color-use">Highlights · Badges · Hover</div>
+    </div>
+
+    <div class="color-row">
+      <div class="color-swatch" style="background: #FAF7F2; border: 1px solid #E5E7EB;"></div>
+      <div class="color-info">
+        <div class="color-name">Warm Cream</div>
+        <div class="color-codes">HEX: #FAF7F2 · RGB: 250, 247, 242</div>
+      </div>
+      <div class="color-use">Background · Cards</div>
+    </div>
+
+    <div class="color-row">
+      <div class="color-swatch" style="background: #1F2937;"></div>
+      <div class="color-info">
+        <div class="color-name">Charcoal</div>
+        <div class="color-codes">HEX: #1F2937 · RGB: 31, 41, 55</div>
+      </div>
+      <div class="color-use">Body Text</div>
+    </div>
+  </div>
+
+  <!-- USAGE TABLE -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">05 / Quick Reference</div>
+  <h2>Kapan Pakai Versi Mana</h2>
+
+  <div class="usage-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Penggunaan</th>
+          <th>File Rekomendasi</th>
+          <th>Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Header website</strong> (desktop & mobile)</td>
+          <td>logo-horizontal.svg</td>
+          <td>SVG</td>
+        </tr>
+        <tr>
+          <td><strong>Footer website</strong> (background gelap)</td>
+          <td>logo-horizontal-white.svg</td>
+          <td>SVG</td>
+        </tr>
+        <tr>
+          <td><strong>Favicon browser tab</strong></td>
+          <td>icon-square-favicon-32px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Apple touch icon (iOS)</strong></td>
+          <td>icon-square-large-512px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram profile picture</strong></td>
+          <td>icon-round-instagram-1080px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>WhatsApp Business profile</strong></td>
+          <td>icon-round-large-512px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Email signature</strong></td>
+          <td>logo-horizontal-small-300px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Presentasi PowerPoint</strong></td>
+          <td>logo-horizontal-large-2000px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Print brosur / kop surat</strong></td>
+          <td>logo-horizontal.svg <em>atau</em> 2000px PNG</td>
+          <td>SVG / PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Watermark di foto IG</strong></td>
+          <td>icon-square-medium-256px.png</td>
+          <td>PNG</td>
+        </tr>
+        <tr>
+          <td><strong>Business card depan</strong></td>
+          <td>logo-vertical.svg</td>
+          <td>SVG</td>
+        </tr>
+        <tr>
+          <td><strong>Merchandise (kaos, totebag)</strong></td>
+          <td>logo-vertical.svg <em>atau</em> 1200px PNG</td>
+          <td>SVG / PNG</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DO'S & DON'TS -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">06 / Brand Rules</div>
+  <h2>Do's & Don'ts</h2>
+
+  <div class="grid-2" style="margin-top: 24px;">
+    <div style="background: white; padding: 32px; border-left: 4px solid #0F47B0;">
+      <div style="font-size: 12px; color: #0F47B0; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;">✓ DO</div>
+      <ul style="list-style: none; padding: 0; line-height: 1.9; font-size: 14px;">
+        <li>✓ Beri ruang kosong (clear space) min. 20% lebar logo di sekeliling</li>
+        <li>✓ Pakai SVG saat memungkinkan (lebih tajam di semua resolusi)</li>
+        <li>✓ Pakai versi white di background biru/navy/foto gelap</li>
+        <li>✓ Tetap pakai warna asli sesuai HEX di brand colors</li>
+        <li>✓ Untuk ukuran < 60px, pakai versi icon-only saja</li>
+      </ul>
+    </div>
+
+    <div style="background: white; padding: 32px; border-left: 4px solid #E8A317;">
+      <div style="font-size: 12px; color: #E8A317; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;">✕ DON'T</div>
+      <ul style="list-style: none; padding: 0; line-height: 1.9; font-size: 14px;">
+        <li>✕ Jangan ubah warna logo (apalagi ke hijau, merah, dll)</li>
+        <li>✕ Jangan stretch atau distort proporsi</li>
+        <li>✕ Jangan tambah efek (drop shadow, outline, glow)</li>
+        <li>✕ Jangan rotate atau miringkan</li>
+        <li>✕ Jangan tempel logo di background yang busy/ramai foto</li>
+        <li>✕ Jangan pakai logo versi default di background gelap</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILE LIST -->
+  <div class="accent-divider"></div>
+  <div class="subtitle">07 / File Index</div>
+  <h2>Daftar File dalam Folder Ini</h2>
+
+  <div class="usage-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Filename</th>
+          <th>Ukuran</th>
+          <th>Untuk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>SVG (Master Files — Vector)</strong></td><td colspan="2"></td></tr>
+        <tr><td>bros-wisata-logo-horizontal.svg</td><td>Scalable</td><td>Master horizontal</td></tr>
+        <tr><td>bros-wisata-logo-horizontal-white.svg</td><td>Scalable</td><td>White version (dark bg)</td></tr>
+        <tr><td>bros-wisata-logo-vertical.svg</td><td>Scalable</td><td>Vertical/stacked</td></tr>
+        <tr><td>bros-wisata-icon-square.svg</td><td>Scalable</td><td>Square icon</td></tr>
+        <tr><td>bros-wisata-icon-round.svg</td><td>Scalable</td><td>Round avatar</td></tr>
+
+        <tr><td><strong>PNG (Raster — Ready to Use)</strong></td><td colspan="2"></td></tr>
+        <tr><td>bros-wisata-logo-horizontal-small-300px.png</td><td>300px</td><td>Email signature</td></tr>
+        <tr><td>bros-wisata-logo-horizontal-medium-800px.png</td><td>800px</td><td>Web header, social</td></tr>
+        <tr><td>bros-wisata-logo-horizontal-large-2000px.png</td><td>2000px</td><td>Print, presentasi</td></tr>
+        <tr><td>bros-wisata-logo-horizontal-white-*.png</td><td>3 sizes</td><td>Dark background versions</td></tr>
+        <tr><td>bros-wisata-logo-vertical-medium-500px.png</td><td>500px</td><td>Business card</td></tr>
+        <tr><td>bros-wisata-logo-vertical-large-1200px.png</td><td>1200px</td><td>Merchandise print</td></tr>
+        <tr><td>bros-wisata-icon-square-favicon-32px.png</td><td>32px</td><td>Browser favicon</td></tr>
+        <tr><td>bros-wisata-icon-square-favicon-64px.png</td><td>64px</td><td>HD favicon</td></tr>
+        <tr><td>bros-wisata-icon-square-medium-256px.png</td><td>256px</td><td>Watermark</td></tr>
+        <tr><td>bros-wisata-icon-square-large-512px.png</td><td>512px</td><td>Apple touch icon</td></tr>
+        <tr><td>bros-wisata-icon-square-xlarge-1024px.png</td><td>1024px</td><td>App icon master</td></tr>
+        <tr><td>bros-wisata-icon-round-medium-256px.png</td><td>256px</td><td>Small avatar</td></tr>
+        <tr><td>bros-wisata-icon-round-large-512px.png</td><td>512px</td><td>WhatsApp profile</td></tr>
+        <tr><td>bros-wisata-icon-round-instagram-1080px.png</td><td>1080px</td><td>Instagram profile</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="accent-divider"></div>
+  <p style="text-align: center; color: #6B7280; font-size: 12px; margin-top: 32px;">
+    BROS WISATA · Hub of Sumatra<br/>
+    PT BROS INTI WISATA · Medan, Sumatera Utara<br/>
+    © 2026 — All rights reserved
+  </p>
+</div>
+</body>
+</html>
