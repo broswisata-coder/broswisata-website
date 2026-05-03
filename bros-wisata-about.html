@@ -96,6 +96,66 @@
     background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(232, 163, 23, 0.15) 8px, rgba(232, 163, 23, 0.15) 9px);
   }
 </style>
+
+<style>
+/* === MICRO-INTERACTIONS === */
+.pkg-card, .day-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.pkg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(10, 46, 112, 0.12), 0 4px 12px rgba(10, 46, 112, 0.08);
+}
+.team-card img, .gallery img {
+  transition: transform 0.5s ease;
+}
+.team-card:hover img, .gallery a:hover img {
+  transform: scale(1.05);
+}
+/* Smooth WhatsApp pulse */
+@keyframes wa-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.wa-floating {
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+/* === FADE-UP ON SCROLL === */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* === FORM VALIDATION STYLES === */
+.input-error {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+.input-success {
+  border-color: #16a34a !important;
+}
+.error-message {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+.input-error + .error-message {
+  display: block;
+}
+/* === PRINT FRIENDLY === */
+@media print {
+  nav, .wa-floating, .no-print, footer { display: none !important; }
+  body { background: white !important; }
+  .gradient-overlay, [class*="bg-gradient"] { background: white !important; color: black !important; }
+  a { color: #0F47B0; text-decoration: underline; }
+  .day-card { page-break-inside: avoid; }
+}
+</style>
 </head>
 <body>
 
@@ -141,7 +201,7 @@
         <span data-lang-content="id" class="active">Tentang</span><span data-lang-content="my">Tentang</span><span data-lang-content="en">About</span>
       </a>
     </div>
-    <a href="https://wa.me/6281260139399" class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition">
+    <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20layanan%20tour%20Bapak/Ibu." class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
       WhatsApp
     </a>
@@ -512,7 +572,7 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       <div class="team-card">
         <div class="aspect-[3/4] overflow-hidden bg-bros-navy mb-4">
-          <img src="assets/gallery/gallery_13_salim_portrait.jpg" alt="Ahmad Salim Saleh - Co-Founder BROS Wisata" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;w-full h-full flex items-center justify-center&quot; style=&quot;background: linear-gradient(135deg, #0F47B0 0%, #0A2E70 100%);&quot;><div class=&quot;font-display text-white text-7xl font-bold opacity-30&quot;>AS</div></div>';"/>
+          <img src="assets/gallery/gallery_13_salim_portrait.jpg" alt="Ahmad Salim Saleh - Co-Founder BROS Wisata" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;w-full h-full flex items-center justify-center&quot; style=&quot;background: linear-gradient(135deg, #0F47B0 0%, #0A2E70 100%);&quot; loading="eager" decoding="async"><div class=&quot;font-display text-white text-7xl font-bold opacity-30&quot;>AS</div></div>';"/>
         </div>
         <div class="text-[10px] tracking-[0.2em] uppercase text-bros-blue font-bold mb-1">Co-Founder & CEO</div>
         <h3 class="font-display text-xl font-bold text-bros-navy mb-1">Ahmad Salim Saleh</h3>
@@ -743,7 +803,7 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 mb-12">
       
       <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-        <img src="assets/gallery/gallery_15_orangutan_encounter.jpg" alt="Founder feeding orangutan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_15_orangutan_encounter.jpg" alt="Founder feeding orangutan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Wildlife</div>
@@ -753,7 +813,7 @@
       </div>
 
       <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-        <img src="assets/gallery/gallery_19_elephant_bathing.jpg" alt="Founder with rescued elephant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_19_elephant_bathing.jpg" alt="Founder with rescued elephant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Conservation</div>
@@ -763,7 +823,7 @@
       </div>
 
       <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-        <img src="assets/gallery/gallery_18_sipiso_portrait.jpg" alt="Founder at Sipiso-piso viewpoint" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_18_sipiso_portrait.jpg" alt="Founder at Sipiso-piso viewpoint" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Adventure</div>
@@ -773,7 +833,7 @@
       </div>
 
       <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-        <img src="assets/gallery/gallery_17_river_rapids.jpg" alt="Tube rafting Bohorok river" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_17_river_rapids.jpg" alt="Tube rafting Bohorok river" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Activity</div>
@@ -853,7 +913,7 @@
           </div>
         </div>
         
-        <a href="https://wa.me/6281260139399?text=Salam%2C%20saya%20ejen%20travel%20dari%20%5BNAMA%20AGENSI%5D%20di%20%5BMALAYSIA%2FSINGAPORE%2FBRUNEI%5D.%20Saya%20berminat%20untuk%20kerjasama%20wholesale%20dengan%20BROS%20Wisata.%20Mohon%20info%20net%20rate%20%26%20kerjasama%20agen.%20Terima%20kasih." target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-bros-gold text-bros-navy px-6 py-3.5 font-bold text-sm tracking-wider uppercase hover:bg-white transition">
+        <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20layanan%20tour%20Bapak/Ibu." target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-bros-gold text-bros-navy px-6 py-3.5 font-bold text-sm tracking-wider uppercase hover:bg-white transition">
           📱 <span data-lang-content="id" class="active">Hubungi Untuk Partnership</span>
           <span data-lang-content="my">Hubungi Untuk Kerjasama</span>
           <span data-lang-content="en">Contact for Partnership</span>
@@ -1112,7 +1172,7 @@
           <span data-lang-block="en">Tell us your travel plans. We'll design a personal itinerary based on your interests, duration, and budget — at no cost, no obligation.</span>
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="https://wa.me/6281260139399" class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition">
+          <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20layanan%20tour%20Bapak/Ibu." class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
             <span data-lang-content="id" class="active">Mulai Konsultasi</span>
             <span data-lang-content="my">Mulakan Konsultasi</span>
@@ -1154,9 +1214,9 @@
           <span data-lang-content="id" class="active">Destinasi</span><span data-lang-content="my">Destinasi</span><span data-lang-content="en">Destinations</span>
         </div>
         <ul class="space-y-3 text-sm text-white/70">
-          <li><a href="#" class="hover:text-bros-gold transition">Lake Toba</a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">Berastagi</a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">Bukit Lawang</a></li>
+          <li><a href="/paket-combo_sumut_6h5m.html" class="hover:text-bros-gold transition">Lake Toba</a></li>
+          <li><a href="/paket-berastagi_3h2m.html" class="hover:text-bros-gold transition">Berastagi</a></li>
+          <li><a href="/paket-bukit_lawang_4h3m.html" class="hover:text-bros-gold transition">Bukit Lawang</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Pulau Samosir</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Tangkahan</a></li>
         </ul>
@@ -1197,15 +1257,15 @@
     <div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
       <div>&copy; 2026 PT BROS INTI WISATA · NIB 2502250049355 · All rights reserved.</div>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-white">Privacy Policy</a>
-        <a href="#" class="hover:text-white">Terms of Service</a>
-        <a href="#" class="hover:text-white">Sitemap</a>
+        <a href="/bros-wisata-contact.html" class="hover:text-white">Privacy Policy</a>
+        <a href="/bros-wisata-contact.html" class="hover:text-white">Terms of Service</a>
+        <a href="/sitemap.xml" class="hover:text-white">Sitemap</a>
       </div>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/6281260139399" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition">
+<a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20layanan%20tour%20Bapak/Ibu." class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
 </a>
 
@@ -1223,6 +1283,31 @@
     document.querySelectorAll('.lang-pill').forEach(p => p.classList.remove('active'));
     document.getElementById('lang-' + lang).classList.add('active');
   }
+</script>
+
+<script>
+  // ===== INTERSECTION OBSERVER FADE-UP =====
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        fadeObserver.unobserve(entry.target); // Animate once only
+      }
+    });
+  }, observerOptions);
+  
+  // Auto-apply fade-up to common section types
+  document.querySelectorAll('section > div, .day-card, .pkg-card, .team-card').forEach(el => {
+    if (!el.classList.contains('fade-up')) {
+      el.classList.add('fade-up');
+    }
+    fadeObserver.observe(el);
+  });
 </script>
 </body>
 </html>

@@ -147,6 +147,66 @@
     display: block;
   }
 </style>
+
+<style>
+/* === MICRO-INTERACTIONS === */
+.pkg-card, .day-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.pkg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(10, 46, 112, 0.12), 0 4px 12px rgba(10, 46, 112, 0.08);
+}
+.team-card img, .gallery img {
+  transition: transform 0.5s ease;
+}
+.team-card:hover img, .gallery a:hover img {
+  transform: scale(1.05);
+}
+/* Smooth WhatsApp pulse */
+@keyframes wa-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.wa-floating {
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+/* === FADE-UP ON SCROLL === */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* === FORM VALIDATION STYLES === */
+.input-error {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+.input-success {
+  border-color: #16a34a !important;
+}
+.error-message {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+.input-error + .error-message {
+  display: block;
+}
+/* === PRINT FRIENDLY === */
+@media print {
+  nav, .wa-floating, .no-print, footer { display: none !important; }
+  body { background: white !important; }
+  .gradient-overlay, [class*="bg-gradient"] { background: white !important; color: black !important; }
+  a { color: #0F47B0; text-decoration: underline; }
+  .day-card { page-break-inside: avoid; }
+}
+</style>
 </head>
 <body>
 
@@ -194,7 +254,7 @@
         <span data-lang-content="id" class="active">Tentang</span><span data-lang-content="my">Tentang</span><span data-lang-content="en">About</span>
       </a>
     </div>
-    <a href="https://wa.me/6281260139399" class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition">
+    <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20mau%20request%20custom%20tour.%20Mohon%20dibantu." class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"/></svg>
       WhatsApp
     </a>
@@ -842,7 +902,7 @@
           <span data-lang-content="my">Lebih selesa berbual terus?</span>
           <span data-lang-content="en">Prefer to chat directly?</span>
         </p>
-        <a href="https://wa.me/6281260139399?text=Hi%20BROS,%20saya%20ingin%20diskusi%20tour%20custom%20ke%20Sumatra." class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-sm font-semibold text-sm hover:bg-[#1ea952] transition">
+        <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20mau%20request%20custom%20tour.%20Mohon%20dibantu." class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-sm font-semibold text-sm hover:bg-[#1ea952] transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"/></svg>
           <span data-lang-content="id" class="active">Langsung Chat WhatsApp</span>
           <span data-lang-content="my">Terus Chat WhatsApp</span>
@@ -878,9 +938,9 @@
           <span data-lang-content="id" class="active">Destinasi</span><span data-lang-content="my">Destinasi</span><span data-lang-content="en">Destinations</span>
         </div>
         <ul class="space-y-3 text-sm text-white/70">
-          <li><a href="#" class="hover:text-bros-gold transition">Lake Toba</a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">Berastagi</a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">Bukit Lawang</a></li>
+          <li><a href="/paket-combo_sumut_6h5m.html" class="hover:text-bros-gold transition">Lake Toba</a></li>
+          <li><a href="/paket-berastagi_3h2m.html" class="hover:text-bros-gold transition">Berastagi</a></li>
+          <li><a href="/paket-bukit_lawang_4h3m.html" class="hover:text-bros-gold transition">Bukit Lawang</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Pulau Samosir</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Tangkahan</a></li>
         </ul>
@@ -921,15 +981,15 @@
     <div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
       <div>&copy; 2026 PT BROS INTI WISATA · NIB 2502250049355 · All rights reserved.</div>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-white">Privacy Policy</a>
-        <a href="#" class="hover:text-white">Terms of Service</a>
-        <a href="#" class="hover:text-white">Sitemap</a>
+        <a href="/bros-wisata-contact.html" class="hover:text-white">Privacy Policy</a>
+        <a href="/bros-wisata-contact.html" class="hover:text-white">Terms of Service</a>
+        <a href="/sitemap.xml" class="hover:text-white">Sitemap</a>
       </div>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/6281260139399" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition">
+<a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20mau%20request%20custom%20tour.%20Mohon%20dibantu." class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"/></svg>
 </a>
 
@@ -952,6 +1012,109 @@
       if (text) opt.textContent = text;
     });
   }
+</script>
+
+<script>
+  // ===== INTERSECTION OBSERVER FADE-UP =====
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        fadeObserver.unobserve(entry.target); // Animate once only
+      }
+    });
+  }, observerOptions);
+  
+  // Auto-apply fade-up to common section types
+  document.querySelectorAll('section > div, .day-card, .pkg-card, .team-card').forEach(el => {
+    if (!el.classList.contains('fade-up')) {
+      el.classList.add('fade-up');
+    }
+    fadeObserver.observe(el);
+  });
+</script>
+
+<script>
+  // ===== FORM VALIDATION + AUTO-SAVE (in-memory, no localStorage) =====
+  (function() {
+    const forms = document.querySelectorAll('form');
+    if (!forms.length) return;
+    
+    const formState = {};
+    
+    forms.forEach((form, formIdx) => {
+      const formId = form.id || `form_${formIdx}`;
+      formState[formId] = {};
+      
+      form.querySelectorAll('input, textarea, select').forEach(field => {
+        if (!field.name) return;
+        
+        if (formState[formId][field.name]) {
+          field.value = formState[formId][field.name];
+        }
+        
+        field.addEventListener('input', () => {
+          formState[formId][field.name] = field.value;
+        });
+        
+        field.addEventListener('blur', () => {
+          validateField(field);
+        });
+      });
+      
+      form.addEventListener('submit', (e) => {
+        let valid = true;
+        form.querySelectorAll('input, textarea, select').forEach(field => {
+          if (field.required && !validateField(field)) {
+            valid = false;
+          }
+        });
+        if (!valid) {
+          e.preventDefault();
+          const firstError = form.querySelector('.input-error');
+          if (firstError) firstError.scrollIntoView({behavior: 'smooth', block: 'center'});
+        }
+      });
+    });
+    
+    function validateField(field) {
+      const value = field.value.trim();
+      let valid = true;
+      let errorMsg = '';
+      
+      if (field.required && !value) {
+        valid = false;
+        errorMsg = 'Field ini wajib diisi';
+      } else if (field.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        valid = false;
+        errorMsg = 'Format email tidak valid';
+      } else if (field.type === 'tel' && value && !/^[+\d\s()-]{8,}$/.test(value)) {
+        valid = false;
+        errorMsg = 'Format nomor tidak valid';
+      } else if (field.type === 'number' && value && (parseInt(value) < 1)) {
+        valid = false;
+        errorMsg = 'Minimal 1';
+      }
+      
+      field.classList.toggle('input-error', !valid);
+      field.classList.toggle('input-success', valid && value);
+      
+      let errorEl = field.nextElementSibling;
+      if (!errorEl || !errorEl.classList.contains('error-message')) {
+        errorEl = document.createElement('div');
+        errorEl.className = 'error-message';
+        field.parentNode.insertBefore(errorEl, field.nextSibling);
+      }
+      errorEl.textContent = errorMsg;
+      
+      return valid;
+    }
+  })();
 </script>
 </body>
 </html>

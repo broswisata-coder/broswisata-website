@@ -223,6 +223,165 @@
   [data-lang-block] { display: none; }
   [data-lang-block].active { display: block; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://broswisata.id/#localbusiness",
+  "name": "BROS Wisata - PT BROS INTI WISATA",
+  "alternateName": "BROS Wisata Tour Operator Medan",
+  "description": "Tour operator profesional Sumatra Utara. 20+ tahun pengalaman. Paket tour Lake Toba, Bukit Lawang, Tangkahan, Berastagi. Halal-friendly untuk wisatawan Malaysia.",
+  "url": "https://broswisata.id",
+  "telephone": "+62-812-6013-9399",
+  "email": "hello@broswisata.id",
+  "image": "https://broswisata.id/assets/og-homepage.jpg",
+  "logo": "https://broswisata.id/bros-wisata-logos/bros-wisata-icon-square-large-512px.png",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Ring Road No. 117 B, Kel. Sei Sikambing B",
+    "addressLocality": "Medan Sunggal",
+    "addressRegion": "Sumatera Utara",
+    "postalCode": "20122",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 3.5867,
+    "longitude": 98.6422
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "10:00",
+      "closes": "16:00"
+    }
+  ],
+  "sameAs": [
+    "https://instagram.com/broswisata",
+    "https://www.facebook.com/broswisata",
+    "https://www.tiktok.com/@broswisata",
+    "https://www.tripadvisor.co.id/Profile/Travel00937072433"
+  ],
+  "areaServed": [
+    {
+      "@type": "Place",
+      "name": "Sumatera Utara"
+    },
+    {
+      "@type": "Place",
+      "name": "Medan"
+    },
+    {
+      "@type": "Place",
+      "name": "Lake Toba"
+    },
+    {
+      "@type": "Place",
+      "name": "Bukit Lawang"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Paket Tour Sumatra Utara",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bukit Lawang Orangutan Tour"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Lake Toba Heritage Tour"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Halal Malaysia Tour Package"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "127"
+  }
+}
+</script>
+
+<style>
+/* === MICRO-INTERACTIONS === */
+.pkg-card, .day-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.pkg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(10, 46, 112, 0.12), 0 4px 12px rgba(10, 46, 112, 0.08);
+}
+.team-card img, .gallery img {
+  transition: transform 0.5s ease;
+}
+.team-card:hover img, .gallery a:hover img {
+  transform: scale(1.05);
+}
+/* Smooth WhatsApp pulse */
+@keyframes wa-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.wa-floating {
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+/* === FADE-UP ON SCROLL === */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* === FORM VALIDATION STYLES === */
+.input-error {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+.input-success {
+  border-color: #16a34a !important;
+}
+.error-message {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+.input-error + .error-message {
+  display: block;
+}
+/* === PRINT FRIENDLY === */
+@media print {
+  nav, .wa-floating, .no-print, footer { display: none !important; }
+  body { background: white !important; }
+  .gradient-overlay, [class*="bg-gradient"] { background: white !important; color: black !important; }
+  a { color: #0F47B0; text-decoration: underline; }
+  .day-card { page-break-inside: avoid; }
+}
+</style>
 </head>
 <body class="bg-bros-cream">
 
@@ -290,7 +449,7 @@
       </a>
     </div>
 
-    <a href="https://wa.me/6281260139399" class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition">
+    <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
       <span data-lang-content="id" class="active">WhatsApp Kami</span>
       <span data-lang-content="my">WhatsApp Kami</span>
@@ -302,6 +461,28 @@
     </button>
   </div>
 </nav>
+  <!-- MOBILE MENU DROPDOWN -->
+  <div id="mobile-menu" class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg absolute top-16 left-0 right-0 z-50 py-4 px-4">
+    <a href="bros-wisata-homepage.html" class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium">
+      <span data-lang-content="id" class="active">Beranda</span><span data-lang-content="my">Laman Utama</span><span data-lang-content="en">Home</span>
+    </a>
+    <a href="bros-wisata-tour-listing.html" class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium">
+      <span data-lang-content="id" class="active">Paket Tour</span><span data-lang-content="my">Pakej Tour</span><span data-lang-content="en">Tours</span>
+    </a>
+    <a href="bros-wisata-car-rental.html" class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium">
+      <span data-lang-content="id" class="active">Sewa Mobil</span><span data-lang-content="my">Sewa Kereta</span><span data-lang-content="en">Car Rental</span>
+    </a>
+    <a href="bros-wisata-custom-tour.html" class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium">Custom Tour</a>
+    <a href="bros-wisata-about.html" class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium">
+      <span data-lang-content="id" class="active">Tentang</span><span data-lang-content="my">Tentang Kami</span><span data-lang-content="en">About</span>
+    </a>
+    <a href="bros-wisata-contact.html" class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium">
+      <span data-lang-content="id" class="active">Kontak</span><span data-lang-content="my">Hubungi Kami</span><span data-lang-content="en">Contact</span>
+    </a>
+    <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." target="_blank" class="mt-3 bg-bros-blue text-white text-center py-3 font-bold tracking-wider">
+      📱 WhatsApp
+    </a>
+  </div>
 
 <!-- ======= HERO ======= -->
 <section class="relative h-[92vh] min-h-[640px] grain overflow-hidden">
@@ -315,7 +496,7 @@
         alt="Danau Toba — Lake Toba, North Sumatra" 
         class="w-full h-full object-cover" 
         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583760083258-9f3a3e1f0ec5?w=1920&q=80'; this.onerror=function(){this.style.background='linear-gradient(135deg, #0A2E70 0%, #0F47B0 50%, #E8A317 100%)'; this.style.opacity='0.85'};"
-      />
+       loading="eager" decoding="async"/>
     </picture>
     <div class="absolute inset-0 hero-overlay"></div>
   </div>
@@ -372,7 +553,7 @@
           <span data-lang-content="en">Browse Tour Packages</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round"/></svg>
         </a>
-        <a href="https://wa.me/6281260139399" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-7 py-4 rounded-sm font-semibold hover:bg-white/20 transition">
+        <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-7 py-4 rounded-sm font-semibold hover:bg-white/20 transition">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
           <span data-lang-content="id" class="active">Konsultasi Gratis</span>
           <span data-lang-content="my">Konsultasi Percuma</span>
@@ -486,7 +667,7 @@
       <!-- Area 1: Lake Toba & Samosir -->
       <a href="bros-wisata-tour-listing.html" class="destination-card group block">
         <div class="aspect-[4/5] overflow-hidden bg-bros-navy mb-5 relative">
-          <img src="assets/ig/combo_sumut_6h5m/en/02_highlights.png" alt="Danau Toba & Samosir Island, North Sumatra" class="card-image w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583503088321-77be77f6cf67?w=800&q=80'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';};"/>
+          <img src="assets/ig/combo_sumut_6h5m/en/02_highlights.png" alt="Danau Toba & Samosir Island, North Sumatra" class="card-image w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583503088321-77be77f6cf67?w=800&q=80'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';};" loading="lazy" decoding="async"/>
           <div class="absolute top-5 left-5 bg-bros-gold text-bros-navy px-3 py-1 text-xs font-bold tracking-wider uppercase">Best Seller</div>
           <div class="absolute bottom-5 left-5 right-5 text-white">
             <div class="text-xs tracking-[0.25em] uppercase opacity-80 mb-1">01 / Sumatra Utara</div>
@@ -515,7 +696,7 @@
       <!-- Area 2: Berastagi & Karo Highland -->
       <a href="bros-wisata-tour-listing.html" class="destination-card group block">
         <div class="aspect-[4/5] overflow-hidden bg-bros-navy mb-5 relative">
-          <img src="assets/ig/berastagi_3h2m/en/02_highlights.png" alt="Berastagi Highland & Karo Plateau, North Sumatra" class="card-image w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/ig/berastagi_3h2m/en/01_cover.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0F47B0, #E8A317)';};"/>
+          <img src="assets/ig/berastagi_3h2m/en/02_highlights.png" alt="Berastagi Highland & Karo Plateau, North Sumatra" class="card-image w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/ig/berastagi_3h2m/en/01_cover.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0F47B0, #E8A317)';};" loading="lazy" decoding="async"/>
           <div class="absolute bottom-5 left-5 right-5 text-white">
             <div class="text-xs tracking-[0.25em] uppercase opacity-80 mb-1">02 / Sumatra Utara</div>
           </div>
@@ -543,7 +724,7 @@
       <!-- Area 3: Bukit Lawang & Tangkahan -->
       <a href="bros-wisata-tour-listing.html" class="destination-card group block">
         <div class="aspect-[4/5] overflow-hidden bg-bros-navy mb-5 relative">
-          <img src="assets/ig/bukit_lawang_4h3m/en/02_highlights.png" alt="Bukit Lawang Orangutan & Tangkahan Eco Tour, North Sumatra" class="card-image w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/ig/tangkahan_3h2m/en/02_highlights.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #E8A317, #0A2E70)';};"/>
+          <img src="assets/ig/bukit_lawang_4h3m/en/02_highlights.png" alt="Bukit Lawang Orangutan & Tangkahan Eco Tour, North Sumatra" class="card-image w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/ig/tangkahan_3h2m/en/02_highlights.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #E8A317, #0A2E70)';};" loading="lazy" decoding="async"/>
           <div class="absolute top-5 left-5 bg-bros-blue text-white px-3 py-1 text-xs font-bold tracking-wider uppercase">Adventure</div>
           <div class="absolute bottom-5 left-5 right-5 text-white">
             <div class="text-xs tracking-[0.25em] uppercase opacity-80 mb-1">03 / Sumatra Utara</div>
@@ -600,7 +781,7 @@
       <!-- Featured 11 Tour Packages -->
             <article class="bg-bros-cream group">
         <div class="aspect-[4/3] overflow-hidden relative">
-          <img src="assets/ig/combo_sumut_6h5m/en/01_cover.png" alt="NORTH SUMATRA GRAND TOUR" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+          <img src="assets/ig/combo_sumut_6h5m/en/01_cover.png" alt="NORTH SUMATRA GRAND TOUR" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" decoding="async"/>
           <div class="absolute top-4 left-4 flex gap-2">
             <span class="bg-bros-navy text-white border border-bros-gold px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase">★ PREMIUM</span>
             <span class="bg-white/95 text-bros-navy px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase">Halal</span>
@@ -646,7 +827,7 @@
 
             <article class="bg-bros-cream group">
         <div class="aspect-[4/3] overflow-hidden relative">
-          <img src="assets/ig/bukit_lawang_4h3m/en/01_cover.png" alt="BUKIT LAWANG ORANGUTAN" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+          <img src="assets/ig/bukit_lawang_4h3m/en/01_cover.png" alt="BUKIT LAWANG ORANGUTAN" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" decoding="async"/>
           <div class="absolute top-4 left-4 flex gap-2">
             <span class="bg-bros-gold text-bros-navy px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase">★ BEST SELLER</span>
             <span class="bg-white/95 text-bros-navy px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase">Halal</span>
@@ -692,7 +873,7 @@
 
             <article class="bg-bros-cream group">
         <div class="aspect-[4/3] overflow-hidden relative">
-          <img src="assets/ig/medan_heritage_3h2m/en/01_cover.png" alt="MEDAN HERITAGE & CULINARY" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"/>
+          <img src="assets/ig/medan_heritage_3h2m/en/01_cover.png" alt="MEDAN HERITAGE & CULINARY" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" decoding="async"/>
           <div class="absolute top-4 left-4 flex gap-2">
             <span class="bg-bros-gold text-bros-navy px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase">★ BEST SELLER</span>
             <span class="bg-white/95 text-bros-navy px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase">Halal</span>
@@ -777,7 +958,7 @@
           </p>
         </div>
         <div class="md:col-span-4 md:text-right">
-          <a href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20saya%20ingin%20menerima%20E-Catalog%20paket%20tour%202026.%20Mohon%20dikirimkan%20PDF%20lengkapnya.%20Terima%20kasih." class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3.5 rounded-sm font-bold text-sm hover:bg-[#1ea952] transition w-full sm:w-auto justify-center">
+          <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3.5 rounded-sm font-bold text-sm hover:bg-[#1ea952] transition w-full sm:w-auto justify-center">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"/></svg>
             <span data-lang-content="id" class="active">Request via WhatsApp</span>
             <span data-lang-content="my">Minta via WhatsApp</span>
@@ -882,7 +1063,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div class="aspect-[4/5] lg:aspect-[5/6] bg-bros-navy relative overflow-hidden order-2 lg:order-1">
-        <img src="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?w=800&q=80" alt="Car rental Medan with professional driver" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0F47B0, #0A2E70);';"/>
+        <img src="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?w=800&q=80" alt="Car rental Medan with professional driver" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0F47B0, #0A2E70);';" loading="lazy" decoding="async"/>
         <div class="absolute bottom-6 left-6 right-6 bg-white p-6 lg:p-8">
           <div class="text-bros-blue text-[10px] tracking-[0.3em] uppercase font-bold mb-2">Day Rate</div>
           <div class="font-display text-3xl lg:text-4xl font-bold text-bros-navy mb-1">
@@ -947,7 +1128,7 @@
             </span>
           </li>
         </ul>
-        <a href="https://wa.me/6281260139399" class="inline-flex items-center gap-3 bg-bros-blue text-white px-7 py-4 rounded-sm font-semibold hover:bg-bros-navy transition">
+        <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." class="inline-flex items-center gap-3 bg-bros-blue text-white px-7 py-4 rounded-sm font-semibold hover:bg-bros-navy transition">
           <span data-lang-content="id" class="active">Tanya Tarif via WhatsApp</span>
           <span data-lang-content="my">Tanya Harga via WhatsApp</span>
           <span data-lang-content="en">Get Quote via WhatsApp</span>
@@ -1054,7 +1235,7 @@
       
       <!-- Row 1 -->
       <a href="paket-bukit_lawang_4h3m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_15_orangutan_encounter.jpg" alt="Orangutan encounter Gunung Leuser" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_15_orangutan_encounter.jpg" alt="Orangutan encounter Gunung Leuser" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🦧 Bukit Lawang</div>
@@ -1064,7 +1245,7 @@
       </a>
 
       <a href="paket-tangkahan_3h2m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_19_elephant_bathing.jpg" alt="Tangkahan elephant bathing" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_19_elephant_bathing.jpg" alt="Tangkahan elephant bathing" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🐘 Tangkahan</div>
@@ -1074,7 +1255,7 @@
       </a>
 
       <a href="paket-western_5d4n_volcano.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_02_sibayak_crater.jpg" alt="Mount Sibayak crater hike" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_02_sibayak_crater.jpg" alt="Mount Sibayak crater hike" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🌋 Mt Sibayak</div>
@@ -1084,7 +1265,7 @@
       </a>
 
       <a href="paket-western_7d6n_ultimate.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_12_sipiso_waterfall.jpg" alt="Sipiso-piso 120m waterfall" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_12_sipiso_waterfall.jpg" alt="Sipiso-piso 120m waterfall" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">💧 Sipiso-piso</div>
@@ -1095,7 +1276,7 @@
 
       <!-- Row 2 -->
       <a href="paket-combo_sumut_6h5m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_03_samosir_port.jpg" alt="Samosir Island Tomok port" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_03_samosir_port.jpg" alt="Samosir Island Tomok port" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🏝 Samosir Island</div>
@@ -1105,7 +1286,7 @@
       </a>
 
       <a href="paket-medan_heritage_3h2m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_09_heritage_meal.jpg" alt="Medan heritage restaurant Tip Top" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_09_heritage_meal.jpg" alt="Medan heritage restaurant Tip Top" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🍴 Medan Heritage</div>
@@ -1115,7 +1296,7 @@
       </a>
 
       <a href="paket-bukit_lawang_4h3m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_16_tube_rafting.jpg" alt="Bohorok river tube rafting" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_16_tube_rafting.jpg" alt="Bohorok river tube rafting" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🚣 Bohorok</div>
@@ -1125,7 +1306,7 @@
       </a>
 
       <a href="paket-berastagi_3h2m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block">
-        <img src="assets/gallery/gallery_04_atv_adventure.jpg" alt="Berastagi ATV adventure" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_04_atv_adventure.jpg" alt="Berastagi ATV adventure" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🏍 Berastagi</div>
@@ -1136,7 +1317,7 @@
 
       <!-- Row 3: Mixed moments (additional photos for richness) -->
       <a href="paket-western_4d3n_jungle.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block hidden lg:block">
-        <img src="assets/gallery/gallery_11_jungle_bridge.jpg" alt="Bukit Lawang jungle suspension bridge" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_11_jungle_bridge.jpg" alt="Bukit Lawang jungle suspension bridge" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🌉 Bukit Lawang</div>
@@ -1146,7 +1327,7 @@
       </a>
 
       <a href="bros-wisata-tour-listing.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block hidden lg:block">
-        <img src="assets/gallery/gallery_10_group_joy.jpg" alt="Happy group of travelers" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_10_group_joy.jpg" alt="Happy group of travelers" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">😊 Happy Travelers</div>
@@ -1156,7 +1337,7 @@
       </a>
 
       <a href="paket-halal_3h2m_medan_toba.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block hidden lg:block">
-        <img src="assets/gallery/gallery_14_halal_friendly_dinner.jpg" alt="Halal-friendly group dinner" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_14_halal_friendly_dinner.jpg" alt="Halal-friendly group dinner" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🕌 Halal-friendly</div>
@@ -1166,7 +1347,7 @@
       </a>
 
       <a href="paket-combo_sumut_6h5m.html" class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block hidden lg:block">
-        <img src="assets/gallery/gallery_18_sipiso_portrait.jpg" alt="Sipiso-piso viewpoint portrait" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+        <img src="assets/gallery/gallery_18_sipiso_portrait.jpg" alt="Sipiso-piso viewpoint portrait" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async"/>
         <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="text-white">
             <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">📸 Sipiso-piso</div>
@@ -1216,7 +1397,7 @@
           <span data-lang-block="en">Tell us your travel plans — duration, group size, interests, budget. We'll craft a personal itinerary at no cost, no obligation.</span>
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="https://wa.me/6281260139399" class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition">
+          <a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
             +62 812-6013-9399
           </a>
@@ -1251,13 +1432,13 @@
           <span data-lang-block="en">PT BROS INTI WISATA — Licensed tour operator specializing in North Sumatra. Private & small group tours for ASEAN travelers.</span>
         </p>
         <div class="flex items-center gap-3">
-          <a href="#" class="w-9 h-9 bg-white/10 hover:bg-bros-gold hover:text-bros-navy rounded-sm flex items-center justify-center transition">
+          <a href="https://instagram.com/broswisata" target="_blank" rel="noopener" class="w-9 h-9 bg-white/10 hover:bg-bros-gold hover:text-bros-navy rounded-sm flex items-center justify-center transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          <a href="#" class="w-9 h-9 bg-white/10 hover:bg-bros-gold hover:text-bros-navy rounded-sm flex items-center justify-center transition">
+          <a href="https://www.facebook.com/broswisata" target="_blank" rel="noopener" class="w-9 h-9 bg-white/10 hover:bg-bros-gold hover:text-bros-navy rounded-sm flex items-center justify-center transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
           </a>
-          <a href="#" class="w-9 h-9 bg-white/10 hover:bg-bros-gold hover:text-bros-navy rounded-sm flex items-center justify-center transition">
+          <a href="https://www.tiktok.com/@broswisata" target="_blank" rel="noopener" class="w-9 h-9 bg-white/10 hover:bg-bros-gold hover:text-bros-navy rounded-sm flex items-center justify-center transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V8.85a8.16 8.16 0 003.77 1.18z"/></svg>
           </a>
         </div>
@@ -1270,9 +1451,9 @@
           <span data-lang-content="en">Destinations</span>
         </div>
         <ul class="space-y-3 text-sm text-white/70">
-          <li><a href="#" class="hover:text-bros-gold transition">Lake Toba</a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">Berastagi</a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">Bukit Lawang</a></li>
+          <li><a href="/paket-combo_sumut_6h5m.html" class="hover:text-bros-gold transition">Lake Toba</a></li>
+          <li><a href="/paket-berastagi_3h2m.html" class="hover:text-bros-gold transition">Berastagi</a></li>
+          <li><a href="/paket-bukit_lawang_4h3m.html" class="hover:text-bros-gold transition">Bukit Lawang</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Pulau Samosir</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Tangkahan</a></li>
           <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">Sipiso-Piso</a></li>
@@ -1286,22 +1467,22 @@
           <span data-lang-content="en">Services</span>
         </div>
         <ul class="space-y-3 text-sm text-white/70">
-          <li><a href="#" class="hover:text-bros-gold transition">
+          <li><a href="bros-wisata-tour-listing.html" class="hover:text-bros-gold transition">
             <span data-lang-content="id" class="active">Paket Tour</span>
             <span data-lang-content="my">Pakej Tour</span>
             <span data-lang-content="en">Tour Packages</span>
           </a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">
+          <li><a href="bros-wisata-car-rental.html" class="hover:text-bros-gold transition">
             <span data-lang-content="id" class="active">Sewa Mobil</span>
             <span data-lang-content="my">Sewa Kereta</span>
             <span data-lang-content="en">Car Rental</span>
           </a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">
+          <li><a href="bros-wisata-custom-tour.html" class="hover:text-bros-gold transition">
             <span data-lang-content="id" class="active">Tour Custom</span>
             <span data-lang-content="my">Tour Tersuai</span>
             <span data-lang-content="en">Custom Tour</span>
           </a></li>
-          <li><a href="#" class="hover:text-bros-gold transition">
+          <li><a href="bros-wisata-contact.html" class="hover:text-bros-gold transition">
             <span data-lang-content="id" class="active">Antar Bandara</span>
             <span data-lang-content="my">Hantar Lapangan Terbang</span>
             <span data-lang-content="en">Airport Transfer</span>
@@ -1338,16 +1519,16 @@
     <div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
       <div>&copy; 2026 PT BROS INTI WISATA · NIB 2502250049355 · All rights reserved.</div>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-white">Privacy Policy</a>
-        <a href="#" class="hover:text-white">Terms of Service</a>
-        <a href="#" class="hover:text-white">Sitemap</a>
+        <a href="/bros-wisata-contact.html" class="hover:text-white">Privacy Policy</a>
+        <a href="/bros-wisata-contact.html" class="hover:text-white">Terms of Service</a>
+        <a href="/sitemap.xml" class="hover:text-white">Sitemap</a>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- ======= FLOATING WHATSAPP ======= -->
-<a href="https://wa.me/6281260139399" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition">
+<a href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
 </a>
 
@@ -1375,5 +1556,52 @@
   }
 </script>
 
+
+<script>
+  // ===== MOBILE MENU =====
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      mobileMenu.classList.toggle('flex', isOpen);
+      // Animate hamburger
+      mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!mobileBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      }
+    });
+  }
+</script>
+
+<script>
+  // ===== INTERSECTION OBSERVER FADE-UP =====
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        fadeObserver.unobserve(entry.target); // Animate once only
+      }
+    });
+  }, observerOptions);
+  
+  // Auto-apply fade-up to common section types
+  document.querySelectorAll('section > div, .day-card, .pkg-card, .team-card').forEach(el => {
+    if (!el.classList.contains('fade-up')) {
+      el.classList.add('fade-up');
+    }
+    fadeObserver.observe(el);
+  });
+</script>
 </body>
 </html>
