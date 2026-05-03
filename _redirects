@@ -1,0 +1,48 @@
+# BROS WISATA - Cloudflare Pages Redirects
+# Documentation: https://developers.cloudflare.com/pages/platform/redirects/
+
+# Root → Homepage
+/    /bros-wisata-homepage.html    200
+
+# Common shortcuts
+/tours    /bros-wisata-tour-listing.html    301
+/tour    /bros-wisata-tour-listing.html    301
+/paket    /bros-wisata-tour-listing.html    301
+/about    /bros-wisata-about.html    301
+/tentang    /bros-wisata-about.html    301
+/contact    /bros-wisata-contact.html    301
+/kontak    /bros-wisata-contact.html    301
+/car-rental    /bros-wisata-car-rental.html    301
+/sewa-mobil    /bros-wisata-car-rental.html    301
+/custom    /bros-wisata-custom-tour.html    301
+
+# Signature package shortcuts
+/medan    /paket-medan_heritage_3h2m.html    301
+/bukit-lawang    /paket-bukit_lawang_4h3m.html    301
+/tangkahan    /paket-tangkahan_3h2m.html    301
+/berastagi    /paket-berastagi_3h2m.html    301
+/combo    /paket-combo_sumut_6h5m.html    301
+/sumut-grand-tour    /paket-combo_sumut_6h5m.html    301
+
+# Western Eco shortcuts
+/jungle    /paket-western_4d3n_jungle.html    301
+/volcano    /paket-western_5d4n_volcano.html    301
+/ultimate    /paket-western_7d6n_ultimate.html    301
+/eco    /bros-wisata-tour-listing.html    301
+
+# Halal Malaysia shortcuts
+/halal    /bros-wisata-tour-listing.html    301
+/halal-3d    /paket-halal_3h2m_medan_toba.html    301
+/halal-4d    /paket-halal_4h3m_medan_toba.html    301
+/halal-5d    /paket-halal_5h4m_medan_toba.html    301
+/malaysia    /bros-wisata-tour-listing.html    301
+
+# WhatsApp shortcuts
+/wa    https://wa.me/6281260139399    302
+/whatsapp    https://wa.me/6281260139399    302
+
+# Social media shortcuts
+/instagram    https://instagram.com/broswisata    302
+/ig    https://instagram.com/broswisata    302
+/facebook    https://www.facebook.com/broswisata/    302
+/tiktok    https://www.tiktok.com/@broswisata    302
