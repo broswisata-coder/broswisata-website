@@ -1,0 +1,14 @@
+{
+  "name": "broswisata-website",
+  "version": "2.0.0",
+  "description": "BROS Wisata - Tour Operator Sumatra Utara - Production Build",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/style.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/style.css --watch",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "license": "MIT"
+}

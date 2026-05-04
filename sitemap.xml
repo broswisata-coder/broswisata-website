@@ -1,50 +1,567 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemaps-image/1.0">
 
-  <!-- HOMEPAGE -->
   <url>
-    <loc>https://broswisata.id/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <loc>https://broswisata.id/id/bros-wisata-homepage.html</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-homepage.html"/>
   </url>
 
-  <!-- TOUR LISTING -->
   <url>
-    <loc>https://broswisata.id/bros-wisata-tour-listing.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <loc>https://broswisata.id/ms/bros-wisata-homepage.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-homepage.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-homepage.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-homepage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-homepage.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/bros-wisata-tour-listing.html</loc>
+    <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-tour-listing.html"/>
   </url>
 
-  <!-- 5 SIGNATURE PACKAGES -->
-  <url><loc>https://broswisata.id/paket-medan_heritage_3h2m.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-bukit_lawang_4h3m.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-tangkahan_3h2m.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-berastagi_3h2m.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-combo_sumut_6h5m.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url>
+    <loc>https://broswisata.id/ms/bros-wisata-tour-listing.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-tour-listing.html"/>
+  </url>
 
-  <!-- 3 WESTERN ECO PACKAGES -->
-  <url><loc>https://broswisata.id/paket-western_4d3n_jungle.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-western_5d4n_volcano.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-western_7d6n_ultimate.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-tour-listing.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-tour-listing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-tour-listing.html"/>
+  </url>
 
-  <!-- 3 HALAL MALAYSIA PACKAGES -->
-  <url><loc>https://broswisata.id/paket-halal_3h2m_medan_toba.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-halal_4h3m_medan_toba.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://broswisata.id/paket-halal_5h4m_medan_toba.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url>
+    <loc>https://broswisata.id/id/bros-wisata-car-rental.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-car-rental.html"/>
+  </url>
 
-  <!-- CAR RENTAL -->
-  <url><loc>https://broswisata.id/bros-wisata-car-rental.html</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url>
+    <loc>https://broswisata.id/ms/bros-wisata-car-rental.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-car-rental.html"/>
+  </url>
 
-  <!-- CUSTOM TOUR -->
-  <url><loc>https://broswisata.id/bros-wisata-custom-tour.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-car-rental.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-car-rental.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-car-rental.html"/>
+  </url>
 
-  <!-- ABOUT -->
-  <url><loc>https://broswisata.id/bros-wisata-about.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://broswisata.id/id/bros-wisata-custom-tour.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-custom-tour.html"/>
+  </url>
 
-  <!-- CONTACT -->
-  <url><loc>https://broswisata.id/bros-wisata-contact.html</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url>
+    <loc>https://broswisata.id/ms/bros-wisata-custom-tour.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-custom-tour.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-custom-tour.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-custom-tour.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-custom-tour.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/bros-wisata-about.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-about.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/bros-wisata-about.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-about.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-about.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-about.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/bros-wisata-contact.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-contact.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/bros-wisata-contact.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-contact.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-contact.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-contact.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-medan_heritage_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-medan_heritage_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-medan_heritage_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-medan_heritage_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-medan_heritage_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-medan_heritage_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-medan_heritage_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-bukit_lawang_4h3m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-bukit_lawang_4h3m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-bukit_lawang_4h3m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-bukit_lawang_4h3m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-bukit_lawang_4h3m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-bukit_lawang_4h3m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-bukit_lawang_4h3m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-tangkahan_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-tangkahan_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-tangkahan_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-tangkahan_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-tangkahan_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-tangkahan_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-tangkahan_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-berastagi_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-berastagi_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-berastagi_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-berastagi_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-berastagi_3h2m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-berastagi_3h2m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-berastagi_3h2m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-combo_sumut_6h5m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-combo_sumut_6h5m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-combo_sumut_6h5m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-combo_sumut_6h5m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-combo_sumut_6h5m.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-combo_sumut_6h5m.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-combo_sumut_6h5m.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-western_4d3n_jungle.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_4d3n_jungle.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-western_4d3n_jungle.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_4d3n_jungle.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-western_4d3n_jungle.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_4d3n_jungle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_4d3n_jungle.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-western_5d4n_volcano.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_5d4n_volcano.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-western_5d4n_volcano.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_5d4n_volcano.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-western_5d4n_volcano.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_5d4n_volcano.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_5d4n_volcano.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-western_7d6n_ultimate.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_7d6n_ultimate.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-western_7d6n_ultimate.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_7d6n_ultimate.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-western_7d6n_ultimate.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-western_7d6n_ultimate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-western_7d6n_ultimate.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-halal_3h2m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_3h2m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-halal_3h2m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_3h2m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-halal_3h2m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_3h2m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_3h2m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-halal_4h3m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_4h3m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-halal_4h3m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_4h3m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-halal_4h3m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_4h3m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_4h3m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/paket-halal_5h4m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_5h4m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/paket-halal_5h4m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_5h4m_medan_toba.html"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/paket-halal_5h4m_medan_toba.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/paket-halal_5h4m_medan_toba.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/paket-halal_5h4m_medan_toba.html"/>
+  </url>
 
 </urlset>

@@ -1,37 +1,114 @@
 # BROS Wisata - Tour Operator Sumatra Utara
-# https://broswisata.com
+# https://broswisata.id
+# Last updated: 2026-05-03
 
+# ===== ALL BOTS - DEFAULT ALLOW =====
 User-agent: *
 Allow: /
+Disallow: /assets/pdf/internal/
+Disallow: /scripts/
+Disallow: /src/
+Disallow: /node_modules/
 
-# Don't crawl asset directories directly
-Disallow: /assets/pdf/
-Disallow: /bros-wisata-logos/
-
-# Allow IG carousel images for Open Graph previews
-Allow: /assets/ig/
-
-# Sitemap location
-Sitemap: https://broswisata.com/sitemap.xml
-
-# Specific bot rules
+# ===== SEARCH ENGINE BOTS =====
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /bros-wisata-logos/
 
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 2
 
-# Block AI training crawlers (optional - protect content)
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# ===== AI SEARCH BOTS - ALLOWED =====
+# We welcome AI search engines for trip discovery
+# Travelers from Malaysia, Singapore, and Europe increasingly use AI
+# to research and plan trips. Blocking these = invisible to AI search.
+
 User-agent: GPTBot
-Disallow: /
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ===== BLOCK BAD BOTS =====
+User-agent: SemrushBot
 Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# ===== SITEMAP =====
+Sitemap: https://broswisata.id/sitemap.xml
