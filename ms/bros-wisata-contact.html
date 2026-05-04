@@ -38,7 +38,60 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
-</head>
+<!-- ===== ANALYTICS & TRACKING ===== -->
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVH9HY8P8P', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+  // Track WhatsApp clicks
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href*="wa.me"]');
+    if (a) {
+      gtag('event', 'whatsapp_click', {
+        'event_category': 'Contact',
+        'event_label': a.href.substring(0, 100)
+      });
+    }
+  });
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wles2u2nk2");
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Hubungi BROS Wisata",
+  "url": "https://broswisata.id/ms/bros-wisata-contact.html",
+  "description": "Hubungi BROS Wisata untuk konsultasi pakej tour Sumatera Utara percuma."
+}</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Laman Utama",
+      "item": "https://broswisata.id/ms/bros-wisata-homepage.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Hubungi Kami",
+      "item": "https://broswisata.id/ms/bros-wisata-contact.html"
+    }
+  ]
+}</script></head>
 <body>
 <!-- TOP BAR -->
 <div class="bg-bros-navy text-white text-xs">
@@ -224,11 +277,11 @@ Untuk permintaan tour tersuai yang lebih terperinci, gunakan <a class="text-bros
           1. Daftar di https://formspree.io (gratis, 50 submission/bulan)
           2. Buat form baru, set "Submit Email" ke: hello@broswisata.id
           3. Copy form ID Anda (format: xpwzvgke atau yang serupa)
-          4. Replace REPLACE_FORMSPREE_ID di bawah dengan ID asli
+          4. Replace xpqbppjv di bawah dengan ID asli
           5. Optional: enable reCAPTCHA di Formspree dashboard
           ================================================
         -->
-<form action="https://formspree.io/f/REPLACE_FORMSPREE_ID" class="bg-white p-8 lg:p-10 space-y-6" id="contact-form" method="POST">
+<form action="https://formspree.io/f/xpqbppjv" class="bg-white p-8 lg:p-10 space-y-6" id="contact-form" method="POST">
 <!-- Hidden honeypot for spam protection (bots fill this, humans don't see it) -->
 <input autocomplete="off" name="_gotcha" style="display:none !important" tabindex="-1" type="text"/>
 <!-- Subject line for email notification -->
@@ -345,7 +398,7 @@ Atau terus WhatsApp untuk respons terpantas →
               e.preventDefault();
               
               // Check if form action is still placeholder
-              if (form.action.includes('REPLACE_FORMSPREE_ID')) {
+              if (form.action.includes('xpqbppjv')) {
                 showStatus('error', '⚠️ Form belum dikonfigurasi. Silakan WhatsApp kami: +62 812-6013-9399');
                 return;
               }

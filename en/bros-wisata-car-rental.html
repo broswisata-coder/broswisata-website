@@ -117,7 +117,70 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
-</head>
+
+<!-- ===== ANALYTICS & TRACKING ===== -->
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVH9HY8P8P', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+  // Track WhatsApp clicks
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href*="wa.me"]');
+    if (a) {
+      gtag('event', 'whatsapp_click', {
+        'event_category': 'Contact',
+        'event_label': a.href.substring(0, 100)
+      });
+    }
+  });
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wles2u2nk2");
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Car Rental with Driver",
+  "provider": {
+    "@type": "Organization",
+    "name": "BROS Wisata",
+    "url": "https://broswisata.id"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Sumatera Utara, Indonesia"
+  },
+  "url": "https://broswisata.id/en/bros-wisata-car-rental.html",
+  "description": "Car rental with driver in Medan and North Sumatra. Fleet: Avanza, Innova, Hiace, Alphard."
+}</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://broswisata.id/en/bros-wisata-homepage.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Car Rental",
+      "item": "https://broswisata.id/en/bros-wisata-car-rental.html"
+    }
+  ]
+}</script></head>
 <body>
 <!-- TOP UTILITY BAR -->
 <div class="bg-bros-navy text-white text-xs">

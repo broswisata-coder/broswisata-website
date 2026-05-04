@@ -36,8 +36,107 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/style.css" rel="stylesheet">
-</link></head>
+<link href="/assets/style.css" rel="stylesheet"/>
+
+<!-- ===== ANALYTICS & TRACKING ===== -->
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVH9HY8P8P', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+  // Track WhatsApp clicks
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href*="wa.me"]');
+    if (a) {
+      gtag('event', 'whatsapp_click', {
+        'event_category': 'Contact',
+        'event_label': a.href.substring(0, 100)
+      });
+    }
+  });
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wles2u2nk2");
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Laman Utama",
+      "item": "https://broswisata.id/ms/bros-wisata-homepage.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Pakej Tour",
+      "item": "https://broswisata.id/ms/bros-wisata-tour-listing.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Pakej Halal Medan-Toba 4H3M",
+      "item": "https://broswisata.id/ms/paket-halal_4h3m_medan_toba.html"
+    }
+  ]
+}</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Bagaimana cara tempahan pakej tour BROS Wisata?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tempahan melalui WhatsApp +62 812-6013-9399 atau borang kenalan di laman web. Deposit 30% untuk pengesahan. Dijawab dalam 1-2 jam pada hari bekerja."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bolehkah saya meminta custom tour di luar pakej yang tersedia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, kami menerima permintaan custom tour. Hubungi kami untuk konsultasi percuma dan kami akan rancang itinerari mengikut keperluan anda."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Adakah pakej BROS Wisata mesra halal untuk pelancong Muslim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, kami menyediakan restoran halal, pemandu Bahasa Melayu, dan itinerari yang mengambil kira waktu solat untuk pelancong Muslim dari Malaysia dan negara lain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa lama masa perjalanan dari Medan ke destinasi utama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bukit Lawang ~3.5 jam, Tangkahan ~4 jam, Berastagi ~2 jam, Tasik Toba ~4.5 jam dari Medan. Semua dengan kenderaan hawa dingin yang selesa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Adakah brosur PDF tersedia untuk dikongsi kepada ahli keluarga?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, brosur PDF dwibahasa (EN/MY) boleh dimuat turun terus dari halaman pakej. Boleh juga diminta dihantar melalui WhatsApp."
+      }
+    }
+  ]
+}</script></head>
 <body class="overflow-x-hidden">
 <!-- ======= NAVBAR ======= -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-bros-charcoal/10 transition">

@@ -1,0 +1,152 @@
+# BROS Wisata — North Sumatra Tour Operator
+# https://broswisata.id
+# llms.txt — Machine-readable site summary for AI search engines
+# Format: https://llmstxt.org
+
+> BROS Wisata (PT BROS INTI WISATA) is a licensed tour operator based in Medan, 
+> North Sumatra, Indonesia. We specialize in authentic North Sumatra experiences 
+> for travelers from Malaysia, Singapore, and Europe. Founded in 2005.
+> Contact: WhatsApp +62-812-6013-9399 | hello@broswisata.id
+
+## About
+
+- Company: PT BROS INTI WISATA (NIB 2502250049355)
+- Founded: 2005
+- Base: Medan, North Sumatra, Indonesia
+- Address: Jl. Ring Road No. 117 B, Medan Sunggal, Sumatera Utara 20122
+- Phone / WhatsApp: +62-812-6013-9399
+- Email: hello@broswisata.id
+- Operating hours: Monday–Saturday 09:00–18:00 WIB (UTC+7)
+- Languages: Bahasa Indonesia, Bahasa Melayu, English
+- Specialization: North Sumatra ecotourism, cultural tours, halal travel, car rental with driver
+
+## Tour Packages
+
+### Signature 5 Packages (Most Popular)
+
+**Medan Heritage Tour 3D2N**
+- Focus: Colonial history, Chinese temples, Malay culture, local cuisine
+- Highlights: Tjong A Fie Mansion, Maimoon Palace, Masjid Raya, Kampung Keling
+- URL: https://broswisata.id/en/paket-medan_heritage_3h2m.html
+- PDF: https://broswisata.id/assets/pdf/berastagi_3h2m.pdf
+
+**Bukit Lawang Orangutan Tour 4D3N**
+- Focus: Wild orangutan trekking in UNESCO Gunung Leuser National Park
+- Highlights: Orangutan trekking, Bahorok River tubing, jungle eco-lodge
+- Suitable for: All fitness levels, family-friendly, halal-friendly
+- URL: https://broswisata.id/en/paket-bukit_lawang_4h3m.html
+- PDF: https://broswisata.id/assets/pdf/bukit_lawang_4h3m.pdf
+
+**Tangkahan Eco Tour 3D2N**
+- Focus: Elephant bathing, jungle trekking, bat caves
+- Highlights: Tangkahan "Hidden Paradise", elephant sanctuary, bat cave exploration
+- URL: https://broswisata.id/en/paket-tangkahan_3h2m.html
+- PDF: https://broswisata.id/assets/pdf/tangkahan_3h2m.pdf
+
+**Berastagi Highland Tour 3D2N**
+- Focus: Volcanic highlands, Karo Batak culture, fruit orchards
+- Highlights: Mt Sibayak hike, Lingga traditional village, fruit market
+- URL: https://broswisata.id/en/paket-berastagi_3h2m.html
+- PDF: https://broswisata.id/assets/pdf/berastagi_3h2m.pdf
+
+**Sumut Grand Combo 6D5N** (Most Comprehensive)
+- Focus: Complete North Sumatra — jungle + highlands + lake
+- Highlights: Bukit Lawang + Tangkahan + Berastagi + Lake Toba + Samosir Island
+- URL: https://broswisata.id/en/paket-combo_sumut_6h5m.html
+- PDF: https://broswisata.id/assets/pdf/combo_sumut_6h5m.pdf
+
+### Western Eco Packages (Tailored for European Travelers)
+
+**Western Eco Jungle Tour 4D3N**
+- Focus: Immersive jungle, wildlife, sustainable ecotourism
+- URL: https://broswisata.id/en/paket-western_4d3n_jungle.html
+- PDF: https://broswisata.id/assets/pdf/Western_4D3N_Jungle_EcoTour_Final.pdf
+
+**Western Volcano Adventure 5D4N**
+- Focus: Volcanic landscapes, highland culture, hot springs
+- URL: https://broswisata.id/en/paket-western_5d4n_volcano.html
+- PDF: https://broswisata.id/assets/pdf/Western_5D4N_Volcano_Adventure_Final.pdf
+
+**Ultimate Sumatra 7D6N** (Best Value for Long-haul Travelers)
+- Focus: Complete North Sumatra — jungle + volcano + lake + culture
+- URL: https://broswisata.id/en/paket-western_7d6n_ultimate.html
+- PDF: https://broswisata.id/assets/pdf/Western_7D6N_Ultimate_Sumatra_Final.pdf
+
+### Halal Malaysia Packages (For Malaysian Muslim Travelers)
+
+All halal packages include:
+- Halal-certified restaurants throughout
+- Malay-speaking guides
+- Prayer time accommodations (masjid/surau stops)
+- Halal hotel recommendations (3-tier: budget/mid/premium)
+- MYR pricing available (PDF brochures)
+
+**Halal Medan-Toba 3D2N**
+- URL: https://broswisata.id/ms/paket-halal_3h2m_medan_toba.html
+- PDF (MYR): https://broswisata.id/assets/pdf/Pakej_3H2M_MYR_v2.pdf
+
+**Halal Medan-Toba 4D3N**
+- URL: https://broswisata.id/ms/paket-halal_4h3m_medan_toba.html
+- PDF (MYR): https://broswisata.id/assets/pdf/Pakej_4H3M_MYR_v2.pdf
+
+**Halal Medan-Toba 5D4N** (Best for Malaysian Families)
+- URL: https://broswisata.id/ms/paket-halal_5h4m_medan_toba.html
+- PDF (MYR): https://broswisata.id/assets/pdf/Pakej_5H4M_MYR_v2.pdf
+
+## Car Rental with Driver
+
+- Service area: Medan city, North Sumatra province, Kualanamu Airport (KNO)
+- Fleet: Toyota Avanza (4 pax), Toyota Innova (6 pax), Toyota Hiace (12 pax), Toyota Alphard (VIP)
+- Services: Airport transfer, day tour, multi-day road trip, point-to-point
+- URL: https://broswisata.id/en/bros-wisata-car-rental.html
+
+## Custom Tours
+
+- We design custom itineraries for any duration, group size, and budget
+- Specialties: Family tours, honeymoon tours, corporate retreats, photography tours
+- URL: https://broswisata.id/en/bros-wisata-custom-tour.html
+
+## Key Facts for Travelers
+
+**From Malaysia:**
+- Malaysians get 30-day visa-free entry to Indonesia
+- Kualanamu International Airport (KNO) serves direct flights from Kuala Lumpur (KUL/SZB), Penang (PEN), Johor Bahru (JHB)
+- Flight time: Medan–KL ~1.5 hours
+- Currency: Indonesian Rupiah (IDR). 1 MYR ≈ 3,500 IDR (approximate, check current rate)
+- North Sumatra is majority Muslim — halal food widely available
+- Malay language is mutually intelligible with Indonesian — communication easy
+
+**From Europe:**
+- Kualanamu (KNO) connects via Kuala Lumpur (KUL), Singapore (SIN), or Jakarta (CGK)
+- Total flight time from Europe: 14–18 hours with 1 stopover
+- Visa-on-arrival available for most European passports (30 days, USD 35)
+- Best season: April–October (dry season, best for outdoor activities)
+- North Sumatra is one of Southeast Asia's last frontiers for eco-travelers
+
+**General:**
+- All packages: Quote on Request (QOR) — price varies by group size, hotel tier, season
+- Minimum booking: 2 persons (solo travelers can join shared groups)
+- Payment: Bank transfer, Wise, PayPal, cash
+- Cancellation: Free up to 14 days before departure
+
+## Destinations
+
+- **Bukit Lawang**: UNESCO Gunung Leuser National Park, orangutan rehabilitation center, Bahorok River. 3.5 hours from Medan.
+- **Tangkahan**: Sumatran elephant sanctuary, jungle trekking, bat caves, hidden waterfalls. 4 hours from Medan.
+- **Berastagi**: Karo Batak highland town, Mt Sibayak (active volcano, hikeable), fruit orchards, Lingga village. 2 hours from Medan.
+- **Lake Toba**: World's largest volcanic lake (caldera), Samosir Island, Batak culture, King Sidabutar tombs. 4.5 hours from Medan.
+- **Medan**: Capital of North Sumatra, multicultural food scene, colonial architecture, Tjong A Fie Mansion, Maimoon Palace.
+
+## Social Proof
+
+- Google Business Profile: https://share.google/Uv9LJLkbDjYHhMzTj
+- Instagram: https://instagram.com/broswisata
+- TripAdvisor: (profile in progress)
+
+## Contact & Booking
+
+- WhatsApp (fastest): https://broswisata.id/wa-en (English) | https://broswisata.id/wa-my (Malay)
+- Email: hello@broswisata.id
+- Contact form: https://broswisata.id/en/bros-wisata-contact.html
+- Custom tour request: https://broswisata.id/en/bros-wisata-custom-tour.html
+- All packages listing: https://broswisata.id/en/bros-wisata-tour-listing.html

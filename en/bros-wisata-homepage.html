@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<link as="image" fetchpriority="high" href="/assets/ig/combo_sumut_6h5m/en/01_cover.png" rel="preload"/><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- ===== PRIMARY META ===== -->
 <title>BROS Wisata — North Sumatra Tour Operator &amp; Car Rental from Medan | Hub of Sumatra</title>
@@ -182,6 +182,37 @@
 }
 </script>
 <link href="/assets/style.css" rel="stylesheet"/>
+
+<!-- ===== ANALYTICS & TRACKING ===== -->
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVH9HY8P8P', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+  // Track WhatsApp clicks
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href*="wa.me"]');
+    if (a) {
+      gtag('event', 'whatsapp_click', {
+        'event_category': 'Contact',
+        'event_label': a.href.substring(0, 100)
+      });
+    }
+  });
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wles2u2nk2");
+</script>
 </head>
 <body class="bg-bros-cream">
 <!-- ======= TOP UTILITY BAR ======= -->
