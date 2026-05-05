@@ -149,9 +149,7 @@ fbq('init', '981676474387568');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', {content_name: 'Western Jungle Eco 4D3N', content_category: 'Tour Package'});
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=981676474387568&ev=PageView&noscript=1"
-/></noscript>
+<noscript><img height="1" src="https://www.facebook.com/tr?id=981676474387568&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body class="overflow-x-hidden">
@@ -198,6 +196,23 @@ Kontak
           WhatsApp
         </a>
 </div>
+<button aria-expanded="false" aria-label="Toggle menu" class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn">
+<svg fill="none" height="24" id="menu-icon-open" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<svg fill="none" height="24" id="menu-icon-close" stroke="currentColor" stroke-width="2" style="display:none" viewbox="0 0 24 24" width="24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button></div><div class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg fixed top-20 left-0 right-0 z-[99] py-4 px-4 max-h-[80vh] overflow-y-auto" id="mobile-menu">
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-homepage.html">Beranda</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-tour-listing.html">Paket Tour</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-car-rental.html">Sewa Mobil</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-custom-tour.html">Custom Tour</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-about.html">Tentang</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-contact.html">Kontak</a>
+<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+  📱 WhatsApp Kami
+</a>
 </div>
 </div>
 </nav>
@@ -750,5 +765,44 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     fadeObserver.observe(el);
   });
 </script>
-</body>
+<script>
+  // ===== MOBILE MENU (INNER PAGE) =====
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  function openMenu() {
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex');
+    mobileBtn.setAttribute('aria-expanded', 'true');
+    if (iconOpen) iconOpen.style.display = 'none';
+    if (iconClose) iconClose.style.display = 'block';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+    if (iconOpen) iconOpen.style.display = 'block';
+    if (iconClose) iconClose.style.display = 'none';
+  }
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      isOpen ? closeMenu() : openMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileBtn.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => closeMenu());
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  }
+</script></body>
 </html>

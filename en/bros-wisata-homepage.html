@@ -252,7 +252,7 @@ Open Mon–Sat, 09:00–18:00 WIB
 </div>
 </div>
 <!-- ======= NAV ======= -->
-<nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-bros-charcoal/10">
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-bros-charcoal/10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
 <a class="flex items-center gap-3" href="/en/bros-wisata-homepage.html">
 <!-- Simplified logo mark -->
@@ -299,13 +299,20 @@ Contact
 
 WhatsApp Us
 </a>
-<button class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" width="24"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+<button class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+  <!-- Hamburger icon (shown when closed) -->
+  <svg id="menu-icon-open" fill="none" height="24" stroke="currentColor" stroke-width="2" width="24" viewBox="0 0 24 24">
+    <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <!-- X icon (shown when open) -->
+  <svg id="menu-icon-close" fill="none" height="24" stroke="currentColor" stroke-width="2" width="24" viewBox="0 0 24 24" style="display:none">
+    <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
 </button>
 </div>
 </nav>
 <!-- MOBILE MENU DROPDOWN -->
-<div class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg absolute top-16 left-0 right-0 z-50 py-4 px-4" id="mobile-menu">
+<div class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg fixed top-20 left-0 right-0 z-[99] py-4 px-4 max-h-[80vh] overflow-y-auto" id="mobile-menu">
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-homepage.html">
 Home
 </a>
@@ -1328,20 +1335,47 @@ Office
   // ===== MOBILE MENU =====
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  function openMenu() {
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex');
+    mobileBtn.setAttribute('aria-expanded', 'true');
+    if (iconOpen) iconOpen.style.display = 'none';
+    if (iconClose) iconClose.style.display = 'block';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+    if (iconOpen) iconOpen.style.display = 'block';
+    if (iconClose) iconClose.style.display = 'none';
+  }
+
   if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden', !isOpen);
-      mobileMenu.classList.toggle('flex', isOpen);
-      // Animate hamburger
-      mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      isOpen ? closeMenu() : openMenu();
     });
-    // Close menu on outside click
+
+    // Close on outside click
     document.addEventListener('click', (e) => {
       if (!mobileBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
+        closeMenu();
       }
+    });
+
+    // Close when a menu link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => closeMenu());
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
     });
   }
 </script>
