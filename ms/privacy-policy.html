@@ -297,18 +297,38 @@ Hubungi
 WhatsApp Kami
 
 </a>
-<button class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-  <!-- Hamburger icon (shown when closed) -->
-  <svg id="menu-icon-open" fill="none" height="24" stroke="currentColor" stroke-width="2" width="24" viewBox="0 0 24 24">
-    <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <!-- X icon (shown when open) -->
-  <svg id="menu-icon-close" fill="none" height="24" stroke="currentColor" stroke-width="2" width="24" viewBox="0 0 24 24" style="display:none">
-    <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+<button aria-expanded="false" aria-label="Toggle menu" class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn">
+<!-- Hamburger icon (shown when closed) -->
+<svg fill="none" height="24" id="menu-icon-open" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<!-- X icon (shown when open) -->
+<svg fill="none" height="24" id="menu-icon-close" stroke="currentColor" stroke-width="2" style="display:none" viewbox="0 0 24 24" width="24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
 </button>
 </div>
-</nav>
+<div class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg fixed top-20 left-0 right-0 py-4 px-4 overflow-y-auto" id="mobile-menu" style="z-index: 9999; max-height: calc(100vh - 80px); background-color: #ffffff;">
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/ms/bros-wisata-homepage.html">
+Laman Utama
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/ms/bros-wisata-tour-listing.html">
+Pakej Tour
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/ms/bros-wisata-car-rental.html">
+Sewa Kereta
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/ms/bros-wisata-custom-tour.html">Custom Tour</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/ms/bros-wisata-about.html">
+Tentang Kami
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/ms/bros-wisata-contact.html">
+Hubungi Kami
+</a>
+<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold tracking-wider" href="https://wa.me/6281260139399?text=Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20pakej%20tour%20Sumatera%20Utara.%20Mohon%20maklumat%20lengkap." target="_blank">
+      📱 WhatsApp
+    </a>
+</div></nav>
 <!-- PAGE CONTENT: Polisi Privasi -->
 <main>
 <!-- Hero -->
@@ -501,7 +521,7 @@ Pejabat
 <div>© 2026 PT BROS INTI WISATA · NIB 2502250049355 · All rights reserved.</div>
 <div class="flex gap-6">
 <a class="hover:text-white" href="/ms/privacy-policy.html">Polisi Privasi</a>
-<a class="hover:text-white" href="/ms/terms-of-service.html">Terma & Syarat</a>
+<a class="hover:text-white" href="/ms/terms-of-service.html">Terma &amp; Syarat</a>
 <a class="hover:text-white" href="/ms/bros-wisata-tour-listing.html">Semua Pakej</a>
 </div>
 </div>

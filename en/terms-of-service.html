@@ -297,18 +297,38 @@ Contact
 
 WhatsApp Us
 </a>
-<button class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-  <!-- Hamburger icon (shown when closed) -->
-  <svg id="menu-icon-open" fill="none" height="24" stroke="currentColor" stroke-width="2" width="24" viewBox="0 0 24 24">
-    <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <!-- X icon (shown when open) -->
-  <svg id="menu-icon-close" fill="none" height="24" stroke="currentColor" stroke-width="2" width="24" viewBox="0 0 24 24" style="display:none">
-    <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+<button aria-expanded="false" aria-label="Toggle menu" class="lg:hidden p-2 text-bros-charcoal" id="mobile-menu-btn">
+<!-- Hamburger icon (shown when closed) -->
+<svg fill="none" height="24" id="menu-icon-open" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<!-- X icon (shown when open) -->
+<svg fill="none" height="24" id="menu-icon-close" stroke="currentColor" stroke-width="2" style="display:none" viewbox="0 0 24 24" width="24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
 </button>
 </div>
-</nav>
+<div class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg fixed top-20 left-0 right-0 py-4 px-4 overflow-y-auto" id="mobile-menu" style="z-index: 9999; max-height: calc(100vh - 80px); background-color: #ffffff;">
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-homepage.html">
+Home
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-tour-listing.html">
+Tours
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-car-rental.html">
+Car Rental
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-custom-tour.html">Custom Tour</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-about.html">
+About
+</a>
+<a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-contact.html">
+Contact
+</a>
+<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold tracking-wider" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info." target="_blank">
+      📱 WhatsApp
+    </a>
+</div></nav>
 <!-- PAGE CONTENT: Terms & Conditions -->
 <main>
 <!-- Hero -->
@@ -350,7 +370,7 @@ WhatsApp Us
 <div class="mb-8">
 <h2 class="font-display text-xl font-bold text-bros-navy mb-3">4. Guest Cancellation Policy</h2>
 <div class="text-bros-charcoal/80 leading-relaxed space-y-3 prose prose-sm max-w-none"><p>Cancellations must be made <strong>in writing</strong> via email or WhatsApp. Cancellation fees are calculated from the time the written notice is received:</p>
-<table style="width:100%;border-collapse:collapse;margin:1rem 0">
+<div class="overflow-x-auto w-full" style="-webkit-overflow-scrolling: touch;"><table style="width:100%;border-collapse:collapse;margin:1rem 0;min-width: 480px;">
 <thead><tr style="background:#0A2E70;color:white"><th style="padding:10px;text-align:left">Cancellation Timeline</th><th style="padding:10px;text-align:left">Refund</th></tr></thead>
 <tbody>
 <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:10px">30+ days before departure</td><td style="padding:10px">Full refund (minus 5% transfer fees)</td></tr>
@@ -358,7 +378,7 @@ WhatsApp Us
 <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:10px">7–14 days before departure</td><td style="padding:10px">Deposit forfeited; 70% balance refunded</td></tr>
 <tr style="background:#fef2f2"><td style="padding:10px">Less than 7 days / No-show</td><td style="padding:10px"><strong>No refund</strong></td></tr>
 </tbody>
-</table>
+</table></div>
 <p>We strongly recommend purchasing <strong>travel cancellation insurance</strong> before booking.</p></div>
 </div>
 <div class="mb-8">
