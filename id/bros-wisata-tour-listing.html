@@ -287,7 +287,7 @@ Filter
 
 
 </h2>
-<button class="text-xs text-bros-blue font-semibold hover:underline">
+<button class="text-xs text-bros-blue font-semibold hover:underline" id="reset-filters-btn">
 Reset
 
 
@@ -302,7 +302,7 @@ Area Sumut
 </div>
 <div class="space-y-2">
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" data-fkey="area" data-fval="toba" type="checkbox"/>
 Toba &amp; Samosir
 
 
@@ -310,7 +310,7 @@ Toba &amp; Samosir
 <span class="text-xs text-bros-charcoal/50">1</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" data-fkey="area" data-fval="bukit-lawang" type="checkbox"/>
 Bukit Lawang &amp; Tangkahan
 
 
@@ -318,7 +318,7 @@ Bukit Lawang &amp; Tangkahan
 <span class="text-xs text-bros-charcoal/50">2</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" data-fkey="area" data-fval="berastagi" type="checkbox"/>
 Berastagi &amp; Karo
 
 
@@ -326,7 +326,7 @@ Berastagi &amp; Karo
 <span class="text-xs text-bros-charcoal/50">1</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" data-fkey="area" data-fval="medan" type="checkbox"/>
 Medan City
 
 
@@ -344,7 +344,7 @@ Durasi
 </div>
 <div class="space-y-2">
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="duration" data-fval="2-3" type="checkbox"/>
 2-3 hari
 
 
@@ -352,7 +352,7 @@ Durasi
 <span class="text-xs text-bros-charcoal/50">3</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input checked="" class="accent-bros-blue" data-fkey="duration" data-fval="4-5" type="checkbox"/>
 4-5 hari
 
 
@@ -360,7 +360,7 @@ Durasi
 <span class="text-xs text-bros-charcoal/50">7</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="duration" data-fval="6-7" type="checkbox"/>
 6-7 hari
 
 
@@ -378,11 +378,11 @@ Tipe Tour
 </div>
 <div class="space-y-2">
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/> Private</span>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="type" data-fval="private" type="checkbox"/> Private</span>
 <span class="text-xs text-bros-charcoal/50">8</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/> Small Group</span>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="type" data-fval="group" type="checkbox"/> Small Group</span>
 <span class="text-xs text-bros-charcoal/50">11</span>
 </label>
 </div>
@@ -396,7 +396,7 @@ Tema
 </div>
 <div class="space-y-2">
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="theme" data-fval="nature" type="checkbox"/>
 Alam &amp; Danau
 
 
@@ -404,7 +404,7 @@ Alam &amp; Danau
 <span class="text-xs text-bros-charcoal/50">11</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="theme" data-fval="religious" type="checkbox"/>
 Wisata Religi
 
 
@@ -412,7 +412,7 @@ Wisata Religi
 <span class="text-xs text-bros-charcoal/50">3</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="theme" data-fval="culture" type="checkbox"/>
 Budaya &amp; Sejarah
 
 
@@ -420,7 +420,7 @@ Budaya &amp; Sejarah
 <span class="text-xs text-bros-charcoal/50">4</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="theme" data-fval="adventure" type="checkbox"/>
 Adventure
 
 
@@ -428,7 +428,7 @@ Adventure
 <span class="text-xs text-bros-charcoal/50">3</span>
 </label>
 <label class="flex items-center justify-between cursor-pointer hover:text-bros-blue text-sm">
-<span class="flex items-center gap-2"><input class="accent-bros-blue" type="checkbox"/>
+<span class="flex items-center gap-2"><input class="accent-bros-blue" data-fkey="theme" data-fval="culinary" type="checkbox"/>
 Kuliner
 
 
@@ -446,7 +446,7 @@ Range Harga
 </div>
 <div class="space-y-2">
 <label class="flex items-center cursor-pointer hover:text-bros-blue text-sm gap-2">
-<input class="accent-bros-blue" type="checkbox"/>
+<input class="accent-bros-blue" data-fkey="price" data-fval="low" type="checkbox"/>
 <span class="text-bros-charcoal/80">
 &lt; Rp 3jt
 
@@ -454,7 +454,7 @@ Range Harga
 </span>
 </label>
 <label class="flex items-center cursor-pointer hover:text-bros-blue text-sm gap-2">
-<input checked="" class="accent-bros-blue" type="checkbox"/>
+<input checked="" class="accent-bros-blue" data-fkey="price" data-fval="mid" type="checkbox"/>
 <span class="text-bros-charcoal/80">
 Rp 3jt – 5jt
 
@@ -462,7 +462,7 @@ Rp 3jt – 5jt
 </span>
 </label>
 <label class="flex items-center cursor-pointer hover:text-bros-blue text-sm gap-2">
-<input class="accent-bros-blue" type="checkbox"/>
+<input class="accent-bros-blue" data-fkey="price" data-fval="high" type="checkbox"/>
 <span class="text-bros-charcoal/80">
 &gt; Rp 5jt
 
@@ -471,7 +471,7 @@ Rp 3jt – 5jt
 </label>
 </div>
 </div>
-<button class="w-full bg-bros-navy text-white py-3 rounded-sm font-semibold text-sm hover:bg-bros-blue transition">
+<button class="w-full bg-bros-navy text-white py-3 rounded-sm font-semibold text-sm hover:bg-bros-blue transition" id="apply-filters-btn">
 Terapkan Filter
 
 
@@ -557,7 +557,7 @@ Semua Paket
 </div>
 <!-- Package Grid (11 cards with data-segment attribute) -->
 <div class="grid md:grid-cols-2 gap-6" id="pkg-grid">
-<a class="pkg-card bg-white block group" data-id="medan_heritage_3h2m" data-segment="signature" href="/id/paket-medan_heritage_3h2m.html">
+<a class="pkg-card bg-white block group" data-area="medan" data-duration="2-3" data-id="medan_heritage_3h2m" data-price="low" data-segment="signature" data-theme="culture culinary" data-type="private group" href="/id/paket-medan_heritage_3h2m.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/medan_heritage_3h2m/en/01_cover.webp" type="image/webp"/><img alt="MEDAN HERITAGE &amp; CULINARY" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="eager" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/medan_heritage_3h2m/en/01_cover.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -598,7 +598,7 @@ Konsultasi Personal
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="bukit_lawang_4h3m" data-segment="signature" href="/id/paket-bukit_lawang_4h3m.html">
+<a class="pkg-card bg-white block group" data-area="bukit-lawang" data-duration="4-5" data-id="bukit_lawang_4h3m" data-price="mid" data-segment="signature" data-theme="nature adventure" data-type="private group" href="/id/paket-bukit_lawang_4h3m.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/bukit_lawang_4h3m/en/01_cover.webp" type="image/webp"/><img alt="BUKIT LAWANG ORANGUTAN" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/bukit_lawang_4h3m/en/01_cover.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -639,7 +639,7 @@ Konsultasi Personal
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="tangkahan_3h2m" data-segment="signature" href="/id/paket-tangkahan_3h2m.html">
+<a class="pkg-card bg-white block group" data-area="bukit-lawang" data-duration="2-3" data-id="tangkahan_3h2m" data-price="low" data-segment="signature" data-theme="nature adventure" data-type="private group" href="/id/paket-tangkahan_3h2m.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/tangkahan_3h2m/en/01_cover.webp" type="image/webp"/><img alt="TANGKAHAN ELEPHANT &amp; JUNGLE" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/tangkahan_3h2m/en/01_cover.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -680,7 +680,7 @@ Konsultasi Personal
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="berastagi_3h2m" data-segment="signature" href="/id/paket-berastagi_3h2m.html">
+<a class="pkg-card bg-white block group" data-area="berastagi" data-duration="2-3" data-id="berastagi_3h2m" data-price="low" data-segment="signature" data-theme="nature" data-type="private group" href="/id/paket-berastagi_3h2m.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/berastagi_3h2m/en/01_cover.webp" type="image/webp"/><img alt="BERASTAGI HIGHLAND" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/berastagi_3h2m/en/01_cover.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -720,7 +720,7 @@ Konsultasi Personal
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="combo_sumut_6h5m" data-segment="signature" href="/id/paket-combo_sumut_6h5m.html">
+<a class="pkg-card bg-white block group" data-area="toba bukit-lawang berastagi medan" data-duration="6-7" data-id="combo_sumut_6h5m" data-price="high" data-segment="signature" data-theme="nature culture adventure" data-type="private group" href="/id/paket-combo_sumut_6h5m.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/combo_sumut_6h5m/en/01_cover.webp" type="image/webp"/><img alt="NORTH SUMATRA GRAND TOUR" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/combo_sumut_6h5m/en/01_cover.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -761,7 +761,7 @@ Konsultasi Personal
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="western_4d3n_jungle" data-segment="western" href="/id/paket-western_4d3n_jungle.html">
+<a class="pkg-card bg-white block group" data-area="bukit-lawang" data-duration="4-5" data-id="western_4d3n_jungle" data-price="mid" data-segment="western" data-theme="nature adventure" data-type="private group" href="/id/paket-western_4d3n_jungle.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/bukit_lawang_4h3m/en/02_highlights.webp" type="image/webp"/><img alt="JUNGLE &amp; WILDLIFE GETAWAY" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/bukit_lawang_4h3m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -802,7 +802,7 @@ Mulai $310/pax
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="western_5d4n_volcano" data-segment="western" href="/id/paket-western_5d4n_volcano.html">
+<a class="pkg-card bg-white block group" data-area="berastagi toba" data-duration="4-5" data-id="western_5d4n_volcano" data-price="mid" data-segment="western" data-theme="nature adventure" data-type="private group" href="/id/paket-western_5d4n_volcano.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/berastagi_3h2m/en/02_highlights.webp" type="image/webp"/><img alt="ORANGUTAN &amp; VOLCANO ADVENTURE" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/berastagi_3h2m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -843,7 +843,7 @@ Mulai $330/pax
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="western_7d6n_ultimate" data-segment="western" href="/id/paket-western_7d6n_ultimate.html">
+<a class="pkg-card bg-white block group" data-area="toba bukit-lawang berastagi medan" data-duration="6-7" data-id="western_7d6n_ultimate" data-price="high" data-segment="western" data-theme="nature adventure" data-type="private group" href="/id/paket-western_7d6n_ultimate.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/combo_sumut_6h5m/en/02_highlights.webp" type="image/webp"/><img alt="ULTIMATE NORTH SUMATRA ECO-TOUR" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/combo_sumut_6h5m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -884,7 +884,7 @@ Mulai $520/pax
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="halal_3h2m_medan_toba" data-segment="halal" href="/id/paket-halal_3h2m_medan_toba.html">
+<a class="pkg-card bg-white block group" data-area="medan toba" data-duration="2-3" data-id="halal_3h2m_medan_toba" data-price="low" data-segment="halal" data-theme="religious culture culinary" data-type="private group" href="/id/paket-halal_3h2m_medan_toba.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/medan_heritage_3h2m/en/02_highlights.webp" type="image/webp"/><img alt="PAKEJ MEDAN-TOBA HALAL" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/medan_heritage_3h2m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -925,7 +925,7 @@ Mulai RM 820/pax
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="halal_4h3m_medan_toba" data-segment="halal" href="/id/paket-halal_4h3m_medan_toba.html">
+<a class="pkg-card bg-white block group" data-area="medan toba" data-duration="4-5" data-id="halal_4h3m_medan_toba" data-price="mid" data-segment="halal" data-theme="religious culture culinary" data-type="private group" href="/id/paket-halal_4h3m_medan_toba.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/tangkahan_3h2m/en/02_highlights.webp" type="image/webp"/><img alt="PAKEJ MEDAN-TOBA HALAL" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/tangkahan_3h2m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -966,7 +966,7 @@ Mulai RM 1,030/pax
 </div>
 </div>
 </a>
-<a class="pkg-card bg-white block group" data-id="halal_5h4m_medan_toba" data-segment="halal" href="/id/paket-halal_5h4m_medan_toba.html">
+<a class="pkg-card bg-white block group" data-area="medan toba" data-duration="4-5" data-id="halal_5h4m_medan_toba" data-price="mid" data-segment="halal" data-theme="religious culture culinary" data-type="private group" href="/id/paket-halal_5h4m_medan_toba.html">
 <div class="aspect-[16/10] overflow-hidden bg-bros-navy relative">
 <picture><source srcset="/assets/ig/combo_sumut_6h5m/en/03_itinerary.webp" type="image/webp"/><img alt="PAKEJ MEDAN-TOBA HALAL EXTENDED" class="card-img w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0A2E70, #0F47B0)';" src="/assets/ig/combo_sumut_6h5m/en/03_itinerary.png" width="1080"/></picture>
 <div class="absolute top-3 left-3 flex gap-2">
@@ -1241,5 +1241,102 @@ Kantor
       if (e.key === 'Escape') closeMenu();
     });
   }
+</script><script>
+// SIDEBAR FILTER (Area, Duration, Type, Theme, Price)
+function initSidebarFilter() {
+  try {
+    const applyBtn = document.getElementById('apply-filters-btn');
+    const resetBtn = document.getElementById('reset-filters-btn');
+    const cards = document.querySelectorAll('#pkg-grid .pkg-card');
+    const tabs = document.querySelectorAll('.filter-tab');
+    
+    if (!applyBtn || cards.length === 0) return;
+    
+    function getActiveTab() {
+      const active = document.querySelector('.filter-tab.active');
+      return active ? active.dataset.filter : 'all';
+    }
+    
+    function applyFilters() {
+      // Get checked filters per category
+      const checked = {};
+      document.querySelectorAll('input[type="checkbox"][data-fkey]').forEach(cb => {
+        if (cb.checked) {
+          if (!checked[cb.dataset.fkey]) checked[cb.dataset.fkey] = [];
+          checked[cb.dataset.fkey].push(cb.dataset.fval);
+        }
+      });
+      
+      const tabFilter = getActiveTab();
+      
+      let visibleCount = 0;
+      cards.forEach(card => {
+        // Check tab filter
+        const seg = card.dataset.segment;
+        if (tabFilter !== 'all' && seg !== tabFilter) {
+          card.style.display = 'none';
+          return;
+        }
+        
+        // Check sidebar filters: AND between categories, OR within category
+        let visible = true;
+        for (const [key, vals] of Object.entries(checked)) {
+          const cardVal = (card.dataset[key] || '').split(/\s+/);
+          const matchAny = vals.some(v => cardVal.includes(v));
+          if (!matchAny) { visible = false; break; }
+        }
+        
+        card.style.display = visible ? '' : 'none';
+        if (visible) visibleCount++;
+      });
+      
+      // Optional: scroll to top of grid on apply (mobile UX)
+      const grid = document.getElementById('pkg-grid');
+      if (grid && window.innerWidth < 1024) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    
+    function resetFilters() {
+      document.querySelectorAll('input[type="checkbox"][data-fkey]').forEach(cb => {
+        cb.checked = false;
+      });
+      // Reset tab filter to 'all' as well
+      tabs.forEach(t => {
+        t.classList.remove('active', 'border-bros-blue', 'text-bros-blue');
+        t.classList.add('border-transparent', 'text-bros-charcoal/60');
+      });
+      const allTab = document.querySelector('.filter-tab[data-filter="all"]');
+      if (allTab) {
+        allTab.classList.add('active', 'border-bros-blue', 'text-bros-blue');
+        allTab.classList.remove('border-transparent', 'text-bros-charcoal/60');
+      }
+      // Show all cards
+      cards.forEach(c => c.style.display = '');
+    }
+    
+    applyBtn.addEventListener('click', (e) => { e.preventDefault(); applyFilters(); });
+    if (resetBtn) {
+      resetBtn.addEventListener('click', (e) => { e.preventDefault(); resetFilters(); });
+    }
+    
+    // Allow checkbox toggle to live-filter (better UX)
+    document.querySelectorAll('input[type="checkbox"][data-fkey]').forEach(cb => {
+      cb.addEventListener('change', applyFilters);
+    });
+    
+    // Run once on load (some checkboxes may be pre-checked)
+    applyFilters();
+    
+  } catch (err) {
+    console.error('Sidebar filter error:', err);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSidebarFilter);
+} else {
+  initSidebarFilter();
+}
 </script></body>
 </html>
