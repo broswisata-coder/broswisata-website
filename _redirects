@@ -117,3 +117,8 @@
 /terms    /id/terms-of-service.html    301
 /privacy-policy    /id/privacy-policy.html    301
 /terms-of-service    /id/terms-of-service.html    301
+
+# Phase 1: Bukit Lawang & Tangkahan destination shortcuts
+/id/bukit-lawang  /id/destinasi-bukit-lawang-tangkahan.html  301
+/ms/bukit-lawang  /ms/destinasi-bukit-lawang-tangkahan.html  301
+/en/bukit-lawang  /en/destination-bukit-lawang-tangkahan.html  301
