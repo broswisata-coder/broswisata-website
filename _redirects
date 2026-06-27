@@ -7,80 +7,80 @@
 # Visitors hitting / get the Indonesian version by default.
 # Future enhancement: use Cloudflare Workers for Accept-Language detection.
 
-/    /id/bros-wisata-homepage.html    302
-/index.html    /id/bros-wisata-homepage.html    301
+/    /id/bros-wisata-homepage    302
+/index.html    /id/bros-wisata-homepage    301
 
 # ============================================================
 # LANGUAGE-PREFIX HOMEPAGES (clean URLs)
 # ============================================================
-/id    /id/bros-wisata-homepage.html    301
-/ms    /ms/bros-wisata-homepage.html    301
-/en    /en/bros-wisata-homepage.html    301
-/id/    /id/bros-wisata-homepage.html    301
-/ms/    /ms/bros-wisata-homepage.html    301
-/en/    /en/bros-wisata-homepage.html    301
+/id    /id/bros-wisata-homepage    301
+/ms    /ms/bros-wisata-homepage    301
+/en    /en/bros-wisata-homepage    301
+/id/    /id/bros-wisata-homepage    301
+/ms/    /ms/bros-wisata-homepage    301
+/en/    /en/bros-wisata-homepage    301
 
 # ============================================================
 # OLD FLAT URLS → /id/ (preserve SEO juice, prevent 404)
 # ============================================================
-/bros-wisata-homepage.html    /id/bros-wisata-homepage.html    301
-/bros-wisata-tour-listing.html    /id/bros-wisata-tour-listing.html    301
-/bros-wisata-car-rental.html    /id/bros-wisata-car-rental.html    301
-/bros-wisata-custom-tour.html    /id/bros-wisata-custom-tour.html    301
-/bros-wisata-about.html    /id/bros-wisata-about.html    301
-/bros-wisata-contact.html    /id/bros-wisata-contact.html    301
-/paket-medan_heritage_3h2m.html    /id/paket-medan_heritage_3h2m.html    301
-/paket-bukit_lawang_4h3m.html    /id/paket-bukit_lawang_4h3m.html    301
-/paket-tangkahan_3h2m.html    /id/paket-tangkahan_3h2m.html    301
-/paket-berastagi_3h2m.html    /id/paket-berastagi_3h2m.html    301
-/paket-combo_sumut_6h5m.html    /id/paket-combo_sumut_6h5m.html    301
-/paket-western_4d3n_jungle.html    /id/paket-western_4d3n_jungle.html    301
-/paket-western_5d4n_volcano.html    /id/paket-western_5d4n_volcano.html    301
-/paket-western_7d6n_ultimate.html    /id/paket-western_7d6n_ultimate.html    301
-/paket-halal_3h2m_medan_toba.html    /id/paket-halal_3h2m_medan_toba.html    301
-/paket-halal_4h3m_medan_toba.html    /id/paket-halal_4h3m_medan_toba.html    301
-/paket-halal_5h4m_medan_toba.html    /id/paket-halal_5h4m_medan_toba.html    301
+/bros-wisata-homepage.html    /id/bros-wisata-homepage    301
+/bros-wisata-tour-listing.html    /id/bros-wisata-tour-listing    301
+/bros-wisata-car-rental.html    /id/bros-wisata-car-rental    301
+/bros-wisata-custom-tour.html    /id/bros-wisata-custom-tour    301
+/bros-wisata-about.html    /id/bros-wisata-about    301
+/bros-wisata-contact.html    /id/bros-wisata-contact    301
+/paket-medan_heritage_3h2m.html    /id/paket-medan_heritage_3h2m    301
+/paket-bukit_lawang_4h3m.html    /id/paket-bukit_lawang_4h3m    301
+/paket-tangkahan_3h2m.html    /id/paket-tangkahan_3h2m    301
+/paket-berastagi_3h2m.html    /id/paket-berastagi_3h2m    301
+/paket-combo_sumut_6h5m.html    /id/paket-combo_sumut_6h5m    301
+/paket-western_4d3n_jungle.html    /id/paket-western_4d3n_jungle    301
+/paket-western_5d4n_volcano.html    /id/paket-western_5d4n_volcano    301
+/paket-western_7d6n_ultimate.html    /id/paket-western_7d6n_ultimate    301
+/paket-halal_3h2m_medan_toba.html    /id/paket-halal_3h2m_medan_toba    301
+/paket-halal_4h3m_medan_toba.html    /id/paket-halal_4h3m_medan_toba    301
+/paket-halal_5h4m_medan_toba.html    /id/paket-halal_5h4m_medan_toba    301
 
 # ============================================================
 # SHORT URLS (for marketing campaigns)
 # ============================================================
-/tours    /id/bros-wisata-tour-listing.html    301
-/tour    /id/bros-wisata-tour-listing.html    301
-/paket    /id/bros-wisata-tour-listing.html    301
-/about    /id/bros-wisata-about.html    301
-/tentang    /id/bros-wisata-about.html    301
-/contact    /id/bros-wisata-contact.html    301
-/kontak    /id/bros-wisata-contact.html    301
-/car-rental    /id/bros-wisata-car-rental.html    301
-/sewa-mobil    /id/bros-wisata-car-rental.html    301
-/custom    /id/bros-wisata-custom-tour.html    301
+/tours    /id/bros-wisata-tour-listing    301
+/tour    /id/bros-wisata-tour-listing    301
+/paket    /id/bros-wisata-tour-listing    301
+/about    /id/bros-wisata-about    301
+/tentang    /id/bros-wisata-about    301
+/contact    /id/bros-wisata-contact    301
+/kontak    /id/bros-wisata-contact    301
+/car-rental    /id/bros-wisata-car-rental    301
+/sewa-mobil    /id/bros-wisata-car-rental    301
+/custom    /id/bros-wisata-custom-tour    301
 
 # Signature packages (default ID)
-/medan    /id/paket-medan_heritage_3h2m.html    301
-/bukit-lawang    /id/paket-bukit_lawang_4h3m.html    301
-/tangkahan    /id/paket-tangkahan_3h2m.html    301
-/berastagi    /id/paket-berastagi_3h2m.html    301
-/combo    /id/paket-combo_sumut_6h5m.html    301
-/sumut-grand-tour    /id/paket-combo_sumut_6h5m.html    301
+/medan    /id/paket-medan_heritage_3h2m    301
+/bukit-lawang    /id/paket-bukit_lawang_4h3m    301
+/tangkahan    /id/paket-tangkahan_3h2m    301
+/berastagi    /id/paket-berastagi_3h2m    301
+/combo    /id/paket-combo_sumut_6h5m    301
+/sumut-grand-tour    /id/paket-combo_sumut_6h5m    301
 
 # Western Eco shortcuts (default EN — these target European/Western travelers)
-/jungle    /en/paket-western_4d3n_jungle.html    301
-/volcano    /en/paket-western_5d4n_volcano.html    301
-/ultimate    /en/paket-western_7d6n_ultimate.html    301
-/eco    /en/bros-wisata-tour-listing.html    301
+/jungle    /en/paket-western_4d3n_jungle    301
+/volcano    /en/paket-western_5d4n_volcano    301
+/ultimate    /en/paket-western_7d6n_ultimate    301
+/eco    /en/bros-wisata-tour-listing    301
 
 # Halal Malaysia shortcuts (default MS — for Malaysian travelers)
-/halal    /ms/bros-wisata-tour-listing.html    301
-/halal-3d    /ms/paket-halal_3h2m_medan_toba.html    301
-/halal-4d    /ms/paket-halal_4h3m_medan_toba.html    301
-/halal-5d    /ms/paket-halal_5h4m_medan_toba.html    301
-/malaysia    /ms/bros-wisata-tour-listing.html    301
-/malaysian    /ms/bros-wisata-homepage.html    301
+/halal    /ms/bros-wisata-tour-listing    301
+/halal-3d    /ms/paket-halal_3h2m_medan_toba    301
+/halal-4d    /ms/paket-halal_4h3m_medan_toba    301
+/halal-5d    /ms/paket-halal_5h4m_medan_toba    301
+/malaysia    /ms/bros-wisata-tour-listing    301
+/malaysian    /ms/bros-wisata-homepage    301
 
 # Localized homepage shortcuts
-/id-home    /id/bros-wisata-homepage.html    301
-/my-home    /ms/bros-wisata-homepage.html    301
-/en-home    /en/bros-wisata-homepage.html    301
+/id-home    /id/bros-wisata-homepage    301
+/my-home    /ms/bros-wisata-homepage    301
+/en-home    /en/bros-wisata-homepage    301
 
 # ============================================================
 # WHATSAPP SHORTCUTS (with prefilled per-language messages)
@@ -113,12 +113,12 @@
 /brochure-en    /assets/pdf/Western_4D3N_Jungle_EcoTour_Final.pdf    301
 
 # Legal pages shortcuts
-/privacy    /id/privacy-policy.html    301
-/terms    /id/terms-of-service.html    301
-/privacy-policy    /id/privacy-policy.html    301
-/terms-of-service    /id/terms-of-service.html    301
+/privacy    /id/privacy-policy    301
+/terms    /id/terms-of-service    301
+/privacy-policy    /id/privacy-policy    301
+/terms-of-service    /id/terms-of-service    301
 
 # Phase 1: Bukit Lawang & Tangkahan destination shortcuts
-/id/bukit-lawang  /id/destinasi-bukit-lawang-tangkahan.html  301
-/ms/bukit-lawang  /ms/destinasi-bukit-lawang-tangkahan.html  301
-/en/bukit-lawang  /en/destination-bukit-lawang-tangkahan.html  301
+/id/bukit-lawang  /id/destinasi-bukit-lawang-tangkahan  301
+/ms/bukit-lawang  /ms/destinasi-bukit-lawang-tangkahan  301
+/en/bukit-lawang  /en/destination-bukit-lawang-tangkahan  301
