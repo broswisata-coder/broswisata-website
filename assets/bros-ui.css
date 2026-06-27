@@ -639,10 +639,17 @@
   background: #fff;
   border: 1px solid rgba(31, 41, 55, .1);
   border-top: 4px solid #0f47b0;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
 
 .quote-tour-card.featured {
   border-top-color: #e8a317;
+}
+
+.quote-tour-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 71, 176, .22);
+  box-shadow: 0 18px 44px rgba(8, 39, 95, .12);
 }
 
 .quote-tour-media {
@@ -688,8 +695,21 @@
   color: #0f47b0;
   font-size: .72rem;
   font-weight: 900;
-  letter-spacing: .08em;
+  letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.quote-tour-card .card-signal-row {
+  margin-top: .7rem;
+  margin-bottom: .05rem;
+}
+
+.quote-tour-card .card-signal {
+  background: #f7f3ea;
+}
+
+.quote-tour-card.featured .card-signal {
+  border-color: rgba(232, 163, 23, .35);
 }
 
 .quote-tour-body h3 {
