@@ -374,3 +374,567 @@
     font-size: .62rem;
   }
 }
+
+/* Quote-led tour collection */
+.quote-container {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.quote-hero {
+  position: relative;
+  overflow: hidden;
+  background: #08275f;
+  color: #fff;
+}
+
+.quote-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(5, 20, 48, .94), rgba(8, 39, 95, .78) 48%, rgba(8, 39, 95, .4)),
+    url("/assets/hero-lake-toba-1280.webp");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.quote-hero-grid {
+  position: relative;
+  min-height: 640px;
+  padding-block: 5rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(20rem, .55fr);
+  gap: 2rem;
+  align-items: end;
+}
+
+.quote-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+  color: #e8a317;
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.quote-eyebrow::before {
+  content: "";
+  width: .45rem;
+  height: .45rem;
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.quote-eyebrow.dark {
+  color: #0f47b0;
+}
+
+.quote-hero h1,
+.quote-section-head h2,
+.quote-include-panel h2,
+.quote-steps-panel h2,
+.quote-final h2 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  letter-spacing: 0;
+}
+
+.quote-hero h1 {
+  max-width: 48rem;
+  font-size: clamp(2.55rem, 6vw, 5.45rem);
+  line-height: .92;
+  font-weight: 800;
+}
+
+.quote-hero-copy p {
+  max-width: 43rem;
+  margin-top: 1.25rem;
+  color: rgba(255, 255, 255, .88);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.quote-hero-actions,
+.quote-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 1.4rem;
+}
+
+.quote-btn {
+  min-height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .86rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 850;
+  line-height: 1.15;
+  transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.quote-btn:hover {
+  transform: translateY(-1px);
+}
+
+.quote-btn.primary {
+  background: #e8a317;
+  color: #08275f;
+}
+
+.quote-btn.primary:hover {
+  background: #fff;
+}
+
+.quote-btn.ghost {
+  border: 1px solid rgba(255, 255, 255, .34);
+  color: #fff;
+  background: rgba(255, 255, 255, .1);
+}
+
+.quote-btn.ghost:hover {
+  border-color: rgba(255, 255, 255, .65);
+  background: rgba(255, 255, 255, .18);
+}
+
+.quote-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.25rem;
+}
+
+.quote-chip-row span {
+  padding: .45rem .65rem;
+  border: 1px solid rgba(255, 255, 255, .24);
+  background: rgba(255, 255, 255, .08);
+  color: rgba(255, 255, 255, .88);
+  border-radius: 2px;
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.quote-guide-panel {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, .96);
+  color: #1f2937;
+  border-top: 4px solid #e8a317;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+}
+
+.quote-panel-label {
+  color: #0f47b0;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.quote-guide-panel h2 {
+  margin-top: .6rem;
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.7rem;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.quote-guide-panel p {
+  margin-top: .9rem;
+  color: rgba(31, 41, 55, .78);
+  line-height: 1.7;
+}
+
+.quote-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  margin-top: 1rem;
+}
+
+.quote-proof-grid span {
+  border-left: 3px solid #e8a317;
+  padding-left: .6rem;
+  color: #08275f;
+  font-size: .78rem;
+  font-weight: 850;
+}
+
+.quote-categories {
+  background: #fff;
+  border-bottom: 1px solid rgba(31, 41, 55, .08);
+}
+
+.quote-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(31, 41, 55, .08);
+}
+
+.quote-category {
+  min-height: 8.25rem;
+  padding: 1.15rem;
+  background: #fff;
+}
+
+.quote-category strong {
+  display: block;
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.05;
+}
+
+.quote-category span {
+  display: block;
+  margin-top: .55rem;
+  color: rgba(31, 41, 55, .68);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.quote-products,
+.quote-process {
+  background: #f7f3ea;
+  padding-block: 4.5rem;
+}
+
+.quote-section-head {
+  max-width: 55rem;
+  margin-bottom: 2rem;
+}
+
+.quote-section-head h2 {
+  color: #08275f;
+  font-size: clamp(2rem, 4vw, 3.9rem);
+  line-height: .98;
+  font-weight: 800;
+}
+
+.quote-section-head p {
+  max-width: 46rem;
+  margin-top: 1rem;
+  color: rgba(31, 41, 55, .72);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.quote-tour-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quote-tour-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(31, 41, 55, .1);
+  border-top: 4px solid #0f47b0;
+}
+
+.quote-tour-card.featured {
+  border-top-color: #e8a317;
+}
+
+.quote-tour-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #08275f;
+}
+
+.quote-tour-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.quote-tour-card:hover .quote-tour-media img {
+  transform: scale(1.04);
+}
+
+.quote-tour-media span {
+  position: absolute;
+  left: .85rem;
+  bottom: .85rem;
+  padding: .42rem .55rem;
+  background: rgba(8, 39, 95, .9);
+  color: #fff;
+  border-left: 3px solid #e8a317;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.quote-tour-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.1rem;
+}
+
+.quote-tour-kicker {
+  color: #0f47b0;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.quote-tour-body h3 {
+  margin-top: .45rem;
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.45rem;
+  line-height: 1.08;
+  font-weight: 800;
+}
+
+.quote-tour-body p {
+  margin-top: .75rem;
+  color: rgba(31, 41, 55, .74);
+  line-height: 1.65;
+}
+
+.quote-route-list {
+  display: grid;
+  gap: .45rem;
+  margin-top: .95rem;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-route-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: rgba(31, 41, 55, .78);
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.quote-route-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: .35rem;
+  height: .35rem;
+  background: #e8a317;
+  border-radius: 999px;
+}
+
+.quote-best {
+  margin-top: 1rem;
+  padding-top: .9rem;
+  border-top: 1px solid rgba(31, 41, 55, .1);
+  color: rgba(31, 41, 55, .75);
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+.quote-best strong {
+  color: #08275f;
+}
+
+.quote-card-actions {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.quote-card-actions .quote-btn {
+  min-height: 2.65rem;
+  font-size: .9rem;
+}
+
+.quote-no-price {
+  color: rgba(31, 41, 55, .56);
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.quote-process {
+  padding-top: 0;
+}
+
+.quote-process-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: 1rem;
+}
+
+.quote-include-panel,
+.quote-steps-panel {
+  background: #fff;
+  border: 1px solid rgba(31, 41, 55, .1);
+  padding: 1.5rem;
+}
+
+.quote-include-panel {
+  border-top: 4px solid #e8a317;
+}
+
+.quote-include-panel h2,
+.quote-steps-panel h2 {
+  color: #08275f;
+  font-size: clamp(1.85rem, 3vw, 2.8rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+.quote-include-panel ul {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-include-panel li {
+  padding: .75rem .85rem;
+  background: #f7f3ea;
+  color: rgba(31, 41, 55, .78);
+  font-weight: 750;
+}
+
+.quote-steps {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1.25rem;
+}
+
+.quote-step {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: .85rem;
+  padding: 1rem;
+  background: #f7f3ea;
+}
+
+.quote-step span {
+  grid-row: span 2;
+  color: #0f47b0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.quote-step strong {
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.15;
+}
+
+.quote-step p {
+  color: rgba(31, 41, 55, .72);
+  line-height: 1.55;
+}
+
+.quote-final {
+  background: #08275f;
+  color: #fff;
+}
+
+.quote-final-inner {
+  min-height: 20rem;
+  padding-block: 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.quote-final h2 {
+  max-width: 48rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: .98;
+  font-weight: 800;
+}
+
+.quote-final p {
+  max-width: 42rem;
+  margin-top: .95rem;
+  color: rgba(255, 255, 255, .82);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 1024px) {
+  .quote-hero-grid,
+  .quote-process-grid,
+  .quote-final-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-hero-grid {
+    min-height: auto;
+    padding-top: 4rem;
+  }
+
+  .quote-category-grid,
+  .quote-tour-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .quote-container {
+    width: min(100% - 1.25rem, 80rem);
+  }
+
+  .quote-hero-grid {
+    padding-block: 3.25rem 2rem;
+  }
+
+  .quote-hero h1 {
+    font-size: 2.55rem;
+  }
+
+  .quote-hero-copy p {
+    font-size: .98rem;
+  }
+
+  .quote-category-grid,
+  .quote-tour-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-guide-panel,
+  .quote-include-panel,
+  .quote-steps-panel {
+    padding: 1rem;
+  }
+
+  .quote-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-products,
+  .quote-process {
+    padding-block: 3rem;
+  }
+
+  .quote-process {
+    padding-top: 0;
+  }
+
+  .quote-step {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .quote-final-inner {
+    gap: 1.25rem;
+  }
+}
