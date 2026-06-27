@@ -41,7 +41,7 @@
   "@context": "https://schema.org",
   "@type": "AutoRental",
   "name": "BROS Wisata Car Rental Medan",
-  "description": "Sewa mobil Medan dengan supir profesional. 7 pilihan kendaraan untuk wisata Sumatra Utara dan airport transfer Kualanamu.",
+  "description": "Car rental in Medan with professional drivers. Seven vehicle options for North Sumatra tours and Kualanamu airport transfers.",
   "url": "https://broswisata.id/en/bros-wisata-car-rental",
   "telephone": "+62-812-6013-9399",
   "email": "hello@broswisata.id",
@@ -135,13 +135,21 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
+  // Track car-rental WhatsApp leads with readable labels.
   document.addEventListener('click', function(e) {
     var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
+    if (!a) return;
+    var label = (a.getAttribute('data-cta') || a.textContent || 'WhatsApp').replace(/\s+/g, ' ').trim().substring(0, 80);
+    gtag('event', 'whatsapp_click', {
+      'event_category': 'Lead',
+      'event_label': label,
+      'lead_type': 'car_rental',
+      'page_path': window.location.pathname
+    });
+    if (window.fbq) {
+      fbq('trackCustom', 'WhatsAppLead', {
+        content_category: 'car_rental',
+        content_name: label
       });
     }
   });
@@ -255,7 +263,7 @@ Car Rental
 About
 </a>
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/en/bros-wisata-contact">Contact</a></div>
-<a class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"></path></svg>
       WhatsApp
     </a>
@@ -273,11 +281,12 @@ About
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-custom-tour">Custom Tour</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-about">About</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/en/bros-wisata-contact">Contact</a>
-<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
   📱 WhatsApp Us
 </a>
 </div>
 </nav>
+<main id="main-content">
 <!-- HERO -->
 <section class="relative bg-bros-navy text-white pt-16 lg:pt-20 pb-32 overflow-hidden grain">
 <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
@@ -314,7 +323,7 @@ No need to worry about routes, parking, or Medan traffic. Our local drivers — 
 View Fleet
 <svg class="group-hover:translate-x-1 transition" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round"></path></svg>
 </a>
-<a class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-7 py-4 rounded-sm font-semibold hover:bg-white/20 transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-7 py-4 rounded-sm font-semibold hover:bg-white/20 transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"></path></svg>
 
 
@@ -337,7 +346,7 @@ Starting Price
 
 Rp 750k
 </div>
-<div class="text-sm text-bros-charcoal/60">
+<div class="text-sm text-bros-charcoal/80">
 
 
 / day · Avanza · 12 hours
@@ -349,7 +358,7 @@ Rp 750k
 <div class="flex items-center gap-3"><span class="text-bros-blue">✓</span> <span>Passenger insurance</span></div>
 <div class="flex items-center gap-3"><span class="text-bros-blue">✓</span> <span>Free mineral water</span></div>
 </div>
-<a class="block w-full bg-[#25D366] text-white text-center py-4 rounded-sm font-bold hover:bg-[#1ea952] transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="block w-full bg-emerald-900 text-white text-center py-4 rounded-sm font-bold hover:bg-[#1ea952] transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 
 
 Book via WhatsApp
@@ -474,18 +483,18 @@ All vehicles under 5 years old, cool A/C, audio system, and ample luggage space.
 <div class="absolute top-3 left-3 bg-bros-cream text-bros-charcoal px-2 py-1 text-[10px] font-bold tracking-wider uppercase">Standard</div>
 </div>
 <h3 class="font-display text-2xl font-bold text-bros-navy mb-1">Toyota Avanza</h3>
-<div class="text-xs text-bros-charcoal/60 mb-5">2022 / 2023 · MPV 7-seater</div>
+<div class="text-xs text-bros-charcoal/80 mb-5">2022 / 2023 · MPV 7-seater</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6 text-center">
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Pax</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Pax</div>
 <div class="font-display font-bold text-bros-navy">1–5</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Bag</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Bag</div>
 <div class="font-display font-bold text-bros-navy">3</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">AC</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">AC</div>
 <div class="font-display font-bold text-bros-navy">✓</div>
 </div>
 </div>
@@ -496,10 +505,10 @@ All vehicles under 5 years old, cool A/C, audio system, and ample luggage space.
 </ul>
 <div class="pt-5 border-t border-bros-charcoal/10 flex items-end justify-between">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">Starting from / day</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">Starting from / day</div>
 <div class="font-display text-2xl font-bold text-bros-blue">Rp 750k</div>
 </div>
-<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 
 
 Book
@@ -516,18 +525,18 @@ Book
 <div class="absolute top-3 left-3 bg-bros-gold text-bros-navy px-2 py-1 text-[10px] font-bold tracking-wider uppercase">Premium</div>
 </div>
 <h3 class="font-display text-2xl font-bold text-bros-navy mb-1">Toyota Innova Reborn</h3>
-<div class="text-xs text-bros-charcoal/60 mb-5">2023 / 2024 · MPV 7-seater · Diesel</div>
+<div class="text-xs text-bros-charcoal/80 mb-5">2023 / 2024 · MPV 7-seater · Diesel</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6 text-center">
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Pax</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Pax</div>
 <div class="font-display font-bold text-bros-navy">1–6</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Bag</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Bag</div>
 <div class="font-display font-bold text-bros-navy">5</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Captain</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Captain</div>
 <div class="font-display font-bold text-bros-navy">✓</div>
 </div>
 </div>
@@ -538,10 +547,10 @@ Book
 </ul>
 <div class="pt-5 border-t border-bros-charcoal/10 flex items-end justify-between">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">Starting from / day</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">Starting from / day</div>
 <div class="font-display text-2xl font-bold text-bros-blue">Rp 950k</div>
 </div>
-<a class="bg-bros-gold text-bros-navy px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-navy hover:text-white transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="bg-bros-gold text-bros-navy px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-navy hover:text-white transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 
 
 Book
@@ -557,18 +566,18 @@ Book
 <div class="absolute top-3 left-3 bg-bros-navy text-white px-2 py-1 text-[10px] font-bold tracking-wider uppercase">Group</div>
 </div>
 <h3 class="font-display text-2xl font-bold text-bros-navy mb-1">Toyota Hiace Commuter</h3>
-<div class="text-xs text-bros-charcoal/60 mb-5">2022 / 2023 · Van 14-seater</div>
+<div class="text-xs text-bros-charcoal/80 mb-5">2022 / 2023 · Van 14-seater</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6 text-center">
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Pax</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Pax</div>
 <div class="font-display font-bold text-bros-navy">1–12</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Bag</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Bag</div>
 <div class="font-display font-bold text-bros-navy">10+</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Roomy</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Roomy</div>
 <div class="font-display font-bold text-bros-navy">★★★</div>
 </div>
 </div>
@@ -579,10 +588,10 @@ Book
 </ul>
 <div class="pt-5 border-t border-bros-charcoal/10 flex items-end justify-between">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">Starting from / day</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">Starting from / day</div>
 <div class="font-display text-2xl font-bold text-bros-blue">Rp 1.4jt</div>
 </div>
-<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 
 
 Book
@@ -621,8 +630,8 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Cool AC, captain seat</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Get Quote</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20" target="_blank">→</a>
 </div>
 </div>
 <!-- Brio -->
@@ -645,8 +654,8 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Budget-friendly</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Get Quote</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20" target="_blank">→</a>
 </div>
 </div>
 <!-- Calya -->
@@ -669,8 +678,8 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Roomy rear cargo</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Get Quote</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20" target="_blank">→</a>
 </div>
 </div>
 <!-- Alphard -->
@@ -693,13 +702,13 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Premium experience</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Get Quote</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20" target="_blank">→</a>
 </div>
 </div>
 </div>
 </div>
-<p class="text-center text-xs text-bros-charcoal/60 mt-8 max-w-3xl mx-auto leading-relaxed">
+<p class="text-center text-xs text-bros-charcoal/80 mt-8 max-w-3xl mx-auto leading-relaxed">
 
 
 * Starting prices for 12-hour packages within Medan city. For out-of-city routes (Berastagi, Parapat, etc.), rates vary by distance. Confirm via WhatsApp for final quote.
@@ -731,7 +740,7 @@ Including transfer from/to Kualanamu International Airport (KNO) — drop-off to
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Lake Toba</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">5-6 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">5-6 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -742,7 +751,7 @@ Including transfer from/to Kualanamu International Airport (KNO) — drop-off to
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Berastagi</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">2-3 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">2-3 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -753,7 +762,7 @@ Including transfer from/to Kualanamu International Airport (KNO) — drop-off to
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Bukit Lawang</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">3-4 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">3-4 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -764,7 +773,7 @@ Including transfer from/to Kualanamu International Airport (KNO) — drop-off to
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Tangkahan</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">5 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">5 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -782,7 +791,7 @@ Airport Transfer Available
 <div class="font-display text-lg lg:text-xl font-bold">Kualanamu International Airport (KNO)</div>
 </div>
 </div>
-<a class="bg-bros-gold text-bros-navy px-5 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-white transition whitespace-nowrap" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info." target="_blank">
+<a class="bg-bros-gold text-bros-navy px-5 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-white transition whitespace-nowrap" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20" target="_blank">
 
 
 Book Transfer →
@@ -820,7 +829,7 @@ From Kualanamu Airport to the heights of Berastagi, from Lake Toba's shores to B
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 01 · City</div>
-<div class="text-xs text-bros-charcoal/60">~12 jam</div>
+<div class="text-xs text-bros-charcoal/80">~12 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Kualanamu</div>
@@ -833,7 +842,7 @@ From Kualanamu Airport to the heights of Berastagi, from Lake Toba's shores to B
 Airport transfer, Medan city tour: Maimun Palace, Grand Mosque, Tjong A Fie, Pagaruyung food street.
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~50 km</span>
+<span class="text-bros-charcoal/80">~50 km</span>
 <span class="font-display font-bold text-bros-blue">
 
 
@@ -845,7 +854,7 @@ Rp 750k
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 02 · Highland</div>
-<div class="text-xs text-bros-charcoal/60">~14 jam</div>
+<div class="text-xs text-bros-charcoal/80">~14 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -858,7 +867,7 @@ Rp 750k
 Fruit market, Mt. Sibayak, Sipiso-Piso waterfall, Tongging viewpoint, Karo traditional house.
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~150 km</span>
+<span class="text-bros-charcoal/80">~150 km</span>
 <span class="font-display font-bold text-bros-blue">
 
 
@@ -870,7 +879,7 @@ Rp 1.2jt
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 03 · Lake</div>
-<div class="text-xs text-bros-charcoal/60">~16 jam</div>
+<div class="text-xs text-bros-charcoal/80">~16 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -883,7 +892,7 @@ Rp 1.2jt
 Drop-off at Parapat port for Samosir Island ferry. Includes Pematang Siantar lunch stop.
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~180 km</span>
+<span class="text-bros-charcoal/80">~180 km</span>
 <span class="font-display font-bold text-bros-blue">
 
 
@@ -895,7 +904,7 @@ Rp 1.4jt
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 04 · Jungle</div>
-<div class="text-xs text-bros-charcoal/60">~14 jam</div>
+<div class="text-xs text-bros-charcoal/80">~14 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -908,7 +917,7 @@ Rp 1.4jt
 Drop-off at eco-tourism village for orangutan trekking. Stop at palm oil plantation.
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~95 km</span>
+<span class="text-bros-charcoal/80">~95 km</span>
 <span class="font-display font-bold text-bros-blue">
 
 
@@ -920,7 +929,7 @@ Rp 1.0jt
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 05 · Wildlife</div>
-<div class="text-xs text-bros-charcoal/60">~16 jam</div>
+<div class="text-xs text-bros-charcoal/80">~16 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -933,7 +942,7 @@ Rp 1.0jt
 Drop-off at Tangkahan for elephant bathing, river tubing. Last unpaved road handled by our drivers.
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~130 km</span>
+<span class="text-bros-charcoal/80">~130 km</span>
 <span class="font-display font-bold text-bros-blue">
 
 
@@ -954,7 +963,7 @@ Other routes?
 
 Multi-day trip? Want to combine several routes? Off-list destination? Ask us via WhatsApp — we'll create a custom quote.
 </p>
-<a class="inline-flex items-center gap-2 text-bros-gold font-semibold text-sm group-hover:gap-3 transition-all" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="inline-flex items-center gap-2 text-bros-gold font-semibold text-sm group-hover:gap-3 transition-all" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 
 
 Free Consultation
@@ -1054,7 +1063,7 @@ Why BROS<br/><em class="italic font-light text-bros-blue">vs alternatives?</em>
 <table class="w-full">
 <thead>
 <tr class="border-b-2 border-bros-charcoal/10">
-<th class="text-left p-5 text-xs tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<th class="text-left p-5 text-xs tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 
 
 Aspect
@@ -1063,11 +1072,11 @@ Aspect
 <div class="font-display font-bold text-lg">BROS Wisata</div>
 <div class="text-[10px] tracking-wider uppercase opacity-80 mt-1">Recommended</div>
 </th>
-<th class="text-center p-5 text-bros-charcoal/60">
+<th class="text-center p-5 text-bros-charcoal/80">
 <div class="font-display font-bold text-lg">Grab/Gocar</div>
 <div class="text-[10px] tracking-wider uppercase mt-1">Ride-hailing</div>
 </th>
-<th class="text-center p-5 text-bros-charcoal/60">
+<th class="text-center p-5 text-bros-charcoal/80">
 <div class="font-display font-bold text-lg">Self-drive</div>
 <div class="text-[10px] tracking-wider uppercase mt-1">Sewa biasa</div>
 </th>
@@ -1193,7 +1202,7 @@ No stock photos. <em class="italic font-light text-bros-blue">Real guests, real 
 </div>
 </div>
 </div>
-<p class="text-center text-xs text-bros-charcoal/50 italic mt-8 max-w-2xl mx-auto">
+<p class="text-center text-xs text-bros-charcoal/70 italic mt-8 max-w-2xl mx-auto">
 
 
 📸 Selected moments from 20+ years of guest transport service in North Sumatra
@@ -1227,7 +1236,7 @@ Pak Edi (our driver) knew every hidden spot. Took us to a local sate place not o
 <div class="w-10 h-10 bg-bros-blue text-white rounded-full flex items-center justify-center font-bold text-sm">SR</div>
 <div>
 <div class="font-semibold text-bros-navy text-sm">Siti R.</div>
-<div class="text-xs text-bros-charcoal/60">🇲🇾 Penang · 5 days Avanza</div>
+<div class="text-xs text-bros-charcoal/80">🇲🇾 Penang · 5 days Avanza</div>
 </div>
 </div>
 </blockquote>
@@ -1242,7 +1251,7 @@ The Innova was spotless, A/C cold, journey to Berastagi very comfortable. Driver
 <div class="w-10 h-10 bg-bros-gold text-bros-navy rounded-full flex items-center justify-center font-bold text-sm">JW</div>
 <div>
 <div class="font-semibold text-bros-navy text-sm">Jeremy W.</div>
-<div class="text-xs text-bros-charcoal/60">🇸🇬 Singapore · 3 days Innova</div>
+<div class="text-xs text-bros-charcoal/80">🇸🇬 Singapore · 3 days Innova</div>
 </div>
 </div>
 </blockquote>
@@ -1257,7 +1266,7 @@ Hiace for 10-person family group. Fit all luggage, kids comfortable. Driver pati
 <div class="w-10 h-10 bg-bros-navy text-white rounded-full flex items-center justify-center font-bold text-sm">AK</div>
 <div>
 <div class="font-semibold text-bros-navy text-sm">Ahmad K.</div>
-<div class="text-xs text-bros-charcoal/60">🇲🇾 KL · 4 days Hiace</div>
+<div class="text-xs text-bros-charcoal/80">🇲🇾 KL · 4 days Hiace</div>
 </div>
 </div>
 </blockquote>
@@ -1401,7 +1410,7 @@ Message us<br/>on WhatsApp.<br/><em class="italic font-light text-bros-gold">Quo
 Tell us: dates, pax count, luggage, and destination. We reply with vehicle recommendation + all-inclusive final price.
 </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 <svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"></path></svg>
             +62 812-6013-9399
           </a>
@@ -1415,6 +1424,7 @@ View Tour Packages
 </div>
 </div>
 </section>
+</main>
 <!-- FOOTER -->
 <footer class="bg-bros-navy text-white pt-20 pb-8 border-t border-white/10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1494,7 +1504,7 @@ Office
 <div class="mobile-sticky-cta">
 <div class="flex items-center justify-between gap-3">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 
 
 From
@@ -1503,10 +1513,10 @@ From
 
 
 Rp 750k
-<span class="text-[10px] text-bros-charcoal/50 font-normal">/ hari</span>
+<span class="text-[10px] text-bros-charcoal/70 font-normal">/ day</span>
 </div>
 </div>
-<a class="bg-[#25D366] text-white px-5 py-3 rounded-sm font-bold text-sm flex items-center gap-2" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a class="bg-emerald-900 text-white px-5 py-3 rounded-sm font-bold text-sm flex items-center gap-2" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"></path></svg>
 
 
@@ -1515,7 +1525,7 @@ Book
 </div>
 </div>
 <!-- FLOATING WHATSAPP -->
-<a class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20am%20interested%20in%20your%20Sumatra%20tour%20packages.%20Please%20send%20me%20more%20info.">
+<a aria-label="Chat with BROS Wisata about car rental on WhatsApp" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-900 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Hi%20BROS%20Wisata%2C%20I%20need%20car%20rental%20with%20driver%20in%20Medan%2FNorth%20Sumatra.%20Travel%20date%2C%20pickup%20point%2C%20destination%2C%20pax%2C%20luggage%2C%20and%20preferred%20vehicle%3A%20">
 <svg fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"></path></svg>
 </a>
 <script>

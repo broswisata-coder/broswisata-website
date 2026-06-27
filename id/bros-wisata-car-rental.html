@@ -135,13 +135,21 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
+  // Track car-rental WhatsApp leads with readable labels.
   document.addEventListener('click', function(e) {
     var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
+    if (!a) return;
+    var label = (a.getAttribute('data-cta') || a.textContent || 'WhatsApp').replace(/\s+/g, ' ').trim().substring(0, 80);
+    gtag('event', 'whatsapp_click', {
+      'event_category': 'Lead',
+      'event_label': label,
+      'lead_type': 'car_rental',
+      'page_path': window.location.pathname
+    });
+    if (window.fbq) {
+      fbq('trackCustom', 'WhatsAppLead', {
+        content_category: 'car_rental',
+        content_name: label
       });
     }
   });
@@ -255,7 +263,7 @@ Sewa Mobil
 Tentang
 </a>
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/id/bros-wisata-contact">Kontak</a></div>
-<a class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="hidden sm:inline-flex items-center gap-2 bg-bros-blue text-white px-5 py-2.5 rounded-sm text-sm font-semibold hover:bg-bros-navy transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"></path></svg>
       WhatsApp
     </a>
@@ -273,11 +281,12 @@ Tentang
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-custom-tour">Custom Tour</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-about">Tentang</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/id/bros-wisata-contact">Kontak</a>
-<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
   📱 WhatsApp Kami
 </a>
 </div>
 </nav>
+<main id="main-content">
 <!-- HERO -->
 <section class="relative bg-bros-navy text-white pt-16 lg:pt-20 pb-32 overflow-hidden grain">
 <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
@@ -312,7 +321,7 @@ Lihat Armada
 
 <svg class="group-hover:translate-x-1 transition" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round"></path></svg>
 </a>
-<a class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-7 py-4 rounded-sm font-semibold hover:bg-white/20 transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-7 py-4 rounded-sm font-semibold hover:bg-white/20 transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"></path></svg>
 Tanya Tarif
 
@@ -335,7 +344,7 @@ Rp 750k
 
 
 </div>
-<div class="text-sm text-bros-charcoal/60">
+<div class="text-sm text-bros-charcoal/80">
 / hari · Avanza · 12 jam
 
 
@@ -347,7 +356,7 @@ Rp 750k
 <div class="flex items-center gap-3"><span class="text-bros-blue">✓</span> <span>Asuransi penumpang</span></div>
 <div class="flex items-center gap-3"><span class="text-bros-blue">✓</span> <span>Air mineral gratis</span></div>
 </div>
-<a class="block w-full bg-[#25D366] text-white text-center py-4 rounded-sm font-bold hover:bg-[#1ea952] transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="block w-full bg-emerald-900 text-white text-center py-4 rounded-sm font-bold hover:bg-[#1ea952] transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 Booking via WhatsApp
 
 
@@ -468,18 +477,18 @@ Semua armada berusia ≤5 tahun, AC dingin, audio, dan ruang bagasi cukup untuk 
 <div class="absolute top-3 left-3 bg-bros-cream text-bros-charcoal px-2 py-1 text-[10px] font-bold tracking-wider uppercase">Standard</div>
 </div>
 <h3 class="font-display text-2xl font-bold text-bros-navy mb-1">Toyota Avanza</h3>
-<div class="text-xs text-bros-charcoal/60 mb-5">2022 / 2023 · MPV 7-seater</div>
+<div class="text-xs text-bros-charcoal/80 mb-5">2022 / 2023 · MPV 7-seater</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6 text-center">
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Pax</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Pax</div>
 <div class="font-display font-bold text-bros-navy">1–5</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Bag</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Bag</div>
 <div class="font-display font-bold text-bros-navy">3</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">AC</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">AC</div>
 <div class="font-display font-bold text-bros-navy">✓</div>
 </div>
 </div>
@@ -490,7 +499,7 @@ Semua armada berusia ≤5 tahun, AC dingin, audio, dan ruang bagasi cukup untuk 
 </ul>
 <div class="pt-5 border-t border-bros-charcoal/10 flex items-end justify-between">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 Mulai dari / hari
 
 
@@ -501,7 +510,7 @@ Rp 750k
 
 </div>
 </div>
-<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 Booking
 
 
@@ -518,18 +527,18 @@ Booking
 <div class="absolute top-3 left-3 bg-bros-gold text-bros-navy px-2 py-1 text-[10px] font-bold tracking-wider uppercase">Premium</div>
 </div>
 <h3 class="font-display text-2xl font-bold text-bros-navy mb-1">Toyota Innova Reborn</h3>
-<div class="text-xs text-bros-charcoal/60 mb-5">2023 / 2024 · MPV 7-seater · Diesel</div>
+<div class="text-xs text-bros-charcoal/80 mb-5">2023 / 2024 · MPV 7-seater · Diesel</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6 text-center">
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Pax</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Pax</div>
 <div class="font-display font-bold text-bros-navy">1–6</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Bag</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Bag</div>
 <div class="font-display font-bold text-bros-navy">5</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Captain</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Captain</div>
 <div class="font-display font-bold text-bros-navy">✓</div>
 </div>
 </div>
@@ -540,7 +549,7 @@ Booking
 </ul>
 <div class="pt-5 border-t border-bros-charcoal/10 flex items-end justify-between">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 Mulai dari / hari
 
 
@@ -551,7 +560,7 @@ Rp 950k
 
 </div>
 </div>
-<a class="bg-bros-gold text-bros-navy px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-navy hover:text-white transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="bg-bros-gold text-bros-navy px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-navy hover:text-white transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 Booking
 
 
@@ -567,18 +576,18 @@ Booking
 <div class="absolute top-3 left-3 bg-bros-navy text-white px-2 py-1 text-[10px] font-bold tracking-wider uppercase">Group</div>
 </div>
 <h3 class="font-display text-2xl font-bold text-bros-navy mb-1">Toyota Hiace Commuter</h3>
-<div class="text-xs text-bros-charcoal/60 mb-5">2022 / 2023 · Van 14-seater</div>
+<div class="text-xs text-bros-charcoal/80 mb-5">2022 / 2023 · Van 14-seater</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6 text-center">
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Pax</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Pax</div>
 <div class="font-display font-bold text-bros-navy">1–12</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Bag</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Bag</div>
 <div class="font-display font-bold text-bros-navy">10+</div>
 </div>
 <div class="bg-bros-cream p-3">
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold mb-1">Roomy</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold mb-1">Roomy</div>
 <div class="font-display font-bold text-bros-navy">★★★</div>
 </div>
 </div>
@@ -589,7 +598,7 @@ Booking
 </ul>
 <div class="pt-5 border-t border-bros-charcoal/10 flex items-end justify-between">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 Mulai dari / hari
 
 
@@ -600,7 +609,7 @@ Rp 1.4jt
 
 </div>
 </div>
-<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="bg-bros-navy text-white px-4 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-bros-blue transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 Booking
 
 
@@ -639,8 +648,8 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>AC dingin, captain seat</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Minta Harga</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20" target="_blank">→</a>
 </div>
 </div>
 <!-- Brio -->
@@ -663,8 +672,8 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Budget-friendly</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Minta Harga</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20" target="_blank">→</a>
 </div>
 </div>
 <!-- Calya -->
@@ -687,8 +696,8 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Bagasi belakang luas</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Minta Harga</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20" target="_blank">→</a>
 </div>
 </div>
 <!-- Alphard -->
@@ -711,13 +720,13 @@ Compact, Family SUV &amp; Premium
 <div class="flex items-center gap-2"><span class="text-bros-gold">✓</span>Premium experience</div>
 </div>
 <div class="pt-3 border-t border-bros-charcoal/10 flex items-center justify-between">
-<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Sebut Harga</span>
-<a class="text-bros-blue text-sm font-bold" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." target="_blank">→</a>
+<span class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">★ Minta Harga</span>
+<a class="text-bros-blue text-sm font-bold" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20" target="_blank">→</a>
 </div>
 </div>
 </div>
 </div>
-<p class="text-center text-xs text-bros-charcoal/60 mt-8 max-w-3xl mx-auto leading-relaxed">
+<p class="text-center text-xs text-bros-charcoal/80 mt-8 max-w-3xl mx-auto leading-relaxed">
 * Harga mulai untuk paket 12 jam dalam kota Medan. Untuk rute luar kota (Berastagi, Parapat, dll), tarif menyesuaikan jarak. Konfirmasi via WhatsApp untuk quote akhir.
 
 
@@ -747,7 +756,7 @@ Termasuk transfer dari/ke Bandara Internasional Kualanamu (KNO) — drop-off ke 
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Lake Toba</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">5-6 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">5-6 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -758,7 +767,7 @@ Termasuk transfer dari/ke Bandara Internasional Kualanamu (KNO) — drop-off ke 
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Berastagi</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">2-3 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">2-3 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -769,7 +778,7 @@ Termasuk transfer dari/ke Bandara Internasional Kualanamu (KNO) — drop-off ke 
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Bukit Lawang</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">3-4 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">3-4 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -780,7 +789,7 @@ Termasuk transfer dari/ke Bandara Internasional Kualanamu (KNO) — drop-off ke 
 </div>
 <div class="text-center">
 <div class="font-display text-base font-bold text-bros-navy">Tangkahan</div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-0.5">5 jam dari Medan</div>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 mt-0.5">5 jam dari Medan</div>
 </div>
 </div>
 </a>
@@ -798,7 +807,7 @@ Airport Transfer Tersedia
 <div class="font-display text-lg lg:text-xl font-bold">Kualanamu International Airport (KNO)</div>
 </div>
 </div>
-<a class="bg-bros-gold text-bros-navy px-5 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-white transition whitespace-nowrap" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap." target="_blank">
+<a class="bg-bros-gold text-bros-navy px-5 py-2.5 text-xs font-bold tracking-wider uppercase hover:bg-white transition whitespace-nowrap" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20" target="_blank">
 Booking Transfer →
 
 
@@ -834,7 +843,7 @@ Dari Bandara Kualanamu hingga puncak Berastagi, dari pinggir Danau Toba hingga h
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 01 · City</div>
-<div class="text-xs text-bros-charcoal/60">~12 jam</div>
+<div class="text-xs text-bros-charcoal/80">~12 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Kualanamu</div>
@@ -847,7 +856,7 @@ Antar-jemput bandara, city tour Medan: Maimun, Masjid Raya, Tjong A Fie, kuliner
 
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~50 km</span>
+<span class="text-bros-charcoal/80">~50 km</span>
 <span class="font-display font-bold text-bros-blue">
 Rp 750k
 
@@ -859,7 +868,7 @@ Rp 750k
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 02 · Highland</div>
-<div class="text-xs text-bros-charcoal/60">~14 jam</div>
+<div class="text-xs text-bros-charcoal/80">~14 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -872,7 +881,7 @@ Pasar buah, gunung Sibayak, air terjun Sipiso-Piso, view Tongging, rumah adat Ka
 
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~150 km</span>
+<span class="text-bros-charcoal/80">~150 km</span>
 <span class="font-display font-bold text-bros-blue">
 Rp 1.2jt
 
@@ -884,7 +893,7 @@ Rp 1.2jt
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 03 · Lake</div>
-<div class="text-xs text-bros-charcoal/60">~16 jam</div>
+<div class="text-xs text-bros-charcoal/80">~16 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -897,7 +906,7 @@ Antar ke pelabuhan Parapat untuk ferry ke Pulau Samosir. Termasuk Pematang Siant
 
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~180 km</span>
+<span class="text-bros-charcoal/80">~180 km</span>
 <span class="font-display font-bold text-bros-blue">
 Rp 1.4jt
 
@@ -909,7 +918,7 @@ Rp 1.4jt
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 04 · Jungle</div>
-<div class="text-xs text-bros-charcoal/60">~14 jam</div>
+<div class="text-xs text-bros-charcoal/80">~14 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -922,7 +931,7 @@ Antar ke desa eco-tourism untuk trekking orangutan. Singgah perkebunan kelapa sa
 
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~95 km</span>
+<span class="text-bros-charcoal/80">~95 km</span>
 <span class="font-display font-bold text-bros-blue">
 Rp 1.0jt
 
@@ -934,7 +943,7 @@ Rp 1.0jt
 <div class="border border-bros-charcoal/10 p-6 hover:border-bros-blue transition group">
 <div class="flex items-center justify-between mb-5">
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Route 05 · Wildlife</div>
-<div class="text-xs text-bros-charcoal/60">~16 jam</div>
+<div class="text-xs text-bros-charcoal/80">~16 jam</div>
 </div>
 <div class="flex items-center gap-3 mb-5">
 <div class="text-bros-navy font-display font-bold text-sm">Medan</div>
@@ -947,7 +956,7 @@ Antar ke Tangkahan untuk mandi gajah, river tubing. Jalan tanah terakhir ditanga
 
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
-<span class="text-bros-charcoal/60">~130 km</span>
+<span class="text-bros-charcoal/80">~130 km</span>
 <span class="font-display font-bold text-bros-blue">
 Rp 1.3jt
 
@@ -968,7 +977,7 @@ Multi-day trip? Mau gabungkan beberapa rute? Mau ke destinasi yang tidak ada di 
 
 
 </p>
-<a class="inline-flex items-center gap-2 text-bros-gold font-semibold text-sm group-hover:gap-3 transition-all" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="inline-flex items-center gap-2 text-bros-gold font-semibold text-sm group-hover:gap-3 transition-all" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 Konsultasi Personal
 
 
@@ -1064,7 +1073,7 @@ Kenapa BROS<br/><em class="italic font-light text-bros-blue">vs alternatif lain?
 <table class="w-full">
 <thead>
 <tr class="border-b-2 border-bros-charcoal/10">
-<th class="text-left p-5 text-xs tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<th class="text-left p-5 text-xs tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 Aspek
 
 
@@ -1073,11 +1082,11 @@ Aspek
 <div class="font-display font-bold text-lg">BROS Wisata</div>
 <div class="text-[10px] tracking-wider uppercase opacity-80 mt-1">Recommended</div>
 </th>
-<th class="text-center p-5 text-bros-charcoal/60">
+<th class="text-center p-5 text-bros-charcoal/80">
 <div class="font-display font-bold text-lg">Grab/Gocar</div>
 <div class="text-[10px] tracking-wider uppercase mt-1">Ride-hailing</div>
 </th>
-<th class="text-center p-5 text-bros-charcoal/60">
+<th class="text-center p-5 text-bros-charcoal/80">
 <div class="font-display font-bold text-lg">Self-drive</div>
 <div class="text-[10px] tracking-wider uppercase mt-1">Sewa biasa</div>
 </th>
@@ -1201,7 +1210,7 @@ Bukan stok foto. <em class="italic font-light text-bros-blue">Tamu real, kendara
 </div>
 </div>
 </div>
-<p class="text-center text-xs text-bros-charcoal/50 italic mt-8 max-w-2xl mx-auto">
+<p class="text-center text-xs text-bros-charcoal/70 italic mt-8 max-w-2xl mx-auto">
 📸 Sebagian momen dari 20+ tahun pengalaman antar-jemput tamu di Sumatra Utara
 
 
@@ -1233,7 +1242,7 @@ Pak Edi (supir) tahu semua tempat tersembunyi. Bawa kami ke warung sate lokal ya
 <div class="w-10 h-10 bg-bros-blue text-white rounded-full flex items-center justify-center font-bold text-sm">SR</div>
 <div>
 <div class="font-semibold text-bros-navy text-sm">Siti R.</div>
-<div class="text-xs text-bros-charcoal/60">🇲🇾 Penang · 5 days Avanza</div>
+<div class="text-xs text-bros-charcoal/80">🇲🇾 Penang · 5 days Avanza</div>
 </div>
 </div>
 </blockquote>
@@ -1248,7 +1257,7 @@ Innova-nya bersih sekali, AC dingin, perjalanan ke Berastagi sangat nyaman. Supi
 <div class="w-10 h-10 bg-bros-gold text-bros-navy rounded-full flex items-center justify-center font-bold text-sm">JW</div>
 <div>
 <div class="font-semibold text-bros-navy text-sm">Jeremy W.</div>
-<div class="text-xs text-bros-charcoal/60">🇸🇬 Singapore · 3 days Innova</div>
+<div class="text-xs text-bros-charcoal/80">🇸🇬 Singapore · 3 days Innova</div>
 </div>
 </div>
 </blockquote>
@@ -1263,7 +1272,7 @@ Hiace untuk grup keluarga 10 orang. Muat semua koper, anak-anak nyaman. Supir sa
 <div class="w-10 h-10 bg-bros-navy text-white rounded-full flex items-center justify-center font-bold text-sm">AK</div>
 <div>
 <div class="font-semibold text-bros-navy text-sm">Ahmad K.</div>
-<div class="text-xs text-bros-charcoal/60">🇲🇾 KL · 4 days Hiace</div>
+<div class="text-xs text-bros-charcoal/80">🇲🇾 KL · 4 days Hiace</div>
 </div>
 </div>
 </blockquote>
@@ -1403,7 +1412,7 @@ Sebutkan: tanggal, jumlah pax, koper, dan tujuan. Kami balas dengan rekomendasi 
 
 </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 rounded-sm font-bold hover:bg-white transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 <svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"></path></svg>
             +62 812-6013-9399
           </a>
@@ -1417,6 +1426,7 @@ Lihat Paket Tour
 </div>
 </div>
 </section>
+</main>
 <!-- FOOTER -->
 <footer class="bg-bros-navy text-white pt-20 pb-8 border-t border-white/10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1496,7 +1506,7 @@ Kantor
 <div class="mobile-sticky-cta">
 <div class="flex items-center justify-between gap-3">
 <div>
-<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-semibold">
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/80 font-semibold">
 Mulai dari
 
 
@@ -1505,10 +1515,10 @@ Mulai dari
 Rp 750k
 
 
-<span class="text-[10px] text-bros-charcoal/50 font-normal">/ hari</span>
+<span class="text-[10px] text-bros-charcoal/70 font-normal">/ hari</span>
 </div>
 </div>
-<a class="bg-[#25D366] text-white px-5 py-3 rounded-sm font-bold text-sm flex items-center gap-2" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a class="bg-emerald-900 text-white px-5 py-3 rounded-sm font-bold text-sm flex items-center gap-2" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 <svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97z"></path></svg>
 Booking
 
@@ -1517,7 +1527,7 @@ Booking
 </div>
 </div>
 <!-- FLOATING WHATSAPP -->
-<a class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20tertarik%20dengan%20paket%20tour%20Sumatra%20Utara.%20Mohon%20info%20lengkap.">
+<a aria-label="Chat WhatsApp dengan BROS Wisata tentang sewa mobil" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-900 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-floating" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=Halo%20BROS%20Wisata%2C%20saya%20ingin%20sewa%20mobil%20dengan%20supir%20di%20Medan%2FSumatra%20Utara.%20Tanggal%2C%20titik%20jemput%2C%20tujuan%2C%20jumlah%20pax%2C%20bagasi%2C%20dan%20pilihan%20mobil%20saya%3A%20">
 <svg fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.692 5.523l-.999 3.648 3.796-.97zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"></path></svg>
 </a>
 <script>
