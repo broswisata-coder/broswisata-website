@@ -4,11 +4,11 @@
 # ============================================================
 # ROOT ROUTING
 # ============================================================
-# Visitors hitting / get the Indonesian version by default.
+# Visitors hitting / get the English version by default for international buyers.
 # Future enhancement: use Cloudflare Workers for Accept-Language detection.
 
-/    /id/bros-wisata-homepage    302
-/index.html    /id/bros-wisata-homepage    301
+/    /en/bros-wisata-homepage    302
+/index.html    /en/bros-wisata-homepage    301
 
 # ============================================================
 # LANGUAGE-PREFIX HOMEPAGES (clean URLs)

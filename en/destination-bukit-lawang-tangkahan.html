@@ -183,10 +183,17 @@
 <link href="/assets/style.css" rel="stylesheet"/>
 <!-- ===== ANALYTICS & TRACKING ===== -->
 <!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P';
+      document.head.appendChild(gtagScript);
+    }, 2500);
+  });
   gtag('js', new Date());
   gtag('config', 'G-JVH9HY8P8P', {
     'anonymize_ip': true,
@@ -205,25 +212,33 @@
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "wles2u2nk2");
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wles2u2nk2");
+    }, 2500);
+  });
 </script>
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '981676474387568');
-fbq('track', 'PageView');
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '981676474387568');
+      fbq('track', 'PageView');
 
+    }, 2500);
+  });
 </script>
 <noscript><img height="1" src="https://www.facebook.com/tr?id=981676474387568&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
@@ -462,7 +477,7 @@ WhatsApp Us
   <p class="text-lg lg:text-xl text-white/80 max-w-3xl leading-relaxed mb-12">The last sanctuary of wild Sumatran orangutans, guided by people who have called this jungle home for two decades.</p>
   
   <!-- Stats -->
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-12 mb-12 max-w-4xl">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl">
     <div class="border-l-2 border-bros-gold pl-5">
       <div class="font-display text-4xl lg:text-5xl font-bold text-bros-gold leading-none mb-2">20+</div>
       <div class="text-sm text-white/70 uppercase tracking-wider">Years guiding here</div>
@@ -911,7 +926,7 @@ Office
 </div>
 </div>
 </div>
-<div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
+<div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/70">
 <div>© 2026 PT BROS INTI WISATA · NIB 2502250049355 · All rights reserved.</div>
 <div class="flex gap-6">
 <a class="hover:text-white" href="/en/privacy-policy">Privacy Policy</a>

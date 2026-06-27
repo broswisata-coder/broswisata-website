@@ -2,7 +2,7 @@
 
 <html lang="ms">
 <head>
-<link as="image" fetchpriority="high" href="/assets/hero-lake-toba.webp" rel="preload" type="image/webp"/><meta charset="utf-8"/>
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- ===== PRIMARY META ===== -->
 <title>BROS Wisata — Pakej Tour Sumatera Utara &amp; Sewa Kereta dari Medan | Hub of Sumatra</title>
@@ -12,7 +12,7 @@
 <meta content="PT BROS INTI WISATA" name="author"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://broswisata.id/ms/bros-wisata-homepage" rel="canonical"/>
-<link href="https://broswisata.id/id/bros-wisata-homepage" hreflang="x-default" rel="alternate"/>
+<link href="https://broswisata.id/en/bros-wisata-homepage" hreflang="x-default" rel="alternate"/>
 <link href="https://broswisata.id/en/bros-wisata-homepage" hreflang="en" rel="alternate"/>
 <link href="https://broswisata.id/ms/bros-wisata-homepage" hreflang="ms" rel="alternate"/>
 <link href="https://broswisata.id/id/bros-wisata-homepage" hreflang="id" rel="alternate"/>
@@ -184,10 +184,17 @@
 <link href="/assets/style.css" rel="stylesheet"/>
 <!-- ===== ANALYTICS & TRACKING ===== -->
 <!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P';
+      document.head.appendChild(gtagScript);
+    }, 2500);
+  });
   gtag('js', new Date());
   gtag('config', 'G-JVH9HY8P8P', {
     'anonymize_ip': true,
@@ -206,25 +213,33 @@
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "wles2u2nk2");
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wles2u2nk2");
+    }, 2500);
+  });
 </script>
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '981676474387568');
-fbq('track', 'PageView');
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '981676474387568');
+      fbq('track', 'PageView');
 
+    }, 2500);
+  });
 </script>
 <noscript><img height="1" src="https://www.facebook.com/tr?id=981676474387568&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
@@ -336,8 +351,8 @@ Hubungi Kami
 <!-- Background image - VERIFIED Lake Toba content from BROS Wisata IG carousel -->
 <div class="absolute inset-0">
 <picture>
-<source srcset="/assets/hero-lake-toba.webp" type="image/webp"/>
-<img alt="Danau Toba — Lake Toba aerial view, North Sumatra, Indonesia" class="w-full h-full object-cover" decoding="async" fetchpriority="high" height="1280" loading="eager" src="/assets/hero-lake-toba.jpg" width="1920"/>
+<source sizes="100vw" srcset="/assets/hero-lake-toba-768.webp 768w, /assets/hero-lake-toba-1280.webp 1280w" type="image/webp"/>
+<img alt="Danau Toba — Lake Toba aerial view, North Sumatra, Indonesia" class="w-full h-full object-cover" decoding="async" fetchpriority="high" height="1280" loading="eager" sizes="100vw" src="/assets/hero-lake-toba-1280.jpg" srcset="/assets/hero-lake-toba-768.jpg 768w, /assets/hero-lake-toba-1280.jpg 1280w" width="1920"/>
 </picture>
 <div class="absolute inset-0 hero-overlay"></div>
 </div>
@@ -459,6 +474,52 @@ Sokongan Tour
 </div>
 </div>
 </section>
+<!-- ======= GUIDE TRUST ANCHOR ======= -->
+<section class="py-20 lg:py-24 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-4">
+<div class="aspect-[4/5] bg-bros-navy overflow-hidden">
+<picture>
+<source srcset="/assets/gallery/gallery_13_salim_portrait.webp" type="image/webp"/>
+<img alt="Ahmad Salim Saleh, guide lapangan BROS Wisata di Sumatera Utara" class="w-full h-full object-cover" decoding="async" height="896" loading="lazy" src="/assets/gallery/gallery_13_salim_portrait.jpg" width="1200"/>
+</picture>
+</div>
+</div>
+<div class="lg:col-span-8">
+<div class="text-bros-blue text-xs tracking-[0.3em] uppercase font-bold mb-5">Dibina Dari Lapangan</div>
+<h2 class="font-display text-4xl lg:text-6xl font-bold text-bros-navy leading-[0.95] mb-6">
+Dibawa oleh Ahmad,<br/><em class="italic font-light text-bros-blue">bukan sekadar jadual di kertas.</em>
+</h2>
+<p class="text-lg text-bros-charcoal/80 leading-relaxed max-w-3xl mb-8">
+Ahmad Salim Saleh ialah guide Sumatera Utara di sebalik banyak pengalaman tetamu BROS Wisata. Sebelum sesebuah trip menjadi pakej, laluannya diuji sendiri: jalan, lodge, trek hutan, restoran halal, tempat foto, dan rakan tempatan yang benar-benar dikenali oleh tim Ahmad.
+</p>
+<div class="grid md:grid-cols-3 gap-4 mb-8">
+<div class="border-l-4 border-bros-gold pl-4">
+<div class="font-display text-2xl font-bold text-bros-navy">20+ thn</div>
+<div class="text-xs uppercase tracking-wider text-bros-charcoal/60 font-semibold">Memandu Sumatera Utara</div>
+</div>
+<div class="border-l-4 border-bros-blue pl-4">
+<div class="font-display text-2xl font-bold text-bros-navy">Eco</div>
+<div class="text-xs uppercase tracking-wider text-bros-charcoal/60 font-semibold">Orangutan, jungle, Tangkahan</div>
+</div>
+<div class="border-l-4 border-bros-navy pl-4">
+<div class="font-display text-2xl font-bold text-bros-navy">Lokal</div>
+<div class="text-xs uppercase tracking-wider text-bros-charcoal/60 font-semibold">Pemandu, guide, lodge keluarga</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3">
+<a class="inline-flex items-center justify-center bg-bros-blue text-white px-6 py-3 rounded-sm font-semibold hover:bg-bros-navy transition" href="https://wa.me/6281260139399?text=Hai%20BROS%20Wisata%2C%20saya%20ingin%20rancang%20eco%20tour%20Sumatera%20Utara%20dengan%20tim%20guide%20Ahmad.">
+Tanya Tim Ahmad
+</a>
+<a class="inline-flex items-center justify-center border-2 border-bros-navy text-bros-navy px-6 py-3 rounded-sm font-semibold hover:bg-bros-navy hover:text-white transition" href="/ms/destinasi-bukit-lawang-tangkahan">
+Lihat Eco Tour Etika
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- ======= DESTINATIONS ======= -->
 <section class="py-24 lg:py-32 bg-bros-cream" id="destinations">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -514,7 +575,7 @@ Lihat 3 pakej
 <!-- Area 2: Berastagi & Karo Highland -->
 <a class="destination-card group block" href="/ms/bros-wisata-tour-listing">
 <div class="aspect-[4/5] overflow-hidden bg-bros-navy mb-5 relative">
-<picture><source srcset="/assets/ig/berastagi_3h2m/en/02_highlights.webp" type="image/webp"/><img alt="Berastagi Highland &amp; Karo Plateau, North Sumatra" class="card-image w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.onerror=null; this.src='assets/ig/berastagi_3h2m/en/01_cover.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0F47B0, #E8A317)';};" src="/assets/ig/berastagi_3h2m/en/02_highlights.png" width="1080"/></picture>
+<picture><source srcset="/assets/ig/berastagi_3h2m/en/02_highlights.webp" type="image/webp"/><img alt="Berastagi Highland &amp; Karo Plateau, North Sumatra" class="card-image w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.onerror=null; this.src='/assets/ig/berastagi_3h2m/en/01_cover.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0F47B0, #E8A317)';};" src="/assets/ig/berastagi_3h2m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute bottom-5 left-5 right-5 text-white">
 <div class="text-xs tracking-[0.25em] uppercase opacity-80 mb-1">02 / Sumatra Utara</div>
 </div>
@@ -541,7 +602,7 @@ Lihat 2 pakej
 <!-- Area 3: Bukit Lawang & Tangkahan -->
 <a class="destination-card group block" href="/ms/destinasi-bukit-lawang-tangkahan">
 <div class="aspect-[4/5] overflow-hidden bg-bros-navy mb-5 relative">
-<picture><source srcset="/assets/ig/bukit_lawang_4h3m/en/02_highlights.webp" type="image/webp"/><img alt="Bukit Lawang Orangutan &amp; Tangkahan Eco Tour, North Sumatra" class="card-image w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.onerror=null; this.src='assets/ig/tangkahan_3h2m/en/02_highlights.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #E8A317, #0A2E70)';};" src="/assets/ig/bukit_lawang_4h3m/en/02_highlights.png" width="1080"/></picture>
+<picture><source srcset="/assets/ig/bukit_lawang_4h3m/en/02_highlights.webp" type="image/webp"/><img alt="Bukit Lawang Orangutan &amp; Tangkahan Eco Tour, North Sumatra" class="card-image w-full h-full object-cover" decoding="async" height="1080" loading="lazy" onerror="this.onerror=null; this.src='/assets/ig/tangkahan_3h2m/en/02_highlights.png'; this.onerror=function(){this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #E8A317, #0A2E70)';};" src="/assets/ig/bukit_lawang_4h3m/en/02_highlights.png" width="1080"/></picture>
 <div class="absolute top-5 left-5 bg-bros-blue text-white px-3 py-1 text-xs font-bold tracking-wider uppercase">Adventure</div>
 <div class="absolute bottom-5 left-5 right-5 text-white">
 <div class="text-xs tracking-[0.25em] uppercase opacity-80 mb-1">03 / Sumatra Utara</div>
@@ -1352,7 +1413,7 @@ Pejabat
 </div>
 </div>
 </div>
-<div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
+<div class="border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/70">
 <div>© 2026 PT BROS INTI WISATA · NIB 2502250049355 · All rights reserved.</div>
 <div class="flex gap-6">
 <a class="hover:text-white" href="/ms/privacy-policy">Polisi Privasi</a>
