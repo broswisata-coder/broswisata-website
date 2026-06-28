@@ -16,6 +16,62 @@
     return "EN";
   }
 
+  function marketSegment() {
+    var lang = pageLanguage();
+    if (lang === "MS") return "malaysia_singapore";
+    if (lang === "ID") return "indonesia_domestic";
+    return "europe_global";
+  }
+
+  function pageType() {
+    var path = window.location.pathname;
+    if (/\/(en|id|ms)\/?$/.test(path)) return "homepage";
+    if (path.indexOf("contact") !== -1) return "contact";
+    if (path.indexOf("meet-ahmad") !== -1) return "meet_ahmad";
+    if (path.indexOf("responsible-travel") !== -1) return "responsible_travel";
+    if (path.indexOf("tour-listing") !== -1) return "tour_listing";
+    if (path.indexOf("destination") !== -1 || path.indexOf("destinasi") !== -1) return "destination";
+    if (path.indexOf("paket-") !== -1) return "tour_detail";
+    if (path.indexOf("car-rental") !== -1) return "transport_paused";
+    if (path.indexOf("about") !== -1) return "about";
+    return "content";
+  }
+
+  function withClarity(callback) {
+    if (typeof window.clarity === "function") {
+      callback(window.clarity);
+      return;
+    }
+
+    window.clarity = function () {
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+    callback(window.clarity);
+  }
+
+  function setClarityContext() {
+    withClarity(function (clarity) {
+      clarity("set", "site", "broswisata");
+      clarity("set", "language", pageLanguage());
+      clarity("set", "market", marketSegment());
+      clarity("set", "page_type", pageType());
+      clarity("set", "page_path", window.location.pathname);
+    });
+  }
+
+  function trackClarityWhatsapp(anchor) {
+    var cta = ctaName(anchor);
+    var section = sectionName(anchor) || "none";
+    withClarity(function (clarity) {
+      clarity("set", "last_whatsapp_cta", cta);
+      clarity("set", "last_whatsapp_section", section);
+      clarity("set", "last_whatsapp_page", window.location.pathname);
+      clarity("event", "whatsapp_click");
+      clarity("event", "lead_whatsapp_inquiry");
+      clarity("upgrade", "lead_whatsapp_inquiry");
+    });
+  }
+
   function sectionName(anchor) {
     var section = anchor.closest && anchor.closest("section[id]");
     return section ? section.id : "";
@@ -77,16 +133,23 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", refreshWhatsappLinks);
+    document.addEventListener("DOMContentLoaded", function () {
+      refreshWhatsappLinks();
+      setClarityContext();
+    });
   } else {
     refreshWhatsappLinks();
+    setClarityContext();
   }
 
   document.addEventListener(
     "click",
     function (event) {
       var anchor = event.target.closest && event.target.closest('a[href*="wa.me"]');
-      if (anchor) updateWhatsappLink(anchor);
+      if (anchor) {
+        updateWhatsappLink(anchor);
+        trackClarityWhatsapp(anchor);
+      }
     },
     true
   );
