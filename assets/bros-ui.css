@@ -218,17 +218,48 @@
 
 .bros-guide-meta {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .5rem;
-  margin-top: .85rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .65rem;
+  margin-top: 1rem;
 }
 
 .bros-guide-meta span {
+  min-height: 4.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(15, 71, 176, .12);
   border-left: 3px solid #e8a317;
-  padding-left: .55rem;
+  background: #f8fafc;
+  padding: .72rem .6rem .72rem .7rem;
   color: #0a2e70;
-  font-size: .78rem;
+  font-size: .64rem;
   font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.bros-guide-meta strong {
+  display: block;
+  margin-bottom: .32rem;
+  color: #0a2e70;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.18rem;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.bros-guide-meta small {
+  display: block;
+  color: rgba(31, 41, 55, .66);
+  font-size: .62rem;
+  line-height: 1.35;
+  font-weight: 850;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 .bros-hero-proofbar {

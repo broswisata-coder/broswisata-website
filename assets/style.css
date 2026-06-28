@@ -90,3 +90,60 @@
 .vehicle-spec-grid>div:nth-child(3)::before{border:2px solid #0f47b0;border-radius:999px;background:radial-gradient(circle,#e8a317 0 32%,transparent 34%) 50% 50%/100% 100% no-repeat}
 .vehicle-card:hover .vehicle-spec-grid>div{border-color:rgba(15,71,176,.2);background:#fff}
 @media(max-width:720px){.card-signal{font-size:.72rem}.vehicle-spec-grid>div{min-height:5.2rem}}
+
+/* Trust pages: Ahmad and responsible travel */
+.trust-hero{background:#08275f;color:#fff;padding:5.5rem 0 4.5rem;position:relative;overflow:hidden}
+.trust-hero:after{content:"";position:absolute;inset:auto 0 0 0;height:8px;background:linear-gradient(90deg,#e8a317,#0f47b0,#e8a317)}
+.trust-shell{max-width:80rem;margin:0 auto;padding:0 1rem}
+.trust-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(20rem,.62fr);gap:3rem;align-items:end}
+.trust-kicker{color:#e8a317;font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;margin-bottom:1rem}
+.trust-title{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(3rem,7vw,6.4rem);line-height:.92;font-weight:800;letter-spacing:0;max-width:56rem}
+.trust-title em{color:#e8a317;font-weight:300}
+.trust-copy{font-size:1.08rem;line-height:1.8;color:rgba(255,255,255,.82);max-width:41rem;margin-top:1.5rem}
+.trust-photo{background:#0a2e70;border:1px solid rgba(255,255,255,.16);padding:.75rem}
+.trust-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.trust-caption{color:rgba(255,255,255,.72);font-size:.78rem;line-height:1.55;margin-top:.8rem}
+.trust-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(31,41,55,.12);border:1px solid rgba(31,41,55,.1)}
+.trust-stat{background:#fff;padding:1.3rem}
+.trust-stat strong{display:block;color:#08275f;font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;line-height:1;font-weight:800}
+.trust-stat span{display:block;color:rgba(31,41,55,.68);font-size:.78rem;font-weight:800;line-height:1.45;text-transform:uppercase;margin-top:.5rem}
+.trust-band{padding:5rem 0;background:#fff}
+.trust-band.alt{background:#f7f3ea}
+.trust-section-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:2.5rem;align-items:end;margin-bottom:2.5rem}
+.trust-section-head h2{font-family:"Bricolage Grotesque",sans-serif;color:#08275f;font-size:clamp(2.3rem,5vw,4.4rem);line-height:.98;font-weight:800}
+.trust-section-head p{color:rgba(31,41,55,.74);font-size:1.02rem;line-height:1.75}
+.trust-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.trust-card{background:#fff;border:1px solid rgba(31,41,55,.1);padding:1.35rem;min-height:14rem}
+.trust-card.dark{background:#08275f;color:#fff;border-color:#08275f}
+.trust-card-number{color:#e8a317;font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;font-weight:800;line-height:1;margin-bottom:1rem}
+.trust-card h3{color:#08275f;font-family:"Bricolage Grotesque",sans-serif;font-size:1.45rem;line-height:1.05;font-weight:800;margin-bottom:.75rem}
+.trust-card.dark h3{color:#fff}
+.trust-card p,.trust-card li{color:rgba(31,41,55,.72);font-size:.93rem;line-height:1.62}
+.trust-card.dark p,.trust-card.dark li{color:rgba(255,255,255,.78)}
+.trust-list{display:grid;gap:.65rem;margin-top:.25rem}
+.trust-list li{display:grid;grid-template-columns:1rem minmax(0,1fr);gap:.6rem}
+.trust-list li:before{content:"";width:.48rem;height:.48rem;background:#e8a317;border-radius:999px;margin-top:.55rem}
+.trust-route-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.trust-route{background:#fff;border:1px solid rgba(31,41,55,.1);display:grid;grid-template-columns:8rem minmax(0,1fr);min-height:8.5rem}
+.trust-route img{width:100%;height:100%;object-fit:cover}
+.trust-route div{padding:1rem}
+.trust-route h3{font-family:"Bricolage Grotesque",sans-serif;color:#08275f;font-size:1.35rem;line-height:1.05;font-weight:800;margin-bottom:.45rem}
+.trust-route p{color:rgba(31,41,55,.72);font-size:.9rem;line-height:1.55}
+.trust-quote{background:#08275f;color:#fff;padding:3rem}
+.trust-quote blockquote{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.02;font-weight:800;max-width:52rem}
+.trust-quote p{color:rgba(255,255,255,.78);line-height:1.75;max-width:42rem;margin-top:1.2rem}
+.trust-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.6rem}
+.trust-cta a{display:inline-flex;align-items:center;justify-content:center;min-height:3.25rem;padding:0 1.25rem;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+.trust-cta .primary{background:#e8a317;color:#08275f}
+.trust-cta .secondary{border:1px solid rgba(255,255,255,.34);color:#fff}
+.trust-cta .light{border:1px solid rgba(31,41,55,.16);color:#08275f;background:#fff}
+.trust-faq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.trust-faq article{background:#fff;border:1px solid rgba(31,41,55,.1);padding:1.25rem;min-height:12rem}
+.trust-faq h3{font-family:"Bricolage Grotesque",sans-serif;color:#08275f;font-size:1.3rem;line-height:1.12;font-weight:800;margin-bottom:.65rem}
+.trust-faq p{color:rgba(31,41,55,.72);font-size:.93rem;line-height:1.65}
+.trust-crosslink{background:#f7f3ea;border-top:1px solid rgba(31,41,55,.08);padding:3rem 0}
+.trust-crosslink-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.trust-crosslink h2{font-family:"Bricolage Grotesque",sans-serif;color:#08275f;font-size:2rem;font-weight:800;line-height:1}
+.trust-crosslink a{background:#08275f;color:#fff;padding:.95rem 1.1rem;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+@media(max-width:1024px){.trust-hero-grid,.trust-section-head{grid-template-columns:1fr}.trust-card-grid{grid-template-columns:1fr 1fr}.trust-faq{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.trust-hero{padding:4rem 0 3.5rem}.trust-card-grid,.trust-faq,.trust-route-grid,.trust-stats{grid-template-columns:1fr}.trust-route{grid-template-columns:1fr}.trust-route img{aspect-ratio:16/10}.trust-quote{padding:2rem}.trust-crosslink-inner{display:block}.trust-crosslink a{margin-top:1rem}.trust-photo img{aspect-ratio:16/12}.trust-band{padding:3.7rem 0}}

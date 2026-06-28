@@ -136,6 +136,72 @@
   </url>
 
   <url>
+    <loc>https://broswisata.id/id/meet-ahmad</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/meet-ahmad"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/meet-ahmad</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/meet-ahmad"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/meet-ahmad</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/meet-ahmad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/meet-ahmad"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/id/responsible-travel</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/responsible-travel"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/ms/responsible-travel</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/responsible-travel"/>
+  </url>
+
+  <url>
+    <loc>https://broswisata.id/en/responsible-travel</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/responsible-travel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/responsible-travel"/>
+  </url>
+
+  <url>
     <loc>https://broswisata.id/id/bros-wisata-contact</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
