@@ -7,18 +7,21 @@
 # Visitors hitting / get the English version by default for international buyers.
 # Future enhancement: use Cloudflare Workers for Accept-Language detection.
 
-/    /en/bros-wisata-homepage    302
-/index.html    /en/bros-wisata-homepage    301
+/    /en/    302
+/index.html    /en/    301
 
 # ============================================================
 # LANGUAGE-PREFIX HOMEPAGES (clean URLs)
 # ============================================================
-/id    /id/bros-wisata-homepage    301
-/ms    /ms/bros-wisata-homepage    301
-/en    /en/bros-wisata-homepage    301
-/id/    /id/bros-wisata-homepage    301
-/ms/    /ms/bros-wisata-homepage    301
-/en/    /en/bros-wisata-homepage    301
+/id    /id/    301
+/ms    /ms/    301
+/en    /en/    301
+/id/bros-wisata-homepage    /id/    301
+/id/bros-wisata-homepage.html    /id/    301
+/ms/bros-wisata-homepage    /ms/    301
+/ms/bros-wisata-homepage.html    /ms/    301
+/en/bros-wisata-homepage    /en/    301
+/en/bros-wisata-homepage.html    /en/    301
 
 # ============================================================
 # TEMPORARY PAUSE: TRANSPORT / CAR RENTAL
@@ -37,9 +40,9 @@
 /sewa-kereta    /ms/bros-wisata-contact    302
 
 # ============================================================
-# OLD FLAT URLS → /id/ (preserve SEO juice, prevent 404)
+# OLD FLAT URLS -> /id/ (preserve SEO juice, prevent 404)
 # ============================================================
-/bros-wisata-homepage.html    /id/bros-wisata-homepage    301
+/bros-wisata-homepage.html    /id/    301
 /bros-wisata-tour-listing.html    /id/bros-wisata-tour-listing    301
 /bros-wisata-car-rental.html    /id/bros-wisata-contact    302
 /bros-wisata-custom-tour.html    /id/bros-wisata-custom-tour    301
@@ -79,7 +82,7 @@
 /combo    /id/paket-combo_sumut_6h5m    301
 /sumut-grand-tour    /id/paket-combo_sumut_6h5m    301
 
-# Western Eco shortcuts (default EN — these target European/Western travelers)
+# Western Eco shortcuts (default EN - these target European/Western travelers)
 /jungle    /en/paket-western_4d3n_jungle    301
 /volcano    /en/paket-western_5d4n_volcano    301
 /ultimate    /en/paket-western_7d6n_ultimate    301
@@ -96,18 +99,18 @@
 /ms/ahmad    /ms/meet-ahmad    301
 /en/ahmad    /en/meet-ahmad    301
 
-# Halal Malaysia shortcuts (default MS — for Malaysian travelers)
+# Halal Malaysia shortcuts (default MS - for Malaysian travelers)
 /halal    /ms/bros-wisata-tour-listing    301
 /halal-3d    /ms/paket-halal_3h2m_medan_toba    301
 /halal-4d    /ms/paket-halal_4h3m_medan_toba    301
 /halal-5d    /ms/paket-halal_5h4m_medan_toba    301
 /malaysia    /ms/bros-wisata-tour-listing    301
-/malaysian    /ms/bros-wisata-homepage    301
+/malaysian    /ms/    301
 
 # Localized homepage shortcuts
-/id-home    /id/bros-wisata-homepage    301
-/my-home    /ms/bros-wisata-homepage    301
-/en-home    /en/bros-wisata-homepage    301
+/id-home    /id/    301
+/my-home    /ms/    301
+/en-home    /en/    301
 
 # ============================================================
 # WHATSAPP SHORTCUTS (with prefilled per-language messages)

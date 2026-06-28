@@ -4,36 +4,36 @@
         xmlns:image="http://www.google.com/schemas/sitemaps-image/1.0">
 
   <url>
-    <loc>https://broswisata.id/id/bros-wisata-homepage</loc>
+    <loc>https://broswisata.id/id/</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/bros-wisata-homepage"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/"/>
   </url>
 
   <url>
-    <loc>https://broswisata.id/ms/bros-wisata-homepage</loc>
+    <loc>https://broswisata.id/ms/</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/bros-wisata-homepage"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/"/>
   </url>
 
   <url>
-    <loc>https://broswisata.id/en/bros-wisata-homepage</loc>
+    <loc>https://broswisata.id/en/</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-homepage"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/bros-wisata-homepage"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/"/>
   </url>
 
   <url>
