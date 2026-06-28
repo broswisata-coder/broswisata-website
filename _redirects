@@ -21,11 +21,27 @@
 /en/    /en/bros-wisata-homepage    301
 
 # ============================================================
+# TEMPORARY PAUSE: TRANSPORT / CAR RENTAL
+# ============================================================
+# Vendor fleet/pricing is being updated. Use 302 so this can be reversed cleanly.
+
+/id/bros-wisata-car-rental    /id/bros-wisata-contact    302
+/id/bros-wisata-car-rental.html    /id/bros-wisata-contact    302
+/ms/bros-wisata-car-rental    /ms/bros-wisata-contact    302
+/ms/bros-wisata-car-rental.html    /ms/bros-wisata-contact    302
+/en/bros-wisata-car-rental    /en/bros-wisata-contact    302
+/en/bros-wisata-car-rental.html    /en/bros-wisata-contact    302
+/rental-car    /en/bros-wisata-contact    302
+/rent-car    /en/bros-wisata-contact    302
+/transport    /en/bros-wisata-contact    302
+/sewa-kereta    /ms/bros-wisata-contact    302
+
+# ============================================================
 # OLD FLAT URLS → /id/ (preserve SEO juice, prevent 404)
 # ============================================================
 /bros-wisata-homepage.html    /id/bros-wisata-homepage    301
 /bros-wisata-tour-listing.html    /id/bros-wisata-tour-listing    301
-/bros-wisata-car-rental.html    /id/bros-wisata-car-rental    301
+/bros-wisata-car-rental.html    /id/bros-wisata-contact    302
 /bros-wisata-custom-tour.html    /id/bros-wisata-custom-tour    301
 /bros-wisata-about.html    /id/bros-wisata-about    301
 /bros-wisata-contact.html    /id/bros-wisata-contact    301
@@ -51,8 +67,8 @@
 /tentang    /id/bros-wisata-about    301
 /contact    /id/bros-wisata-contact    301
 /kontak    /id/bros-wisata-contact    301
-/car-rental    /id/bros-wisata-car-rental    301
-/sewa-mobil    /id/bros-wisata-car-rental    301
+/car-rental    /en/bros-wisata-contact    302
+/sewa-mobil    /id/bros-wisata-contact    302
 /custom    /id/bros-wisata-custom-tour    301
 
 # Signature packages (default ID)

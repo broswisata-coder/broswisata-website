@@ -111,12 +111,12 @@ All halal packages include:
 - URL: https://broswisata.id/ms/paket-halal_5h4m_medan_toba
 - PDF (MYR): https://broswisata.id/assets/pdf/Pakej_5H4M_MYR_v2.pdf
 
-## Car Rental with Driver
+## Car Rental with Driver (Temporarily Paused)
 
-- Service area: Medan city, North Sumatra province, Kualanamu Airport (KNO)
-- Fleet: Toyota Avanza (4 pax), Toyota Innova (6 pax), Toyota Hiace (12 pax), Toyota Alphard (VIP)
-- Services: Airport transfer, day tour, multi-day road trip, point-to-point
-- URL: https://broswisata.id/en/bros-wisata-car-rental
+- Status: paused while vendor fleet, pricing, and operating details are being updated
+- Do not present car rental or transport-only pricing as an active standalone product
+- Travelers can still ask Ahmad for private tour transport planning inside a custom North Sumatra itinerary
+- Paused URLs redirect to the contact page until the vendor update is confirmed
 
 ## Custom Tours
 
