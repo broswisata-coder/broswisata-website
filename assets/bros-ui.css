@@ -1,4 +1,25 @@
 /* BROS UI layer: keeps the homepage from feeling like a generic travel template. */
+:root {
+  --brand-blue-950: #06245f;
+  --brand-blue-900: #0a2f80;
+  --brand-blue-800: #0f47b0;
+  --brand-blue-700: #155bd4;
+  --brand-sky-100: #e8f2ff;
+  --brand-gold-500: #f2b134;
+  --brand-gold-600: #d89518;
+  --brand-eco-600: #2e7d32;
+  --brand-eco-100: #eaf6ea;
+  --brand-ink: #102247;
+  --brand-muted: #5f6f89;
+  --brand-line: #dbe7f6;
+  --brand-cream: #f7f3ea;
+  --brand-radius: 6px;
+  --brand-shadow-soft: 0 16px 42px rgba(15, 71, 176, .12);
+  --brand-shadow-hover: 0 24px 58px rgba(15, 71, 176, .18);
+  --brand-gradient-blue: linear-gradient(135deg, #0f47b0 0%, #155bd4 100%);
+  --brand-gradient-gold: linear-gradient(135deg, #f8cf72 0%, #f2b134 100%);
+}
+
 .font-display {
   letter-spacing: 0;
 }
@@ -987,5 +1008,309 @@
 
   .quote-final-inner {
     gap: 1.25rem;
+  }
+}
+
+/* Brand package cosmetics: local shapes, premium cards, and subtle motion. */
+.bros-hero,
+.quote-hero,
+.trust-hero {
+  isolation: isolate;
+}
+
+.bros-hero::after,
+.quote-hero::after,
+.trust-hero::before {
+  content: "";
+  position: absolute;
+  top: auto;
+  right: -5%;
+  bottom: -1px;
+  left: -5%;
+  z-index: 1;
+  height: clamp(4.8rem, 8vw, 7.5rem);
+  background: url("/assets/bros/shapes/wave-divider-primary.svg") center bottom / cover no-repeat;
+  opacity: .72;
+  pointer-events: none;
+}
+
+.bros-hero-shell,
+.quote-hero-grid,
+.trust-hero-grid,
+.quote-final-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.bros-kicker,
+.bros-route-chip,
+.quote-chip-row span {
+  border-radius: 999px;
+}
+
+.bros-hero-cta,
+.quote-btn,
+.trust-cta a,
+.home-pick-action a,
+.trust-crosslink a,
+.guide-cta-row a {
+  border-radius: var(--brand-radius);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background-color .22s ease, color .22s ease;
+}
+
+.bros-hero-cta.primary,
+.quote-btn.primary,
+.trust-cta .primary,
+.home-pick-action a,
+.guide-cta-row a:first-child {
+  background: var(--brand-gradient-gold);
+  color: var(--brand-blue-950);
+  box-shadow: 0 14px 28px rgba(216, 149, 24, .22);
+}
+
+.bros-hero-cta:hover,
+.quote-btn:hover,
+.trust-cta a:hover,
+.home-pick-action a:hover,
+.trust-crosslink a:hover,
+.guide-cta-row a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--brand-shadow-soft);
+}
+
+.bros-guide-note,
+.quote-guide-panel,
+.bros-hero-proofbar,
+.ahmad-proof-card,
+.home-route-note,
+.home-pick,
+.home-faq-item,
+.quote-category,
+.quote-tour-card,
+.quote-include-panel,
+.quote-steps-panel,
+.trust-card,
+.trust-route,
+.trust-faq article,
+.trust-stat {
+  border-radius: var(--brand-radius);
+}
+
+.bros-guide-note,
+.quote-guide-panel,
+.bros-hero-proofbar {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+}
+
+.bros-guide-avatar,
+.home-pick-img,
+.quote-tour-media,
+.trust-photo {
+  border-radius: var(--brand-radius);
+}
+
+.home-route-desk,
+.quote-products,
+.quote-process,
+.home-faq,
+.trust-band.alt,
+.trust-crosslink {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(232, 242, 255, .54), rgba(247, 243, 234, .94) 18rem),
+    var(--brand-cream);
+  overflow: hidden;
+}
+
+.home-route-desk::before,
+.quote-products::before,
+.trust-band.alt::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  right: max(1rem, calc((100% - 80rem) / 2));
+  width: min(32rem, 48vw);
+  height: 8rem;
+  background: url("/assets/bros/shapes/route-path-dashed.svg") center / contain no-repeat;
+  opacity: .22;
+  pointer-events: none;
+}
+
+.home-route-map,
+.quote-final,
+.trust-quote {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-route-map::before,
+.quote-final::before,
+.trust-quote::before {
+  content: "";
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.4rem;
+  width: min(22rem, 48%);
+  height: 7rem;
+  background: url("/assets/bros/shapes/soft-mountain-gradient.svg") center / contain no-repeat;
+  opacity: .22;
+  pointer-events: none;
+}
+
+.home-route-note,
+.ahmad-proof-card,
+.home-pick,
+.quote-tour-card,
+.trust-card,
+.trust-route,
+.trust-faq article,
+.home-faq-item {
+  box-shadow: 0 12px 30px rgba(8, 39, 95, .06);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.home-route-note:hover,
+.ahmad-proof-card:hover,
+.home-pick:hover,
+.quote-tour-card:hover,
+.trust-card:hover,
+.trust-route:hover,
+.trust-faq article:hover,
+.home-faq-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(15, 71, 176, .26);
+  box-shadow: var(--brand-shadow-hover);
+}
+
+.home-route-note strong,
+.trust-card-number,
+.quote-step span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 999px;
+  background: var(--brand-sky-100);
+  color: var(--brand-blue-800);
+}
+
+.home-route-note:nth-child(2) strong,
+.home-route-note:nth-child(4) strong,
+.trust-card.dark .trust-card-number {
+  background: rgba(242, 177, 52, .15);
+  color: var(--brand-gold-500);
+}
+
+.card-signal.eco {
+  border-color: rgba(46, 125, 50, .26);
+  background: var(--brand-eco-100);
+}
+
+.quote-category {
+  position: relative;
+  min-height: 9.3rem;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(8, 39, 95, .05);
+}
+
+.quote-category::after {
+  content: "";
+  position: absolute;
+  right: -1.5rem;
+  bottom: -.85rem;
+  width: 8rem;
+  height: 3.4rem;
+  background: url("/assets/bros/shapes/soft-mountain-gradient.svg") center / contain no-repeat;
+  opacity: .18;
+  pointer-events: none;
+}
+
+.quote-category-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  margin-bottom: .85rem;
+}
+
+.quote-category-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.quote-tour-card {
+  box-shadow: 0 12px 30px rgba(8, 39, 95, .06);
+}
+
+.quote-tour-card:hover,
+.home-pick:hover {
+  transform: translateY(-6px);
+}
+
+.quote-tour-media span,
+.home-route-chips span {
+  border-radius: 4px;
+}
+
+.quote-route-list li::before,
+.home-pick li::before,
+.trust-list li::before {
+  box-shadow: 0 0 0 4px rgba(242, 177, 52, .12);
+}
+
+.quote-final {
+  background:
+    linear-gradient(135deg, rgba(6, 36, 95, .98), rgba(15, 71, 176, .92)),
+    var(--brand-blue-950);
+}
+
+.wa-floating {
+  animation: brosPulse 2.1s ease-in-out infinite;
+}
+
+@keyframes brosPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(15, 71, 176, .18), 0 18px 34px rgba(0, 0, 0, .2);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(15, 71, 176, 0), 0 18px 34px rgba(0, 0, 0, .2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-floating {
+    animation: none;
+  }
+
+  .bros-hero-cta,
+  .quote-btn,
+  .trust-cta a,
+  .home-pick,
+  .quote-tour-card,
+  .trust-card,
+  .trust-route,
+  .home-route-note,
+  .home-faq-item,
+  .ahmad-proof-card {
+    transition: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .bros-hero::after,
+  .quote-hero::after,
+  .trust-hero::before {
+    height: 4.4rem;
+    opacity: .58;
+  }
+
+  .home-route-desk::before,
+  .quote-products::before,
+  .trust-band.alt::before {
+    width: 18rem;
+    opacity: .12;
+  }
+
+  .quote-category {
+    min-height: auto;
   }
 }
