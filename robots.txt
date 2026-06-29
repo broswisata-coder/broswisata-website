@@ -6,6 +6,7 @@
 User-agent: *
 Allow: /
 Disallow: /assets/pdf/internal/
+Disallow: /ops/
 Disallow: /scripts/
 Disallow: /src/
 Disallow: /node_modules/

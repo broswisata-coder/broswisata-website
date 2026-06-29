@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex, nofollow, noarchive" name="robots"/>
+<title>BROS Ops Kit - Invoice, Receipt, and Quotation</title>
+<meta content="Private internal browser tool for BROS Wisata quotations, invoices, payment receipts, and booking confirmations." name="description"/>
+<link href="/bros-wisata-logos/bros-wisata-icon-square-favicon-32px.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="/assets/bros-ops.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="ops-header no-print">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg fill="none" viewBox="0 0 24 16"><path d="M2 14 L7 6 L11 9 L15 4 L19 8 L22 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>
+    </span>
+    <div>
+      <strong>BROS Ops Kit</strong>
+      <span>Invoice, receipt, quotation, and booking documents</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="ghost" id="btn-new" type="button">New</button>
+    <button class="ghost" id="btn-export" type="button">Export JSON</button>
+    <button class="primary" id="btn-save" type="button">Save Document</button>
+    <button class="primary print" id="btn-print" type="button">Print / PDF</button>
+  </div>
+</header>
+
+<main class="ops-shell">
+  <aside class="ops-panel no-print" aria-label="Document editor">
+    <section class="panel-card">
+      <div class="panel-title">
+        <div>
+          <span class="eyebrow">Document</span>
+          <h1>Build travel docs</h1>
+        </div>
+        <span class="local-chip">Local storage only</span>
+      </div>
+      <p class="panel-note">Data is saved only in this browser. Do not use this as a payment gateway or accounting ledger.</p>
+
+      <div class="grid two">
+        <label>Type
+          <select id="doc-type">
+            <option value="quote">Quotation</option>
+            <option value="invoice">Invoice</option>
+            <option value="receipt">Payment Receipt</option>
+            <option value="booking">Booking Confirmation</option>
+          </select>
+        </label>
+        <label>Status
+          <select id="doc-status">
+            <option value="Draft">Draft</option>
+            <option value="Sent">Sent</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Partial Paid">Partial Paid</option>
+            <option value="Paid">Paid</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </label>
+        <label>Document No.
+          <input id="doc-number" type="text"/>
+        </label>
+        <label>Currency
+          <select id="currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="IDR">IDR</option>
+            <option value="MYR">MYR</option>
+            <option value="SGD">SGD</option>
+          </select>
+        </label>
+        <label>Issue Date
+          <input id="issue-date" type="date"/>
+        </label>
+        <label>Due Date
+          <input id="due-date" type="date"/>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <div class="section-head">
+        <h2>Guest and trip</h2>
+        <button class="tiny" id="btn-copy-wa" type="button">Copy WA text</button>
+      </div>
+      <div class="grid two">
+        <label>Guest Name
+          <input id="guest-name" type="text" placeholder="Guest full name"/>
+        </label>
+        <label>Nationality
+          <input id="guest-nationality" type="text" placeholder="Germany, Malaysia, Singapore"/>
+        </label>
+        <label>Email
+          <input id="guest-email" type="email" placeholder="guest@email.com"/>
+        </label>
+        <label>WhatsApp
+          <input id="guest-phone" type="text" placeholder="+49 ..."/>
+        </label>
+        <label>Guests / Pax
+          <input id="pax" min="1" type="number"/>
+        </label>
+        <label>Tour Language
+          <select id="tour-language">
+            <option value="English">English</option>
+            <option value="Indonesian">Indonesian</option>
+            <option value="Malay">Malay</option>
+          </select>
+        </label>
+        <label>Travel Start
+          <input id="travel-start" type="date"/>
+        </label>
+        <label>Travel End
+          <input id="travel-end" type="date"/>
+        </label>
+      </div>
+      <label>Route / Package
+        <input id="route" type="text" placeholder="Bukit Lawang - Tangkahan - Lake Toba"/>
+      </label>
+      <label>Pickup / Meeting Point
+        <input id="pickup" type="text" placeholder="Kualanamu Airport / Medan hotel"/>
+      </label>
+      <label>Internal Owner / Guide
+        <input id="owner" type="text" placeholder="Ahmad / BROS Wisata team"/>
+      </label>
+    </section>
+
+    <section class="panel-card">
+      <div class="section-head">
+        <h2>Line items</h2>
+        <button class="tiny" id="btn-add-item" type="button">Add item</button>
+      </div>
+      <div class="items-editor" id="items-editor"></div>
+      <div class="grid three totals-inputs">
+        <label>Discount
+          <input id="discount" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Service / Tax
+          <input id="service-fee" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Deposit %
+          <input id="deposit-percent" min="0" max="100" step="1" type="number"/>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Payment details</h2>
+      <div class="grid two">
+        <label>Amount Received
+          <input id="amount-received" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Received Date
+          <input id="received-date" type="date"/>
+        </label>
+        <label>Payment Method
+          <input id="payment-method" type="text" placeholder="Bank transfer / Wise / cash"/>
+        </label>
+        <label>Payment Reference
+          <input id="payment-reference" type="text" placeholder="Transfer ref / receipt id"/>
+        </label>
+      </div>
+      <label>Bank / Payment Instruction
+        <textarea id="bank-details" rows="3" placeholder="Add official bank account, Wise instruction, or payment link before sending."></textarea>
+      </label>
+      <label>Notes / Terms
+        <textarea id="notes" rows="4"></textarea>
+      </label>
+    </section>
+
+    <section class="panel-card saved-card">
+      <div class="section-head">
+        <h2>Saved documents</h2>
+        <button class="tiny danger" id="btn-delete" type="button">Delete selected</button>
+      </div>
+      <div class="saved-list" id="saved-list"></div>
+    </section>
+  </aside>
+
+  <section class="preview-zone" aria-label="Document preview">
+    <div class="preview-toolbar no-print">
+      <div>
+        <span class="eyebrow">Preview</span>
+        <strong id="preview-title-label">Quotation</strong>
+      </div>
+      <span id="autosave-state">Ready</span>
+    </div>
+    <article class="doc-page" id="doc-preview"></article>
+  </section>
+</main>
+
+<script src="/assets/bros-ops.js"></script>
+</body>
+</html>
