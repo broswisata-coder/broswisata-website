@@ -59,18 +59,11 @@ button {
   gap: .8rem;
 }
 
-.brand-mark {
-  width: 2.7rem;
-  height: 2.7rem;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: var(--blue-800);
-  border-radius: var(--radius);
-}
-
-.brand-mark svg {
-  width: 1.55rem;
+.brand-logo {
+  width: 12.25rem;
+  height: auto;
+  display: block;
+  flex: 0 0 auto;
 }
 
 .brand strong,
@@ -379,18 +372,11 @@ textarea:focus {
   gap: .75rem;
 }
 
-.doc-logo-mark {
-  width: 3.15rem;
-  height: 3.15rem;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: var(--blue-800);
-  border-radius: var(--radius);
-}
-
-.doc-logo-mark svg {
-  width: 1.9rem;
+.doc-logo-image {
+  width: 15.5rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .doc-logo strong {
@@ -601,6 +587,14 @@ textarea:focus {
     flex-direction: column;
   }
 
+  .brand {
+    align-items: flex-start;
+  }
+
+  .brand-logo {
+    width: 10.2rem;
+  }
+
   .header-actions {
     width: 100%;
     flex-wrap: wrap;
@@ -679,7 +673,8 @@ textarea:focus {
     print-color-adjust: exact;
   }
 
-  .doc-logo-mark,
+  .brand-logo,
+  .doc-logo-image,
   .status-pill,
   .doc-box,
   .mini-card {

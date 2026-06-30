@@ -10,7 +10,8 @@
     address: "Jl. Ring Road No. 117 B, Medan Sunggal, Medan 20122, North Sumatra, Indonesia",
     phone: "+62 812-6013-9399",
     email: "hello@broswisata.id",
-    website: "broswisata.id"
+    website: "broswisata.id",
+    logo: "/bros-wisata-logos/bros-wisata-logo-horizontal.svg"
   };
   const TYPES = {
     quote: { title: "Quotation", print: "QUOTATION", prefix: "QUO" },
@@ -262,8 +263,7 @@
       <header class="doc-header">
         <div>
           <div class="doc-logo">
-            <span class="doc-logo-mark" aria-hidden="true">${logoSvg()}</span>
-            <div><strong>${COMPANY.brand}</strong><span>${COMPANY.tagline}</span></div>
+            <img class="doc-logo-image" src="${COMPANY.logo}" alt="BROS Wisata logo"/>
           </div>
           <div class="doc-company">
             ${COMPANY.name}<br/>
@@ -338,10 +338,6 @@
         <span>${COMPANY.name} | ${COMPANY.website}</span>
       </footer>
     `;
-  }
-
-  function logoSvg() {
-    return '<svg fill="none" viewBox="0 0 24 16"><path d="M2 14 L7 6 L11 9 L15 4 L19 8 L22 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>';
   }
 
   function escapeHtml(value) {
