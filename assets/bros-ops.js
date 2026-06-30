@@ -29,6 +29,43 @@
     { desc: "Private transport, driver, and route coordination", qty: 1, unit: "package", price: 0 },
     { desc: "Local guide / activity coordination", qty: 1, unit: "package", price: 0 }
   ];
+  const DEFAULT_QUOTE_ACCOMMODATION = [
+    "08 - 09 Aug (1 night) | Bukit Lawang | Indra Valley | Single room with breakfast.",
+    "09 - 10 Aug (1 night) | Jungle Camp | 2D1N Bukit Lawang Jungle Trekking | Overnight jungle camp as part of the trekking arrangement.",
+    "10 - 11 Aug (1 night) | Berastagi | Kalang Ulu Berastagi | Single room with standard facilities / hot shower subject to room type.",
+    "11 - 13 Aug (2 nights) | Samosir / Lake Toba | Toba Village Inn | Single room with breakfast, lakeside accommodation basis."
+  ].join("\n");
+  const DEFAULT_QUOTE_ITINERARY = [
+    "Day 1 / 08 Aug | Arrive at Kualanamu International Airport. Meet and greet with Ahmad, then drive to Bukit Lawang. Check in and rest. | -",
+    "Day 2 / 09 Aug | Start the 2D1N Bukit Lawang Jungle Trekking program with a local ranger. Trek through Gunung Leuser rainforest and overnight at jungle camp. | B, L, D",
+    "Day 3 / 10 Aug | Continue the morning jungle experience, return by river tubing, then continue the journey to Berastagi. | B, L",
+    "Day 4 / 11 Aug | Early morning Mount Sibayak sunrise hike, visit Sipiso-piso Waterfall, continue to Lake Toba, cross to Samosir Island, and check in. | B, L",
+    "Day 5 / 12 Aug | Samosir Island cultural exploration: Tomok, Ambarita, Batak culture stop, scenic lake photo stops, and relaxed time around Lake Toba. | B, L",
+    "Day 6 / 13 Aug | Check out and return to Kualanamu Airport via Parapat / Pematang Siantar for airport drop-off. | B"
+  ].join("\n");
+  const DEFAULT_QUOTE_INCLUSIONS = [
+    "Private AC transport by Avanza / Xenia / small MPV for the agreed tour duration",
+    "Service of Ahmad as driver-guide / tour handling",
+    "Accommodation as listed in the quotation",
+    "Bukit Lawang Jungle Trekking including local ranger, jungle camp, tubing, and meals as per trekking arrangement",
+    "Entrance fees, parking, tolls, ferry / crossing tickets, and standard local donations as per itinerary",
+    "Daily mineral water and standard tour handling"
+  ].join("\n");
+  const DEFAULT_QUOTE_EXCLUSIONS = [
+    "International or domestic flight tickets",
+    "Dinner outside the jungle trekking package",
+    "Travel insurance and visa arrangement",
+    "Personal expenses such as laundry, minibar, snacks, and shopping",
+    "Additional activities not mentioned in the itinerary",
+    "Tipping / gratuities for guide, driver, local ranger, and local guides"
+  ].join("\n");
+  const DEFAULT_QUOTE_BOOKING_NOTES = [
+    "Price is valid for the stated private arrangement and travel period.",
+    "Final room confirmation is subject to availability at the time of booking.",
+    "If any listed property is fully booked, similar clean-comfort accommodation may be used.",
+    "The itinerary sequence may be adjusted based on weather, traffic, ferry schedule, and field guidance from the guide.",
+    "For jungle trekking, guests should bring a small dry bag, insect repellent, trekking sandals/shoes, quick-dry clothing, and personal medication."
+  ].join("\n");
 
   const $ = (id) => document.getElementById(id);
   const fields = [
@@ -36,7 +73,9 @@
     "guest-name", "guest-nationality", "guest-email", "guest-phone", "pax", "tour-language",
     "travel-start", "travel-end", "route", "pickup", "owner", "discount", "service-fee",
     "deposit-percent", "amount-received", "received-date", "payment-method",
-    "payment-reference", "bank-details", "notes"
+    "payment-reference", "bank-details", "notes", "quote-title", "arrival-flight",
+    "return-flight", "vehicle", "quote-accommodation", "quote-itinerary",
+    "quote-inclusions", "quote-exclusions", "quote-booking-notes"
   ];
 
   let state = defaultState();
@@ -78,12 +117,30 @@
       paymentReference: "",
       bankDetails: "",
       notes: DEFAULT_NOTES,
+      quoteTitle: "6 Days 5 Nights North Sumatra Private Tour - Bukit Lawang, Berastagi & Lake Toba",
+      arrivalFlight: "",
+      returnFlight: "",
+      vehicle: "Avanza / Xenia / small MPV AC or similar",
+      quoteAccommodation: DEFAULT_QUOTE_ACCOMMODATION,
+      quoteItinerary: DEFAULT_QUOTE_ITINERARY,
+      quoteInclusions: DEFAULT_QUOTE_INCLUSIONS,
+      quoteExclusions: DEFAULT_QUOTE_EXCLUSIONS,
+      quoteBookingNotes: DEFAULT_QUOTE_BOOKING_NOTES,
       updatedAt: new Date().toISOString()
     };
   }
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
+  }
+
+  function normalizeState(doc) {
+    const base = defaultState();
+    const merged = { ...base, ...(doc || {}) };
+    if (!Array.isArray(merged.items) || !merged.items.length) {
+      merged.items = clone(DEFAULT_ITEMS);
+    }
+    return merged;
   }
 
   function loadStore(key, fallback) {
@@ -96,6 +153,12 @@
 
   function saveStore(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  function toggleQuoteConfig() {
+    const config = $("quote-config");
+    if (!config) return;
+    config.classList.toggle("is-hidden", $("doc-type").value !== "quote");
   }
 
   function nextNumber(type) {
@@ -111,7 +174,7 @@
 
   function setInitialState() {
     const draft = loadStore(DRAFT_KEY, null);
-    state = draft || defaultState();
+    state = normalizeState(draft || defaultState());
     if (!state.number) state.number = nextNumber(state.type);
     selectedId = state.id;
     bindToForm();
@@ -147,6 +210,16 @@
     $("payment-reference").value = state.paymentReference;
     $("bank-details").value = state.bankDetails;
     $("notes").value = state.notes;
+    $("quote-title").value = state.quoteTitle;
+    $("arrival-flight").value = state.arrivalFlight;
+    $("return-flight").value = state.returnFlight;
+    $("vehicle").value = state.vehicle;
+    $("quote-accommodation").value = state.quoteAccommodation;
+    $("quote-itinerary").value = state.quoteItinerary;
+    $("quote-inclusions").value = state.quoteInclusions;
+    $("quote-exclusions").value = state.quoteExclusions;
+    $("quote-booking-notes").value = state.quoteBookingNotes;
+    toggleQuoteConfig();
   }
 
   function readFromForm() {
@@ -176,6 +249,15 @@
     state.paymentReference = $("payment-reference").value.trim();
     state.bankDetails = $("bank-details").value.trim();
     state.notes = $("notes").value.trim();
+    state.quoteTitle = $("quote-title").value.trim();
+    state.arrivalFlight = $("arrival-flight").value.trim();
+    state.returnFlight = $("return-flight").value.trim();
+    state.vehicle = $("vehicle").value.trim();
+    state.quoteAccommodation = $("quote-accommodation").value.trim();
+    state.quoteItinerary = $("quote-itinerary").value.trim();
+    state.quoteInclusions = $("quote-inclusions").value.trim();
+    state.quoteExclusions = $("quote-exclusions").value.trim();
+    state.quoteBookingNotes = $("quote-booking-notes").value.trim();
     state.updatedAt = new Date().toISOString();
   }
 
@@ -229,10 +311,154 @@
     return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
   }
 
+  function dateRangeText() {
+    if (state.travelStart && state.travelEnd) return `${dateText(state.travelStart)} - ${dateText(state.travelEnd)}`;
+    if (state.travelStart) return dateText(state.travelStart);
+    return "-";
+  }
+
+  function parsePipeRows(text, columns) {
+    return String(text || "")
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line) => {
+        const parts = line.split("|").map((part) => part.trim());
+        while (parts.length < columns) parts.push("");
+        return parts.slice(0, columns);
+      });
+  }
+
+  function parseList(text) {
+    return String(text || "")
+      .split(/\r?\n/)
+      .map((line) => line.trim().replace(/^[-*]\s*/, ""))
+      .filter(Boolean);
+  }
+
+  function quoteHeader() {
+    return `
+      <header class="quote-top">
+        <img class="quote-logo" src="${COMPANY.logo}" alt="BROS Wisata logo"/>
+        <div>
+          <strong>www.broswisata.id</strong>
+          <span>Official Inbound Tour Operator</span>
+        </div>
+      </header>
+    `;
+  }
+
+  function quoteFooter(page) {
+    return `<footer class="quote-footer">Page ${page}</footer>`;
+  }
+
+  function renderQuoteInfoTable() {
+    const party = `${state.pax || "-"} Pax - Private Arrangement`;
+    const rows = [
+      ["Guest Name", state.guestName || "Guest name", "Reference", state.number || "-"],
+      ["Tour Date", dateRangeText(), "Party Size", party],
+      ["Arrival Flight", state.arrivalFlight || "-", "Return Flight", state.returnFlight || "-"],
+      ["Guide", state.owner || "Ahmad / BROS Wisata team", "Vehicle", state.vehicle || "-"]
+    ];
+    return `
+      <table class="quote-info-table">
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <th>${escapeHtml(row[0])}</th>
+              <td>${escapeHtml(row[1])}</td>
+              <th>${escapeHtml(row[2])}</th>
+              <td>${escapeHtml(row[3])}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function renderQuoteTable(headings, rows) {
+    return `
+      <table class="quote-table">
+        <thead><tr>${headings.map((heading) => `<th>${escapeHtml(heading)}</th>`).join("")}</tr></thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>${row.map((cell) => `<td>${escapeHtml(cell || "-")}</td>`).join("")}</tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function renderQuoteList(text) {
+    const items = parseList(text);
+    if (!items.length) return "<p>-</p>";
+    return `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+  }
+
+  function renderQuotationPreview(calc) {
+    const accommodation = parsePipeRows(state.quoteAccommodation || DEFAULT_QUOTE_ACCOMMODATION, 4);
+    const itinerary = parsePipeRows(state.quoteItinerary || DEFAULT_QUOTE_ITINERARY, 3);
+    const paxLabel = `${state.pax || "-"} Pax`;
+    const totalNote = `Rates are quoted in ${state.currency}. Valid for the stated travel period and subject to room availability at the time of booking.`;
+    return `
+      <section class="quote-sheet">
+        ${quoteHeader()}
+        <div class="quote-body">
+          <h1 class="quote-main-title">Private Tour Quotation</h1>
+          <p class="quote-subtitle">${escapeHtml(state.quoteTitle || state.route || "North Sumatra Private Tour")}</p>
+          ${renderQuoteInfoTable()}
+          <section class="quote-investment">
+            <span>Total Private Tour Investment - ${escapeHtml(paxLabel)}</span>
+            <strong>${money(calc.total)}</strong>
+            <p>${escapeHtml(totalNote)}</p>
+          </section>
+          <h2 class="quote-section-title">Accommodation Plan</h2>
+          ${renderQuoteTable(["Date", "Area", "Accommodation", "Remarks"], accommodation)}
+        </div>
+        ${quoteFooter(1)}
+      </section>
+
+      <section class="quote-sheet">
+        ${quoteHeader()}
+        <div class="quote-body">
+          <h1 class="quote-main-title">Detailed Itinerary</h1>
+          ${renderQuoteTable(["Day", "Program", "Meals"], itinerary)}
+        </div>
+        ${quoteFooter(2)}
+      </section>
+
+      <section class="quote-sheet">
+        ${quoteHeader()}
+        <div class="quote-body">
+          <h1 class="quote-main-title">Inclusions & Exclusions</h1>
+          <table class="quote-table quote-list-table">
+            <thead><tr><th>Inclusions</th><th>Exclusions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>${renderQuoteList(state.quoteInclusions || DEFAULT_QUOTE_INCLUSIONS)}</td>
+                <td>${renderQuoteList(state.quoteExclusions || DEFAULT_QUOTE_EXCLUSIONS)}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2 class="quote-section-title">Booking Notes</h2>
+          <div class="quote-notes">${renderQuoteList(state.quoteBookingNotes || DEFAULT_QUOTE_BOOKING_NOTES)}</div>
+        </div>
+        ${quoteFooter(3)}
+      </section>
+    `;
+  }
+
   function renderPreview() {
     const type = TYPES[state.type];
     const calc = calculations();
     $("preview-title-label").textContent = type.title;
+    const preview = $("doc-preview");
+    preview.classList.toggle("quote-format", state.type === "quote");
+    if (state.type === "quote") {
+      preview.innerHTML = renderQuotationPreview(calc);
+      return;
+    }
+
     const rows = state.items.map((item, index) => {
       const qty = toNumber(item.qty);
       const price = toNumber(item.price);
@@ -259,7 +485,7 @@
       </section>
     ` : "";
 
-    $("doc-preview").innerHTML = `
+    preview.innerHTML = `
       <header class="doc-header">
         <div>
           <div class="doc-logo">
@@ -415,7 +641,7 @@
     const docs = loadStore(STORAGE_KEY, []);
     const doc = docs.find((entry) => entry.id === id);
     if (!doc) return;
-    state = clone(doc);
+    state = normalizeState(clone(doc));
     selectedId = state.id;
     bindToForm();
     renderItems();
@@ -502,6 +728,7 @@
             state.number = nextNumber(state.type);
             $("doc-number").value = state.number;
           }
+          toggleQuoteConfig();
         }
         if (!state.number) {
           state.number = nextNumber(state.type);

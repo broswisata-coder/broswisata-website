@@ -38,6 +38,10 @@ button {
   border: 0;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .ops-header {
   position: sticky;
   top: 0;
@@ -317,6 +321,16 @@ h2 {
   line-height: 1.55;
 }
 
+.quote-config {
+  border-color: rgba(15, 71, 176, .28);
+}
+
+.quote-config textarea {
+  min-height: 8.5rem;
+  font-size: .8rem;
+  line-height: 1.55;
+}
+
 .grid {
   display: grid;
   gap: .75rem;
@@ -459,6 +473,250 @@ textarea:focus {
   border-radius: var(--radius);
   background: var(--paper);
   box-shadow: var(--shadow);
+}
+
+.doc-page.quote-format {
+  max-width: 56rem;
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.quote-sheet {
+  min-height: 78rem;
+  margin: 0 auto 1rem;
+  padding: 2.2rem 2.45rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.quote-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 2px solid var(--gold-dark);
+}
+
+.quote-logo {
+  width: 11rem;
+  height: auto;
+  display: block;
+}
+
+.quote-top div {
+  text-align: right;
+}
+
+.quote-top strong {
+  display: block;
+  color: var(--blue-950);
+  font-size: .92rem;
+  font-weight: 900;
+}
+
+.quote-top span {
+  display: block;
+  margin-top: .25rem;
+  color: #5f6b7a;
+  font-size: .78rem;
+}
+
+.quote-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.quote-main-title {
+  margin: 1.65rem 0 .6rem;
+  color: var(--blue-950);
+  font-size: 2rem;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.quote-subtitle {
+  margin: 0 0 .9rem;
+  color: #5f6b7a;
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.quote-info-table,
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.quote-info-table th,
+.quote-info-table td,
+.quote-table th,
+.quote-table td {
+  border: 1px solid #d4deeb;
+  vertical-align: top;
+}
+
+.quote-info-table th {
+  width: 16%;
+  padding: .55rem .62rem;
+  color: var(--blue-800);
+  background: #fbfdff;
+  text-align: left;
+  font-size: .88rem;
+  font-weight: 900;
+}
+
+.quote-info-table td {
+  width: 34%;
+  padding: .55rem .62rem;
+  color: #1f2937;
+  font-size: .88rem;
+  line-height: 1.45;
+}
+
+.quote-investment {
+  margin: .95rem 0 1.6rem;
+  padding: .9rem 1rem 1rem;
+  color: #fff;
+  background: var(--blue-950);
+  text-align: center;
+}
+
+.quote-investment span {
+  display: block;
+  font-size: .9rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.quote-investment strong {
+  display: block;
+  margin-top: .65rem;
+  font-size: 2.15rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.quote-investment p {
+  margin: .85rem auto 0;
+  max-width: 43rem;
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+.quote-section-title {
+  margin: 0 0 .65rem;
+  color: var(--blue-800);
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+
+.quote-table th {
+  padding: .55rem .6rem;
+  color: #fff;
+  background: var(--blue-800);
+  text-align: left;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+.quote-table td {
+  padding: .58rem .6rem;
+  color: #1f2937;
+  font-size: .86rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.quote-table tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+
+.quote-sheet:nth-child(1) .quote-table th:nth-child(1),
+.quote-sheet:nth-child(1) .quote-table td:nth-child(1) {
+  width: 18%;
+}
+
+.quote-sheet:nth-child(1) .quote-table th:nth-child(2),
+.quote-sheet:nth-child(1) .quote-table td:nth-child(2) {
+  width: 18%;
+}
+
+.quote-sheet:nth-child(1) .quote-table th:nth-child(3),
+.quote-sheet:nth-child(1) .quote-table td:nth-child(3) {
+  width: 28%;
+}
+
+.quote-sheet:nth-child(1) .quote-table th:nth-child(4),
+.quote-sheet:nth-child(1) .quote-table td:nth-child(4) {
+  width: 36%;
+}
+
+.quote-sheet:nth-child(2) .quote-table th:nth-child(1),
+.quote-sheet:nth-child(2) .quote-table td:nth-child(1) {
+  width: 15%;
+}
+
+.quote-sheet:nth-child(2) .quote-table th:nth-child(2),
+.quote-sheet:nth-child(2) .quote-table td:nth-child(2) {
+  width: 70%;
+}
+
+.quote-sheet:nth-child(2) .quote-table th:nth-child(3),
+.quote-sheet:nth-child(2) .quote-table td:nth-child(3) {
+  width: 15%;
+}
+
+.quote-list-table th {
+  width: 50%;
+  text-transform: uppercase;
+}
+
+.quote-list-table ul,
+.quote-notes ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-list-table li,
+.quote-notes li {
+  position: relative;
+  margin: 0;
+  padding-left: .75rem;
+}
+
+.quote-list-table li + li,
+.quote-notes li + li {
+  margin-top: .24rem;
+}
+
+.quote-list-table li::before,
+.quote-notes li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+}
+
+.quote-notes {
+  color: #1f2937;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+.quote-footer {
+  margin-top: 1.5rem;
+  color: #5f6b7a;
+  font-size: .72rem;
+  text-align: right;
 }
 
 .doc-header {
@@ -733,6 +991,53 @@ textarea:focus {
     padding: 1.15rem;
   }
 
+  .doc-page.quote-format {
+    padding: 0;
+  }
+
+  .quote-sheet {
+    min-height: auto;
+    padding: 1.05rem;
+  }
+
+  .quote-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .quote-top div {
+    text-align: left;
+  }
+
+  .quote-logo {
+    width: 9.8rem;
+  }
+
+  .quote-main-title {
+    font-size: 1.45rem;
+  }
+
+  .quote-info-table,
+  .quote-info-table tbody,
+  .quote-info-table tr,
+  .quote-info-table th,
+  .quote-info-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .quote-info-table th {
+    border-bottom: 0;
+  }
+
+  .quote-info-table td {
+    border-top: 0;
+  }
+
+  .quote-investment strong {
+    font-size: 1.65rem;
+  }
+
   .doc-title-block {
     text-align: left;
   }
@@ -777,8 +1082,35 @@ textarea:focus {
     print-color-adjust: exact;
   }
 
+  .doc-page.quote-format {
+    max-width: none;
+    background: #fff;
+  }
+
+  .quote-sheet {
+    min-height: calc(297mm - 24mm);
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .quote-sheet:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .quote-table th,
+  .quote-investment {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .brand-logo,
   .doc-logo-image,
+  .quote-logo,
   .status-pill,
   .doc-box,
   .mini-card {
