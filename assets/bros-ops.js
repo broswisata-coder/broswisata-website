@@ -66,6 +66,12 @@
     "The itinerary sequence may be adjusted based on weather, traffic, ferry schedule, and field guidance from the guide.",
     "For jungle trekking, guests should bring a small dry bag, insect repellent, trekking sandals/shoes, quick-dry clothing, and personal medication."
   ].join("\n");
+  const SPLIT_MODELS = {
+    custom: { ahmad: 50, company: 50, label: "Custom / manual split" },
+    "ahmad-led": { ahmad: 60, company: 40, label: "Ahmad-led Trip" },
+    "website-ads-led": { ahmad: 40, company: 60, label: "Website/Ads-led Trip" },
+    "partner-led": { ahmad: 50, company: 50, label: "Partner/Vendor-led Trip" }
+  };
 
   const $ = (id) => document.getElementById(id);
   const fields = [
@@ -76,8 +82,8 @@
     "payment-reference", "bank-details", "notes", "quote-title", "arrival-flight",
     "return-flight", "vehicle", "quote-accommodation", "quote-itinerary",
     "quote-inclusions", "quote-exclusions", "quote-booking-notes",
-    "finance-accommodation-cost", "finance-transport-cost", "finance-activity-cost",
-    "finance-meals-cost", "finance-other-cost", "finance-reserve",
+    "finance-split-model", "finance-accommodation-cost", "finance-transport-cost",
+    "finance-activity-cost", "finance-meals-cost", "finance-other-cost", "finance-reserve",
     "finance-ahmad-share", "finance-company-share", "finance-ahmad-advance",
     "finance-company-advance", "finance-notes"
   ];
@@ -130,6 +136,7 @@
       quoteInclusions: DEFAULT_QUOTE_INCLUSIONS,
       quoteExclusions: DEFAULT_QUOTE_EXCLUSIONS,
       quoteBookingNotes: DEFAULT_QUOTE_BOOKING_NOTES,
+      financeSplitModel: "custom",
       financeAccommodationCost: 0,
       financeTransportCost: 0,
       financeActivityCost: 0,
@@ -174,6 +181,16 @@
     const config = $("quote-config");
     if (!config) return;
     config.classList.toggle("is-hidden", $("doc-type").value !== "quote");
+  }
+
+  function applySplitModel(modelKey) {
+    const preset = SPLIT_MODELS[modelKey];
+    if (!preset || modelKey === "custom") return;
+    state.financeSplitModel = modelKey;
+    state.financeAhmadShare = preset.ahmad;
+    state.financeCompanyShare = preset.company;
+    $("finance-ahmad-share").value = state.financeAhmadShare;
+    $("finance-company-share").value = state.financeCompanyShare;
   }
 
   function nextNumber(type) {
@@ -235,6 +252,7 @@
     $("quote-inclusions").value = state.quoteInclusions;
     $("quote-exclusions").value = state.quoteExclusions;
     $("quote-booking-notes").value = state.quoteBookingNotes;
+    $("finance-split-model").value = state.financeSplitModel;
     $("finance-accommodation-cost").value = state.financeAccommodationCost;
     $("finance-transport-cost").value = state.financeTransportCost;
     $("finance-activity-cost").value = state.financeActivityCost;
@@ -285,6 +303,7 @@
     state.quoteInclusions = $("quote-inclusions").value.trim();
     state.quoteExclusions = $("quote-exclusions").value.trim();
     state.quoteBookingNotes = $("quote-booking-notes").value.trim();
+    state.financeSplitModel = $("finance-split-model").value;
     state.financeAccommodationCost = toNumber($("finance-accommodation-cost").value, 0);
     state.financeTransportCost = toNumber($("finance-transport-cost").value, 0);
     state.financeActivityCost = toNumber($("finance-activity-cost").value, 0);
@@ -370,6 +389,7 @@
     const target = $("finance-summary");
     if (!target) return;
     const finance = financeCalculations();
+    const splitModel = SPLIT_MODELS[state.financeSplitModel] || SPLIT_MODELS.custom;
     const shareWarning = finance.sharePercentTotal !== 100
       ? `<p class="finance-warning">Profit share total is ${finance.sharePercentTotal}%. Use 100% for a clean full split, or leave a remainder intentionally.</p>`
       : "";
@@ -381,9 +401,10 @@
       <div class="finance-card"><span>Payment received</span><strong>${money(state.amountReceived)}</strong></div>
       <div class="finance-card"><span>Direct trip cost</span><strong>${money(finance.directCost)}</strong></div>
       <div class="finance-card"><span>Operational reserve</span><strong>${money(finance.reserve)}</strong></div>
+      <div class="finance-card"><span>Split model</span><strong>${escapeHtml(splitModel.label)}</strong></div>
       <div class="finance-card ${finance.netProfit < 0 ? "danger-card" : "good-card"}"><span>Net profit before split</span><strong>${money(finance.netProfit)}</strong></div>
       <div class="finance-card"><span>Ahmad share (${state.financeAhmadShare || 0}%)</span><strong>${money(finance.ahmadShare)}</strong></div>
-      <div class="finance-card"><span>Company / owner share (${state.financeCompanyShare || 0}%)</span><strong>${money(finance.companyShare)}</strong></div>
+      <div class="finance-card"><span>Faris / company share (${state.financeCompanyShare || 0}%)</span><strong>${money(finance.companyShare)}</strong></div>
       <div class="finance-card"><span>Cash after direct cost</span><strong>${money(finance.cashAfterCosts)}</strong></div>
       ${shareWarning}
       ${lossWarning}
@@ -394,6 +415,7 @@
     readFromForm();
     renderFinanceSummary();
     const finance = financeCalculations();
+    const splitModel = SPLIT_MODELS[state.financeSplitModel] || SPLIT_MODELS.custom;
     const text = [
       "BROS Wisata - Internal Settlement",
       `Document: ${state.number || "-"}`,
@@ -408,10 +430,11 @@
       `Operational reserve: ${money(finance.reserve)}`,
       `Net profit before split: ${money(finance.netProfit)}`,
       "",
+      `Split model: ${splitModel.label}`,
       `Ahmad share (${state.financeAhmadShare || 0}%): ${money(finance.ahmadShare)}`,
-      `Company / owner share (${state.financeCompanyShare || 0}%): ${money(finance.companyShare)}`,
+      `Faris / company share (${state.financeCompanyShare || 0}%): ${money(finance.companyShare)}`,
       `Ahmad advance / cash paid: ${money(state.financeAhmadAdvance)}`,
-      `Company advance / cash paid: ${money(state.financeCompanyAdvance)}`,
+      `Faris / company advance: ${money(state.financeCompanyAdvance)}`,
       "",
       `Notes: ${state.financeNotes || "-"}`
     ].join("\n");
@@ -854,6 +877,13 @@
             $("doc-number").value = state.number;
           }
           toggleQuoteConfig();
+        }
+        if (id === "finance-split-model") {
+          applySplitModel($("finance-split-model").value);
+        }
+        if (id === "finance-ahmad-share" || id === "finance-company-share") {
+          state.financeSplitModel = "custom";
+          $("finance-split-model").value = "custom";
         }
         if (!state.number) {
           state.number = nextNumber(state.type);

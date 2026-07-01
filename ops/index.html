@@ -133,6 +133,16 @@
       </details>
 
       <details>
+        <summary>Role Ahmad, Faris, dan kas BROS</summary>
+        <div class="guide-rules">
+          <div><strong>Ahmad - front ops</strong><span>Ujung tombak tamu, guide lapangan, admin komunikasi, dokumentasi trip, dan penguat testimoni. Guide/admin fee dibayar sebagai biaya kerja sebelum profit sharing.</span></div>
+          <div><strong>Faris - back ops</strong><span>Susun paket, HPP, pricing, website, ads, legal, sistem, dan growth. Back ops/marketing cost dicatat sebagai biaya atau investasi sebelum menghitung profit final.</span></div>
+          <div><strong>BROS cash reserve</strong><span>Kas usaha dipakai untuk ads berikutnya, emergency trip, refund kecil, sistem, konten, dan perbaikan operasional.</span></div>
+          <div><strong>Rule utama</strong><span>Fee kerja, reimbursement, dan reserve dipisahkan dari profit share. Profit baru dibagi setelah direct cost dan reserve aman.</span></div>
+        </div>
+      </details>
+
+      <details>
         <summary>Legal profile BROS</summary>
         <div class="guide-rules">
           <div><strong>Legal entity</strong><span>PT BROS INTI WISATA, based in Kota Medan, North Sumatra.</span></div>
@@ -291,6 +301,14 @@
         <button class="tiny" id="btn-copy-settlement" type="button">Copy settlement</button>
       </div>
       <p class="panel-note">For internal settlement between BROS and Ahmad. These notes are saved locally and never appear on guest PDFs.</p>
+      <label>Split Model
+        <select id="finance-split-model">
+          <option value="custom">Custom / manual split</option>
+          <option value="ahmad-led">Ahmad-led Trip - 60% Ahmad / 40% Faris-company</option>
+          <option value="website-ads-led">Website/Ads-led Trip - 40% Ahmad / 60% Faris-company</option>
+          <option value="partner-led">Partner/Vendor-led Trip - 50% Ahmad / 50% Faris-company</option>
+        </select>
+      </label>
       <div class="grid two">
         <label>Accommodation Cost
           <input id="finance-accommodation-cost" min="0" step="0.01" type="number"/>
@@ -313,13 +331,13 @@
         <label>Ahmad Profit Share %
           <input id="finance-ahmad-share" min="0" max="100" step="1" type="number"/>
         </label>
-        <label>Company / Owner Share %
+        <label>Faris / Company Share %
           <input id="finance-company-share" min="0" max="100" step="1" type="number"/>
         </label>
         <label>Ahmad Advance / Cash Paid
           <input id="finance-ahmad-advance" min="0" step="0.01" type="number"/>
         </label>
-        <label>Company Advance / Cash Paid
+        <label>Faris / Company Advance
           <input id="finance-company-advance" min="0" step="0.01" type="number"/>
         </label>
       </div>
