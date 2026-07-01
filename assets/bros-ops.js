@@ -26,7 +26,7 @@
   ].join("\n");
   const DEFAULT_BANK_DETAILS = [
     "Official company payment account:",
-    "Account Name: PT BROS INTI WISATA",
+    "Account Name: BROS INTI WISATA PT",
     "Bank: BNI",
     "Currency: IDR",
     "Account No.: 7770078901",
