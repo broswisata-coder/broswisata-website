@@ -24,6 +24,14 @@
     "A deposit confirms the booking. Balance payment follows the agreed due date.",
     "Any change in itinerary, hotel class, ferry schedule, guest count, or activity permit may change the final quotation."
   ].join("\n");
+  const DEFAULT_BANK_DETAILS = [
+    "Official company payment account:",
+    "Account Name: PT BROS INTI WISATA",
+    "Bank: BNI",
+    "Currency: IDR",
+    "Account No.: 7770078901",
+    "Please send transfer proof to BROS Wisata after payment."
+  ].join("\n");
   const DEFAULT_ITEMS = [
     { desc: "Private North Sumatra tour arrangement", qty: 1, unit: "package", price: 0 },
     { desc: "Private transport, driver, and route coordination", qty: 1, unit: "package", price: 0 },
@@ -125,7 +133,7 @@
       receivedDate: today(),
       paymentMethod: "",
       paymentReference: "",
-      bankDetails: "",
+      bankDetails: DEFAULT_BANK_DETAILS,
       notes: DEFAULT_NOTES,
       quoteTitle: "6 Days 5 Nights North Sumatra Private Tour - Bukit Lawang, Berastagi & Lake Toba",
       arrivalFlight: "",
@@ -161,6 +169,9 @@
     const merged = { ...base, ...(doc || {}) };
     if (!Array.isArray(merged.items) || !merged.items.length) {
       merged.items = clone(DEFAULT_ITEMS);
+    }
+    if (!merged.bankDetails) {
+      merged.bankDetails = DEFAULT_BANK_DETAILS;
     }
     return merged;
   }
@@ -693,8 +704,8 @@
       ${receiptBlock}
 
       <section class="doc-section">
-        <h3>Payment Instruction</h3>
-        <p class="notes">${escapeHtml(state.bankDetails || "Add official bank account, Wise instruction, or payment link before sending this document.")}</p>
+        <h3>${state.type === "receipt" ? "Official Receiving Account" : "Payment Instruction"}</h3>
+        <p class="notes">${escapeHtml(state.bankDetails || DEFAULT_BANK_DETAILS)}</p>
       </section>
 
       <section class="doc-section">
