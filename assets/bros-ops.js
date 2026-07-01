@@ -75,7 +75,11 @@
     "deposit-percent", "amount-received", "received-date", "payment-method",
     "payment-reference", "bank-details", "notes", "quote-title", "arrival-flight",
     "return-flight", "vehicle", "quote-accommodation", "quote-itinerary",
-    "quote-inclusions", "quote-exclusions", "quote-booking-notes"
+    "quote-inclusions", "quote-exclusions", "quote-booking-notes",
+    "finance-accommodation-cost", "finance-transport-cost", "finance-activity-cost",
+    "finance-meals-cost", "finance-other-cost", "finance-reserve",
+    "finance-ahmad-share", "finance-company-share", "finance-ahmad-advance",
+    "finance-company-advance", "finance-notes"
   ];
 
   let state = defaultState();
@@ -126,6 +130,17 @@
       quoteInclusions: DEFAULT_QUOTE_INCLUSIONS,
       quoteExclusions: DEFAULT_QUOTE_EXCLUSIONS,
       quoteBookingNotes: DEFAULT_QUOTE_BOOKING_NOTES,
+      financeAccommodationCost: 0,
+      financeTransportCost: 0,
+      financeActivityCost: 0,
+      financeMealsCost: 0,
+      financeOtherCost: 0,
+      financeReserve: 0,
+      financeAhmadShare: 50,
+      financeCompanyShare: 50,
+      financeAhmadAdvance: 0,
+      financeCompanyAdvance: 0,
+      financeNotes: "",
       updatedAt: new Date().toISOString()
     };
   }
@@ -181,6 +196,7 @@
     renderItems();
     renderSavedList();
     renderPreview();
+    renderFinanceSummary();
   }
 
   function bindToForm() {
@@ -219,6 +235,17 @@
     $("quote-inclusions").value = state.quoteInclusions;
     $("quote-exclusions").value = state.quoteExclusions;
     $("quote-booking-notes").value = state.quoteBookingNotes;
+    $("finance-accommodation-cost").value = state.financeAccommodationCost;
+    $("finance-transport-cost").value = state.financeTransportCost;
+    $("finance-activity-cost").value = state.financeActivityCost;
+    $("finance-meals-cost").value = state.financeMealsCost;
+    $("finance-other-cost").value = state.financeOtherCost;
+    $("finance-reserve").value = state.financeReserve;
+    $("finance-ahmad-share").value = state.financeAhmadShare;
+    $("finance-company-share").value = state.financeCompanyShare;
+    $("finance-ahmad-advance").value = state.financeAhmadAdvance;
+    $("finance-company-advance").value = state.financeCompanyAdvance;
+    $("finance-notes").value = state.financeNotes;
     toggleQuoteConfig();
   }
 
@@ -258,6 +285,17 @@
     state.quoteInclusions = $("quote-inclusions").value.trim();
     state.quoteExclusions = $("quote-exclusions").value.trim();
     state.quoteBookingNotes = $("quote-booking-notes").value.trim();
+    state.financeAccommodationCost = toNumber($("finance-accommodation-cost").value, 0);
+    state.financeTransportCost = toNumber($("finance-transport-cost").value, 0);
+    state.financeActivityCost = toNumber($("finance-activity-cost").value, 0);
+    state.financeMealsCost = toNumber($("finance-meals-cost").value, 0);
+    state.financeOtherCost = toNumber($("finance-other-cost").value, 0);
+    state.financeReserve = toNumber($("finance-reserve").value, 0);
+    state.financeAhmadShare = toNumber($("finance-ahmad-share").value, 0);
+    state.financeCompanyShare = toNumber($("finance-company-share").value, 0);
+    state.financeAhmadAdvance = toNumber($("finance-ahmad-advance").value, 0);
+    state.financeCompanyAdvance = toNumber($("finance-company-advance").value, 0);
+    state.financeNotes = $("finance-notes").value.trim();
     state.updatedAt = new Date().toISOString();
   }
 
@@ -291,6 +329,30 @@
     return { subtotal, total, deposit, balance };
   }
 
+  function financeCalculations() {
+    const calc = calculations();
+    const directCost = state.financeAccommodationCost + state.financeTransportCost +
+      state.financeActivityCost + state.financeMealsCost + state.financeOtherCost;
+    const reserve = Math.max(0, state.financeReserve);
+    const netProfit = calc.total - directCost - reserve;
+    const shareableProfit = Math.max(0, netProfit);
+    const ahmadShare = shareableProfit * Math.max(0, state.financeAhmadShare) / 100;
+    const companyShare = shareableProfit * Math.max(0, state.financeCompanyShare) / 100;
+    const sharePercentTotal = Math.max(0, state.financeAhmadShare) + Math.max(0, state.financeCompanyShare);
+    const cashAfterCosts = state.amountReceived - directCost;
+    return {
+      ...calc,
+      directCost,
+      reserve,
+      netProfit,
+      shareableProfit,
+      ahmadShare,
+      companyShare,
+      sharePercentTotal,
+      cashAfterCosts
+    };
+  }
+
   function money(amount) {
     const noDecimal = state.currency === "IDR";
     try {
@@ -301,6 +363,64 @@
       }).format(amount || 0);
     } catch (error) {
       return `${state.currency} ${(amount || 0).toLocaleString("en-US")}`;
+    }
+  }
+
+  function renderFinanceSummary() {
+    const target = $("finance-summary");
+    if (!target) return;
+    const finance = financeCalculations();
+    const shareWarning = finance.sharePercentTotal !== 100
+      ? `<p class="finance-warning">Profit share total is ${finance.sharePercentTotal}%. Use 100% for a clean full split, or leave a remainder intentionally.</p>`
+      : "";
+    const lossWarning = finance.netProfit < 0
+      ? `<p class="finance-warning">Estimated profit is negative. Review price, costs, reserve, or unpaid vendor bills before settlement.</p>`
+      : "";
+    target.innerHTML = `
+      <div class="finance-card"><span>Guest total</span><strong>${money(finance.total)}</strong></div>
+      <div class="finance-card"><span>Payment received</span><strong>${money(state.amountReceived)}</strong></div>
+      <div class="finance-card"><span>Direct trip cost</span><strong>${money(finance.directCost)}</strong></div>
+      <div class="finance-card"><span>Operational reserve</span><strong>${money(finance.reserve)}</strong></div>
+      <div class="finance-card ${finance.netProfit < 0 ? "danger-card" : "good-card"}"><span>Net profit before split</span><strong>${money(finance.netProfit)}</strong></div>
+      <div class="finance-card"><span>Ahmad share (${state.financeAhmadShare || 0}%)</span><strong>${money(finance.ahmadShare)}</strong></div>
+      <div class="finance-card"><span>Company / owner share (${state.financeCompanyShare || 0}%)</span><strong>${money(finance.companyShare)}</strong></div>
+      <div class="finance-card"><span>Cash after direct cost</span><strong>${money(finance.cashAfterCosts)}</strong></div>
+      ${shareWarning}
+      ${lossWarning}
+    `;
+  }
+
+  async function copySettlementText() {
+    readFromForm();
+    renderFinanceSummary();
+    const finance = financeCalculations();
+    const text = [
+      "BROS Wisata - Internal Settlement",
+      `Document: ${state.number || "-"}`,
+      `Guest: ${state.guestName || "-"}`,
+      `Route: ${state.route || "-"}`,
+      `Travel date: ${dateRangeText()}`,
+      "",
+      `Guest total: ${money(finance.total)}`,
+      `Payment received: ${money(state.amountReceived)}`,
+      `Balance from guest: ${money(finance.balance)}`,
+      `Direct trip cost: ${money(finance.directCost)}`,
+      `Operational reserve: ${money(finance.reserve)}`,
+      `Net profit before split: ${money(finance.netProfit)}`,
+      "",
+      `Ahmad share (${state.financeAhmadShare || 0}%): ${money(finance.ahmadShare)}`,
+      `Company / owner share (${state.financeCompanyShare || 0}%): ${money(finance.companyShare)}`,
+      `Ahmad advance / cash paid: ${money(state.financeAhmadAdvance)}`,
+      `Company advance / cash paid: ${money(state.financeCompanyAdvance)}`,
+      "",
+      `Notes: ${state.financeNotes || "-"}`
+    ].join("\n");
+    try {
+      await navigator.clipboard.writeText(text);
+      $("autosave-state").textContent = "Settlement copied";
+    } catch (error) {
+      $("autosave-state").textContent = "Copy failed";
+      window.prompt("Copy settlement text", text);
     }
   }
 
@@ -584,6 +704,7 @@
     readFromForm();
     saveStore(DRAFT_KEY, state);
     renderPreview();
+    renderFinanceSummary();
     $("autosave-state").textContent = `Autosaved ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   }
 
@@ -602,6 +723,7 @@
     selectedId = state.id;
     renderSavedList();
     renderPreview();
+    renderFinanceSummary();
     $("autosave-state").textContent = "Saved";
   }
 
@@ -647,6 +769,7 @@
     renderItems();
     renderSavedList();
     renderPreview();
+    renderFinanceSummary();
     saveStore(DRAFT_KEY, state);
     $("autosave-state").textContent = "Loaded";
   }
@@ -662,6 +785,7 @@
     renderItems();
     renderSavedList();
     renderPreview();
+    renderFinanceSummary();
     saveStore(DRAFT_KEY, state);
   }
 
@@ -673,6 +797,7 @@
     renderItems();
     renderSavedList();
     renderPreview();
+    renderFinanceSummary();
     saveStore(DRAFT_KEY, state);
   }
 
@@ -772,6 +897,7 @@
     });
     $("btn-export").addEventListener("click", exportJson);
     $("btn-copy-wa").addEventListener("click", copyWhatsAppText);
+    $("btn-copy-settlement").addEventListener("click", copySettlementText);
     $("btn-delete").addEventListener("click", deleteSelected);
     $("saved-list").addEventListener("click", (event) => {
       const item = event.target.closest("[data-load]");

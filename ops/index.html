@@ -122,6 +122,17 @@
       </details>
 
       <details>
+        <summary>Profit sharing & catatan keuangan</summary>
+        <ul class="guide-list">
+          <li>Bedakan omset, uang masuk, biaya trip, reserve, dan profit. Jangan membagi profit dari deposit sebelum biaya dasar trip aman.</li>
+          <li>Gross sales adalah total tagihan ke tamu. Direct cost adalah biaya hotel, transport, guide/ranger, tiket, ferry, makan, parkir, tol, dan kebutuhan operasional.</li>
+          <li>Net profit dihitung dari gross sales dikurangi direct cost dan operational reserve. Profit sharing Ahmad dan perusahaan dihitung dari net profit, bukan dari omset.</li>
+          <li>Settlement final sebaiknya dibuat setelah trip selesai, semua bukti biaya terkumpul, dan tidak ada tagihan vendor yang menggantung.</li>
+          <li>Catat siapa yang memegang uang atau talangan. Export JSON berkala sebagai backup internal.</li>
+        </ul>
+      </details>
+
+      <details>
         <summary>Legal profile BROS</summary>
         <div class="guide-rules">
           <div><strong>Legal entity</strong><span>PT BROS INTI WISATA, based in Kota Medan, North Sumatra.</span></div>
@@ -269,6 +280,53 @@
       <label>Notes / Terms
         <textarea id="notes" rows="4"></textarea>
       </label>
+    </section>
+
+    <section class="panel-card finance-panel">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Internal finance</span>
+          <h2>Profit sharing worksheet</h2>
+        </div>
+        <button class="tiny" id="btn-copy-settlement" type="button">Copy settlement</button>
+      </div>
+      <p class="panel-note">For internal settlement between BROS and Ahmad. These notes are saved locally and never appear on guest PDFs.</p>
+      <div class="grid two">
+        <label>Accommodation Cost
+          <input id="finance-accommodation-cost" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Transport / Fuel Cost
+          <input id="finance-transport-cost" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Activities / Guide Cost
+          <input id="finance-activity-cost" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Meals / Water Cost
+          <input id="finance-meals-cost" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Other Direct Cost
+          <input id="finance-other-cost" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Operational Reserve
+          <input id="finance-reserve" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Ahmad Profit Share %
+          <input id="finance-ahmad-share" min="0" max="100" step="1" type="number"/>
+        </label>
+        <label>Company / Owner Share %
+          <input id="finance-company-share" min="0" max="100" step="1" type="number"/>
+        </label>
+        <label>Ahmad Advance / Cash Paid
+          <input id="finance-ahmad-advance" min="0" step="0.01" type="number"/>
+        </label>
+        <label>Company Advance / Cash Paid
+          <input id="finance-company-advance" min="0" step="0.01" type="number"/>
+        </label>
+      </div>
+      <label>Internal Settlement Notes
+        <textarea id="finance-notes" rows="4" placeholder="Vendor bills, cash held by Ahmad/company, unpaid costs, final settlement agreement."></textarea>
+      </label>
+      <div class="finance-summary" id="finance-summary"></div>
     </section>
 
     <section class="panel-card saved-card">
