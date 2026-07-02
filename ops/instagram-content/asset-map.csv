@@ -1,0 +1,18 @@
+post_key,format,language,asset_paths,notes
+meet-ahmad-pin,carousel,en,"assets/gallery/gallery_13_salim_portrait.jpg; assets/gallery/gallery_08_vehicle_selfie.jpg; bros-wisata-logos/bros-wisata-logo-horizontal-large-2000px.png","Use as pinned trust post. Replace portrait with better Ahmad photo when available."
+bukit-lawang-4d3n,en-carousel,en,"assets/ig/bukit_lawang_4h3m/en/01_cover.png; assets/ig/bukit_lawang_4h3m/en/02_highlights.png; assets/ig/bukit_lawang_4h3m/en/03_itinerary.png; assets/ig/bukit_lawang_4h3m/en/04_cta.png","Ready carousel for Europe/Singapore."
+bukit-lawang-4d3n-my,my-carousel,my,"assets/ig/bukit_lawang_4h3m/my/01_cover.png; assets/ig/bukit_lawang_4h3m/my/02_highlights.png; assets/ig/bukit_lawang_4h3m/my/03_itinerary.png; assets/ig/bukit_lawang_4h3m/my/04_cta.png","Ready carousel for Malaysia."
+tangkahan-3d2n,en-carousel,en,"assets/ig/tangkahan_3h2m/en/01_cover.png; assets/ig/tangkahan_3h2m/en/02_highlights.png; assets/ig/tangkahan_3h2m/en/03_itinerary.png; assets/ig/tangkahan_3h2m/en/04_cta.png","Eco tour carousel."
+tangkahan-3d2n-my,my-carousel,my,"assets/ig/tangkahan_3h2m/my/01_cover.png; assets/ig/tangkahan_3h2m/my/02_highlights.png; assets/ig/tangkahan_3h2m/my/03_itinerary.png; assets/ig/tangkahan_3h2m/my/04_cta.png","Malaysia version."
+berastagi-3d2n,en-carousel,en,"assets/ig/berastagi_3h2m/en/01_cover.png; assets/ig/berastagi_3h2m/en/02_highlights.png; assets/ig/berastagi_3h2m/en/03_itinerary.png; assets/ig/berastagi_3h2m/en/04_cta.png","Volcano/highland route."
+berastagi-3d2n-my,my-carousel,my,"assets/ig/berastagi_3h2m/my/01_cover.png; assets/ig/berastagi_3h2m/my/02_highlights.png; assets/ig/berastagi_3h2m/my/03_itinerary.png; assets/ig/berastagi_3h2m/my/04_cta.png","Malaysia version."
+combo-sumut-6d5n,en-carousel,en,"assets/ig/combo_sumut_6h5m/en/01_cover.png; assets/ig/combo_sumut_6h5m/en/02_highlights.png; assets/ig/combo_sumut_6h5m/en/03_itinerary.png; assets/ig/combo_sumut_6h5m/en/04_cta.png","Best complete North Sumatra carousel."
+combo-sumut-6d5n-my,my-carousel,my,"assets/ig/combo_sumut_6h5m/my/01_cover.png; assets/ig/combo_sumut_6h5m/my/02_highlights.png; assets/ig/combo_sumut_6h5m/my/03_itinerary.png; assets/ig/combo_sumut_6h5m/my/04_cta.png","Malaysia complete route."
+medan-heritage,en-carousel,en,"assets/ig/medan_heritage_3h2m/en/01_cover.png; assets/ig/medan_heritage_3h2m/en/02_highlights.png; assets/ig/medan_heritage_3h2m/en/03_itinerary.png; assets/ig/medan_heritage_3h2m/en/04_cta.png","Good for first-time Medan guests."
+medan-heritage-my,my-carousel,my,"assets/ig/medan_heritage_3h2m/my/01_cover.png; assets/ig/medan_heritage_3h2m/my/02_highlights.png; assets/ig/medan_heritage_3h2m/my/03_itinerary.png; assets/ig/medan_heritage_3h2m/my/04_cta.png","Malaysia version."
+responsible-travel,single,en,"assets/gallery/gallery_15_orangutan_encounter.jpg","Use text overlay: Wild encounters need respect."
+lake-toba-samosir,single,en,"assets/hero-lake-toba.jpg; assets/gallery/gallery_03_samosir_port.jpg","Use for scenic/top-of-funnel content."
+berastagi-sibayak,single,en,"assets/gallery/gallery_02_sibayak_crater.jpg","Use for highland/volcano tips."
+tangkahan-river,single,en,"assets/gallery/gallery_17_river_rapids.jpg; assets/gallery/gallery_16_tube_rafting.jpg","Use for adventure content."
+halal-friendly,my-single,my,"assets/gallery/gallery_14_halal_friendly_dinner.jpg","Use for Malaysia/Singapore Muslim travelers."
+
