@@ -1,6 +1,6 @@
 # BROS Wisata Instagram Content Kit
 
-Internal content kit for @broswisata.id.
+Internal content kit for @broswisata.
 
 Positioning:
 - Private North Sumatra tours from Medan.
@@ -11,10 +11,17 @@ Positioning:
 
 Recommended profile bio:
 
-Private North Sumatra tours from Medan  
-Bukit Lawang | Lake Toba | Berastagi  
-Local route planning with Ahmad  
+Private North Sumatra tours from Medan
+Bukit Lawang | Lake Toba | Berastagi
+Local route planning with Ahmad
 Custom quote by WhatsApp
+
+Alternative short bio for Instagram:
+
+BROS WISATA | Hub of Sumatra
+Private North Sumatra tours
+Lake Toba | Bukit Lawang | Berastagi
+Plan your trip with Ahmad
 
 Recommended bio link:
 
@@ -53,4 +60,4 @@ Admin rule:
 - Do not post bank account details on Instagram.
 - Use quote-by-request language for tours.
 - Use English for Europe/Singapore posts and Malay for Malaysia-focused posts.
-
+- Current official Instagram handle: @broswisata.
