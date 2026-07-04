@@ -124,6 +124,38 @@ All halal packages include:
 - Specialties: Family tours, honeymoon tours, corporate retreats, photography tours
 - URL: https://broswisata.id/en/bros-wisata-custom-tour
 
+## High-Intent Planning Pages
+
+These pages are designed for travelers who search by trip intent before choosing a package.
+
+**Private North Sumatra Tour from Medan**
+- Positioning: primary commercial landing page for travelers wanting a flexible private route from Medan
+- Covers: Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, halal-friendly stops, and custom quotation by request
+- English: https://broswisata.id/en/private-north-sumatra-tour
+- Bahasa Indonesia: https://broswisata.id/id/private-tour-sumatra-utara
+- Bahasa Melayu: https://broswisata.id/ms/pakej-private-tour-sumatera-utara
+
+**Bukit Lawang Orangutan Trekking**
+- Positioning: eco-tourism landing page for ethical jungle trekking and local guide planning
+- Covers: Gunung Leuser, orangutan trekking, local guide partners, jungle lodge, river tubing, and responsible wildlife distance
+- English: https://broswisata.id/en/bukit-lawang-orangutan-trekking
+- Bahasa Indonesia: https://broswisata.id/id/wisata-bukit-lawang-orangutan
+- Bahasa Melayu: https://broswisata.id/ms/bukit-lawang-orangutan-trekking
+
+**Lake Toba and Samosir Private Tour**
+- Positioning: Lake Toba route-planning page for families, couples, and private groups
+- Covers: Medan, Berastagi, Sipiso-Piso, Samosir Island, ferry timing, Batak culture, and final drop-off planning
+- English: https://broswisata.id/en/lake-toba-samosir-private-tour
+- Bahasa Indonesia: https://broswisata.id/id/private-tour-lake-toba-samosir
+- Bahasa Melayu: https://broswisata.id/ms/pakej-lake-toba-samosir
+
+**Singapore to North Sumatra Private Tour**
+- Positioning: market-specific landing page for Singapore travelers flying SIN-KNO
+- Covers: Kualanamu arrival planning, solo/private quotations, final Medan night, deposit/payment terms, Lake Toba, Bukit Lawang, and Berastagi
+- English: https://broswisata.id/en/singapore-to-north-sumatra-tour
+- Bahasa Indonesia: https://broswisata.id/id/tour-sumatra-utara-dari-singapore
+- Bahasa Melayu: https://broswisata.id/ms/pakej-sumatera-utara-dari-singapore
+
 ## Ahmad - Local Route Curator
 
 - Ahmad Salim Saleh is the field-facing local route curator for BROS Wisata private North Sumatra tours
