@@ -1,12 +1,21 @@
 (function () {
   var AHMAD_PHONE = "6281260139399";
   var SOURCE_MARKER = "[WEB INQUIRY - BROS WISATA]";
+  var ATTRIBUTION_KEY = "bros_attribution_v1";
 
   function cleanText(value) {
     return String(value || "")
       .replace(/\s+/g, " ")
       .trim()
       .slice(0, 90);
+  }
+
+  function cleanParam(value) {
+    return String(value || "")
+      .replace(/\s+/g, " ")
+      .replace(/[<>]/g, "")
+      .trim()
+      .slice(0, 80);
   }
 
   function pageLanguage() {
@@ -49,13 +58,85 @@
     callback(window.clarity);
   }
 
+  function readStoredAttribution() {
+    try {
+      var raw = window.sessionStorage && window.sessionStorage.getItem(ATTRIBUTION_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (error) {
+      return {};
+    }
+  }
+
+  function writeStoredAttribution(value) {
+    try {
+      if (window.sessionStorage) {
+        window.sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(value));
+      }
+    } catch (error) {
+      // Attribution is helpful, but WhatsApp links must keep working without storage.
+    }
+  }
+
+  function captureAttribution() {
+    try {
+      var params = new URLSearchParams(window.location.search || "");
+      var current = readStoredAttribution();
+      var next = {
+        source: cleanParam(params.get("utm_source") || current.source || ""),
+        medium: cleanParam(params.get("utm_medium") || current.medium || ""),
+        campaign: cleanParam(params.get("utm_campaign") || current.campaign || ""),
+        content: cleanParam(params.get("utm_content") || current.content || ""),
+        term: cleanParam(params.get("utm_term") || current.term || ""),
+        referrer: cleanParam(current.referrer || document.referrer || ""),
+        landing_path: cleanParam(current.landing_path || window.location.pathname),
+        captured_at: current.captured_at || new Date().toISOString()
+      };
+
+      if (params.get("gclid") || params.get("gbraid") || params.get("wbraid")) {
+        next.ad_click = "google_ads";
+        if (!next.source) next.source = "google";
+        if (!next.medium) next.medium = "cpc";
+      } else {
+        next.ad_click = cleanParam(current.ad_click || "");
+      }
+
+      if (next.source || next.medium || next.campaign || next.ad_click || next.referrer) {
+        writeStoredAttribution(next);
+      }
+    } catch (error) {
+      // Ignore attribution parsing errors.
+    }
+  }
+
+  function attributionLines() {
+    var data = readStoredAttribution();
+    var lines = [];
+    var traffic = [data.source, data.medium].filter(Boolean).join("/");
+
+    if (traffic) lines.push("Traffic: " + traffic);
+    if (data.campaign) lines.push("Campaign: " + data.campaign);
+    if (data.content) lines.push("Content: " + data.content);
+    if (data.term) lines.push("Keyword: " + data.term);
+    if (data.ad_click) lines.push("Ad Click: " + data.ad_click);
+    if (data.landing_path && data.landing_path !== window.location.pathname) {
+      lines.push("Landing: " + data.landing_path);
+    }
+
+    return lines;
+  }
+
   function setClarityContext() {
+    var attr = readStoredAttribution();
     withClarity(function (clarity) {
       clarity("set", "site", "broswisata");
       clarity("set", "language", pageLanguage());
       clarity("set", "market", marketSegment());
       clarity("set", "page_type", pageType());
       clarity("set", "page_path", window.location.pathname);
+      if (attr.source) clarity("set", "utm_source", attr.source);
+      if (attr.medium) clarity("set", "utm_medium", attr.medium);
+      if (attr.campaign) clarity("set", "utm_campaign", attr.campaign);
+      if (attr.ad_click) clarity("set", "ad_click", attr.ad_click);
     });
   }
 
@@ -70,6 +151,34 @@
       clarity("event", "lead_whatsapp_inquiry");
       clarity("upgrade", "lead_whatsapp_inquiry");
     });
+  }
+
+  function analyticsPayload(anchor) {
+    var attr = readStoredAttribution();
+    return {
+      event_category: "Contact",
+      event_label: ctaName(anchor),
+      page_path: window.location.pathname,
+      page_language: pageLanguage(),
+      market_segment: marketSegment(),
+      page_type: pageType(),
+      traffic_source: attr.source || "",
+      traffic_medium: attr.medium || "",
+      traffic_campaign: attr.campaign || "",
+      ad_click: attr.ad_click || ""
+    };
+  }
+
+  function trackAnalyticsWhatsapp(anchor) {
+    if (typeof window.gtag === "function") {
+      var payload = analyticsPayload(anchor);
+      window.gtag("event", "whatsapp_click", payload);
+      window.gtag("event", "lead_whatsapp_inquiry", payload);
+    }
+
+    if (typeof window.fbq === "function") {
+      window.fbq("trackCustom", "WhatsAppLead", analyticsPayload(anchor));
+    }
   }
 
   function sectionName(anchor) {
@@ -97,6 +206,9 @@
     ];
 
     if (section) lines.push("Section: " + section);
+    attributionLines().forEach(function (line) {
+      lines.push(line);
+    });
     lines.push("");
     return lines.join("\n");
   }
@@ -134,10 +246,12 @@
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
+      captureAttribution();
       refreshWhatsappLinks();
       setClarityContext();
     });
   } else {
+    captureAttribution();
     refreshWhatsappLinks();
     setClarityContext();
   }
@@ -149,6 +263,7 @@
       if (anchor) {
         updateWhatsappLink(anchor);
         trackClarityWhatsapp(anchor);
+        trackAnalyticsWhatsapp(anchor);
       }
     },
     true

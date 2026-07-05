@@ -10,7 +10,7 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://broswisata.id"
-LASTMOD = "2026-07-04"
+LASTMOD = "2026-07-05"
 LANG_ORDER = ["en", "ms", "id"]
 
 
@@ -409,6 +409,41 @@ def abs_url(path: str) -> str:
     return SITE + path
 
 
+def analytics_snippet() -> str:
+    return """
+<!-- Google Analytics 4 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVH9HY8P8P', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+      if (document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"]')) return;
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P';
+      document.head.appendChild(gtagScript);
+    }, 1500);
+  });
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  window.addEventListener('load', function() {
+    window.setTimeout(function() {
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wles2u2nk2");
+    }, 1800);
+  });
+</script>""".strip()
+
+
 def page_url(hub: dict, lang: str) -> str:
     return f"{SITE}/{lang}/{hub['slugs'][lang]}"
 
@@ -626,6 +661,7 @@ def build_page(hub: dict, lang: str) -> str:
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
 <script type="application/ld+json">{schema_for(hub, lang)}</script>
+{analytics_snippet()}
 </head>
 <body class="seo-page">
 {nav(lang)}
