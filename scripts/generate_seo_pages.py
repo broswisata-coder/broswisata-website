@@ -163,11 +163,11 @@ HUBS = [
     },
     {
         "key": "bukit-lawang-orangutan-trekking",
-        "image": "/assets/gallery/gallery_15_orangutan_encounter.jpg",
+        "image": "/assets/gallery/bukit-lawang-orangutan-field-ahmad.jpg",
         "image_alt": {
-            "en": "Bukit Lawang rainforest route near Gunung Leuser National Park",
-            "id": "Rute rainforest Bukit Lawang dekat Gunung Leuser National Park",
-            "ms": "Laluan rainforest Bukit Lawang dekat Gunung Leuser National Park",
+            "en": "Bukit Lawang orangutan field documentation with Ahmad's local route team",
+            "id": "Dokumentasi lapangan orangutan Bukit Lawang bersama tim rute lokal Ahmad",
+            "ms": "Dokumentasi lapangan orangutan Bukit Lawang bersama pasukan laluan lokal Ahmad",
         },
         "slugs": {
             "en": "bukit-lawang-orangutan-trekking",
