@@ -102,16 +102,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">

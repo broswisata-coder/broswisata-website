@@ -57,16 +57,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -164,7 +154,7 @@ Destinations
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/en/bros-wisata-tour-listing">
 Tour Packages
 </a>
-<a class="text-sm font-medium text-bros-blue border-b-2 border-bros-blue pb-1" href="#">
+<a class="text-sm font-medium text-bros-blue border-b-2 border-bros-blue pb-1" href="/en/bros-wisata-about">
 About
 </a>
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/en/bros-wisata-contact">Contact</a></div>
@@ -259,21 +249,21 @@ Average Rating
 <h2 class="font-display text-5xl lg:text-6xl font-bold text-bros-navy leading-[0.95] mb-8">
 
 
-20 years in the field.<br/> <em class="italic font-light text-bros-blue">Now formalized as<br/> PT BROS INTI WISATA.</em>
+20+ years in the field.<br/> <em class="italic font-light text-bros-blue">Now formalized as<br/> PT BROS INTI WISATA.</em>
 </h2>
 <div class="mt-10 pl-6 border-l-4 border-bros-gold">
 <div class="text-bros-gold text-5xl font-display leading-none mb-3">"</div>
 <p class="text-lg italic text-bros-charcoal/80 leading-relaxed">
 
 
-After two decades guiding travelers through Sumatra, we've formalized what we've long been doing — to be more accountable, more professional, and better prepared to serve guests from across ASEAN.
+After 20+ years guiding travelers through Sumatra, we've formalized what we've long been doing — to be more accountable, more professional, and better prepared to serve guests from across ASEAN.
 </p>
-<div class="text-xs tracking-wider uppercase text-bros-charcoal/60 mt-4 font-semibold">— Salim, Co-Founder &amp; CEO</div>
+<div class="text-xs tracking-wider uppercase text-bros-charcoal/60 mt-4 font-semibold">— Ahmad Salim, Co-Founder &amp; Field Guide</div>
 </div>
 </div>
 <div class="lg:col-span-7 lg:pl-12 space-y-6 text-bros-charcoal/85 leading-relaxed">
 <p>
-<strong class="text-bros-navy">Three decades ago,</strong> our founder started his career in Sumatra's tourism industry — first as a local guide, then operations staff for tour operators, eventually becoming a consultant for various international travel agencies sending guests to Medan, Toba, and beyond.
+<strong class="text-bros-navy">20+ years ago,</strong> our founder started his career in Sumatra's tourism industry — first as a local guide, then operations staff for tour operators, eventually becoming a consultant for various international travel agencies sending guests to Medan, Toba, and beyond.
 </p>
 <p>
 
@@ -284,7 +274,7 @@ Over the years, he observed the same pattern repeating: travelers from Malaysia,
 <strong class="text-bros-navy">In February 2025, we officially established PT BROS INTI WISATA</strong> before Notary Hendro Chandra, S.H., M.Kn. in Medan — formalizing what we'd long been practicing. Ratification from the Indonesian Ministry of Law was issued on 18 February 2025, the Business Identification Number (NIB) on 25 February 2025, followed by the Travel Agency Standard Certificate.
 </p>
 <p>
-<strong class="text-bros-navy">Why formalize now?</strong> Because the modern ASEAN traveler market needs formal accountability — not just verbal promises. Guests from Malaysia, Singapore, or Thailand deserve to know who they're dealing with: a properly registered PT, with active NIB, valid standard certification, and proper insurance. 20 years of experience + complete legal standing = verifiable trust.
+<strong class="text-bros-navy">Why formalize now?</strong> Because the modern ASEAN traveler market needs formal accountability — not just verbal promises. Guests from Malaysia, Singapore, or Thailand deserve to know who they're dealing with: a properly registered PT, with active NIB, valid standard certification, and proper insurance. 20+ years of experience and complete legal standing = verifiable trust.
 </p>
 <p>
 
@@ -478,7 +468,7 @@ Operating as independent consultant for various ASEAN travel agencies. Specializ
 PT BROS INTI WISATA Officially Founded
 </h3>
 <p class="text-white/70 text-sm leading-relaxed">
-<strong class="text-bros-gold">Deed of Establishment No. 17</strong> dated 13 February 2025. Ministry ratification 18 Feb. NIB issued 25 Feb. 20 years of experience now formalized.
+<strong class="text-bros-gold">Deed of Establishment No. 17</strong> dated 13 February 2025. Ministry ratification 18 Feb. NIB issued 25 Feb. 20+ years of experience, now under a formal business entity.
 </p>
 </div>
 </div>
@@ -720,7 +710,7 @@ Travel Insurance
 <p class="text-sm text-bros-charcoal/70 leading-relaxed">
 
 
-Every guest is automatically covered by travel insurance during the tour. Coverage includes medical, accidents, and lost belongings.
+Insurance arrangements depend on the selected package and are confirmed in the written quotation. We recommend that every guest arrange comprehensive personal travel insurance before departure.
 </p>
 </div>
 <div class="bg-bros-cream p-6 lg:p-8">
@@ -755,7 +745,7 @@ Founder in Action
 <h2 class="font-display text-4xl lg:text-5xl font-bold text-bros-navy leading-[0.95] mb-5">
 
 
-Salim, personally guiding guests<br/><em class="italic font-light text-bros-blue">for 20+ years.</em>
+Ahmad, personally guiding guests<br/><em class="italic font-light text-bros-blue">for 20+ years.</em>
 </h2>
 <p class="text-bros-charcoal/70 leading-relaxed">
 
@@ -763,7 +753,7 @@ Salim, personally guiding guests<br/><em class="italic font-light text-bros-blue
 Unlike large operators — you'll be personally served by the founder. Knowledge, network, and care that cannot be delegated.
 </p>
 </div>
-<!-- Mosaic of Salim moments -->
+<!-- Mosaic of Ahmad moments -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 mb-12">
 <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
 <picture><source srcset="/assets/gallery/bukit-lawang-orangutan-field-ahmad.webp" type="image/webp"/><img alt="Bukit Lawang orangutan field documentation" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1200" loading="lazy" src="/assets/gallery/bukit-lawang-orangutan-field-ahmad.jpg" width="960"/></picture>
@@ -775,7 +765,7 @@ Unlike large operators — you'll be personally served by the founder. Knowledge
 </div>
 </div>
 <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Founder with rescued elephant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
+<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Three tour participants on ATVs" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
 <div class="text-white">
 <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Conservation</div>
@@ -805,7 +795,7 @@ Unlike large operators — you'll be personally served by the founder. Knowledge
 <p class="text-center text-xs text-bros-charcoal/50 italic max-w-2xl mx-auto">
 
 
-📸 Real moments from trips guided by Salim across 2 decades of field experience
+📸 Real moments from trips guided by Ahmad across 20+ years of field experience
 </p>
 </div>
 </section>
@@ -1154,10 +1144,10 @@ Destinations
 Services
 </div>
 <ul class="space-y-3 text-sm text-white/70">
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/en/bros-wisata-tour-listing">
 Tour Packages
 </a></li>
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/en/bros-wisata-custom-tour">
 Custom Tour
 </a></li>
 </ul>

@@ -199,16 +199,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -313,7 +303,7 @@
       "name": "How likely is it that I will see a wild orangutan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sightings are likely but never guaranteed — these are genuinely wild animals. In our twenty years of guiding, the success rate on a two-day trek is approximately eighty-five percent. On a single half-day trek, around sixty percent. The longer you trek, the higher the probability. We always tell guests honestly: you are coming to a real rainforest, not a zoo."
+        "text": "Wildlife sightings are never guaranteed. Conditions in the rainforest change naturally, and the guide adjusts the route and pace to the latest trail and wildlife information. A longer trek can create more opportunities, but every encounter remains a matter of nature."
       }
     },
     {
@@ -353,7 +343,7 @@
       "name": "Is travel insurance included?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every BROS Wisata package includes basic accident and medical insurance during the tour duration. We strongly recommend you also carry your own comprehensive international travel insurance covering trip cancellation, lost luggage, and pre-existing conditions. Travel insurance is mandatory for entry into Indonesia for many nationalities."
+        "text": "Insurance arrangements vary by package and must be confirmed in the written quotation. Guests should arrange their own comprehensive travel insurance for medical care, accidents, cancellation, and belongings, and verify current entry requirements through official Indonesian immigration sources before departure."
       }
     },
     {
@@ -406,7 +396,7 @@
 </div>
 </a>
 <div class="hidden lg:flex items-center gap-8">
-<a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="#destinations">
+<a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/en/#destinations">
 
 
 Destinations
@@ -506,7 +496,7 @@ WhatsApp Us
     <em class="italic font-light text-bros-blue">Bukit Lawang.</em>
   </h2>
   <p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">Bukit Lawang is one of only two places on Earth where you can encounter Sumatran orangutans in their natural habitat. The other is Borneo, but what makes Bukit Lawang particularly special is the combination of accessibility and genuine wilderness. From your eco-lodge by the Bahorok River, you can be deep within Gunung Leuser National Park within forty minutes of trekking, observing wild orangutans, Thomas leaf monkeys, and white-handed gibbons in their treetop highways.</p>
-<p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">For travellers from Europe and Australia, Bukit Lawang offers something rare: a wildlife encounter that has not been over-commercialised. The jungle here is real jungle. The orangutans here are wild orangutans — not semi-wild rehabilitation centre residents. The trails are real trails, not concrete walkways. This is the Sumatra that documentary makers travel for, made accessible without compromising authenticity.</p>
+<p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">For travellers from Europe and Australia, Bukit Lawang offers something rare: a wildlife encounter in a living rainforest. Orangutans in and around the national park may have different histories and levels of habituation, so sightings and behaviour can never be guaranteed. The trails are natural rather than paved, and our guides adjust each trek to current forest conditions.</p>
 <p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">BROS Wisata has been guiding here for twenty years. Our founder, Ahmad Salim Saleh, began as a local guide in North Sumatra two decades ago and has since accompanied thousands of guests through these forests. When you book with us, you are not handed off to a sub-contractor. Salim accompanies signature trips personally; on every other trip, your guides are people he has worked alongside for years.</p>
 </div>
 </section>
@@ -554,7 +544,7 @@ WhatsApp Us
     <p class="text-xs text-bros-charcoal/60 uppercase tracking-wider">Full-day excursion</p>
   </div>
   <div class="md:col-span-6">
-    <p class="text-bros-charcoal/80 leading-relaxed">A ninety-minute drive from Bukit Lawang takes you to Tangkahan, where the Conservation Response Unit operates. These are working elephants — used for forest patrols and rescued from former logging operations. Guests can observe morning bathing rituals in the river and learn about the conservation programme. We do not offer riding; this is observation-based ethical tourism.</p>
+    <p class="text-bros-charcoal/80 leading-relaxed">A ninety-minute drive from Bukit Lawang takes you to Tangkahan, where the Conservation Response Unit operates. These are working elephants — used for forest patrols and rescued from former logging operations. If conservation activity is underway, guests may observe from a safe distance and learn about the programme. Guests do not bathe, feed, ride, touch, or make direct contact with the elephants.</p>
   </div>
 </div>
 <div class="grid md:grid-cols-12 gap-6 py-8 border-b border-bros-charcoal/10 last:border-b-0">
@@ -646,7 +636,7 @@ WhatsApp Us
   <div class="text-[10px] font-bold tracking-widest uppercase text-bros-gold mb-3">WILDLIFE FOCUS</div>
   <h3 class="font-display text-2xl font-bold text-bros-navy mb-2">Tangkahan Elephant & Jungle</h3>
   <p class="text-sm text-bros-charcoal/60 mb-5 uppercase tracking-wider">3 Days · 2 Nights</p>
-  <ul class="space-y-2 mb-6"><li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>CRU elephant observation morning</span></li>
+  <ul class="space-y-2 mb-6"><li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Distance-based CRU elephant observation, when available</span></li>
 <li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Quieter jungle trekking</span></li>
 <li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Hot spring relaxation</span></li></ul>
   <div class="pt-4 border-t border-bros-charcoal/10 flex items-center justify-between">
@@ -683,7 +673,7 @@ WhatsApp Us
 <span>How likely is it that I will see a wild orangutan?</span>
 <span class="text-bros-blue text-xl flex-shrink-0 group-open:rotate-45 transition">+</span>
 </summary>
-<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Sightings are likely but never guaranteed — these are genuinely wild animals. In our twenty years of guiding, the success rate on a two-day trek is approximately eighty-five percent. On a single half-day trek, around sixty percent. The longer you trek, the higher the probability. We always tell guests honestly: you are coming to a real rainforest, not a zoo.</div>
+<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Wildlife sightings are never guaranteed. Conditions in the rainforest change naturally, and the guide adjusts the route and pace to the latest trail and wildlife information. A longer trek can create more opportunities, but every encounter remains a matter of nature.</div>
 </details>
 <details class="bg-white border border-bros-charcoal/10 group">
 <summary class="cursor-pointer p-5 lg:p-6 font-display font-bold text-bros-navy hover:bg-bros-cream/40 transition flex items-start justify-between gap-4">
@@ -718,7 +708,7 @@ WhatsApp Us
 <span>Is travel insurance included?</span>
 <span class="text-bros-blue text-xl flex-shrink-0 group-open:rotate-45 transition">+</span>
 </summary>
-<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Every BROS Wisata package includes basic accident and medical insurance during the tour duration. We strongly recommend you also carry your own comprehensive international travel insurance covering trip cancellation, lost luggage, and pre-existing conditions. Travel insurance is mandatory for entry into Indonesia for many nationalities.</div>
+<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Insurance arrangements vary by package and must be confirmed in the written quotation. Guests should arrange their own comprehensive travel insurance for medical care, accidents, cancellation, and belongings, and verify current entry requirements through official Indonesian immigration sources before departure.</div>
 </details>
 <details class="bg-white border border-bros-charcoal/10 group">
 <summary class="cursor-pointer p-5 lg:p-6 font-display font-bold text-bros-navy hover:bg-bros-cream/40 transition flex items-start justify-between gap-4">

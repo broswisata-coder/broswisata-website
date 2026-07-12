@@ -290,16 +290,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -966,11 +956,11 @@ Bukan stock photo,<br/><em class="italic font-light text-bros-blue">tamu kami ya
 </div>
 </a>
 <a class="group relative aspect-[4/5] overflow-hidden bg-bros-navy block" href="/id/paket-tangkahan_3h2m">
-<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Tangkahan elephant bathing" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
+<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Perjalanan ATV di Tangkahan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition">
 <div class="text-white">
 <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold mb-1">🐘 Tangkahan</div>
-<div class="text-xs font-medium">Elephant Sanctuary</div>
+<div class="text-xs font-medium">Rute Alam Tangkahan</div>
 </div>
 </div>
 </a>

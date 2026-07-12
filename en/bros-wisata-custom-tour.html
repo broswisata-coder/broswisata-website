@@ -38,6 +38,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
+<link href="/assets/custom-tour.css" rel="stylesheet"/>
 <!-- ===== ANALYTICS & TRACKING ===== -->
 <!-- Google Analytics 4 -->
 <script>
@@ -55,16 +56,6 @@
   gtag('config', 'G-JVH9HY8P8P', {
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
-  });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
   });
 </script>
 <!-- Microsoft Clarity -->
@@ -120,7 +111,6 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '981676474387568');
       fbq('track', 'PageView');
-      fbq('track', 'Lead');
     }, 6000);
   });
 </script>
@@ -218,13 +208,16 @@ Tell us a few things — interests, duration, travel style. We'll craft a person
 </div>
 </section>
 <!-- WIZARD FORM -->
-<section class="py-16 lg:py-24">
+<section class="py-16 lg:py-24" id="custom-tour-builder">
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 <!-- STEP INDICATOR -->
+<form action="https://wa.me/6281260139399" data-custom-tour-form="" data-lang="en" method="get" target="_blank">
+<input name="text" type="hidden" value="Hi BROS Wisata, I completed the Custom Tour form on your website and would like to consult with your team."/>
+<p class="ct-sr-only" data-step-status="" role="status" aria-live="polite">Step 1 of 4: Destinations</p>
 <div class="bg-white p-6 lg:p-8 mb-1 border border-bros-charcoal/10">
 <div class="flex items-center justify-between max-w-3xl mx-auto">
 <div class="flex flex-col items-center gap-2">
-<div class="step-circle active">1</div>
+<div class="step-circle active" data-step-indicator="1" aria-current="step">1</div>
 <div class="text-[10px] tracking-wider uppercase font-bold text-bros-navy hidden sm:block">
 
 
@@ -233,7 +226,7 @@ Destinations
 </div>
 <div class="step-line"></div>
 <div class="flex flex-col items-center gap-2">
-<div class="step-circle pending">2</div>
+<div class="step-circle pending" data-step-indicator="2">2</div>
 <div class="text-[10px] tracking-wider uppercase font-bold text-bros-charcoal/50 hidden sm:block">
 
 
@@ -242,7 +235,7 @@ Trip Details
 </div>
 <div class="step-line"></div>
 <div class="flex flex-col items-center gap-2">
-<div class="step-circle pending">3</div>
+<div class="step-circle pending" data-step-indicator="3">3</div>
 <div class="text-[10px] tracking-wider uppercase font-bold text-bros-charcoal/50 hidden sm:block">
 
 
@@ -251,7 +244,7 @@ Preferences
 </div>
 <div class="step-line"></div>
 <div class="flex flex-col items-center gap-2">
-<div class="step-circle pending">4</div>
+<div class="step-circle pending" data-step-indicator="4">4</div>
 <div class="text-[10px] tracking-wider uppercase font-bold text-bros-charcoal/50 hidden sm:block">
 
 
@@ -261,14 +254,15 @@ Contact
 </div>
 </div>
 <!-- STEP 1 CONTENT — visible -->
-<div class="bg-white p-8 lg:p-12 border-t-0 border border-bros-charcoal/10">
+<fieldset class="ct-step bg-white p-8 lg:p-12 border-t-0 border border-bros-charcoal/10" data-step="1" aria-labelledby="ct-en-step-1-title">
+<legend class="ct-sr-only">Destinations</legend>
 <div class="mb-10">
 <div class="text-bros-blue text-xs tracking-[0.3em] uppercase font-bold mb-3">
 
 
 Step 1 of 4
 </div>
-<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight mb-3">
+<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight mb-3" id="ct-en-step-1-title" tabindex="-1">
 
 
 Where in North Sumatra<br/><em class="italic font-light text-bros-blue">would you like to go?</em>
@@ -280,8 +274,8 @@ Pick one or more areas. Combinations welcome.
 </p>
 </div>
 <!-- DESTINATION CARDS — Sumatra Utara areas -->
-<div class="grid md:grid-cols-3 gap-5 mb-10">
-<label class="select-card selected p-6 block relative cursor-pointer">
+<div class="grid md:grid-cols-3 gap-5 mb-10" role="group" aria-describedby="ct-en-destinations-error">
+<label class="select-card ct-card selected p-6 block relative cursor-pointer">
 <div class="check-mark absolute top-4 right-4">✓</div>
 <div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">01</div>
 <h3 class="font-display text-xl font-bold text-bros-navy mb-2">
@@ -291,9 +285,9 @@ Lake Toba &amp; Samosir
 </h3>
 <p class="text-xs text-bros-charcoal/70 mb-3">Parapat · Samosir · Tomok · Tuk-Tuk · Sipiso-Piso</p>
 <div class="text-[10px] tracking-wider uppercase text-bros-blue font-bold">Most Popular</div>
-<input checked="" class="hidden" type="checkbox"/>
+<input checked="" class="ct-card-input" data-choice="Lake Toba &amp; Samosir" name="destinations" type="checkbox" value="toba_samosir"/>
 </label>
-<label class="select-card p-6 block relative cursor-pointer">
+<label class="select-card ct-card p-6 block relative cursor-pointer">
 <div class="check-mark absolute top-4 right-4">✓</div>
 <div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">02</div>
 <h3 class="font-display text-xl font-bold text-bros-navy mb-2">
@@ -307,9 +301,9 @@ Berastagi &amp; Karo Highlands
 
 Highland &amp; Adventure
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Berastagi &amp; Karo Highlands" name="destinations" type="checkbox" value="berastagi_karo"/>
 </label>
-<label class="select-card p-6 block relative cursor-pointer">
+<label class="select-card ct-card p-6 block relative cursor-pointer">
 <div class="check-mark absolute top-4 right-4">✓</div>
 <div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">03</div>
 <h3 class="font-display text-xl font-bold text-bros-navy mb-2">
@@ -317,15 +311,15 @@ Highland &amp; Adventure
 
 Bukit Lawang &amp; Tangkahan
 </h3>
-<p class="text-xs text-bros-charcoal/70 mb-3">Orangutan trekking · Mandi gajah · River tubing · Leuser</p>
+<p class="text-xs text-bros-charcoal/70 mb-3">Orangutan trekking · Distance-based elephant observation with no guest contact · River tubing · Leuser</p>
 <div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-bold">
 
 
 Eco &amp; Wildlife
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Bukit Lawang &amp; Tangkahan" name="destinations" type="checkbox" value="bukit_lawang_tangkahan"/>
 </label>
-<label class="select-card p-6 block relative cursor-pointer">
+<label class="select-card ct-card p-6 block relative cursor-pointer">
 <div class="check-mark absolute top-4 right-4">✓</div>
 <div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">04</div>
 <h3 class="font-display text-xl font-bold text-bros-navy mb-2">
@@ -339,17 +333,18 @@ Medan City
 
 Heritage &amp; Food
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Medan City" name="destinations" type="checkbox" value="medan_city"/>
 </label>
 </div>
+<p class="ct-error" data-error-for="destinations" hidden="" id="ct-en-destinations-error"></p>
 <!-- SPECIFIC INTERESTS -->
 <div class="mb-10 pt-8 border-t border-bros-charcoal/10">
-<label class="field-label">
+<label class="field-label" for="ct-en-specific-places">
 
 
 Specific places you want included? (optional)
 </label>
-<textarea class="field-input" placeholder="Misal: Pulau Samosir minimal 2 malam, mau lihat orangutan di Bukit Lawang, ingin coba kopi luwak di Berastagi..." rows="3"></textarea>
+<textarea class="field-input" id="ct-en-specific-places" name="specific_places" placeholder="For example: at least 2 nights on Samosir, orangutan trekking in Bukit Lawang, or a coffee stop in Berastagi..." rows="3"></textarea>
 </div>
 <!-- NAVIGATION -->
 <div class="flex items-center justify-between pt-8 border-t border-bros-charcoal/10">
@@ -358,23 +353,24 @@ Specific places you want included? (optional)
 
 ⏱ Form time: ~3 min
 </div>
-<button class="bg-bros-navy text-white px-8 py-3 rounded-sm font-semibold text-sm hover:bg-bros-blue transition flex items-center gap-2">
+<button class="bg-bros-navy text-white px-8 py-3 rounded-sm font-semibold text-sm hover:bg-bros-blue transition flex items-center gap-2" data-next="" type="button">
 
 
 Continue to Step 2
 <span>→</span>
 </button>
 </div>
-</div>
+</fieldset>
 <!-- STEP 2 CONTENT - shown for preview -->
-<div class="bg-bros-cream/50 p-8 lg:p-12 border-t-0 border border-bros-charcoal/10 mt-8 opacity-90">
+<fieldset class="ct-step bg-white p-8 lg:p-12 border-t-0 border border-bros-charcoal/10" data-step="2" aria-labelledby="ct-en-step-2-title">
+<legend class="ct-sr-only">Trip details</legend>
 <div class="mb-10">
 <div class="text-bros-blue text-xs tracking-[0.3em] uppercase font-bold mb-3">
 
 
-Step 2 of 4 (preview)
+Step 2 of 4
 </div>
-<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight mb-3">
+<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight mb-3" id="ct-en-step-2-title" tabindex="-1">
 
 
 Your trip<br/><em class="italic font-light text-bros-blue">details.</em>
@@ -382,100 +378,108 @@ Your trip<br/><em class="italic font-light text-bros-blue">details.</em>
 </div>
 <div class="grid md:grid-cols-2 gap-6 mb-8">
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-departure-date">
 
 
 Departure Date
 </label>
-<input class="field-input" type="date"/>
+<input class="field-input" id="ct-en-departure-date" name="departure_date" required="" type="date"/>
 </div>
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-duration">
 
 
 How Many Days?
 </label>
-<select class="field-input">
-<option>3 hari / 2 malam</option>
-<option>4 hari / 3 malam</option>
-<option>5 hari / 4 malam</option>
-<option>6 hari / 5 malam</option>
-<option>7+ hari (extended trip)</option>
+<select class="field-input" id="ct-en-duration" name="duration" required="">
+<option value="">Choose duration</option>
+<option>3 days / 2 nights</option>
+<option>4 days / 3 nights</option>
+<option>5 days / 4 nights</option>
+<option>6 days / 5 nights</option>
+<option>7+ days (extended trip)</option>
 </select>
 </div>
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-travelers">
 
 
 Number of Pax
 </label>
-<select class="field-input">
-<option>2 pax</option>
-<option>3-4 pax</option>
-<option>5-6 pax</option>
-<option>7-8 pax</option>
-<option>9+ pax (request)</option>
+<select class="field-input" id="ct-en-travelers" name="travelers" required="">
+<option value="">Choose number of travellers</option>
+<option>2 travellers</option>
+<option>3–4 travellers</option>
+<option>5–6 travellers</option>
+<option>7–8 travellers</option>
+<option>9+ travellers (on request)</option>
 </select>
 </div>
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-children">
 
 
 Including children?
 </label>
-<select class="field-input" data-i18n-options="">
-<option data-en="No" data-id="Tidak" data-my="Tidak">Tidak</option>
-<option data-en="Yes, toddler (0-5)" data-id="Ya, balita (0-5 thn)" data-my="Ya, balita (0-5 thn)">Ya, balita (0-5 thn)</option>
-<option data-en="Yes, kids (6-12)" data-id="Ya, anak (6-12 thn)" data-my="Ya, kanak-kanak (6-12)">Ya, anak (6-12 thn)</option>
-<option data-en="Yes, teens (13+)" data-id="Ya, remaja (13+)" data-my="Ya, remaja (13+)">Ya, remaja (13+)</option>
+<select class="field-input" data-i18n-options="" id="ct-en-children" name="children">
+<option>No</option>
+<option>Yes, toddler (0–5)</option>
+<option>Yes, child (6–12)</option>
+<option>Yes, teenager (13+)</option>
 </select>
 </div>
 </div>
 <div>
-<label class="field-label">
+<div class="field-label" id="ct-en-hotel-style-label">
 Hotel & Comfort Style
-</label>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-<label class="select-card p-4 text-center block">
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3" role="radiogroup" aria-labelledby="ct-en-hotel-style-label" aria-describedby="ct-en-hotel-style-error">
+<label class="select-card ct-card p-4 text-center block relative">
 <div class="font-display font-bold text-bros-navy">
 Eco lodge
 </div>
 <div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-1">Simple local stay</div>
-<input class="hidden" name="budget" type="radio"/>
+<input class="ct-card-input" data-choice="Eco lodge" name="hotel_style" required="" type="radio" value="eco_lodge"/>
 </label>
-<label class="select-card selected p-4 text-center block">
+<label class="select-card ct-card selected p-4 text-center block relative">
 <div class="font-display font-bold text-bros-navy">
 Standard comfort
 </div>
 <div class="text-[10px] tracking-wider uppercase text-bros-blue mt-1 font-bold">Clean 3-star style</div>
-<input checked="" class="hidden" name="budget" type="radio"/>
+<input checked="" class="ct-card-input" data-choice="Standard comfort" name="hotel_style" required="" type="radio" value="standard_comfort"/>
 </label>
-<label class="select-card p-4 text-center block">
+<label class="select-card ct-card p-4 text-center block relative">
 <div class="font-display font-bold text-bros-navy">
 Boutique comfort
 </div>
 <div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 mt-1">Better room &amp; location</div>
-<input class="hidden" name="budget" type="radio"/>
+<input class="ct-card-input" data-choice="Boutique comfort" name="hotel_style" required="" type="radio" value="boutique_comfort"/>
 </label>
-<label class="select-card p-4 text-center block">
+<label class="select-card ct-card p-4 text-center block relative">
 <div class="font-display font-bold text-bros-navy">
 Premium resort
 </div>
 <div class="text-[10px] tracking-wider uppercase text-bros-gold mt-1 font-bold">Best available stay</div>
-<input class="hidden" name="budget" type="radio"/>
+<input class="ct-card-input" data-choice="Premium resort" name="hotel_style" required="" type="radio" value="premium_resort"/>
 </label>
 </div>
+<p class="ct-error" data-error-for="hotel_style" hidden="" id="ct-en-hotel-style-error"></p>
 </div>
+<div class="ct-actions">
+<button class="bg-bros-charcoal/10 text-bros-charcoal px-6 py-3 rounded-sm font-semibold text-sm hover:bg-bros-charcoal/20 transition" data-back="" type="button">← Back</button>
+<button class="bg-bros-navy text-white px-8 py-3 rounded-sm font-semibold text-sm hover:bg-bros-blue transition flex items-center gap-2" data-next="" type="button">Continue to Step 3 <span aria-hidden="true">→</span></button>
 </div>
+</fieldset>
 <!-- STEP 3 CONTENT - shown for preview -->
-<div class="bg-bros-cream/50 p-8 lg:p-12 border-t-0 border border-bros-charcoal/10 mt-8 opacity-80">
+<fieldset class="ct-step bg-white p-8 lg:p-12 border-t-0 border border-bros-charcoal/10" data-step="3" aria-labelledby="ct-en-step-3-title">
+<legend class="ct-sr-only">Travel preferences</legend>
 <div class="mb-10">
 <div class="text-bros-blue text-xs tracking-[0.3em] uppercase font-bold mb-3">
 
 
-Step 3 of 4 (preview)
+Step 3 of 4
 </div>
-<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight">
+<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight" id="ct-en-step-3-title" tabindex="-1">
 
 
 Tell us your<br/><em class="italic font-light text-bros-blue">travel style.</em>
@@ -483,126 +487,127 @@ Tell us your<br/><em class="italic font-light text-bros-blue">travel style.</em>
 </div>
 <!-- Travel style -->
 <div class="mb-8">
-<label class="field-label">
+<div class="field-label" id="ct-en-accommodation-label">
 
 
 Preferred Accommodation
-</label>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-<label class="select-card p-4 text-center block">
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3" role="radiogroup" aria-labelledby="ct-en-accommodation-label" aria-describedby="ct-en-accommodation-error">
+<label class="select-card ct-card p-4 text-center block relative">
 <div class="text-2xl mb-2">🏠</div>
 <div class="font-display font-semibold text-bros-navy text-sm">Homestay</div>
-<input class="hidden" name="acc" type="radio"/>
+<input class="ct-card-input" data-choice="Homestay" name="accommodation" required="" type="radio" value="homestay"/>
 </label>
-<label class="select-card selected p-4 text-center block">
+<label class="select-card ct-card selected p-4 text-center block relative">
 <div class="text-2xl mb-2">🏨</div>
 <div class="font-display font-semibold text-bros-navy text-sm">Hotel 3-4★</div>
-<input checked="" class="hidden" name="acc" type="radio"/>
+<input checked="" class="ct-card-input" data-choice="3–4★ hotel" name="accommodation" required="" type="radio" value="hotel_3_4"/>
 </label>
-<label class="select-card p-4 text-center block">
+<label class="select-card ct-card p-4 text-center block relative">
 <div class="text-2xl mb-2">⭐</div>
 <div class="font-display font-semibold text-bros-navy text-sm">Hotel 5★</div>
-<input class="hidden" name="acc" type="radio"/>
+<input class="ct-card-input" data-choice="5★ hotel" name="accommodation" required="" type="radio" value="hotel_5"/>
 </label>
-<label class="select-card p-4 text-center block">
+<label class="select-card ct-card p-4 text-center block relative">
 <div class="text-2xl mb-2">🏞</div>
 <div class="font-display font-semibold text-bros-navy text-sm">Resort/Villa</div>
-<input class="hidden" name="acc" type="radio"/>
+<input class="ct-card-input" data-choice="Resort/Villa" name="accommodation" required="" type="radio" value="resort_villa"/>
 </label>
 </div>
+<p class="ct-error" data-error-for="accommodation" hidden="" id="ct-en-accommodation-error"></p>
 </div>
 <!-- Interests -->
 <div class="mb-8">
-<label class="field-label">
+<div class="field-label" id="ct-en-interests-label">
 
 
 Interests &amp; Activities (select all that apply)
-</label>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-<label class="select-card selected p-3 block text-center">
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3" role="group" aria-labelledby="ct-en-interests-label">
+<label class="select-card ct-card selected p-3 block text-center relative">
 <div class="text-xl mb-1">🌋</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Nature
 </div>
-<input checked="" class="hidden" type="checkbox"/>
+<input checked="" class="ct-card-input" data-choice="Nature" name="interests" type="checkbox" value="nature"/>
 </label>
-<label class="select-card p-3 block text-center">
+<label class="select-card ct-card p-3 block text-center relative">
 <div class="text-xl mb-1">🍜</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Food
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Food" name="interests" type="checkbox" value="culinary"/>
 </label>
-<label class="select-card selected p-3 block text-center">
+<label class="select-card ct-card selected p-3 block text-center relative">
 <div class="text-xl mb-1">🏛</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 History
 </div>
-<input checked="" class="hidden" type="checkbox"/>
+<input checked="" class="ct-card-input" data-choice="History" name="interests" type="checkbox" value="history"/>
 </label>
-<label class="select-card p-3 block text-center">
+<label class="select-card ct-card p-3 block text-center relative">
 <div class="text-xl mb-1">🕌</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Religious
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Religious heritage" name="interests" type="checkbox" value="religion"/>
 </label>
-<label class="select-card p-3 block text-center">
+<label class="select-card ct-card p-3 block text-center relative">
 <div class="text-xl mb-1">📸</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Photography
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Photography" name="interests" type="checkbox" value="photography"/>
 </label>
-<label class="select-card p-3 block text-center">
+<label class="select-card ct-card p-3 block text-center relative">
 <div class="text-xl mb-1">🐒</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Wildlife
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Wildlife" name="interests" type="checkbox" value="wildlife"/>
 </label>
-<label class="select-card p-3 block text-center">
+<label class="select-card ct-card p-3 block text-center relative">
 <div class="text-xl mb-1">🛍</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Shopping
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Shopping" name="interests" type="checkbox" value="shopping"/>
 </label>
-<label class="select-card p-3 block text-center">
+<label class="select-card ct-card p-3 block text-center relative">
 <div class="text-xl mb-1">🧘</div>
 <div class="text-xs font-semibold text-bros-navy">
 
 
 Wellness
 </div>
-<input class="hidden" type="checkbox"/>
+<input class="ct-card-input" data-choice="Wellness" name="interests" type="checkbox" value="wellness"/>
 </label>
 </div>
 </div>
 <!-- Halal needs -->
 <div class="mb-8">
-<label class="field-label">
+<div class="field-label" id="ct-en-needs-label">
 
 
 Special Requirements
-</label>
-<div class="space-y-3">
+</div>
+<div class="space-y-3" role="group" aria-labelledby="ct-en-needs-label">
 <label class="flex items-start gap-3 cursor-pointer p-3 hover:bg-white rounded-sm">
-<input checked="" class="accent-bros-blue mt-1" type="checkbox"/>
+<input checked="" class="accent-bros-blue mt-1" data-choice="Halal food &amp; prayer schedule" name="needs" type="checkbox" value="halal_prayer"/>
 <div>
 <div class="font-semibold text-bros-navy text-sm">
 
@@ -617,7 +622,7 @@ Halal-certified restaurants, nearest mosque locations
 </div>
 </label>
 <label class="flex items-start gap-3 cursor-pointer p-3 hover:bg-white rounded-sm">
-<input class="accent-bros-blue mt-1" type="checkbox"/>
+<input class="accent-bros-blue mt-1" data-choice="Vegetarian/vegan" name="needs" type="checkbox" value="vegetarian_vegan"/>
 <div>
 <div class="font-semibold text-bros-navy text-sm">
 
@@ -627,7 +632,7 @@ Vegetarian / vegan
 </div>
 </label>
 <label class="flex items-start gap-3 cursor-pointer p-3 hover:bg-white rounded-sm">
-<input class="accent-bros-blue mt-1" type="checkbox"/>
+<input class="accent-bros-blue mt-1" data-choice="Mobility/accessibility needs" name="needs" type="checkbox" value="accessibility"/>
 <div>
 <div class="font-semibold text-bros-navy text-sm">
 
@@ -637,7 +642,7 @@ Mobility/accessibility needs
 </div>
 </label>
 <label class="flex items-start gap-3 cursor-pointer p-3 hover:bg-white rounded-sm">
-<input class="accent-bros-blue mt-1" type="checkbox"/>
+<input class="accent-bros-blue mt-1" data-choice="Professional photo/videographer" name="needs" type="checkbox" value="photo_video"/>
 <div>
 <div class="font-semibold text-bros-navy text-sm">
 
@@ -653,16 +658,21 @@ Add-on SGD 70-135/day
 </label>
 </div>
 </div>
+<div class="ct-actions">
+<button class="bg-bros-charcoal/10 text-bros-charcoal px-6 py-3 rounded-sm font-semibold text-sm hover:bg-bros-charcoal/20 transition" data-back="" type="button">← Back</button>
+<button class="bg-bros-navy text-white px-8 py-3 rounded-sm font-semibold text-sm hover:bg-bros-blue transition flex items-center gap-2" data-next="" type="button">Continue to Step 4 <span aria-hidden="true">→</span></button>
 </div>
+</fieldset>
 <!-- STEP 4 CONTENT - shown for preview -->
-<div class="bg-bros-cream/50 p-8 lg:p-12 border-t-0 border border-bros-charcoal/10 mt-8 opacity-80">
+<fieldset class="ct-step bg-white p-8 lg:p-12 border-t-0 border border-bros-charcoal/10" data-step="4" aria-labelledby="ct-en-step-4-title">
+<legend class="ct-sr-only">Contact and summary</legend>
 <div class="mb-10">
 <div class="text-bros-blue text-xs tracking-[0.3em] uppercase font-bold mb-3">
 
 
-Step 4 of 4 (preview)
+Step 4 of 4
 </div>
-<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight mb-3">
+<h2 class="font-display text-3xl lg:text-4xl font-bold text-bros-navy leading-tight mb-3" id="ct-en-step-4-title" tabindex="-1">
 
 
 Lastly —<br/><em class="italic font-light text-bros-blue">how to reach you.</em>
@@ -670,20 +680,21 @@ Lastly —<br/><em class="italic font-light text-bros-blue">how to reach you.</e
 </div>
 <div class="grid md:grid-cols-2 gap-6 mb-8">
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-full-name">
 
 
 Full Name
 </label>
-<input class="field-input" placeholder="—" type="text"/>
+<input autocomplete="name" class="field-input" id="ct-en-full-name" name="full_name" placeholder="—" required="" type="text"/>
 </div>
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-country">
 
 
 Country of Origin
 </label>
-<select class="field-input">
+<select autocomplete="country-name" class="field-input" id="ct-en-country" name="country" required="">
+<option value="">Choose country</option>
 <option>🇲🇾 Malaysia</option>
 <option>🇸🇬 Singapore</option>
 <option>🇹🇭 Thailand</option>
@@ -693,48 +704,57 @@ Country of Origin
 </select>
 </div>
 <div>
-<label class="field-label">
+<label class="field-label" for="ct-en-customer-whatsapp">
 
 
 WhatsApp (with country code)
 </label>
-<input class="field-input" placeholder="+60 12-345-6789" type="tel"/>
+<input autocomplete="tel" class="field-input" id="ct-en-customer-whatsapp" inputmode="tel" name="customer_whatsapp" placeholder="+60 12-345-6789" required="" type="tel"/>
 </div>
 <div>
-<label class="field-label">Email</label>
-<input class="field-input" placeholder="you@email.com" type="email"/>
+<label class="field-label" for="ct-en-email">Email (optional)</label>
+<input autocomplete="email" class="field-input" id="ct-en-email" name="email" placeholder="you@email.com" type="email"/>
 </div>
 </div>
 <div class="mb-8">
-<label class="field-label">
+<label class="field-label" for="ct-en-notes">
 
 
 Anything else to share?
 </label>
-<textarea class="field-input" placeholder="Misal: rayakan ulang tahun istri, butuh kursi roda untuk orang tua, alergi seafood..." rows="4"></textarea>
+<textarea class="field-input" id="ct-en-notes" name="notes" placeholder="For example: a birthday celebration, wheelchair access for a parent, or a seafood allergy..." rows="4"></textarea>
+</div>
+<div class="mb-8">
+<h3 class="font-display text-2xl font-bold text-bros-navy mb-2">Your request summary</h3>
+<p class="text-sm text-bros-charcoal/70 mb-4">Review these details. You can still go back to an earlier step to make changes.</p>
+<dl class="ct-summary" data-summary=""></dl>
 </div>
 <div class="mb-8 p-5 bg-bros-blue/5 border-l-4 border-bros-blue">
 <label class="flex items-start gap-3 cursor-pointer">
-<input checked="" class="accent-bros-blue mt-1" type="checkbox"/>
+<input class="accent-bros-blue mt-1" id="ct-en-privacy-consent" name="privacy_consent" required="" type="checkbox" value="agreed"/>
 <div class="text-sm text-bros-charcoal">
 
 
-I agree to BROS Wisata's <a class="text-bros-blue underline" href="#">Privacy Policy</a>. My data will only be used to plan this itinerary.
+I agree to BROS Wisata's <a class="text-bros-blue underline" href="/en/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. My data will only be used to plan this itinerary.
 </div>
 </label>
+<p class="ct-error" hidden="" id="ct-en-privacy-consent-error"></p>
 </div>
 <div class="flex flex-col sm:flex-row items-center gap-4 pt-8 border-t border-bros-charcoal/10">
-<button class="bg-bros-charcoal/10 text-bros-charcoal px-6 py-3 rounded-sm font-semibold text-sm hover:bg-bros-charcoal/20 transition w-full sm:w-auto">
+<button class="bg-bros-charcoal/10 text-bros-charcoal px-6 py-3 rounded-sm font-semibold text-sm hover:bg-bros-charcoal/20 transition w-full sm:w-auto" data-back="" type="button">
           ← Back
 </button>
-<button class="bg-bros-gold text-bros-navy px-8 py-4 rounded-sm font-bold text-sm hover:bg-bros-navy hover:text-white transition flex items-center justify-center gap-2 flex-1 sm:flex-initial w-full sm:w-auto">
+<button class="bg-bros-gold text-bros-navy px-8 py-4 rounded-sm font-bold text-sm hover:bg-bros-navy hover:text-white transition flex items-center justify-center gap-2 flex-1 sm:flex-initial w-full sm:w-auto" type="submit">
 
 
-Send Itinerary Request
+Open Draft in WhatsApp
 <span>✉</span>
 </button>
+<p class="text-xs text-bros-charcoal/60 w-full">WhatsApp will open with a message draft. Nothing is sent automatically.</p>
 </div>
-</div>
+</fieldset>
+<a aria-hidden="true" data-cta="custom_tour_form_submit" data-whatsapp-link="" hidden="" href="https://wa.me/6281260139399" rel="noopener noreferrer" tabindex="-1" target="_blank">Open WhatsApp</a>
+</form>
 <!-- WHAT HAPPENS NEXT -->
 <div class="mt-16 bg-white p-8 lg:p-12 border border-bros-charcoal/10">
 <div class="text-center mb-10">
@@ -847,7 +867,7 @@ Services
 <li><a class="hover:text-bros-gold transition" href="/en/bros-wisata-tour-listing">
 Tour Packages
 </a></li>
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/en/bros-wisata-custom-tour">
 Custom Tour
 </a></li>
 </ul>
@@ -909,7 +929,7 @@ Office
 <script>
   // ===== FORM VALIDATION + AUTO-SAVE (in-memory, no localStorage) =====
   (function() {
-    const forms = document.querySelectorAll('form');
+    const forms = document.querySelectorAll('form:not([data-custom-tour-form])');
     if (!forms.length) return;
     
     const formState = {};
@@ -1023,6 +1043,7 @@ Office
     });
   }
 </script>
+<script src="/assets/custom-tour.js" defer></script>
 <script src="/assets/whatsapp-source.js" defer></script>
 </body>
 </html>
