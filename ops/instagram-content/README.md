@@ -53,6 +53,20 @@ How to use:
 5. Use the matching Story or Reel script from `reels-story-scripts.md`.
 6. Put tracking text in the WhatsApp CTA, for example: "I found BROS Wisata from Instagram post: Bukit Lawang".
 
+## Rebuilding the 6D5N Grand Tour carousel
+
+The editable source for the branded EN/ID/MY carousel is:
+
+- `carousel-combo-sumut-6d5n.html`
+
+Render all 12 PNG slides and their WebP derivatives with:
+
+```text
+node ops/instagram-content/render-carousel.cjs
+```
+
+The renderer requires `playwright`, `sharp`, and a local Google Chrome installation. It writes 1080×1080 assets to `assets/ig/combo_sumut_6h5m/{en,id,my}/`. Update the copy in the HTML source, then render both PNG and WebP together so website previews and manual Instagram uploads stay aligned.
+
 Admin rule:
 - Prices should not be the headline.
 - Never guarantee wildlife sightings.

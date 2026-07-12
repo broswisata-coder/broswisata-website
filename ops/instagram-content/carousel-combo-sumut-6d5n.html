@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <title>BROS Wisata - North Sumatra Grand Tour Carousel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bros-blue: #0f47b0;
+      --bros-navy: #0a2e70;
+      --bros-gold: #e8a317;
+      --bros-cream: #faf7f2;
+      --bros-charcoal: #1f2937;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: 1080px;
+      height: 1080px;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bros-cream);
+      color: var(--bros-charcoal);
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin: 0; }
+
+    .slide {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      background: var(--bros-cream);
+    }
+
+    .brand-header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 132px;
+      padding: 22px 64px;
+      background: var(--bros-navy);
+      border-bottom: 8px solid var(--bros-gold);
+    }
+
+    .brand-header img,
+    .brand-lockup img {
+      display: block;
+      width: 306px;
+      height: auto;
+    }
+
+    .series-label {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .kicker {
+      color: var(--bros-blue);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .display {
+      color: var(--bros-navy);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.91;
+    }
+
+    .footer-bar {
+      position: absolute;
+      z-index: 5;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      padding: 16px 64px;
+      background: var(--bros-navy);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-bar strong { color: var(--bros-gold); }
+
+    /* Cover */
+    .cover {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(232, 163, 23, 0.2), transparent 25%),
+        linear-gradient(135deg, var(--bros-navy) 0%, var(--bros-navy) 58%, var(--bros-blue) 150%);
+      color: var(--white);
+    }
+
+    .cover::before,
+    .cta::before {
+      position: absolute;
+      content: "";
+      width: 520px;
+      height: 520px;
+      right: -220px;
+      top: 220px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 54px rgba(255, 255, 255, 0.035),
+        0 0 0 108px rgba(255, 255, 255, 0.025);
+    }
+
+    .cover::after,
+    .cta::after {
+      position: absolute;
+      content: "";
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 14px;
+      background: linear-gradient(90deg, var(--bros-gold), var(--bros-blue), var(--bros-gold));
+    }
+
+    .cover .brand-lockup {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 44px 64px 0;
+    }
+
+    .cover .slide-count,
+    .cta .slide-count {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 3;
+      padding: 68px 64px 0;
+    }
+
+    .cover .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid rgba(232, 163, 23, 0.76);
+      color: var(--bros-gold);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .cover h1 {
+      max-width: 890px;
+      margin-top: 36px;
+      color: var(--white);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 108px;
+      font-weight: 800;
+      letter-spacing: -0.055em;
+      line-height: 0.88;
+    }
+
+    .cover h1 em {
+      display: block;
+      color: var(--bros-gold);
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .duration {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 34px;
+      color: var(--white);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .duration span {
+      width: 9px;
+      height: 9px;
+      background: var(--bros-gold);
+      border-radius: 50%;
+    }
+
+    .route-strip {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 70px 64px 0;
+      padding: 22px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-size: 19px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .cover-note {
+      position: relative;
+      z-index: 3;
+      margin: 30px 64px 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    /* Highlights */
+    .highlights-content {
+      padding: 54px 64px 92px;
+    }
+
+    .highlights-title-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .highlights-title-row h1 {
+      max-width: 710px;
+      margin-top: 10px;
+      font-size: 72px;
+    }
+
+    .route-badge {
+      flex: 0 0 auto;
+      padding: 14px 17px;
+      background: rgba(15, 71, 176, 0.08);
+      border-left: 6px solid var(--bros-blue);
+      color: var(--bros-navy);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 44px;
+    }
+
+    .highlight-card {
+      min-height: 262px;
+      padding: 26px;
+      background: var(--white);
+      border: 1px solid rgba(31, 41, 55, 0.12);
+      border-top: 7px solid var(--bros-blue);
+      box-shadow: 0 18px 36px rgba(10, 46, 112, 0.06);
+    }
+
+    .highlight-card:nth-child(2),
+    .highlight-card:nth-child(4) { border-top-color: var(--bros-gold); }
+
+    .highlight-card .number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 18px;
+      background: var(--bros-navy);
+      color: var(--bros-gold);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .highlight-card h2 {
+      color: var(--bros-navy);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 31px;
+      font-weight: 800;
+      line-height: 1.02;
+    }
+
+    .highlight-card p {
+      margin-top: 14px;
+      color: rgba(31, 41, 55, 0.78);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.42;
+    }
+
+    .responsible-note {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 17px 20px;
+      background: var(--bros-navy);
+      color: var(--white);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .responsible-note::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 15px;
+      height: 15px;
+      background: var(--bros-gold);
+      border-radius: 50%;
+    }
+
+    /* Itinerary */
+    .itinerary-content {
+      padding: 44px 64px 90px;
+    }
+
+    .itinerary-title-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .itinerary-title-row h1 {
+      margin-top: 10px;
+      font-size: 66px;
+    }
+
+    .itinerary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .day-card {
+      position: relative;
+      min-height: 196px;
+      padding: 23px 22px 18px 102px;
+      background: var(--white);
+      border: 1px solid rgba(31, 41, 55, 0.12);
+    }
+
+    .day-card .day-number {
+      position: absolute;
+      top: 24px;
+      left: 23px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 62px;
+      height: 72px;
+      background: var(--bros-navy);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .day-card .day-number strong {
+      color: var(--bros-gold);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .day-card h2 {
+      color: var(--bros-navy);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      line-height: 1.08;
+    }
+
+    .day-card p {
+      margin-top: 10px;
+      color: rgba(31, 41, 55, 0.82);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.42;
+    }
+
+    .itinerary-note {
+      margin-top: 12px;
+      color: rgba(31, 41, 55, 0.68);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        radial-gradient(circle at 15% 78%, rgba(232, 163, 23, 0.2), transparent 28%),
+        linear-gradient(145deg, var(--bros-navy) 0%, var(--bros-navy) 72%, var(--bros-blue) 150%);
+      color: var(--white);
+    }
+
+    .cta .brand-lockup {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 44px 64px 0;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 3;
+      padding: 74px 64px 0;
+      text-align: center;
+    }
+
+    .cta .eyebrow {
+      color: var(--bros-gold);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .cta h1 {
+      max-width: 900px;
+      margin: 26px auto 0;
+      color: var(--white);
+      font-family: "Bricolage Grotesque", Arial Black, sans-serif;
+      font-size: 88px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.91;
+    }
+
+    .cta h1 em {
+      color: var(--bros-gold);
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .cta-intro {
+      max-width: 790px;
+      margin: 30px auto 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 850px;
+      margin: 42px auto 0;
+      text-align: center;
+    }
+
+    .contact-item {
+      min-height: 98px;
+      padding: 18px 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .contact-item span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--bros-gold);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .contact-item strong {
+      color: var(--white);
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .contact-secondary {
+      margin-top: 15px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 620px;
+      min-height: 78px;
+      margin-top: 34px;
+      padding: 0 34px;
+      background: var(--bros-gold);
+      color: var(--bros-navy);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tracking-code {
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .tracking-code strong { color: var(--bros-gold); }
+  </style>
+</head>
+<body>
+  <main id="app" aria-label="Instagram carousel slide"></main>
+  <script>
+    const copy = {
+      en: {
+        code: "EN",
+        routeSeries: "Private North Sumatra Route",
+        cover: {
+          eyebrow: "Private • Customisable",
+          title: "North Sumatra",
+          accent: "Grand Tour",
+          duration: ["6 Days", "5 Nights"],
+          route: ["Lake Toba", "Berastagi", "Bukit Lawang"],
+          note: "A realistic first-timer route from Kualanamu, designed around local travel pace."
+        },
+        highlights: {
+          kicker: "Why this route works",
+          title: "Four route highlights",
+          badge: "6D5N • Private",
+          items: [
+            ["Lake Toba & Samosir", "Volcanic lake landscapes, ferry crossing and Batak heritage."],
+            ["Karo Highlands", "Berastagi, Sipiso-piso Waterfall and cooler mountain air."],
+            ["Bukit Lawang", "Rainforest trekking with an assigned local jungle guide."],
+            ["Smarter route flow", "A one-way cross-region plan that reduces repeated road sections."]
+          ],
+          note: "Responsible wildlife travel: sightings are never guaranteed; no feeding or touching."
+        },
+        itinerary: {
+          kicker: "Itinerary at a glance",
+          title: "Six days, paced well",
+          badge: "Customisable",
+          days: [
+            ["KNO → Parapat", "Arrival transfer via Tebing Tinggi; check in by Lake Toba."],
+            ["Samosir Island", "Ferry, Tomok and Batak heritage; return to Parapat."],
+            ["Parapat → Berastagi", "Sipiso-piso, fruit market and Gundaling area."],
+            ["Berastagi → Bukit Lawang", "Scenic transfer, eco-lodge check-in and guide briefing."],
+            ["Gunung Leuser foothills", "Guided half-day trek; picnic and tubing if conditions allow."],
+            ["Bukit Lawang → KNO", "Direct airport transfer; a late flight or extra Medan night is recommended."]
+          ],
+          note: "Timing is adjusted to arrival flight, weather, road, ferry and river conditions."
+        },
+        cta: {
+          eyebrow: "Plan it with Ahmad",
+          title: "Build your private",
+          accent: "Sumatra route",
+          intro: "Send your travel date, number of guests, hotel style and preferred pace. We check the route before preparing your quotation.",
+          whatsappLabel: "WhatsApp",
+          whatsapp: "+62 812-6013-9399",
+          webLabel: "Website & Instagram",
+          web: "broswisata.id • @broswisata",
+          button: "Request a custom quote",
+          tracking: "Write code IG-SUMATRA in your message"
+        },
+        footerLeft: "BROS WISATA • HUB OF SUMATRA",
+        footerRight: "Swipe →"
+      },
+      id: {
+        code: "ID",
+        routeSeries: "Rute Private Sumatra Utara",
+        cover: {
+          eyebrow: "Private • Dapat Disesuaikan",
+          title: "Jelajah",
+          accent: "Sumatra Utara",
+          duration: ["6 Hari", "5 Malam"],
+          route: ["Danau Toba", "Berastagi", "Bukit Lawang"],
+          note: "Rute realistis dari Kualanamu untuk tamu pertama kali, mengikuti tempo perjalanan lokal."
+        },
+        highlights: {
+          kicker: "Mengapa rute ini masuk akal",
+          title: "Empat daya tarik utama",
+          badge: "6H5M • Private",
+          items: [
+            ["Danau Toba & Samosir", "Panorama danau vulkanik, penyeberangan dan warisan budaya Batak."],
+            ["Dataran Tinggi Karo", "Berastagi, Air Terjun Sipiso-piso dan udara pegunungan."],
+            ["Bukit Lawang", "Trekking hutan bersama pemandu lokal yang ditugaskan."],
+            ["Alur rute lebih baik", "Rute satu arah antarwilayah untuk mengurangi ruas jalan berulang."]
+          ],
+          note: "Wisata satwa liar yang bertanggung jawab: penampakan tidak dijamin; dilarang memberi makan atau menyentuh."
+        },
+        itinerary: {
+          kicker: "Ringkasan itinerary",
+          title: "Enam hari, tempo nyaman",
+          badge: "Dapat diubah",
+          days: [
+            ["KNO → Parapat", "Transfer kedatangan via Tebing Tinggi; check-in di tepi Danau Toba."],
+            ["Pulau Samosir", "Feri, Tomok dan warisan Batak; kembali ke Parapat."],
+            ["Parapat → Berastagi", "Sipiso-piso, pasar buah dan kawasan Gundaling."],
+            ["Berastagi → Bukit Lawang", "Transfer berpemandangan, check-in lodge dan pengarahan pemandu."],
+            ["Kaki Gunung Leuser", "Trek setengah hari; piknik dan tubing bila kondisi memungkinkan."],
+            ["Bukit Lawang → KNO", "Transfer langsung ke bandara; penerbangan malam atau 1 malam tambahan disarankan."]
+          ],
+          note: "Waktu perjalanan disesuaikan dengan penerbangan, cuaca, jalan, feri dan kondisi sungai."
+        },
+        cta: {
+          eyebrow: "Rencanakan bersama Ahmad",
+          title: "Bangun rute private",
+          accent: "Sumatra Anda",
+          intro: "Kirim tanggal perjalanan, jumlah tamu, gaya hotel dan tempo pilihan. Kami memeriksa rute sebelum menyiapkan penawaran.",
+          whatsappLabel: "WhatsApp",
+          whatsapp: "+62 812-6013-9399",
+          webLabel: "Website & Instagram",
+          web: "broswisata.id • @broswisata",
+          button: "Minta penawaran khusus",
+          tracking: "Tulis kode IG-SUMATRA dalam pesan Anda"
+        },
+        footerLeft: "BROS WISATA • HUB OF SUMATRA",
+        footerRight: "Geser →"
+      },
+      my: {
+        code: "MY",
+        routeSeries: "Laluan Private Sumatera Utara",
+        cover: {
+          eyebrow: "Private • Boleh Disesuaikan",
+          title: "Grand Tour",
+          accent: "Sumatera Utara",
+          duration: ["6 Hari", "5 Malam"],
+          route: ["Tasik Toba", "Berastagi", "Bukit Lawang"],
+          note: "Laluan realistik dari Kualanamu untuk tetamu kali pertama, mengikut tempo perjalanan tempatan."
+        },
+        highlights: {
+          kicker: "Kenapa laluan ini sesuai",
+          title: "Empat tarikan utama",
+          badge: "6H5M • Private",
+          items: [
+            ["Tasik Toba & Samosir", "Panorama tasik gunung berapi, feri dan warisan budaya Batak."],
+            ["Tanah Tinggi Karo", "Berastagi, Air Terjun Sipiso-piso dan udara pergunungan."],
+            ["Bukit Lawang", "Trekking hutan bersama guide tempatan yang ditugaskan."],
+            ["Aliran laluan lebih baik", "Laluan sehala antara wilayah untuk kurangkan jalan yang berulang."]
+          ],
+          note: "Pelancongan hidupan liar beretika: penampakan tidak dijamin; dilarang memberi makan atau menyentuh."
+        },
+        itinerary: {
+          kicker: "Ringkasan itinerary",
+          title: "Enam hari, tempo santai",
+          badge: "Boleh diubah",
+          days: [
+            ["KNO → Parapat", "Transfer ketibaan melalui Tebing Tinggi; daftar masuk tepi Tasik Toba."],
+            ["Pulau Samosir", "Feri, Tomok dan warisan Batak; kembali ke Parapat."],
+            ["Parapat → Berastagi", "Sipiso-piso, pasar buah dan kawasan Gundaling."],
+            ["Berastagi → Bukit Lawang", "Transfer pemandangan, daftar masuk eco-lodge dan taklimat guide."],
+            ["Kaki Gunung Leuser", "Trek separuh hari; picnic dan tubing jika keadaan mengizinkan."],
+            ["Bukit Lawang → KNO", "Transfer terus ke lapangan terbang; penerbangan lewat atau 1 malam tambahan disarankan."]
+          ],
+          note: "Masa perjalanan disesuaikan dengan flight, cuaca, jalan, feri dan keadaan sungai."
+        },
+        cta: {
+          eyebrow: "Rancang bersama Ahmad",
+          title: "Bina laluan private",
+          accent: "Sumatera anda",
+          intro: "Hantar tarikh travel, jumlah tetamu, gaya hotel dan tempo pilihan. Kami semak laluan sebelum menyediakan quotation.",
+          whatsappLabel: "WhatsApp",
+          whatsapp: "+62 812-6013-9399",
+          webLabel: "Website & Instagram",
+          web: "broswisata.id • @broswisata",
+          button: "Minta quotation custom",
+          tracking: "Tulis kod IG-SUMATRA dalam mesej anda"
+        },
+        footerLeft: "BROS WISATA • HUB OF SUMATRA",
+        footerRight: "Swipe →"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const lang = copy[params.get("lang")] ? params.get("lang") : "en";
+    const slideNumber = Math.min(4, Math.max(1, Number(params.get("slide")) || 1));
+    const c = copy[lang];
+    const logoWhite = "../../bros-wisata-logos/bros-wisata-logo-horizontal-white-large-2000px.png";
+
+    const escapeHtml = (value) => String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
+    const brandHeader = (title) => `
+      <header class="brand-header">
+        <img src="${logoWhite}" alt="BROS Wisata">
+        <div class="series-label">${escapeHtml(title)}</div>
+      </header>`;
+
+    const footer = (right = c.footerRight) => `
+      <footer class="footer-bar">
+        <span>${escapeHtml(c.footerLeft)}</span>
+        <strong>${escapeHtml(right)}</strong>
+      </footer>`;
+
+    const renderCover = () => `
+      <section class="slide cover">
+        <div class="brand-lockup">
+          <img src="${logoWhite}" alt="BROS Wisata">
+          <span class="slide-count">01 / 04 • ${c.code}</span>
+        </div>
+        <div class="cover-content">
+          <div class="eyebrow">${escapeHtml(c.cover.eyebrow)}</div>
+          <h1>${escapeHtml(c.cover.title)}<em>${escapeHtml(c.cover.accent)}</em></h1>
+          <div class="duration">
+            ${escapeHtml(c.cover.duration[0])}<span></span>${escapeHtml(c.cover.duration[1])}
+          </div>
+        </div>
+        <div class="route-strip">${c.cover.route.map((item) => `<div>${escapeHtml(item)}</div>`).join("")}</div>
+        <p class="cover-note">${escapeHtml(c.cover.note)}</p>
+      </section>`;
+
+    const renderHighlights = () => `
+      <section class="slide">
+        ${brandHeader(c.routeSeries)}
+        <div class="highlights-content">
+          <div class="highlights-title-row">
+            <div>
+              <p class="kicker">${escapeHtml(c.highlights.kicker)}</p>
+              <h1 class="display">${escapeHtml(c.highlights.title)}</h1>
+            </div>
+            <div class="route-badge">${escapeHtml(c.highlights.badge)}</div>
+          </div>
+          <div class="highlight-grid">
+            ${c.highlights.items.map((item, index) => `
+              <article class="highlight-card">
+                <div class="number">${index + 1}</div>
+                <h2>${escapeHtml(item[0])}</h2>
+                <p>${escapeHtml(item[1])}</p>
+              </article>`).join("")}
+          </div>
+          <div class="responsible-note">${escapeHtml(c.highlights.note)}</div>
+        </div>
+        ${footer()}
+      </section>`;
+
+    const renderItinerary = () => `
+      <section class="slide">
+        ${brandHeader(c.routeSeries)}
+        <div class="itinerary-content">
+          <div class="itinerary-title-row">
+            <div>
+              <p class="kicker">${escapeHtml(c.itinerary.kicker)}</p>
+              <h1 class="display">${escapeHtml(c.itinerary.title)}</h1>
+            </div>
+            <div class="route-badge">${escapeHtml(c.itinerary.badge)}</div>
+          </div>
+          <div class="itinerary-grid">
+            ${c.itinerary.days.map((day, index) => `
+              <article class="day-card">
+                <div class="day-number">DAY<strong>${index + 1}</strong></div>
+                <h2>${escapeHtml(day[0])}</h2>
+                <p>${escapeHtml(day[1])}</p>
+              </article>`).join("")}
+          </div>
+          <p class="itinerary-note">${escapeHtml(c.itinerary.note)}</p>
+        </div>
+        ${footer()}
+      </section>`;
+
+    const renderCta = () => `
+      <section class="slide cta">
+        <div class="brand-lockup">
+          <img src="${logoWhite}" alt="BROS Wisata">
+          <span class="slide-count">04 / 04 • ${c.code}</span>
+        </div>
+        <div class="cta-content">
+          <p class="eyebrow">${escapeHtml(c.cta.eyebrow)}</p>
+          <h1>${escapeHtml(c.cta.title)} <em>${escapeHtml(c.cta.accent)}</em></h1>
+          <p class="cta-intro">${escapeHtml(c.cta.intro)}</p>
+          <div class="contact-panel">
+            <div class="contact-item"><span>${escapeHtml(c.cta.whatsappLabel)}</span><strong>${escapeHtml(c.cta.whatsapp)}</strong></div>
+          </div>
+          <p class="contact-secondary">${escapeHtml(c.cta.web)}</p>
+          <div class="cta-button">${escapeHtml(c.cta.button)}</div>
+          <p class="tracking-code">${escapeHtml(c.cta.tracking).replace("IG-SUMATRA", "<strong>IG-SUMATRA</strong>")}</p>
+        </div>
+      </section>`;
+
+    const renderers = [renderCover, renderHighlights, renderItinerary, renderCta];
+    document.documentElement.lang = lang === "my" ? "ms" : lang;
+    document.getElementById("app").innerHTML = renderers[slideNumber - 1]();
+  </script>
+</body>
+</html>
