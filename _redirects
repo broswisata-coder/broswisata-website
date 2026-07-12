@@ -154,8 +154,8 @@
 /maps    https://share.google/Uv9LJLkbDjYHhMzTj    302
 /review    https://share.google/Uv9LJLkbDjYHhMzTj    302
 
-# PDF brochures direct download
-/brochure-id    /assets/pdf/combo_sumut_6h5m.pdf    301
+# Brochure shortcuts
+/brochure-id    /id/paket-combo_sumut_6h5m    301
 /brochure-my    /assets/pdf/Pakej_3H2M_MYR_v2.pdf    301
 /brochure-en    /assets/pdf/Western_4D3N_Jungle_EcoTour_Final.pdf    301
 

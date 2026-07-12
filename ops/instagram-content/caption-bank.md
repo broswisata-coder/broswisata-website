@@ -116,6 +116,22 @@ CTA: DM "SINGAPORE" for a custom route.
 Hashtags:
 #SingaporeTravel #WeekendTrip #NorthSumatra #MedanTour #LakeToba #PrivateTour #IndonesiaTravel
 
+### EN9 - North Sumatra Grand Tour 6D5N
+
+Six days, three regions, and one private route designed around real North Sumatra road time.
+
+The North Sumatra Grand Tour links Lake Toba and Samosir, the Karo highlands of Berastagi, and Bukit Lawang in a considered 6D5N flow:
+
+- 2 nights in Parapat
+- 1 night in Berastagi
+- 2 nights in Bukit Lawang
+
+This base itinerary works best with an early arrival at Kualanamu and a late-afternoon or evening departure. Rainforest wildlife remains wild, so sightings are never guaranteed. Tubing only operates when conditions and the local guide's safety assessment allow.
+
+WhatsApp us from the link in bio and write **IG-SUMATRA**. Send your travel date, number of guests, hotel style, and flight times for a custom quotation.
+
+#NorthSumatra #LakeToba #SamosirIsland #Berastagi #BukitLawang #SumatraTravel #PrivateTour #ResponsibleTravel #MedanTour #BrosWisata
+
 ## Malay Captions
 
 ### MY1 - Malaysia Halal-Friendly
@@ -175,6 +191,22 @@ CTA: WhatsApp "CUSTOM SUMATERA" dari link di bio.
 Hashtags:
 #PakejSumateraUtara #PakejMedan #PrivateTourMedan #TravelMalaysia #HalalFriendly #LakeToba #BukitLawang
 
+### MY5 - Jelajah Sumatera Utara 6H5M
+
+Enam hari, tiga wilayah, dan satu laluan private yang disusun mengikut masa perjalanan sebenar di Sumatera Utara.
+
+Jelajah Sumatera Utara menghubungkan Tasik Toba dan Samosir, tanah tinggi Karo di Berastagi, serta Bukit Lawang dalam aliran 6H5M yang lebih realistik:
+
+- 2 malam di Parapat
+- 1 malam di Berastagi
+- 2 malam di Bukit Lawang
+
+Itinerary asas paling sesuai dengan ketibaan awal di Kualanamu dan penerbangan lewat petang atau malam. Hidupan liar kekal liar, jadi penampakan tidak dijamin. Tubing hanya berjalan apabila keadaan dan penilaian keselamatan guide tempatan mengizinkan.
+
+WhatsApp kami dan tulis **IG-SUMATRA** bersama tarikh travel, jumlah tetamu, gaya hotel, dan masa flight untuk quotation custom.
+
+#PakejSumateraUtara #TasikToba #Samosir #Berastagi #BukitLawang #TravelMalaysia #PrivateTour #HalalFriendly #BrosWisata
+
 ## Indonesian Captions
 
 ### ID1 - Brand Trust
@@ -187,3 +219,19 @@ CTA: DM "SUMUT" kalau ingin dibuatkan rute private dari Medan.
 
 Hashtags:
 #BrosWisata #SumatraUtara #TourMedan #WisataMedan #LakeToba #BukitLawang #Berastagi #Tangkahan
+
+### ID2 - Jelajah Sumatra Utara 6H5M
+
+Enam hari, tiga wilayah, dan satu rute private yang disusun berdasarkan waktu jalan nyata di Sumatra Utara.
+
+Rute ini menghubungkan Danau Toba dan Samosir, Dataran Tinggi Karo di Berastagi, serta Bukit Lawang dalam alur 6H5M yang lebih realistis:
+
+- 2 malam di Parapat
+- 1 malam di Berastagi
+- 2 malam di Bukit Lawang
+
+Itinerary dasar paling sesuai untuk kedatangan awal di Kualanamu dan penerbangan sore atau malam. Satwa liar tetap liar, sehingga penampakan tidak dijamin. Tubing hanya dilakukan bila kondisi dan penilaian keselamatan pemandu lokal memungkinkan.
+
+WhatsApp kami dan tulis **IG-SUMATRA** bersama tanggal perjalanan, jumlah tamu, gaya hotel, dan waktu penerbangan untuk penawaran khusus.
+
+#SumatraUtara #DanauToba #Samosir #Berastagi #BukitLawang #WisataSumatra #PrivateTour #ResponsibleTravel #BrosWisata
