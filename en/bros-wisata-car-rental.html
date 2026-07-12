@@ -135,24 +135,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track car-rental WhatsApp leads with readable labels.
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (!a) return;
-    var label = (a.getAttribute('data-cta') || a.textContent || 'WhatsApp').replace(/\s+/g, ' ').trim().substring(0, 80);
-    gtag('event', 'whatsapp_click', {
-      'event_category': 'Lead',
-      'event_label': label,
-      'lead_type': 'car_rental',
-      'page_path': window.location.pathname
-    });
-    if (window.fbq) {
-      fbq('trackCustom', 'WhatsAppLead', {
-        content_category: 'car_rental',
-        content_name: label
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -937,7 +919,7 @@ Rp 1.0jt
 <p class="text-sm text-bros-charcoal/70 mb-5 leading-relaxed">
 
 
-Drop-off at Tangkahan for elephant bathing, river tubing. Last unpaved road handled by our drivers.
+Drop-off at Tangkahan for rainforest routes and river tubing. When available, elephant viewing is distance-based with no guest contact. The final unpaved road is handled by our drivers.
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
 <span class="text-bros-charcoal/80">~130 km</span>
@@ -1463,7 +1445,7 @@ Services
 <li><a class="hover:text-bros-gold transition" href="/en/bros-wisata-tour-listing">
 Tour Packages
 </a></li>
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/en/bros-wisata-custom-tour">
 Custom Tour
 </a></li>
 </ul>

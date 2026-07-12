@@ -199,16 +199,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -313,7 +303,7 @@
       "name": "Berapa besar kemungkinan saya melihat orangutan liar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kemungkinan tinggi tetapi tidak pernah dijamin — ini haiwan benar-benar liar. Dalam 20 tahun memandu, success rate trekking 2 hari kira-kira 85%. Trekking setengah hari, kira-kira 60%. Semakin lama trekking, semakin tinggi probabiliti. Kami sentiasa jujur kepada tetamu: anda datang ke hutan hujan sebenar, bukan zoo."
+        "text": "Pertemuan dengan hidupan liar tidak pernah dijamin. Keadaan hutan berubah secara semula jadi, dan pemandu menyesuaikan laluan serta rentak berdasarkan maklumat trek dan hidupan liar terkini. Trek yang lebih panjang boleh memberi lebih banyak peluang, tetapi setiap pertemuan tetap bergantung pada alam."
       }
     },
     {
@@ -353,7 +343,7 @@
       "name": "Adakah insurans perjalanan termasuk?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Setiap pakej BROS Wisata termasuk insurans kemalangan dan perubatan asas semasa tempoh tour. Kami sangat menasihatkan anda juga membawa insurans perjalanan antarabangsa komprehensif yang melindungi trip cancellation, kehilangan luggage, dan kondisi pre-existing. Insurans perjalanan adalah wajib untuk masuk Indonesia bagi banyak kewarganegaraan."
+        "text": "Pengaturan insurans berbeza bagi setiap pakej dan mesti disahkan dalam sebut harga bertulis. Tetamu disarankan menyediakan insurans perjalanan komprehensif untuk perubatan, kemalangan, pembatalan, dan barangan, serta menyemak syarat kemasukan terkini melalui sumber rasmi Imigresen Indonesia sebelum berlepas."
       }
     },
     {
@@ -406,7 +396,7 @@
 </div>
 </a>
 <div class="hidden lg:flex items-center gap-8">
-<a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="#destinations">
+<a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/ms/#destinations">
 
 Destinasi
 
@@ -506,7 +496,7 @@ WhatsApp Kami
     <em class="italic font-light text-bros-blue">Bukit Lawang.</em>
   </h2>
   <p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">Bukit Lawang adalah salah satu daripada hanya dua tempat di dunia di mana anda boleh berjumpa orangutan Sumatera di habitat asli mereka. Yang lain adalah Borneo, tetapi yang menjadikan Bukit Lawang istimewa adalah gabungan kemudahan akses dan hutan asli yang sebenar. Dari eco-lodge tepi Sungai Bahorok, anda boleh berada jauh di dalam Taman Negara Gunung Leuser dalam masa 40 minit trekking, melihat orangutan liar, monyet daun Thomas, dan owa berlengan putih di lebuh raya kanopi mereka.</p>
-<p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">Untuk pelancong dari Eropah dan Australia, Bukit Lawang menawarkan sesuatu yang jarang: pertemuan hidupan liar yang belum overcommercialised. Hutan di sini adalah hutan sebenar. Orangutan di sini adalah orangutan liar — bukan penghuni semi-liar pusat pemulihan. Laluan pun laluan sebenar, bukan laluan konkrit. Inilah Sumatera yang dicari pembuat dokumentari, dibuat accessible tanpa kompromi pada keaslian.</p>
+<p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">Untuk pelancong dari Eropah dan Australia, Bukit Lawang menawarkan pengalaman hidupan liar di hutan hujan yang hidup. Orangutan di dalam dan sekitar taman negara boleh mempunyai sejarah dan tahap habituasi yang berbeza, jadi penampakan serta tingkah lakunya tidak pernah dapat dijamin. Laluan adalah semula jadi, bukan berturap, dan pemandu menyesuaikan setiap trek dengan keadaan hutan terkini.</p>
 <p class="text-lg text-bros-charcoal/80 leading-relaxed mb-6">BROS Wisata sudah memandu di sini selama 20 tahun. Pengasas kami, Ahmad Salim Saleh, bermula sebagai pemandu tempatan di Sumatera Utara dua dekad lalu dan sejak itu telah mendampingi ribuan tetamu melalui hutan ini. Apabila anda tempah dengan kami, anda tidak diserahkan kepada sub-kontraktor. Salim mendampingi trip signature secara peribadi; pada trip lain, pemandu anda adalah orang yang sudah lama bekerja bersamanya.</p>
 </div>
 </section>
@@ -554,7 +544,7 @@ WhatsApp Kami
     <p class="text-xs text-bros-charcoal/60 uppercase tracking-wider">Lawatan sehari penuh</p>
   </div>
   <div class="md:col-span-6">
-    <p class="text-bros-charcoal/80 leading-relaxed">Pemanduan 90 minit dari Bukit Lawang membawa anda ke Tangkahan, di mana Conservation Response Unit beroperasi. Ini gajah pekerja — digunakan untuk rondaan hutan dan diselamatkan dari operasi illegal logging dahulu. Tetamu boleh menyaksikan ritual mandi pagi di sungai dan belajar tentang program pemuliharaan. Kami tidak menawarkan menunggang; ini ekopelancongan berasaskan pemerhatian.</p>
+    <p class="text-bros-charcoal/80 leading-relaxed">Pemanduan 90 minit dari Bukit Lawang membawa anda ke Tangkahan, tempat Conservation Response Unit beroperasi. Gajah di sini digunakan untuk rondaan hutan dan diselamatkan daripada operasi pembalakan haram sebelumnya. Jika aktiviti pemuliharaan berlangsung, tetamu boleh memerhati dari jarak selamat dan belajar tentang program tersebut. Tetamu tidak memandikan, memberi makan, menunggang, menyentuh, atau melakukan hubungan langsung dengan gajah.</p>
   </div>
 </div>
 <div class="grid md:grid-cols-12 gap-6 py-8 border-b border-bros-charcoal/10 last:border-b-0">
@@ -646,7 +636,7 @@ WhatsApp Kami
   <div class="text-[10px] font-bold tracking-widest uppercase text-bros-gold mb-3">FOKUS HIDUPAN LIAR</div>
   <h3 class="font-display text-2xl font-bold text-bros-navy mb-2">Tangkahan Gajah & Jungle</h3>
   <p class="text-sm text-bros-charcoal/60 mb-5 uppercase tracking-wider">3 Hari · 2 Malam</p>
-  <ul class="space-y-2 mb-6"><li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Pemerhatian gajah CRU pagi</span></li>
+  <ul class="space-y-2 mb-6"><li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Pemerhatian gajah CRU dari jarak selamat, jika tersedia</span></li>
 <li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Jungle trekking yang lebih sunyi</span></li>
 <li class="flex items-start gap-2 text-sm text-bros-charcoal/80"><span class="text-bros-blue mt-0.5">✓</span><span>Relaksasi air panas semula jadi</span></li></ul>
   <div class="pt-4 border-t border-bros-charcoal/10 flex items-center justify-between">
@@ -683,7 +673,7 @@ WhatsApp Kami
 <span>Berapa besar kemungkinan saya melihat orangutan liar?</span>
 <span class="text-bros-blue text-xl flex-shrink-0 group-open:rotate-45 transition">+</span>
 </summary>
-<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Kemungkinan tinggi tetapi tidak pernah dijamin — ini haiwan benar-benar liar. Dalam 20 tahun memandu, success rate trekking 2 hari kira-kira 85%. Trekking setengah hari, kira-kira 60%. Semakin lama trekking, semakin tinggi probabiliti. Kami sentiasa jujur kepada tetamu: anda datang ke hutan hujan sebenar, bukan zoo.</div>
+<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Pertemuan dengan hidupan liar tidak pernah dijamin. Keadaan hutan berubah secara semula jadi, dan pemandu menyesuaikan laluan serta rentak berdasarkan maklumat trek dan hidupan liar terkini. Trek yang lebih panjang boleh memberi lebih banyak peluang, tetapi setiap pertemuan tetap bergantung pada alam.</div>
 </details>
 <details class="bg-white border border-bros-charcoal/10 group">
 <summary class="cursor-pointer p-5 lg:p-6 font-display font-bold text-bros-navy hover:bg-bros-cream/40 transition flex items-start justify-between gap-4">
@@ -718,7 +708,7 @@ WhatsApp Kami
 <span>Adakah insurans perjalanan termasuk?</span>
 <span class="text-bros-blue text-xl flex-shrink-0 group-open:rotate-45 transition">+</span>
 </summary>
-<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Setiap pakej BROS Wisata termasuk insurans kemalangan dan perubatan asas semasa tempoh tour. Kami sangat menasihatkan anda juga membawa insurans perjalanan antarabangsa komprehensif yang melindungi trip cancellation, kehilangan luggage, dan kondisi pre-existing. Insurans perjalanan adalah wajib untuk masuk Indonesia bagi banyak kewarganegaraan.</div>
+<div class="px-5 lg:px-6 pb-6 text-bros-charcoal/80 leading-relaxed">Pengaturan insurans berbeza bagi setiap pakej dan mesti disahkan dalam sebut harga bertulis. Tetamu disarankan menyediakan insurans perjalanan komprehensif untuk perubatan, kemalangan, pembatalan, dan barangan, serta menyemak syarat kemasukan terkini melalui sumber rasmi Imigresen Indonesia sebelum berlepas.</div>
 </details>
 <details class="bg-white border border-bros-charcoal/10 group">
 <summary class="cursor-pointer p-5 lg:p-6 font-display font-bold text-bros-navy hover:bg-bros-cream/40 transition flex items-start justify-between gap-4">

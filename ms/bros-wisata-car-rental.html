@@ -135,24 +135,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track car-rental WhatsApp leads with readable labels.
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (!a) return;
-    var label = (a.getAttribute('data-cta') || a.textContent || 'WhatsApp').replace(/\s+/g, ' ').trim().substring(0, 80);
-    gtag('event', 'whatsapp_click', {
-      'event_category': 'Lead',
-      'event_label': label,
-      'lead_type': 'car_rental',
-      'page_path': window.location.pathname
-    });
-    if (window.fbq) {
-      fbq('trackCustom', 'WhatsAppLead', {
-        content_category: 'car_rental',
-        content_name: label
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -931,7 +913,7 @@ Rp 1.0jt
 </div>
 <p class="text-sm text-bros-charcoal/70 mb-5 leading-relaxed">
 
-Hantar ke Tangkahan untuk mandi gajah, river tubing. Jalan tanah terakhir dikendalikan pemandu kami.
+Hantar ke Tangkahan untuk laluan hutan dan river tubing. Jika tersedia, pemerhatian gajah dibuat dari jarak selamat tanpa sentuhan tetamu. Jalan tanah terakhir dikendalikan pemandu kami.
 
 </p>
 <div class="pt-4 border-t border-bros-charcoal/10 flex justify-between items-center text-sm">
@@ -1452,7 +1434,7 @@ Perkhidmatan
 <li><a class="hover:text-bros-gold transition" href="/ms/bros-wisata-tour-listing">
 Pakej Tour
 </a></li>
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/ms/bros-wisata-custom-tour">
 Tour Tersuai
 </a></li>
 </ul>

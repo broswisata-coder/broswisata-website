@@ -57,16 +57,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -164,7 +154,7 @@ Destinasi
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/ms/bros-wisata-tour-listing">
 Pakej Tour
 </a>
-<a class="text-sm font-medium text-bros-blue border-b-2 border-bros-blue pb-1" href="#">
+<a class="text-sm font-medium text-bros-blue border-b-2 border-bros-blue pb-1" href="/ms/bros-wisata-about">
 Tentang
 </a>
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/ms/bros-wisata-contact">Hubungi</a></div>
@@ -257,21 +247,21 @@ Penilaian Purata
 </div>
 <h2 class="font-display text-5xl lg:text-6xl font-bold text-bros-navy leading-[0.95] mb-8">
 
-20 tahun di lapangan.<br/> <em class="italic font-light text-bros-blue">Kini rasmi menjadi<br/> PT BROS INTI WISATA.</em>
+20+ tahun di lapangan.<br/> <em class="italic font-light text-bros-blue">Kini rasmi menjadi<br/> PT BROS INTI WISATA.</em>
 </h2>
 <div class="mt-10 pl-6 border-l-4 border-bros-gold">
 <div class="text-bros-gold text-5xl font-display leading-none mb-3">"</div>
 <p class="text-lg italic text-bros-charcoal/80 leading-relaxed">
 
-Selepas tiga dekad memandu pelancong meneroka Sumatera, kami akhirnya rasmikan apa yang lama kami buat — agar lebih bertanggungjawab, profesional, dan bersedia melayani tetamu dari ASEAN.
+Selepas 20+ tahun memandu pelancong meneroka Sumatera, kami akhirnya merasmikan apa yang telah lama kami lakukan — agar lebih bertanggungjawab, profesional, dan bersedia melayani tetamu dari ASEAN.
 
 </p>
-<div class="text-xs tracking-wider uppercase text-bros-charcoal/60 mt-4 font-semibold">— Salim, Co-Founder &amp; CEO</div>
+<div class="text-xs tracking-wider uppercase text-bros-charcoal/60 mt-4 font-semibold">— Ahmad Salim, Co-Founder &amp; Guide Lapangan</div>
 </div>
 </div>
 <div class="lg:col-span-7 lg:pl-12 space-y-6 text-bros-charcoal/85 leading-relaxed">
 <p>
-<strong class="text-bros-navy">Tiga dekad lalu,</strong> pengasas kami memulai kerjaya di industri pelancongan Sumatera — sebagai pemandu pelancong tempatan, kemudian kakitangan operasi tour operator, sehingga akhirnya menjadi perunding untuk pelbagai agensi pelancongan antarabangsa.
+<strong class="text-bros-navy">20+ tahun lalu,</strong> pengasas kami memulakan kerjaya dalam industri pelancongan Sumatera — sebagai pemandu pelancong tempatan, kemudian kakitangan operasi tour operator, sehingga akhirnya menjadi perunding untuk pelbagai agensi pelancongan antarabangsa.
 
 </p>
 <p>
@@ -477,7 +467,7 @@ Beroperasi sebagai perunding bebas untuk pelbagai agensi pelancongan ASEAN. Peng
 PT BROS INTI WISATA Rasmi Ditubuhkan
 </h3>
 <p class="text-white/70 text-sm leading-relaxed">
-<strong class="text-bros-gold">Akta Penubuhan No. 17</strong> bertarikh 13 Februari 2025. SK Kementerian 18 Feb 2025. NIB diterbitkan 25 Feb 2025. 20 tahun pengalaman rasmi merasmikan diri.
+<strong class="text-bros-gold">Akta Penubuhan No. 17</strong> bertarikh 13 Februari 2025. SK Kementerian 18 Feb 2025. NIB diterbitkan 25 Feb 2025. Pengalaman 20+ tahun kini beroperasi di bawah entiti perniagaan rasmi.
 
 </p>
 </div>
@@ -718,7 +708,7 @@ Insurans Perjalanan
 </div>
 <p class="text-sm text-bros-charcoal/70 leading-relaxed">
 
-Setiap tetamu automatik dilindungi insurans perjalanan sepanjang tour. Liputan termasuk perubatan, kemalangan, dan kehilangan barang.
+Pengaturan insurans mengikuti pakej yang dipilih dan disahkan dalam sebut harga bertulis. Kami menyarankan setiap tetamu menyediakan insurans perjalanan peribadi yang komprehensif sebelum berlepas.
 
 </p>
 </div>
@@ -753,7 +743,7 @@ Pengasas di Lapangan
 </div>
 <h2 class="font-display text-4xl lg:text-5xl font-bold text-bros-navy leading-[0.95] mb-5">
 
-Salim, langsung mengiringi tetamu<br/><em class="italic font-light text-bros-blue">selama 20+ tahun.</em>
+Ahmad, mengiringi tetamu secara langsung<br/><em class="italic font-light text-bros-blue">selama 20+ tahun.</em>
 </h2>
 <p class="text-bros-charcoal/70 leading-relaxed">
 
@@ -761,7 +751,7 @@ Berbeza dengan operator besar — anda langsung dilayan oleh pengasas. Pengetahu
 
 </p>
 </div>
-<!-- Mosaic of Salim moments -->
+<!-- Mosaic of Ahmad moments -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 mb-12">
 <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
 <picture><source srcset="/assets/gallery/bukit-lawang-orangutan-field-ahmad.webp" type="image/webp"/><img alt="Dokumentasi lapangan orangutan Bukit Lawang" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1200" loading="lazy" src="/assets/gallery/bukit-lawang-orangutan-field-ahmad.jpg" width="960"/></picture>
@@ -773,7 +763,7 @@ Berbeza dengan operator besar — anda langsung dilayan oleh pengasas. Pengetahu
 </div>
 </div>
 <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Founder with rescued elephant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
+<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Tiga peserta perjalanan menaiki ATV" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
 <div class="text-white">
 <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Conservation</div>
@@ -802,7 +792,7 @@ Berbeza dengan operator besar — anda langsung dilayan oleh pengasas. Pengetahu
 </div>
 <p class="text-center text-xs text-bros-charcoal/50 italic max-w-2xl mx-auto">
 
-📸 Foto adalah momen sebenar dari trip yang dipandu Salim selama 2 dekad pengalaman lapangan
+📸 Foto ialah momen sebenar daripada trip yang dipandu Ahmad sepanjang 20+ tahun pengalaman lapangan
 
 </p>
 </div>
@@ -1153,10 +1143,10 @@ Destinasi
 Perkhidmatan
 </div>
 <ul class="space-y-3 text-sm text-white/70">
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/ms/bros-wisata-tour-listing">
 Pakej Tour
 </a></li>
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/ms/bros-wisata-custom-tour">
 Tour Tersuai
 </a></li>
 </ul>

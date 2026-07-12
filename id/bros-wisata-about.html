@@ -57,16 +57,6 @@
     'anonymize_ip': true,
     'cookie_flags': 'SameSite=None;Secure'
   });
-  // Track WhatsApp clicks
-  document.addEventListener('click', function(e) {
-    var a = e.target.closest('a[href*="wa.me"]');
-    if (a) {
-      gtag('event', 'whatsapp_click', {
-        'event_category': 'Contact',
-        'event_label': a.href.substring(0, 100)
-      });
-    }
-  });
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -164,7 +154,7 @@ Destinasi
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/id/bros-wisata-tour-listing">
 Paket Tour
 </a>
-<a class="text-sm font-medium text-bros-blue border-b-2 border-bros-blue pb-1" href="#">
+<a class="text-sm font-medium text-bros-blue border-b-2 border-bros-blue pb-1" href="/id/bros-wisata-about">
 Tentang
 </a>
 <a class="text-sm font-medium text-bros-charcoal hover:text-bros-blue transition" href="/id/bros-wisata-contact">Kontak</a></div>
@@ -255,21 +245,21 @@ Rating Rata-rata
           ✦ Cerita Kami
 </div>
 <h2 class="font-display text-5xl lg:text-6xl font-bold text-bros-navy leading-[0.95] mb-8">
-20 tahun di lapangan.<br/> <em class="italic font-light text-bros-blue">Sekarang resmi menjadi<br/> PT BROS INTI WISATA.</em>
+20+ tahun di lapangan.<br/> <em class="italic font-light text-bros-blue">Sekarang resmi menjadi<br/> PT BROS INTI WISATA.</em>
 </h2>
 <div class="mt-10 pl-6 border-l-4 border-bros-gold">
 <div class="text-bros-gold text-5xl font-display leading-none mb-3">"</div>
 <p class="text-lg italic text-bros-charcoal/80 leading-relaxed">
-Setelah tiga dekade mengantar wisatawan menjelajahi Sumatra, kami akhirnya melembagakan apa yang sudah lama kami kerjakan — agar lebih akuntabel, lebih profesional, lebih siap melayani tamu dari ASEAN.
+Setelah 20+ tahun mengantar wisatawan menjelajahi Sumatra, kami akhirnya melembagakan apa yang sudah lama kami kerjakan — agar lebih akuntabel, lebih profesional, lebih siap melayani tamu dari ASEAN.
 
 
 </p>
-<div class="text-xs tracking-wider uppercase text-bros-charcoal/60 mt-4 font-semibold">— Salim, Co-Founder &amp; CEO</div>
+<div class="text-xs tracking-wider uppercase text-bros-charcoal/60 mt-4 font-semibold">— Ahmad Salim, Co-Founder &amp; Guide Lapangan</div>
 </div>
 </div>
 <div class="lg:col-span-7 lg:pl-12 space-y-6 text-bros-charcoal/85 leading-relaxed">
 <p>
-<strong class="text-bros-navy">Tiga dekade lalu,</strong> founder kami memulai karier di industri pariwisata Sumatra — sebagai guide lokal, lalu staf operasi tour operator, sampai akhirnya menjadi konsultan untuk berbagai agen perjalanan internasional yang mengirim tamu ke Medan, Toba, dan sekitarnya.
+<strong class="text-bros-navy">20+ tahun lalu,</strong> founder kami memulai karier di industri pariwisata Sumatra — sebagai guide lokal, lalu staf operasi tour operator, sampai akhirnya menjadi konsultan untuk berbagai agen perjalanan internasional yang mengirim tamu ke Medan, Toba, dan sekitarnya.
 
 
 </p>
@@ -284,7 +274,7 @@ Selama bertahun-tahun, ia mengamati pola yang sama berulang: wisatawan dari Mala
 
 </p>
 <p>
-<strong class="text-bros-navy">Mengapa baru sekarang melembagakan?</strong> Karena pasar wisatawan ASEAN modern membutuhkan akuntabilitas formal — bukan janji lisan. Tamu dari Malaysia, Singapura, atau Thailand berhak tahu dengan siapa mereka berurusan: PT yang terdaftar resmi, dengan NIB aktif, sertifikat standar yang valid, dan asuransi yang terjamin. Pengalaman 20 tahun + legalitas yang lengkap = kepercayaan yang bisa diverifikasi.
+<strong class="text-bros-navy">Mengapa baru sekarang melembagakan?</strong> Karena pasar wisatawan ASEAN modern membutuhkan akuntabilitas formal — bukan janji lisan. Tamu dari Malaysia, Singapura, atau Thailand berhak tahu dengan siapa mereka berurusan: PT yang terdaftar resmi, dengan NIB aktif, sertifikat standar yang valid, dan asuransi yang terjamin. Pengalaman 20+ tahun dan legalitas yang lengkap = kepercayaan yang bisa diverifikasi.
 
 
 </p>
@@ -476,7 +466,7 @@ Beroperasi sebagai konsultan independen untuk berbagai agen perjalanan ASEAN. Sp
 PT BROS INTI WISATA Resmi Berdiri
 </h3>
 <p class="text-white/70 text-sm leading-relaxed">
-<strong class="text-bros-gold">Akta Pendirian No. 17</strong> tanggal 13 Februari 2025. SK Kemenkumham 18 Feb 2025. NIB diterbitkan 25 Feb 2025. Pengalaman 20 tahun resmi melembagakan diri.
+<strong class="text-bros-gold">Akta Pendirian No. 17</strong> tanggal 13 Februari 2025. SK Kemenkumham 18 Feb 2025. NIB diterbitkan 25 Feb 2025. Pengalaman 20+ tahun kini resmi berbadan usaha.
 
 
 </p>
@@ -716,7 +706,7 @@ Asuransi Perjalanan
 </h4>
 </div>
 <p class="text-sm text-bros-charcoal/70 leading-relaxed">
-Setiap tamu otomatis terlindungi asuransi perjalanan selama tour berlangsung. Coverage termasuk medical, kecelakaan, dan kehilangan barang.
+Pengaturan asuransi mengikuti paket yang dipilih dan dikonfirmasi dalam penawaran tertulis. Kami menyarankan setiap tamu menyiapkan asuransi perjalanan pribadi yang komprehensif sebelum berangkat.
 
 
 </p>
@@ -751,7 +741,7 @@ Setiap supir &amp; guide menjalani briefing harian. SOP keselamatan, etiket, dan
 
 </div>
 <h2 class="font-display text-4xl lg:text-5xl font-bold text-bros-navy leading-[0.95] mb-5">
-Salim, langsung mendampingi tamu<br/><em class="italic font-light text-bros-blue">selama 20+ tahun.</em>
+Ahmad, langsung mendampingi tamu<br/><em class="italic font-light text-bros-blue">selama 20+ tahun.</em>
 </h2>
 <p class="text-bros-charcoal/70 leading-relaxed">
 Beda dengan operator besar — Bapak/Ibu langsung dilayani founder. Pengetahuan, jaringan, dan kepedulian yang tidak bisa di-delegate.
@@ -759,7 +749,7 @@ Beda dengan operator besar — Bapak/Ibu langsung dilayani founder. Pengetahuan,
 
 </p>
 </div>
-<!-- Mosaic of Salim moments -->
+<!-- Mosaic of Ahmad moments -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 mb-12">
 <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
 <picture><source srcset="/assets/gallery/bukit-lawang-orangutan-field-ahmad.webp" type="image/webp"/><img alt="Dokumentasi lapangan orangutan Bukit Lawang" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1200" loading="lazy" src="/assets/gallery/bukit-lawang-orangutan-field-ahmad.jpg" width="960"/></picture>
@@ -771,7 +761,7 @@ Beda dengan operator besar — Bapak/Ibu langsung dilayani founder. Pengetahuan,
 </div>
 </div>
 <div class="group relative aspect-[4/5] overflow-hidden bg-bros-navy">
-<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Founder with rescued elephant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
+<picture><source srcset="/assets/gallery/gallery_19_elephant_bathing.webp" type="image/webp"/><img alt="Tiga peserta perjalanan dengan ATV" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" decoding="async" height="1040" loading="lazy" src="/assets/gallery/gallery_19_elephant_bathing.jpg" width="780"/></picture>
 <div class="absolute inset-0 bg-gradient-to-t from-bros-navy/95 via-bros-navy/30 to-transparent flex items-end p-3">
 <div class="text-white">
 <div class="text-[9px] tracking-wider uppercase text-bros-gold font-bold">Conservation</div>
@@ -799,7 +789,7 @@ Beda dengan operator besar — Bapak/Ibu langsung dilayani founder. Pengetahuan,
 </div>
 </div>
 <p class="text-center text-xs text-bros-charcoal/50 italic max-w-2xl mx-auto">
-📸 Foto adalah momen real dari trip yang dipandu Salim selama 2 dekade pengalaman lapangan
+📸 Foto adalah momen nyata dari trip yang dipandu Ahmad selama 20+ tahun pengalaman lapangan
 
 
 </p>
@@ -1152,10 +1142,10 @@ Destinasi
 Layanan
 </div>
 <ul class="space-y-3 text-sm text-white/70">
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/id/bros-wisata-tour-listing">
 Paket Tour
 </a></li>
-<li><a class="hover:text-bros-gold transition" href="#">
+<li><a class="hover:text-bros-gold transition" href="/id/bros-wisata-custom-tour">
 Tour Custom
 </a></li>
 </ul>

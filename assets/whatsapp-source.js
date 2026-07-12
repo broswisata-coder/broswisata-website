@@ -1,4 +1,7 @@
 (function () {
+  if (window.__brosWhatsappSourceInitialized) return;
+  window.__brosWhatsappSourceInitialized = true;
+
   var AHMAD_PHONE = "6281260139399";
   var SOURCE_MARKER = "[WEB INQUIRY - BROS WISATA]";
   var ATTRIBUTION_KEY = "bros_attribution_v1";
@@ -36,13 +39,30 @@
     var path = window.location.pathname;
     if (/\/(en|id|ms)\/?$/.test(path)) return "homepage";
     if (path.indexOf("contact") !== -1) return "contact";
+    if (path.indexOf("custom-tour") !== -1) return "custom_tour";
     if (path.indexOf("meet-ahmad") !== -1) return "meet_ahmad";
     if (path.indexOf("responsible-travel") !== -1) return "responsible_travel";
     if (path.indexOf("tour-listing") !== -1) return "tour_listing";
+    if (
+      path.indexOf("private-north-sumatra-tour") !== -1 ||
+      path.indexOf("private-tour-sumatra-utara") !== -1 ||
+      path.indexOf("pakej-private-tour-sumatera-utara") !== -1 ||
+      path.indexOf("bukit-lawang-orangutan-trekking") !== -1 ||
+      path.indexOf("wisata-bukit-lawang-orangutan") !== -1 ||
+      path.indexOf("lake-toba-samosir-private-tour") !== -1 ||
+      path.indexOf("private-tour-lake-toba-samosir") !== -1 ||
+      path.indexOf("pakej-lake-toba-samosir") !== -1 ||
+      path.indexOf("singapore-to-north-sumatra-tour") !== -1 ||
+      path.indexOf("tour-sumatra-utara-dari-singapore") !== -1 ||
+      path.indexOf("pakej-sumatera-utara-dari-singapore") !== -1
+    ) {
+      return "seo_landing";
+    }
     if (path.indexOf("destination") !== -1 || path.indexOf("destinasi") !== -1) return "destination";
     if (path.indexOf("paket-") !== -1) return "tour_detail";
     if (path.indexOf("car-rental") !== -1) return "transport_paused";
     if (path.indexOf("about") !== -1) return "about";
+    if (path.indexOf("privacy-policy") !== -1 || path.indexOf("terms-of-service") !== -1) return "legal";
     return "content";
   }
 
