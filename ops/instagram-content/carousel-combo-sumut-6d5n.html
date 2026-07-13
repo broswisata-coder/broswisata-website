@@ -199,6 +199,11 @@
       font-weight: 300;
     }
 
+    .cover h1.is-long {
+      font-size: 88px;
+      line-height: 0.92;
+    }
+
     .duration {
       display: inline-flex;
       align-items: center;
@@ -551,6 +556,7 @@
 </head>
 <body>
   <main id="app" aria-label="Instagram carousel slide"></main>
+  <script src="./carousel-package-data.js"></script>
   <script>
     const copy = {
       en: {
@@ -712,9 +718,11 @@
     };
 
     const params = new URLSearchParams(window.location.search);
-    const lang = copy[params.get("lang")] ? params.get("lang") : "en";
+    const packageKey = params.get("package") || "combo_sumut_6h5m";
+    const selectedCopy = window.brosPackageCopy?.[packageKey] || copy;
+    const lang = selectedCopy[params.get("lang")] ? params.get("lang") : "en";
     const slideNumber = Math.min(4, Math.max(1, Number(params.get("slide")) || 1));
-    const c = copy[lang];
+    const c = selectedCopy[lang];
     const logoWhite = "../../bros-wisata-logos/bros-wisata-logo-horizontal-white-large-2000px.png";
 
     const escapeHtml = (value) => String(value)
@@ -743,7 +751,7 @@
         </div>
         <div class="cover-content">
           <div class="eyebrow">${escapeHtml(c.cover.eyebrow)}</div>
-          <h1>${escapeHtml(c.cover.title)}<em>${escapeHtml(c.cover.accent)}</em></h1>
+          <h1 class="${Math.max(c.cover.title.length, c.cover.accent.length) >= 14 ? "is-long" : ""}">${escapeHtml(c.cover.title)}<em>${escapeHtml(c.cover.accent)}</em></h1>
           <div class="duration">
             ${escapeHtml(c.cover.duration[0])}<span></span>${escapeHtml(c.cover.duration[1])}
           </div>
@@ -815,7 +823,7 @@
           </div>
           <p class="contact-secondary">${escapeHtml(c.cta.web)}</p>
           <div class="cta-button">${escapeHtml(c.cta.button)}</div>
-          <p class="tracking-code">${escapeHtml(c.cta.tracking).replace("IG-SUMATRA", "<strong>IG-SUMATRA</strong>")}</p>
+          <p class="tracking-code">${escapeHtml(c.cta.tracking).replace(/(IG-[A-Z-]+)/, "<strong>$1</strong>")}</p>
         </div>
       </section>`;
 
