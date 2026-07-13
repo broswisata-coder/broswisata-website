@@ -59,6 +59,8 @@ The editable source for the branded EN/ID/MY carousel is:
 
 - `carousel-combo-sumut-6d5n.html`
 
+The HTML template consumes the shared package copy in `carousel-package-data.js`. Keep package names, durations, highlights, itinerary summaries, and responsible-travel notes in that data file so the combo and legacy-package renders stay aligned.
+
 Render all 12 PNG slides and their WebP derivatives with:
 
 ```text
@@ -66,6 +68,16 @@ node ops/instagram-content/render-carousel.cjs
 ```
 
 The renderer requires `playwright`, `sharp`, and a local Google Chrome installation. It writes 1080×1080 assets to `assets/ig/combo_sumut_6h5m/{en,id,my}/`. Update the copy in the HTML source, then render both PNG and WebP together so website previews and manual Instagram uploads stay aligned.
+
+## Rebuilding the legacy package carousel suite
+
+Render the branded Medan Heritage, Bukit Lawang, Berastagi, and Tangkahan carousel suites with:
+
+```text
+node ops/instagram-content/render-package-suite.cjs
+```
+
+The suite writes EN/ID/MY versions of all four slides as 1080×1080 PNG and WebP files under `assets/ig/<package>/{en,id,my}/`. Use the PNG files for manual Instagram uploads and keep the matching WebP files for website previews.
 
 Admin rule:
 - Prices should not be the headline.
