@@ -10,6 +10,12 @@ Malay, and English content.
 - `assets/` — shared CSS, JavaScript, images, and downloadable brochures.
 - `scripts/generate_seo_pages.py` — regenerates the high-intent SEO landing
   pages and related sitemap entries. Review its diff before committing.
+- `scripts/build-car-rental-pages.cjs` — regenerates the localized rental page
+  bodies while preserving their shared navigation shells.
+- `scripts/sync-homepage-rental-entry.cjs` — keeps the homepage rental feature
+  band and the homepage/rental navigation shells synchronized.
+- `scripts/sync-global-rental-navigation.cjs` — enforces localized rental links
+  across every primary navigation, mobile menu, and footer.
 - `scripts/audit_site.py` — read-only local integrity audit.
 - `scripts/submit-indexnow.ps1` — submits URLs to IndexNow; this makes external
   requests and should only be run intentionally after deployment.
@@ -36,7 +42,13 @@ Run the site audit before every commit:
 
 ```powershell
 python scripts/audit_site.py
+node scripts/sync-homepage-rental-entry.cjs --check
+node scripts/sync-global-rental-navigation.cjs --check
 ```
+
+After running a page generator, run the two rental sync scripts without
+`--check` in the order shown above, then rerun all required checks. This keeps
+generated and hand-maintained navigation in parity.
 
 Also syntax-check shared JavaScript and smoke-test the three language variants
 at desktop and mobile widths. A change is not ready when the audit reports an

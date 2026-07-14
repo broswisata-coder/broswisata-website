@@ -207,15 +207,20 @@ function updateHomepage(html, locale, labels, file) {
   let updated = updatePrimaryNav(html, locale, labels, file);
   updated = updateMobileMenu(updated, locale, labels, file);
   updated = updateFooter(updated, locale, labels, file);
-  const band = serviceBand(locale, labels);
+  const rawBand = serviceBand(locale, labels);
 
   if (updated.includes(pauseMarker)) {
+    const newline = html.includes("\r\n") ? "\r\n" : "\n";
+    const band = rawBand.replace(/\n/g, newline);
     updated = updated.replace(pauseMarker, band);
   } else {
     const bandPattern = /(?:<!-- ======= CAR RENTAL ======= -->\s*)+<section\b[^>]*id=["']car-rental-service["'][^>]*>[\s\S]*?<\/section>/;
-    if (!bandPattern.test(updated)) {
+    const existingBand = updated.match(bandPattern)?.[0];
+    if (!existingBand) {
       throw new Error(`${file}: rental service band and pause marker are both missing`);
     }
+    const newline = existingBand.includes("\r\n") ? "\r\n" : "\n";
+    const band = rawBand.replace(/\n/g, newline);
     updated = updated.replace(bandPattern, band);
   }
 

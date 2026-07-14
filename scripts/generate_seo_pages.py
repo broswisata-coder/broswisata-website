@@ -10,7 +10,7 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://broswisata.id"
-LASTMOD = "2026-07-05"
+LASTMOD = "2026-07-14"
 LANG_ORDER = ["en", "ms", "id"]
 
 
@@ -20,6 +20,8 @@ LANG = {
         "locale": "en_US",
         "home": "Home",
         "tours": "Tours",
+        "rental": "Car Rental",
+        "rental_footer": "Car Rental with Driver",
         "custom": "Custom Tour",
         "about": "About",
         "contact": "Contact",
@@ -41,6 +43,8 @@ LANG = {
         "locale": "id_ID",
         "home": "Beranda",
         "tours": "Paket Tour",
+        "rental": "Sewa Mobil",
+        "rental_footer": "Sewa Mobil + Supir",
         "custom": "Tour Custom",
         "about": "Tentang",
         "contact": "Kontak",
@@ -62,6 +66,8 @@ LANG = {
         "locale": "ms_MY",
         "home": "Utama",
         "tours": "Pakej Tour",
+        "rental": "Sewa Kereta",
+        "rental_footer": "Sewa Kereta + Pemandu",
         "custom": "Tour Tersuai",
         "about": "Tentang",
         "contact": "Kontak",
@@ -464,6 +470,7 @@ def nav(lang: str) -> str:
     <div class="seo-nav-links">
       <a href="/{lang}/">{esc(label['home'])}</a>
       <a href="/{lang}/bros-wisata-tour-listing">{esc(label['tours'])}</a>
+      <a href="/{lang}/bros-wisata-car-rental">{esc(label['rental'])}</a>
       <a href="/{lang}/bros-wisata-custom-tour">{esc(label['custom'])}</a>
       <a href="/{lang}/meet-ahmad">Ahmad</a>
       <a href="/{lang}/bros-wisata-contact">{esc(label['contact'])}</a>
@@ -500,6 +507,7 @@ def footer(lang: str) -> str:
       <h2>{esc(label['services'])}</h2>
       <a href="/{lang}/{slug_for('private-north-sumatra-tour', lang)}">{esc(label['custom'])}</a>
       <a href="/{lang}/bros-wisata-tour-listing">{esc(label['tours'])}</a>
+      <a href="/{lang}/bros-wisata-car-rental">{esc(label['rental_footer'])}</a>
       <a href="/{lang}/meet-ahmad">Meet Ahmad</a>
       <a href="/{lang}/responsible-travel">Responsible Travel</a>
     </div>
@@ -794,7 +802,7 @@ def extract_links(text: str) -> tuple[str | None, list[tuple[str, str]]]:
 
 
 def include_html(path: Path, text: str) -> bool:
-    if path.name in {"bros-wisata-homepage.html", "bros-wisata-car-rental.html"}:
+    if path.name == "bros-wisata-homepage.html":
         return False
     if 'content="noindex' in text.lower():
         return False
@@ -806,7 +814,7 @@ def sitemap_priority(url: str) -> tuple[str, str]:
         return "weekly", "1.00"
     if any(hub["slugs"][lang] in url for hub in HUBS for lang in LANG):
         return "weekly", "0.92"
-    if "paket-" in url or "tour-listing" in url or "custom-tour" in url:
+    if "paket-" in url or "tour-listing" in url or "custom-tour" in url or "car-rental" in url:
         return "weekly", "0.85"
     if "privacy" in url or "terms" in url:
         return "yearly", "0.30"
