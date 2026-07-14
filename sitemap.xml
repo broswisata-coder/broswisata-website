@@ -750,4 +750,34 @@
     <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/terms-of-service" />
     <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/terms-of-service" />
   </url>
+  <url>
+    <loc>https://broswisata.id/en/bros-wisata-car-rental</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-car-rental" />
+  </url>
+  <url>
+    <loc>https://broswisata.id/id/bros-wisata-car-rental</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-car-rental" />
+  </url>
+  <url>
+    <loc>https://broswisata.id/ms/bros-wisata-car-rental</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/bros-wisata-car-rental" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/bros-wisata-car-rental" />
+  </url>
 </urlset>
