@@ -60,7 +60,7 @@
     }
     if (path.indexOf("destination") !== -1 || path.indexOf("destinasi") !== -1) return "destination";
     if (path.indexOf("paket-") !== -1) return "tour_detail";
-    if (path.indexOf("car-rental") !== -1) return "transport_paused";
+    if (path.indexOf("car-rental") !== -1) return "car_rental";
     if (path.indexOf("about") !== -1) return "about";
     if (path.indexOf("privacy-policy") !== -1 || path.indexOf("terms-of-service") !== -1) return "legal";
     return "content";

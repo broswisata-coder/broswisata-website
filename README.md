@@ -15,8 +15,8 @@ Malay, and English content.
   requests and should only be run intentionally after deployment.
 - `ops/` — internal operations tools. Cloudflare `_headers` and `robots.txt`
   keep this area out of search indexes.
-- `_redirects` — clean URLs, legacy redirects, language routes, and the paused
-  transport/rental routes.
+- `_redirects` — clean URLs, legacy redirects, language routes, and rental
+  campaign aliases.
 
 ## Local development
 
@@ -58,8 +58,8 @@ tracking, source attribution, and GA4/Clarity/Meta lead events.
 - Treat roles, years of experience, inclusions, wildlife policies, prices, and
   itinerary details as shared facts. Update all affected pages together.
 - Do not promise wildlife sightings or direct wildlife contact.
-- Transport/rental pages remain paused until fleet, pricing, and SOPs are
-  formally approved.
+- Transport/rental pages must not publish fixed prices until fleet, pricing,
+  and SOPs are formally approved. Use written quotes after availability checks.
 
 ## Delivery workflow
 
