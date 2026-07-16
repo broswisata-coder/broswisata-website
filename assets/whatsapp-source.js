@@ -192,7 +192,9 @@
   function trackAnalyticsWhatsapp(anchor) {
     if (typeof window.gtag === "function") {
       var payload = analyticsPayload(anchor);
-      window.gtag("event", "whatsapp_click", payload);
+      // GA4 receives one canonical click-to-chat event per user action.
+      // Keep whatsapp_click as a Clarity diagnostic so it cannot also become
+      // a second Google Ads conversion for the same WhatsApp click.
       window.gtag("event", "lead_whatsapp_inquiry", payload);
     }
 

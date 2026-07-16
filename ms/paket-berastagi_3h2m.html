@@ -81,23 +81,7 @@
 <link href="/assets/style.css" rel="stylesheet"/>
 <!-- ===== ANALYTICS & TRACKING ===== -->
 <!-- Google Analytics 4 -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  window.addEventListener('load', function() {
-    window.setTimeout(function() {
-      var gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P';
-      document.head.appendChild(gtagScript);
-    }, 6000);
-  });
-  gtag('js', new Date());
-  gtag('config', 'G-JVH9HY8P8P', {
-    'anonymize_ip': true,
-    'cookie_flags': 'SameSite=None;Secure'
-  });
-</script>
+<script src="/assets/analytics.js"></script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   window.addEventListener('load', function() {
