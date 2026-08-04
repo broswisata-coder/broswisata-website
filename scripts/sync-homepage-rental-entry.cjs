@@ -174,7 +174,7 @@ function serviceBand(locale, labels) {
   const chips = labels.highlights
     .map(
       (highlight) =>
-        `<span class="border border-white/20 bg-white/5 px-3 py-2 text-xs font-semibold">${highlight}</span>`,
+        `<span class="border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold">${highlight}</span>`,
     )
     .join("\n");
 
@@ -190,7 +190,7 @@ function serviceBand(locale, labels) {
 <a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-6 py-3.5 font-bold hover:bg-white transition" href="${rentalHref}">${labels.viewFleet} <span aria-hidden="true">→</span></a>
 <a class="inline-flex items-center justify-center border border-white/30 px-6 py-3.5 font-bold hover:bg-white/10 transition" data-cta="car_rental_home_quote" href="${labels.whatsapp}" rel="noopener noreferrer" target="_blank">${labels.availability}</a>
 </div>
-<div class="flex flex-wrap gap-2 mt-7">
+<div class="flex flex-wrap gap-3 mt-6">
 ${chips}
 </div>
 </div>
