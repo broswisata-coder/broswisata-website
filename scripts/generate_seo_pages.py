@@ -623,7 +623,15 @@ def build_page(hub: dict, lang: str) -> str:
     c = hub["copy"][lang]
     label = LANG[lang]
     canonical = page_url(hub, lang)
-    og_image = abs_url(hub["image"])
+    og_image = abs_url(f"/assets/og/{lang}/{hub['slugs'][lang]}.jpg")
+    social_title = re.sub(
+        r"\s*(?:\||—|–)\s*BROS\s+Wisata.*$", "", c["title"], flags=re.IGNORECASE
+    ).strip()
+    social_alt = {
+        "en": f"BROS Wisata preview for {social_title}, featuring North Sumatra travel imagery.",
+        "id": f"Pratinjau BROS Wisata untuk {social_title} dengan visual perjalanan Sumatra Utara.",
+        "ms": f"Pratonton BROS Wisata untuk {social_title} dengan visual perjalanan Sumatera Utara.",
+    }[lang]
     alternates = "\n".join(
         [f'<link href="{page_url(hub, "en")}" hreflang="x-default" rel="alternate"/>']
         + [f'<link href="{page_url(hub, alt_lang)}" hreflang="{alt_lang}" rel="alternate"/>' for alt_lang in LANG_ORDER]
@@ -655,13 +663,17 @@ def build_page(hub: dict, lang: str) -> str:
 <meta content="{esc(c['title'])}" property="og:title"/>
 <meta content="{esc(c['description'])}" property="og:description"/>
 <meta content="{og_image}" property="og:image"/>
-<meta content="{esc(hub['image_alt'][lang])}" property="og:image:alt"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="{esc(social_alt)}" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="{og_image}" name="twitter:image"/>
+<meta content="{esc(social_alt)}" name="twitter:image:alt"/>
 <meta content="{label['locale']}" property="og:locale"/>
 <meta content="BROS Wisata" property="og:site_name"/>
-<meta content="summary_large_image" name="twitter:card"/>
 <meta content="{esc(c['title'])}" name="twitter:title"/>
 <meta content="{esc(c['description'])}" name="twitter:description"/>
-<meta content="{og_image}" name="twitter:image"/>
 <link href="/bros-wisata-logos/bros-wisata-icon-square-favicon-32px.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/bros-wisata-logos/bros-wisata-icon-square-favicon-64px.png" rel="icon" sizes="64x64" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
