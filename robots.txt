@@ -1,6 +1,6 @@
 # BROS Wisata - Tour Operator Sumatra Utara
 # https://broswisata.id
-# Last updated: 2026-07-04
+# Last updated: 2026-08-29
 
 # ===== ALL BOTS - DEFAULT ALLOW =====
 User-agent: *
@@ -10,6 +10,7 @@ Disallow: /ops/
 Disallow: /scripts/
 Disallow: /src/
 Disallow: /node_modules/
+Disallow: /cdn-cgi/
 
 # ===== SEARCH ENGINE BOTS =====
 User-agent: Googlebot
