@@ -33,6 +33,8 @@ REQUIRED_HREFLANGS = frozenset(("x-default", *LANGUAGES))
 SITE_SCHEME = "https"
 SITE_HOST = "broswisata.id"
 INTERNAL_HOSTS = frozenset((SITE_HOST, f"www.{SITE_HOST}"))
+OG_IMAGE_WIDTH = 1200
+OG_IMAGE_HEIGHT = 630
 IGNORED_SCHEMES = frozenset(
     ("data", "mailto", "tel", "sms", "javascript", "geo", "wa", "whatsapp")
 )
@@ -148,6 +150,9 @@ class Page:
         default_factory=lambda: defaultdict(list)
     )
     robots: list[tuple[int, str]] = field(default_factory=list)
+    meta: dict[str, list[tuple[int, str]]] = field(
+        default_factory=lambda: defaultdict(list)
+    )
     json_blocks: list[JsonBlock] = field(default_factory=list)
     forms: list[Form] = field(default_factory=list)
     controls: list[Control] = field(default_factory=list)
@@ -212,8 +217,14 @@ class ProductionHTMLParser(HTMLParser):
                 language = values["hreflang"].strip().lower()
                 self.page.alternates[language].append((line, href))
 
-        if tag == "meta" and values.get("name", "").lower() == "robots":
-            self.page.robots.append((line, values.get("content", "")))
+        if tag == "meta":
+            identifier = (
+                values.get("property") or values.get("name") or ""
+            ).strip().lower()
+            if identifier:
+                self.page.meta[identifier].append((line, values.get("content", "")))
+            if values.get("name", "").lower() == "robots":
+                self.page.robots.append((line, values.get("content", "")))
 
         if tag == "script":
             self.active_script = []
@@ -284,6 +295,61 @@ class ProductionHTMLParser(HTMLParser):
             self.page.parser_problems.append(
                 (self.active_json[0], "unclosed JSON-LD <script> element")
             )
+
+
+def image_dimensions(path: Path) -> tuple[int, int] | None:
+    """Return PNG/JPEG dimensions using only the Python standard library."""
+
+    data = path.read_bytes()
+    if data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24:
+        return (
+            int.from_bytes(data[16:20], "big"),
+            int.from_bytes(data[20:24], "big"),
+        )
+    if not data.startswith(b"\xff\xd8"):
+        return None
+
+    start_of_frame = frozenset(
+        (
+            0xC0,
+            0xC1,
+            0xC2,
+            0xC3,
+            0xC5,
+            0xC6,
+            0xC7,
+            0xC9,
+            0xCA,
+            0xCB,
+            0xCD,
+            0xCE,
+            0xCF,
+        )
+    )
+    offset = 2
+    while offset + 3 < len(data):
+        if data[offset] != 0xFF:
+            offset += 1
+            continue
+        while offset < len(data) and data[offset] == 0xFF:
+            offset += 1
+        if offset >= len(data):
+            break
+        marker = data[offset]
+        offset += 1
+        if marker == 0x01 or 0xD0 <= marker <= 0xD9:
+            continue
+        if offset + 2 > len(data):
+            break
+        segment_length = int.from_bytes(data[offset : offset + 2], "big")
+        if segment_length < 2 or offset + segment_length > len(data):
+            break
+        if marker in start_of_frame and segment_length >= 7:
+            height = int.from_bytes(data[offset + 3 : offset + 5], "big")
+            width = int.from_bytes(data[offset + 5 : offset + 7], "big")
+            return width, height
+        offset += segment_length
+    return None
 
 
 class SiteAudit:
@@ -459,6 +525,114 @@ class SiteAudit:
             return f"/{page.expected_language}/"
         return "/" + str(relative.with_suffix(""))
 
+    def validate_social_preview(self, page: Page) -> None:
+        """Validate large-card metadata and its local generated image asset."""
+
+        if page.is_noindex:
+            return
+
+        required = (
+            "og:image",
+            "og:image:type",
+            "og:image:width",
+            "og:image:height",
+            "og:image:alt",
+            "twitter:card",
+            "twitter:image",
+            "twitter:image:alt",
+        )
+        values: dict[str, str] = {}
+        for key in required:
+            entries = page.meta.get(key, [])
+            if len(entries) != 1:
+                self.add_issue(
+                    "ERROR",
+                    "SOCIAL_META_COUNT",
+                    page.relative,
+                    entries[0][0] if entries else 1,
+                    f"expected one {key!r} meta tag, found {len(entries)}",
+                )
+                continue
+            line, content = entries[0]
+            values[key] = content.strip()
+            if not content.strip():
+                self.add_issue(
+                    "ERROR",
+                    "SOCIAL_META_EMPTY",
+                    page.relative,
+                    line,
+                    f"{key!r} must not be empty",
+                )
+
+        expected_values = {
+            "og:image:type": "image/jpeg",
+            "og:image:width": str(OG_IMAGE_WIDTH),
+            "og:image:height": str(OG_IMAGE_HEIGHT),
+            "twitter:card": "summary_large_image",
+        }
+        for key, expected in expected_values.items():
+            actual = values.get(key)
+            if actual is not None and actual != expected:
+                self.add_issue(
+                    "ERROR",
+                    "SOCIAL_META_VALUE",
+                    page.relative,
+                    page.meta[key][0][0],
+                    f"{key!r} is {actual!r}; expected {expected!r}",
+                )
+
+        og_image = values.get("og:image")
+        twitter_image = values.get("twitter:image")
+        if og_image and twitter_image and twitter_image != og_image:
+            self.add_issue(
+                "ERROR",
+                "SOCIAL_IMAGE_MISMATCH",
+                page.relative,
+                page.meta["twitter:image"][0][0],
+                "twitter:image must match og:image",
+            )
+
+        if not og_image:
+            return
+        parts = urlsplit(og_image)
+        expected_prefix = f"/assets/og/{page.expected_language}/"
+        if (
+            parts.scheme.lower() != SITE_SCHEME
+            or parts.netloc.lower() != SITE_HOST
+            or parts.query
+            or parts.fragment
+            or not parts.path.startswith(expected_prefix)
+            or not parts.path.lower().endswith(".jpg")
+        ):
+            self.add_issue(
+                "ERROR",
+                "SOCIAL_IMAGE_URL",
+                page.relative,
+                page.meta["og:image"][0][0],
+                f"og:image must be an absolute localized JPEG below {expected_prefix!r}",
+            )
+            return
+
+        image_path = self.root / unquote(parts.path).lstrip("/")
+        if not image_path.is_file():
+            self.add_issue(
+                "ERROR",
+                "SOCIAL_IMAGE_MISSING",
+                page.relative,
+                page.meta["og:image"][0][0],
+                f"og:image asset does not exist: {image_path.relative_to(self.root)}",
+            )
+            return
+        dimensions = image_dimensions(image_path)
+        if dimensions != (OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT):
+            self.add_issue(
+                "ERROR",
+                "SOCIAL_IMAGE_DIMENSIONS",
+                page.relative,
+                page.meta["og:image"][0][0],
+                f"og:image is {dimensions}; expected {(OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT)}",
+            )
+
     def validate_page_metadata(self, page: Page) -> None:
         for line, problem in page.parser_problems:
             self.add_issue("ERROR", "HTML_STRUCTURE", page.relative, line, problem)
@@ -492,6 +666,8 @@ class SiteAudit:
                 lines[1],
                 f"id={element_id!r} appears on lines {', '.join(map(str, lines))}",
             )
+
+        self.validate_social_preview(page)
 
         if len(page.canonicals) != 1:
             self.add_issue(

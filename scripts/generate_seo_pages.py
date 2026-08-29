@@ -10,7 +10,21 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://broswisata.id"
-LASTMOD = "2026-07-14"
+DEFAULT_LASTMOD = "2026-07-14"
+# Keep sitemap dates deterministic and honest. Add an override only when the
+# page's main copy, structured data, or internal links change materially.
+LASTMOD_OVERRIDES = {
+    f"{SITE}/en/": "2026-08-29",
+    f"{SITE}/en/bukit-lawang-orangutan-trekking": "2026-08-29",
+    f"{SITE}/en/destination-bukit-lawang-tangkahan": "2026-08-29",
+    f"{SITE}/en/lake-toba-samosir-private-tour": "2026-08-29",
+    f"{SITE}/en/private-north-sumatra-tour": "2026-08-29",
+    f"{SITE}/id/destinasi-bukit-lawang-tangkahan": "2026-08-29",
+    f"{SITE}/ms/": "2026-08-29",
+    f"{SITE}/ms/destinasi-bukit-lawang-tangkahan": "2026-08-29",
+    f"{SITE}/ms/pakej-lake-toba-samosir": "2026-08-29",
+    f"{SITE}/ms/pakej-private-tour-sumatera-utara": "2026-08-29",
+}
 LANG_ORDER = ["en", "ms", "id"]
 
 
@@ -104,23 +118,27 @@ HUBS = [
         "copy": {
             "en": {
                 "title": "Private North Sumatra Tour from Medan | BROS Wisata",
-                "description": "Plan a private North Sumatra tour from Medan with Ahmad: Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, halal stops, and custom quotation.",
+                "description": "Build a private North Sumatra tour from Medan with Ahmad: Lake Toba, Bukit Lawang, Berastagi, local guides, hotel fit, halal options, and a custom quote.",
                 "keywords": "private North Sumatra tour, Medan private tour, Lake Toba Bukit Lawang tour, custom Sumatra itinerary",
                 "kicker": "Private North Sumatra Tour",
-                "h1": "North Sumatra is better when the route is built around your group.",
-                "intro": "BROS Wisata designs private routes from Medan for travelers who want Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, and local stops without feeling rushed into a generic package.",
+                "h1": "Plan a private North Sumatra tour around your group.",
+                "intro": "BROS Wisata designs private routes from Medan for travelers who want Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, and meaningful local stops. Ahmad checks the flight timing, road sequence, hotel fit, guide availability, and guest pace before the itinerary is quoted.",
                 "cta_text": "Plan my private tour",
                 "wa": "Hi Ahmad, I found BROS Wisata from the Private North Sumatra Tour page. My travel date, pax, hotel style, and route idea are:",
                 "stats": [("Route", "Medan, jungle, highlands, lake"), ("Style", "Private, flexible, by request"), ("Best for", "Europe, Singapore, Malaysia")],
                 "sections": [
-                    ("What Ahmad checks before quoting", ["Realistic drive time between Medan, Bukit Lawang, Berastagi, and Lake Toba.", "Hotel or lodge class that fits the guest comfort level.", "Local guide availability for jungle, volcano, and cultural stops.", "Halal-friendly food stops or slower eco pacing when needed."]),
-                    ("Typical route ideas", ["4D3N Bukit Lawang jungle and Medan arrival route.", "5D4N Berastagi highland and Lake Toba private tour.", "6D5N complete North Sumatra route with Bukit Lawang, Berastagi, Samosir, and Lake Toba.", "Custom solo, couple, family, or small-group itinerary."]),
-                    ("Why price is by request", ["The same number of days can cost differently depending on hotel category, travel date, route distance, and group size.", "A fair quotation is prepared after your travel date, pax, and comfort level are clear.", "This keeps the trip premium and transparent instead of forcing one fixed marketplace price."]),
+                    ("Start with arrival and departure", ["Most routes can begin at Kualanamu International Airport or a Medan hotel, but the landing time determines how far the group should travel on day one.", "An early departure may require the final night in Medan; a later flight can allow a direct airport transfer when road time remains realistic.", "Share the flight number, travel date, pax, luggage, and any fixed hotel nights before route design begins.", "Ahmad uses those details to avoid a first or final day that looks possible on paper but feels rushed on the road."]),
+                    ("Choose a route length that fits", ["A 4D3N trip normally works best when the group focuses on either Bukit Lawang or Lake Toba instead of trying to cover both.", "A 5D4N plan can combine Berastagi with Lake Toba, or give Bukit Lawang a more comfortable arrival and trekking rhythm.", "A 6D5N or longer route is better for Bukit Lawang, Berastagi, Samosir, and Lake Toba in one private journey.", "Tangkahan, extra trekking, village visits, or a slower Samosir stay usually need additional time rather than a tighter schedule."]),
+                    ("Match the trip to the guests", ["Couples and solo travelers often value a flexible driver-guide arrangement and smaller lodges with local character.", "Families may need shorter walks, connecting or extra-bed room planning, familiar meal stops, and more recovery time between drives.", "Malaysia and Singapore guests can request halal-friendly food planning and prayer-time awareness without changing the private character of the tour.", "Long-haul guests can ask for a quieter eco pace, stronger nature focus, or a mix of rainforest, highlands, and Batak culture."]),
+                    ("What Ahmad checks before quoting", ["Road sequence and realistic transfer time between Medan, Bukit Lawang, Berastagi, Lake Toba, and the agreed final drop-off.", "Hotel or lodge availability that matches the requested comfort level, room composition, and travel market.", "Local guide availability for jungle trekking, cultural interpretation, or other activities that require destination knowledge.", "Weather, ferry timing, guest fitness, halal needs, and optional activities that could change the safest daily flow."]),
+                    ("What the quotation clarifies", ["The written quote lists the route, included transport, confirmed or proposed hotel category, guide arrangement, meals, and activities.", "Exclusions, deposit timing, balance terms, and cancellation conditions are stated before the booking is treated as confirmed.", "The same duration can price differently because travel date, room type, route distance, group size, and guide needs change the operating cost.", "This quotation-led approach keeps the plan transparent and avoids promising a fixed marketplace price before the ground details are checked."]),
                 ],
                 "faqs": [
                     ("Can the route start and end at Kualanamu Airport?", "Yes. Most private routes can start from Kualanamu International Airport or a Medan hotel."),
                     ("Do you serve solo travelers?", "Yes. Solo private tours are possible with a custom quotation based on route, guide, and room requirements."),
                     ("Can the trip be halal-friendly?", "Yes. BROS Wisata can plan halal-friendly stops, prayer timing, and suitable food choices for Malaysia and Singapore guests."),
+                    ("How many days do I need for Bukit Lawang and Lake Toba?", "A 6D5N or longer route is usually more comfortable when Bukit Lawang, Berastagi, Samosir, and Lake Toba are combined."),
+                    ("Why is there no fixed package price?", "The final cost depends on travel date, pax, room composition, hotel level, route distance, and guide requirements, so BROS Wisata checks the ground plan before quoting."),
                 ],
             },
             "id": {
@@ -146,23 +164,27 @@ HUBS = [
             },
             "ms": {
                 "title": "Pakej Private Tour Sumatera Utara dari Medan | BROS Wisata",
-                "description": "Rancang private tour Sumatera Utara dari Medan bersama Ahmad: Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, halal stop, dan sebut harga tersuai.",
+                "description": "Rancang private tour Sumatera Utara dari Medan bersama Ahmad: Lake Toba, Bukit Lawang, Berastagi, guide lokal, hotel, halal stop, dan sebut harga.",
                 "keywords": "pakej private tour Sumatera Utara, tour Medan private, Lake Toba Bukit Lawang, itinerary Sumatera Utara",
                 "kicker": "Private Tour Sumatera Utara",
-                "h1": "Laluan Sumatera Utara lebih selesa bila disusun ikut kumpulan anda.",
-                "intro": "BROS Wisata menyusun laluan private dari Medan untuk tetamu yang mahu Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, dan stop lokal tanpa rasa seperti pakej generik.",
+                "h1": "Rancang private tour Sumatera Utara mengikut kumpulan anda.",
+                "intro": "BROS Wisata menyusun laluan private dari Medan untuk tetamu yang mahu Lake Toba, Bukit Lawang, Berastagi, Tangkahan, Samosir, dan pengalaman lokal. Ahmad menyemak waktu flight, urutan jalan, tahap hotel, guide, dan tempo kumpulan sebelum sebut harga dihantar.",
                 "cta_text": "Rancang private tour",
                 "wa": "Hai Ahmad, saya jumpa BROS Wisata dari halaman Pakej Private Tour Sumatera Utara. Tarikh, bilangan pax, gaya hotel, dan idea laluan saya:",
                 "stats": [("Laluan", "Medan, jungle, highland, lake"), ("Gaya", "Private, fleksibel, by request"), ("Sesuai", "Malaysia, Singapore, Eropah")],
                 "sections": [
-                    ("Apa Ahmad semak sebelum sebut harga", ["Masa perjalanan yang realistik antara Medan, Bukit Lawang, Berastagi, dan Lake Toba.", "Kelas hotel atau lodge yang sesuai dengan tahap keselesaan tetamu.", "Ketersediaan guide lokal untuk jungle, volcano, dan stop budaya.", "Stop halal-friendly atau tempo eco yang lebih santai jika diperlukan."]),
-                    ("Contoh idea laluan", ["4H3M Bukit Lawang jungle dan arrival Medan.", "5H4M Berastagi highland dan private tour Lake Toba.", "6H5M Sumatera Utara lengkap dengan Bukit Lawang, Berastagi, Samosir, dan Lake Toba.", "Itinerary tersuai untuk solo, pasangan, keluarga, atau small group."]),
-                    ("Kenapa harga by request", ["Tempoh yang sama boleh berbeza kos bergantung kelas hotel, tarikh, jarak laluan, dan jumlah tetamu.", "Sebutharga yang adil disediakan selepas tarikh, pax, dan tahap keselesaan jelas.", "Ini menjaga trip terasa premium dan telus, bukan sekadar harga marketplace."]),
+                    ("Mulakan dengan flight dan drop-off", ["Kebanyakan laluan boleh bermula dari Kualanamu International Airport atau hotel Medan, tetapi waktu ketibaan menentukan sejauh mana kumpulan patut bergerak pada hari pertama.", "Flight awal boleh memerlukan final night di Medan; flight lewat kadang-kadang membolehkan transfer terus jika masa jalan masih realistik.", "Kirim nombor flight, tarikh, pax, bagasi, dan malam hotel yang sudah ditempah sebelum itinerary disusun.", "Butiran ini membantu Ahmad mengelakkan hari pertama atau terakhir yang nampak mudah di atas kertas tetapi terlalu rushing di jalan."]),
+                    ("Pilih tempoh laluan yang sesuai", ["Pakej 4H3M biasanya lebih baik fokus sama ada Bukit Lawang atau Lake Toba, bukan memaksa kedua-duanya dalam masa singkat.", "Pakej 5H4M boleh menggabungkan Berastagi dan Lake Toba, atau memberi tempo lebih selesa untuk ketibaan dan trekking Bukit Lawang.", "Pakej 6H5M atau lebih panjang lebih sesuai untuk Bukit Lawang, Berastagi, Samosir, dan Lake Toba dalam satu perjalanan private.", "Tangkahan, extra trekking, lawatan kampung, atau stay Samosir yang santai biasanya perlukan tambahan masa."]),
+                    ("Sesuaikan dengan karakter tetamu", ["Pasangan dan solo traveler selalunya menghargai aturan driver-guide fleksibel serta lodge kecil yang mempunyai karakter lokal.", "Keluarga mungkin perlukan jalan kaki lebih pendek, susunan connecting room atau extra bed, stop makanan familiar, dan masa rehat antara transfer.", "Tetamu Malaysia dan Singapore boleh meminta planning makanan halal-friendly serta perhatian pada waktu solat tanpa mengubah gaya private tour.", "Tetamu jarak jauh boleh memilih tempo eco yang tenang, fokus alam yang lebih kuat, atau gabungan rainforest, highland, dan budaya Batak."]),
+                    ("Apa Ahmad semak sebelum sebut harga", ["Urutan jalan dan masa transfer realistik antara Medan, Bukit Lawang, Berastagi, Lake Toba, serta final drop-off yang dipersetujui.", "Ketersediaan hotel atau lodge yang sepadan dengan tahap keselesaan, susunan bilik, dan pasaran tetamu.", "Ketersediaan guide lokal untuk jungle trekking, interpretasi budaya, atau aktiviti yang perlukan pengetahuan destinasi.", "Cuaca, ferry, fitness tetamu, keperluan halal, dan aktiviti pilihan yang boleh mengubah aliran harian paling selamat."]),
+                    ("Apa yang dijelaskan dalam sebut harga", ["Sebutharga bertulis menyatakan laluan, transport, hotel yang dicadang atau disahkan, aturan guide, makan, dan aktiviti yang termasuk.", "Exclusion, jadual deposit, balance, dan syarat pembatalan dinyatakan sebelum tempahan dianggap confirmed.", "Tempoh yang sama boleh berbeza kos kerana tarikh, jenis bilik, jarak laluan, jumlah tetamu, dan keperluan guide mengubah kos operasi.", "Pendekatan quotation-led ini lebih telus daripada menjanjikan satu harga marketplace sebelum ground arrangement disemak."]),
                 ],
                 "faqs": [
                     ("Boleh mula dari Lapangan Terbang Kualanamu?", "Boleh. Kebanyakan laluan private boleh bermula dari Kualanamu International Airport atau hotel di Medan."),
                     ("Boleh untuk solo traveler?", "Boleh. Solo private tour boleh dibuat dengan sebut harga tersuai mengikut laluan, guide, dan keperluan bilik."),
                     ("Boleh dibuat halal-friendly?", "Boleh. BROS Wisata boleh mengatur stop halal-friendly, waktu solat, dan pilihan makanan sesuai untuk tetamu Malaysia/Singapore."),
+                    ("Berapa hari untuk Bukit Lawang dan Lake Toba?", "Pakej 6H5M atau lebih panjang biasanya lebih selesa apabila Bukit Lawang, Berastagi, Samosir, dan Lake Toba digabungkan."),
+                    ("Kenapa tiada harga pakej tetap?", "Kos akhir bergantung pada tarikh, pax, susunan bilik, tahap hotel, jarak laluan, dan keperluan guide, jadi ground plan disemak sebelum sebut harga dibuat."),
                 ],
             },
         },
@@ -182,24 +204,28 @@ HUBS = [
         },
         "copy": {
             "en": {
-                "title": "Bukit Lawang Orangutan Trekking with Local Guide | BROS Wisata",
-                "description": "Private Bukit Lawang orangutan trekking from Medan with local guide planning, ethical wildlife distance, jungle lodge, river tubing, and quote by request.",
-                "keywords": "Bukit Lawang orangutan trekking, Sumatra orangutan tour, Gunung Leuser private guide, ethical orangutan trekking",
+                "title": "Bukit Lawang Orangutan Trekking & Private Tours | BROS Wisata",
+                "description": "Plan a private Bukit Lawang orangutan trek from Medan with local guides, ethical wildlife practice, realistic trail options, and routes onward to Lake Toba.",
+                "keywords": "Bukit Lawang orangutan trekking, Bukit Lawang tours, Bukit Lawang guide, Sumatra orangutan tour, ethical orangutan trekking",
                 "kicker": "Bukit Lawang Orangutan Trekking",
-                "h1": "A jungle route should feel careful, not crowded.",
-                "intro": "Bukit Lawang is one of North Sumatra's strongest eco-tourism routes. BROS Wisata helps shape private trekking with local guide partners, realistic pacing, and honest wildlife expectations.",
+                "h1": "Private Bukit Lawang orangutan trekking with a local guide.",
+                "intro": "Bukit Lawang is the main gateway to rainforest trekking on the eastern edge of Gunung Leuser National Park. BROS Wisata coordinates the Medan transfer, lodge timing, and a local jungle guide, then matches the trail length to guest fitness, weather, and honest wildlife expectations.",
                 "cta_text": "Ask Ahmad about Bukit Lawang",
                 "wa": "Hi Ahmad, I found BROS Wisata from the Bukit Lawang Orangutan Trekking page. My date, pax, fitness level, and route idea are:",
                 "stats": [("Access", "About 3.5 hours from Medan"), ("Focus", "Rainforest, local guide, river"), ("Ethic", "No feeding, no chasing wildlife")],
                 "sections": [
-                    ("Best-fit guests", ["Travelers who want rainforest and wildlife with a slower, more careful route.", "Couples, solo travelers, families, and small groups with normal fitness.", "Guests who prefer honest planning instead of guaranteed wildlife promises."]),
-                    ("Route options", ["Day trek with riverside lodge and Medan transfer.", "2D1N jungle trekking or jungle camp by request.", "Bukit Lawang combined with Tangkahan, Berastagi, or Lake Toba.", "Flexible pacing based on weather, trail condition, and guest fitness."]),
-                    ("Responsible travel notes", ["Wildlife is not guaranteed and should not be forced.", "Guests should follow local guide instructions, keep distance, and avoid feeding.", "BROS Wisata prioritizes local partners and route feasibility before quotation."]),
+                    ("Choose the right trekking level", ["A shorter guided trek can introduce the rainforest to first-time visitors, families, or guests who prefer a lighter physical day.", "A half-day or full-day route gives more trail time, but the guide still adapts the pace to heat, rain, mud, river conditions, and group fitness.", "An overnight jungle option requires a separate equipment, camp, porter, and safety check; it should be requested before the quotation is prepared.", "River tubing is optional and only operates when the local guide considers the water level, weather, and guest ability suitable."]),
+                    ("Medan to Bukit Lawang logistics", ["The road transfer from Medan usually takes around three and a half hours, but airport timing, city traffic, road works, and weather can extend the journey.", "A very late arrival is often better followed by a Medan night instead of forcing a tiring road transfer after the flight.", "Lodges sit around the Bahorok riverside area, so luggage size, walking access, and room comfort should be discussed before booking.", "BROS Wisata confirms the pickup point, vehicle fit, lodge plan, guide meeting, and next transfer in one written itinerary."]),
+                    ("Bukit Lawang to Lake Toba", ["Travelers searching for Bukit Lawang to Lake Toba should treat it as a multi-stop North Sumatra route, not a short transfer between nearby attractions.", "Berastagi can be used as a highland stop between the rainforest and Lake Toba when the total trip has enough days and the road sequence works.", "A 5D4N version is possible for selected flight times and a compact pace, while 6D5N or longer gives Bukit Lawang, Berastagi, Samosir, and Lake Toba more breathing room.", "The final order is checked against trekking day, ferry or Samosir access, hotel availability, and the airport or Medan drop-off requested by the guest."]),
+                    ("Responsible wildlife practice", ["Orangutans and other wildlife are free-ranging, so sightings, distance, and duration can never be guaranteed.", "Guests must follow the local guide, keep a respectful distance, and never feed, touch, call, chase, or crowd an animal for a photograph.", "Trail choice may change when wildlife, weather, river conditions, or park guidance make another route more responsible.", "A strong tour is measured by safe observation and local knowledge, not by promising a staged encounter."]),
+                    ("What to send for a quotation", ["Share travel date, pax, pickup point, flight timing, and whether Bukit Lawang is the full trip or part of a Lake Toba route.", "Tell Ahmad the preferred trek length, normal walking ability, child ages, knee or mobility concerns, and interest in tubing or an overnight trek.", "Add the lodge style, room composition, luggage amount, meal preference, and desired final drop-off.", "The quote is prepared after the vehicle, lodge, local guide, route timing, and optional activities are checked for the requested date."]),
                 ],
                 "faqs": [
                     ("Is Bukit Lawang suitable for first-time trekkers?", "Often yes, if the trekking level is matched to your fitness and the route is not overloaded."),
-                    ("Can I combine Bukit Lawang with Lake Toba?", "Yes. A 5D4N or 6D5N route can combine Bukit Lawang with Berastagi, Samosir, and Lake Toba."),
+                    ("Can I travel from Bukit Lawang to Lake Toba?", "Yes. The more comfortable plan usually includes enough time for a highland stop such as Berastagi before Samosir or Lake Toba; the exact order depends on flight, road, and hotel timing."),
                     ("Can you guarantee seeing orangutans?", "No responsible operator should guarantee wildlife. The route can be planned well, but wildlife remains natural."),
+                    ("How long is the transfer from Medan to Bukit Lawang?", "Allow roughly three and a half hours in normal conditions, with extra margin for airport timing, Medan traffic, road works, weather, and rest stops."),
+                    ("What should I send before asking for a quote?", "Send the date, pax, pickup and drop-off, flight details, preferred trekking level, fitness or mobility notes, lodge style, and whether Lake Toba is part of the route."),
                 ],
             },
             "id": {
@@ -262,23 +288,27 @@ HUBS = [
         "copy": {
             "en": {
                 "title": "Lake Toba and Samosir Private Tour | BROS Wisata",
-                "description": "Private Lake Toba and Samosir tour from Medan with Berastagi highland stops, Sipiso-Piso waterfall, ferry timing, Batak culture, and custom quotation.",
+                "description": "Plan a private Lake Toba and Samosir tour from Medan with Berastagi, Sipiso-Piso, Batak culture, realistic road timing, and a custom quotation.",
                 "keywords": "Lake Toba private tour, Samosir Island tour, Medan to Lake Toba tour, Sipiso Piso Berastagi Samosir",
                 "kicker": "Lake Toba and Samosir Private Tour",
-                "h1": "Lake Toba deserves time, not a rushed photo stop.",
-                "intro": "BROS Wisata plans Lake Toba and Samosir routes around ferry timing, road time, hotel comfort, highland stops, and the kind of Batak culture experience your group wants.",
+                "h1": "Plan a private Lake Toba and Samosir tour from Medan.",
+                "intro": "Lake Toba works best as a private route when the long road journey, Berastagi highland stops, Samosir access, hotel location, and final flight are planned together. BROS Wisata checks those moving parts before Ahmad sends a custom quotation.",
                 "cta_text": "Plan my Lake Toba route",
                 "wa": "Hi Ahmad, I found BROS Wisata from the Lake Toba and Samosir page. My date, pax, hotel style, and Lake Toba route idea are:",
                 "stats": [("Route", "Medan, Berastagi, Sipiso-Piso, Samosir"), ("Pace", "2 to 4 nights recommended"), ("Good for", "Families, couples, private groups")],
                 "sections": [
-                    ("What makes Lake Toba planning different", ["Drive time from Medan can be long, so pacing matters.", "Ferry timing and Samosir hotel location should be checked before quotation.", "Berastagi and Sipiso-Piso can fit well when the route is not forced.", "Food preference, comfort level, and final drop-off should be clear from the start."]),
-                    ("Common route styles", ["3D2N fast Lake Toba route for travelers with limited time.", "4D3N Medan, Berastagi, Lake Toba, and Samosir route.", "5D4N halal-friendly family route for Malaysia or Singapore guests.", "6D5N combined route with Bukit Lawang or Tangkahan."]),
-                    ("What guests usually ask", ["How many nights are enough in Samosir?", "Can the route include Berastagi and Sipiso-Piso?", "Is a private driver included throughout the trip?", "Can the final night be in Medan before an early flight?"]),
+                    ("Medan to Lake Toba route planning", ["The road journey is part of the experience, so arrival time and the first overnight stop matter as much as the destination list.", "Berastagi and Sipiso-Piso fit naturally when the group has enough daylight and does not overload the first day after a flight.", "The route may use Parapat, Samosir, or another agreed lake-side base depending on hotel preference and the activities requested.", "Traffic, weather, rest stops, and ferry or lake-crossing arrangements are treated as planning variables rather than fixed promises."]),
+                    ("How many nights to allow", ["A 3D2N route is the compact option and normally requires a focused plan with limited detours.", "A 4D3N trip gives more room for Medan, Berastagi, Sipiso-Piso, Lake Toba, and Samosir without turning every day into a transfer day.", "A 5D4N route suits families or guests who want more time for Batak culture, a quieter lake stay, or a final Medan night.", "A 6D5N or longer itinerary is more realistic when Bukit Lawang, jungle trekking, or Tangkahan is added."]),
+                    ("Samosir stay and local experience", ["Hotel location affects how easily the group reaches village, museum, viewpoint, food, and cultural stops around Samosir.", "Ahmad can shape the day around Batak history, local communities, scenery, or a slower family pace rather than repeating one fixed circuit.", "Meal preferences and halal-friendly requirements should be shared early because suitable stops depend on the daily route.", "Activities remain subject to opening times, local conditions, and the interests and mobility of the guests."]),
+                    ("Vehicle, hotel, and room fit", ["The vehicle is matched to pax, luggage, road sequence, and whether the trip begins at Kualanamu Airport or a Medan hotel.", "Hotel proposals reflect comfort level, room composition, travel date, and whether the guests value lake view, access, or a quieter setting.", "Families should state child ages and whether they prefer shared bedding, an extra bed, or separate rooms before the quotation is issued.", "The confirmed booking document records the agreed route, inclusions, hotel arrangement, and pickup or drop-off point."]),
+                    ("Before requesting your quote", ["Send the travel date, pax, flight number, pickup point, final drop-off, luggage, and preferred number of nights at Lake Toba.", "List must-see places and tell us whether Bukit Lawang, Berastagi, or a final Medan night is essential.", "Share the hotel level, room types, dietary needs, walking ability, and any children or senior travelers in the group.", "BROS Wisata then checks road flow, hotel availability, local arrangements, and the private transport plan before pricing."]),
                 ],
                 "faqs": [
                     ("How many nights should I stay at Lake Toba?", "Two nights is more comfortable than one if you want Samosir, culture stops, and a less rushed drive."),
                     ("Can Lake Toba be combined with Bukit Lawang?", "Yes, but it is better as a 6D5N or longer private route."),
                     ("Can BROS Wisata arrange final drop-off in Medan?", "Yes. Final drop-off can be Medan city hotel, Kualanamu Airport, or another agreed point."),
+                    ("Can Berastagi and Sipiso-Piso be included?", "Yes. They fit well on many private routes when flight time, daylight, road conditions, and the planned overnight stop allow a comfortable pace."),
+                    ("Is the vehicle private throughout the tour?", "The quotation states the agreed private transport arrangement, route, pickup, and final drop-off so the inclusions are clear before confirmation."),
                 ],
             },
             "id": {
@@ -304,23 +334,27 @@ HUBS = [
             },
             "ms": {
                 "title": "Pakej Lake Toba dan Samosir Private Tour | BROS Wisata",
-                "description": "Private tour Lake Toba dan Samosir dari Medan dengan Berastagi, Sipiso-Piso, jadual ferry, budaya Batak, dan sebut harga tersuai.",
+                "description": "Rancang private tour Lake Toba dan Samosir dari Medan dengan Berastagi, Sipiso-Piso, budaya Batak, masa jalan realistik, dan sebut harga tersuai.",
                 "keywords": "pakej Lake Toba, tour Pulau Samosir, Medan ke Lake Toba, Sipiso Piso Berastagi Samosir",
                 "kicker": "Lake Toba dan Samosir Private Tour",
-                "h1": "Lake Toba lebih baik dinikmati santai, bukan sekadar stop foto.",
-                "intro": "BROS Wisata menyusun laluan Lake Toba dan Samosir dengan mengambil kira ferry, masa perjalanan, keselesaan hotel, stop highland, dan pengalaman budaya Batak yang sesuai untuk kumpulan anda.",
+                "h1": "Rancang private tour Lake Toba dan Samosir dari Medan.",
+                "intro": "Lake Toba paling selesa dijelajahi apabila perjalanan jalan darat, stop Berastagi, akses Samosir, lokasi hotel, dan waktu flight akhir dirancang sebagai satu laluan. BROS Wisata menyemak semua butiran itu sebelum Ahmad menghantar sebut harga tersuai.",
                 "cta_text": "Susun laluan Lake Toba",
                 "wa": "Hai Ahmad, saya jumpa BROS Wisata dari halaman Pakej Lake Toba dan Samosir. Tarikh, bilangan pax, gaya hotel, dan idea laluan Lake Toba saya:",
                 "stats": [("Laluan", "Medan, Berastagi, Sipiso-Piso, Samosir"), ("Tempo", "Disaran 2 hingga 4 malam"), ("Sesuai", "Keluarga, pasangan, private group")],
                 "sections": [
-                    ("Apa yang beza dalam planning Lake Toba", ["Masa perjalanan dari Medan agak panjang, jadi tempo laluan penting.", "Jadual ferry dan lokasi hotel Samosir perlu disemak sebelum sebut harga.", "Berastagi dan Sipiso-Piso boleh masuk jika laluan tidak dipaksa.", "Pilihan makanan, tahap keselesaan, dan final drop-off perlu jelas dari awal."]),
-                    ("Gaya laluan biasa", ["3H2M fast Lake Toba route untuk tetamu yang masa terhad.", "4H3M Medan, Berastagi, Lake Toba, dan Samosir.", "5H4M halal-friendly family route untuk tetamu Malaysia atau Singapore.", "6H5M laluan gabungan dengan Bukit Lawang atau Tangkahan."]),
-                    ("Soalan yang biasa ditanya", ["Berapa malam ideal di Samosir?", "Boleh termasuk Berastagi dan Sipiso-Piso?", "Adakah private driver termasuk sepanjang trip?", "Boleh final night di Medan sebelum flight pagi?"]),
+                    ("Planning Medan ke Lake Toba", ["Perjalanan jalan darat adalah sebahagian daripada pengalaman, jadi waktu ketibaan dan lokasi malam pertama sama penting dengan senarai destinasi.", "Berastagi dan Sipiso-Piso sesuai dimasukkan apabila ada waktu siang yang cukup dan hari pertama selepas flight tidak terlalu padat.", "Laluan boleh menggunakan Parapat, Samosir, atau lokasi tepi tasik lain mengikut hotel dan aktiviti yang dipilih.", "Trafik, cuaca, rest stop, dan urusan ferry atau penyeberangan tasik diambil kira sebagai keadaan operasi, bukan janji waktu tetap."]),
+                    ("Berapa malam yang sesuai", ["Pakej 3H2M ialah pilihan ringkas dan biasanya perlu fokus pada stop utama dengan detour yang minimum.", "Pakej 4H3M memberi ruang lebih baik untuk Medan, Berastagi, Sipiso-Piso, Lake Toba, dan Samosir tanpa setiap hari terasa seperti hari transfer.", "Pakej 5H4M sesuai untuk keluarga atau tetamu yang mahu lebih masa untuk budaya Batak, suasana tasik, atau final night di Medan.", "Pakej 6H5M atau lebih panjang lebih realistik jika Bukit Lawang, jungle trekking, atau Tangkahan turut dimasukkan."]),
+                    ("Penginapan Samosir dan pengalaman lokal", ["Lokasi hotel mempengaruhi akses ke kampung, muzium, viewpoint, tempat makan, dan stop budaya di sekitar Samosir.", "Ahmad boleh susun hari mengikut minat kepada sejarah Batak, komuniti lokal, pemandangan, atau tempo keluarga yang lebih santai.", "Keperluan makanan dan pilihan halal-friendly perlu diberitahu awal kerana stop yang sesuai bergantung pada laluan harian.", "Aktiviti tertakluk pada waktu operasi, keadaan lokal, minat tetamu, dan tahap mobiliti kumpulan."]),
+                    ("Kenderaan, hotel, dan susunan bilik", ["Kenderaan dipadankan dengan pax, bagasi, urutan laluan, dan sama ada perjalanan bermula di Kualanamu Airport atau hotel Medan.", "Cadangan hotel mengambil kira tahap keselesaan, susunan bilik, tarikh perjalanan, dan pilihan lake view, akses, atau suasana lebih tenang.", "Keluarga perlu menyatakan umur anak serta pilihan shared bedding, extra bed, atau bilik berasingan sebelum sebut harga dibuat.", "Dokumen tempahan merekodkan laluan, inclusion, susunan hotel, serta titik pickup dan drop-off yang sudah dipersetujui."]),
+                    ("Sebelum minta sebut harga", ["Kirim tarikh, pax, nombor flight, titik pickup, final drop-off, jumlah bagasi, dan berapa malam yang diinginkan di Lake Toba.", "Senaraikan tempat wajib dan beritahu jika Bukit Lawang, Berastagi, atau final night Medan mesti dimasukkan.", "Kirim tahap hotel, jenis bilik, keperluan makanan, kemampuan berjalan, serta maklumat anak atau warga emas dalam kumpulan.", "BROS Wisata kemudian menyemak aliran jalan, ketersediaan hotel, urusan lokal, dan private transport sebelum menentukan harga."]),
                 ],
                 "faqs": [
                     ("Berapa malam ideal di Lake Toba?", "Dua malam lebih selesa daripada satu malam jika mahu Samosir, stop budaya, dan perjalanan tidak terlalu rushing."),
                     ("Boleh gabung dengan Bukit Lawang?", "Boleh, tapi lebih ideal sebagai laluan private 6H5M atau lebih panjang."),
                     ("Boleh drop-off akhir di Medan?", "Boleh. Final drop-off boleh di hotel Medan, Kualanamu Airport, atau titik lain yang dipersetujui."),
+                    ("Boleh masukkan Berastagi dan Sipiso-Piso?", "Boleh. Kedua-duanya sesuai dalam banyak laluan private apabila waktu flight, cahaya siang, keadaan jalan, dan lokasi penginapan membolehkan tempo yang selesa."),
+                    ("Adakah kenderaan private sepanjang tour?", "Sebutharga menyatakan susunan private transport, laluan, pickup, dan final drop-off yang dipersetujui supaya inclusion jelas sebelum confirmation."),
                 ],
             },
         },
@@ -418,24 +452,7 @@ def abs_url(path: str) -> str:
 def analytics_snippet() -> str:
     return """
 <!-- Google Analytics 4 -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-JVH9HY8P8P', {
-    'anonymize_ip': true,
-    'cookie_flags': 'SameSite=None;Secure'
-  });
-  window.addEventListener('load', function() {
-    window.setTimeout(function() {
-      if (document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-JVH9HY8P8P"]')) return;
-      var gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVH9HY8P8P';
-      document.head.appendChild(gtagScript);
-    }, 1500);
-  });
-</script>
+<script src="/assets/analytics.js"></script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   window.addEventListener('load', function() {
@@ -623,7 +640,15 @@ def build_page(hub: dict, lang: str) -> str:
     c = hub["copy"][lang]
     label = LANG[lang]
     canonical = page_url(hub, lang)
-    og_image = abs_url(hub["image"])
+    og_image = abs_url(f"/assets/og/{lang}/{hub['slugs'][lang]}.jpg")
+    social_title = re.sub(
+        r"\s*(?:\||—|–)\s*BROS\s+Wisata.*$", "", c["title"], flags=re.IGNORECASE
+    ).strip()
+    social_alt = {
+        "en": f"BROS Wisata preview for {social_title}, featuring North Sumatra travel imagery.",
+        "id": f"Pratinjau BROS Wisata untuk {social_title} dengan visual perjalanan Sumatra Utara.",
+        "ms": f"Pratonton BROS Wisata untuk {social_title} dengan visual perjalanan Sumatera Utara.",
+    }[lang]
     alternates = "\n".join(
         [f'<link href="{page_url(hub, "en")}" hreflang="x-default" rel="alternate"/>']
         + [f'<link href="{page_url(hub, alt_lang)}" hreflang="{alt_lang}" rel="alternate"/>' for alt_lang in LANG_ORDER]
@@ -655,13 +680,17 @@ def build_page(hub: dict, lang: str) -> str:
 <meta content="{esc(c['title'])}" property="og:title"/>
 <meta content="{esc(c['description'])}" property="og:description"/>
 <meta content="{og_image}" property="og:image"/>
-<meta content="{esc(hub['image_alt'][lang])}" property="og:image:alt"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="{esc(social_alt)}" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="{og_image}" name="twitter:image"/>
+<meta content="{esc(social_alt)}" name="twitter:image:alt"/>
 <meta content="{label['locale']}" property="og:locale"/>
 <meta content="BROS Wisata" property="og:site_name"/>
-<meta content="summary_large_image" name="twitter:card"/>
 <meta content="{esc(c['title'])}" name="twitter:title"/>
 <meta content="{esc(c['description'])}" name="twitter:description"/>
-<meta content="{og_image}" name="twitter:image"/>
 <link href="/bros-wisata-logos/bros-wisata-icon-square-favicon-32px.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/bros-wisata-logos/bros-wisata-icon-square-favicon-64px.png" rel="icon" sizes="64x64" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -821,6 +850,10 @@ def sitemap_priority(url: str) -> tuple[str, str]:
     return "monthly", "0.70"
 
 
+def sitemap_lastmod(url: str) -> str:
+    return LASTMOD_OVERRIDES.get(url, DEFAULT_LASTMOD)
+
+
 def regenerate_sitemap() -> None:
     ET.register_namespace("", "http://www.sitemaps.org/schemas/sitemap/0.9")
     ET.register_namespace("xhtml", "http://www.w3.org/1999/xhtml")
@@ -841,7 +874,7 @@ def regenerate_sitemap() -> None:
     for canonical, alternates in records:
         node = ET.SubElement(urlset, "{http://www.sitemaps.org/schemas/sitemap/0.9}url")
         ET.SubElement(node, "{http://www.sitemaps.org/schemas/sitemap/0.9}loc").text = canonical
-        ET.SubElement(node, "{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod").text = LASTMOD
+        ET.SubElement(node, "{http://www.sitemaps.org/schemas/sitemap/0.9}lastmod").text = sitemap_lastmod(canonical)
         changefreq, priority = sitemap_priority(canonical)
         ET.SubElement(node, "{http://www.sitemaps.org/schemas/sitemap/0.9}changefreq").text = changefreq
         ET.SubElement(node, "{http://www.sitemaps.org/schemas/sitemap/0.9}priority").text = priority
