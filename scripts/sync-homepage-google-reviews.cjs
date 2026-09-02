@@ -8,6 +8,11 @@ const reviewUrl = "https://g.page/r/CX9qI0qT4zLYEAE/review";
 
 const reviews = [
   {
+    initials: "BT",
+    name: "Bob Tian",
+    quote: "very good service and reasonable price",
+  },
+  {
     initials: "QL",
     name: "Quanji L",
     quote: "Thanks Ahmed for your smooth transport to and fro Lake Loba!",
@@ -16,12 +21,6 @@ const reviews = [
     initials: "HG",
     name: "Hazz Gaming",
     quote: "Highly recommend, very responsible and friendly guide",
-  },
-  {
-    initials: "SR",
-    name: "Sri Rahayu",
-    quote:
-      "Sangat merekomendasikan Bros Wisata untuk urusan perjalanan bisnis atau corporate tour.",
   },
 ];
 
@@ -32,13 +31,13 @@ const locales = {
     title: "Ulasan asli dari tamu BROS.",
     intro:
       "Pengalaman yang dibagikan langsung melalui profil Google Business BROS Wisata.",
-    basedOn: "Berdasarkan 5 ulasan Google",
-    updated: "Rating diperbarui 8 Agustus 2026",
+    basedOn: "Berdasarkan 6 ulasan Google",
+    updated: "Rating diperbarui 2 September 2026",
     original: "Ditampilkan dalam bahasa asli reviewer.",
     source: "Lihat di Google",
     allReviews: "Lihat semua ulasan",
     writeReview: "Tulis ulasan Google",
-    ratingLabel: "Rating Google 4,4 dari 5 berdasarkan 5 ulasan",
+    ratingLabel: "Rating Google 4,5 dari 5 berdasarkan 6 ulasan",
   },
   en: {
     files: ["en/index.html", "en/bros-wisata-homepage.html"],
@@ -46,13 +45,13 @@ const locales = {
     title: "Real reviews from BROS guests.",
     intro:
       "Experiences shared directly through the BROS Wisata Google Business profile.",
-    basedOn: "Based on 5 Google reviews",
-    updated: "Rating updated 8 August 2026",
+    basedOn: "Based on 6 Google reviews",
+    updated: "Rating updated 2 September 2026",
     original: "Shown in each reviewer's original language.",
     source: "View on Google",
     allReviews: "See all reviews",
     writeReview: "Write a Google review",
-    ratingLabel: "Google rating 4.4 out of 5 based on 5 reviews",
+    ratingLabel: "Google rating 4.5 out of 5 based on 6 reviews",
   },
   ms: {
     files: ["ms/index.html", "ms/bros-wisata-homepage.html"],
@@ -60,13 +59,13 @@ const locales = {
     title: "Ulasan sebenar daripada tetamu BROS.",
     intro:
       "Pengalaman yang dikongsi terus melalui profil Google Business BROS Wisata.",
-    basedOn: "Berdasarkan 5 ulasan Google",
-    updated: "Rating dikemas kini 8 Ogos 2026",
+    basedOn: "Berdasarkan 6 ulasan Google",
+    updated: "Rating dikemas kini 2 September 2026",
     original: "Dipaparkan dalam bahasa asal pengulas.",
     source: "Lihat di Google",
     allReviews: "Lihat semua ulasan",
     writeReview: "Tulis ulasan Google",
-    ratingLabel: "Rating Google 4.4 daripada 5 berdasarkan 5 ulasan",
+    ratingLabel: "Rating Google 4.5 daripada 5 berdasarkan 6 ulasan",
   },
 };
 
@@ -112,7 +111,7 @@ function reviewsSection(labels) {
 <div class="flex items-end justify-between gap-4">
 <div>
 <div class="text-xs uppercase tracking-[0.18em] text-bros-charcoal/60 font-bold mb-2">Google Reviews</div>
-<div class="font-display text-5xl font-bold text-bros-navy leading-none">4.4<span class="text-lg text-bros-charcoal/50">/5</span></div>
+<div class="font-display text-5xl font-bold text-bros-navy leading-none">4.5<span class="text-lg text-bros-charcoal/50">/5</span></div>
 </div>
 <div class="text-bros-gold text-xl tracking-[0.1em]" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 </div>
