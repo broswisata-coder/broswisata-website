@@ -129,6 +129,12 @@
 .trust-route div{padding:1rem}
 .trust-route h3{font-family:"Bricolage Grotesque",sans-serif;color:#08275f;font-size:1.35rem;line-height:1.05;font-weight:800;margin-bottom:.45rem}
 .trust-route p{color:rgba(31,41,55,.72);font-size:.9rem;line-height:1.55}
+.meet-ahmad-hero .trust-photo img{aspect-ratio:auto;height:auto;object-fit:contain}
+.trust-field-gallery{columns:3;column-gap:1rem}
+.trust-field-shot{display:inline-block;width:100%;margin:0 0 1rem;break-inside:avoid;background:#fff;border:1px solid rgba(31,41,55,.1);vertical-align:top}
+.trust-field-shot picture{display:block;background:#08275f}
+.trust-field-shot img{display:block;width:100%;height:auto}
+.trust-field-shot figcaption{padding:.9rem 1rem;color:rgba(31,41,55,.76);font-size:.84rem;line-height:1.55}
 .trust-quote{background:#08275f;color:#fff;padding:3rem}
 .trust-quote blockquote{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.02;font-weight:800;max-width:52rem}
 .trust-quote p{color:rgba(255,255,255,.78);line-height:1.75;max-width:42rem;margin-top:1.2rem}
@@ -145,8 +151,8 @@
 .trust-crosslink-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
 .trust-crosslink h2{font-family:"Bricolage Grotesque",sans-serif;color:#08275f;font-size:2rem;font-weight:800;line-height:1}
 .trust-crosslink a{background:#08275f;color:#fff;padding:.95rem 1.1rem;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-@media(max-width:1024px){.trust-hero-grid,.trust-section-head{grid-template-columns:1fr}.trust-card-grid{grid-template-columns:1fr 1fr}.trust-faq{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.trust-hero{padding:4rem 0 3.5rem}.trust-card-grid,.trust-faq,.trust-route-grid,.trust-stats{grid-template-columns:1fr}.trust-route{grid-template-columns:1fr}.trust-route img{aspect-ratio:16/10}.trust-quote{padding:2rem}.trust-crosslink-inner{display:block}.trust-crosslink a{margin-top:1rem}.trust-photo img{aspect-ratio:16/12}.trust-band{padding:3.7rem 0}}
+@media(max-width:1024px){.trust-hero-grid,.trust-section-head{grid-template-columns:1fr}.trust-card-grid{grid-template-columns:1fr 1fr}.trust-faq{grid-template-columns:1fr 1fr}.trust-field-gallery{columns:2}}
+@media(max-width:720px){.trust-hero{padding:4rem 0 3.5rem}.trust-card-grid,.trust-faq,.trust-route-grid,.trust-stats{grid-template-columns:1fr}.trust-route{grid-template-columns:1fr}.trust-route img{aspect-ratio:16/10}.trust-quote{padding:2rem}.trust-crosslink-inner{display:block}.trust-crosslink a{margin-top:1rem}.trust-photo img{aspect-ratio:16/12}.meet-ahmad-hero .trust-photo img{aspect-ratio:auto}.trust-field-gallery{columns:1}.trust-band{padding:3.7rem 0}}
 
 /* SEO intent landing pages */
 .seo-page{margin:0;background:#fff;color:#1f2937;font-family:"Plus Jakarta Sans",sans-serif;line-height:1.6;letter-spacing:0}
