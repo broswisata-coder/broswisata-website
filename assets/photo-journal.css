@@ -1,0 +1,18 @@
+.photo-journal{background:#f7f3ea;padding:72px 0;scroll-margin-top:100px;color:#08275f}
+.photo-journal__inner{max-width:1280px;margin:0 auto;padding:0 24px}
+.photo-journal__head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:32px}
+.photo-journal__kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0f47b0;margin:0 0 14px}
+.photo-journal h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.08;max-width:700px;margin:0 0 18px}
+.photo-journal__intro{max-width:670px;font-size:16px;line-height:1.75;color:#465367;margin:0}
+.photo-journal__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.photo-journal__card{margin:0;background:#fff;min-width:0;border:1px solid #08275f14}
+.photo-journal__card picture,.photo-journal__card img{display:block;width:100%}
+.photo-journal__card img{height:auto;aspect-ratio:3/4;object-fit:contain;background:#e6e8e4}
+.photo-journal__card figcaption{padding:18px 20px 22px;font-size:14px;line-height:1.65;color:#465367}
+.photo-journal__card strong{display:block;color:#08275f;font-size:17px;font-weight:700;margin-bottom:5px}
+.photo-journal__link{display:inline-flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0;min-height:48px;padding:13px 20px;background:#0f47b0;color:#fff;font-size:14px;font-weight:700;text-decoration:none}
+.photo-journal__link:hover{background:#08275f}
+.photo-journal__link:focus-visible{outline:3px solid #e8a317;outline-offset:4px}
+.photo-journal__footer{margin-top:32px;display:flex;justify-content:flex-start}
+@media(max-width:900px){.photo-journal__head{display:block}.photo-journal__head>.photo-journal__link{margin-top:24px}.photo-journal__grid{gap:18px}}
+@media(max-width:650px){.photo-journal{padding:48px 0}.photo-journal__inner{padding:0 20px}.photo-journal__grid{grid-template-columns:1fr;gap:24px}.photo-journal__card figcaption{padding:16px 18px 20px}.photo-journal__link{width:100%}}
