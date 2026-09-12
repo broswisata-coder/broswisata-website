@@ -62,6 +62,7 @@ FONT_BOLD = next(
 
 META_KEYS = {
     "og:image",
+    "og:image:secure_url",
     "og:image:type",
     "og:image:width",
     "og:image:height",
@@ -206,21 +207,46 @@ def category_for(stem: str) -> str:
 
 def source_for(stem: str, category: str) -> tuple[Path, bool]:
     assets = ROOT / "assets"
+    field_photos = assets / "gallery" / "field-september-2026"
     if category == "car":
         return assets / "cars" / "toyota-innova-reborn.webp", True
     if category in {"about", "guide"}:
         return assets / "gallery" / "team-ahmad-salim-guest.jpg", False
     if category == "orangutan":
-        return assets / "gallery" / "gallery_12_sipiso_waterfall.jpg", False
+        return (
+            assets
+            / "gallery"
+            / "ahmad-field-2026"
+            / "bukit-lawang-orangutan-tree.jpg",
+            False,
+        )
     if category == "tangkahan":
-        return assets / "gallery" / "gallery_12_sipiso_waterfall.jpg", False
+        return (
+            assets
+            / "gallery"
+            / "ahmad-field-2026"
+            / "bukit-lawang-river-landscape.jpg",
+            False,
+        )
     if category == "volcano":
-        return assets / "gallery" / "gallery_02_sibayak_crater.jpg", False
+        return (
+            assets
+            / "gallery"
+            / "ahmad-field-2026"
+            / "ahmad-sibayak-summit-guest.jpg",
+            False,
+        )
     if category == "heritage":
-        return assets / "gallery" / "gallery_09_heritage_meal.jpg", False
+        return field_photos / "medan-fruit-market.jpg", False
+    if category == "custom":
+        return field_photos / "coffee-cherries.jpg", False
+    if category == "tours":
+        return field_photos / "lake-toba-sunset.jpg", False
     if category == "singapore":
-        return assets / "gallery" / "gallery_11_jungle_bridge.jpg", False
-    return assets / "hero-lake-toba-1280.jpg", False
+        return field_photos / "lake-toba-sunset.jpg", False
+    if category == "policy":
+        return field_photos / "highland-flower.jpg", False
+    return field_photos / "lake-toba-panorama.jpg", False
 
 
 def font(path: Path, size: int) -> ImageFont.FreeTypeFont:
