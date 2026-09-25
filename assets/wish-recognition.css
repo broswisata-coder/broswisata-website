@@ -69,9 +69,31 @@
 .wish-recognition__pillars dt { font-weight: 700; margin-bottom: .5rem; }
 .wish-recognition__pillars dd { margin: 0; font-size: .95rem; line-height: 1.7; }
 .wish-recognition__note { border-left: 3px solid var(--brand-gold-500, #e8a317); padding-left: 1rem; font-size: .9rem; line-height: 1.7; }
+.wish-recognition__visit { margin-top: 1.25rem; line-height: 1.8; }
+.wish-recognition__links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.wish-booth {
+  max-width: 76rem;
+  margin: 1.5rem auto 0;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+  background: #fff;
+  scroll-margin-top: 7rem;
+}
+.wish-booth h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; line-height: 1.3; color: var(--brand-blue-950, #08275f); }
+.wish-booth__venue { margin: 1rem 0; font-weight: 700; line-height: 1.6; }
+.wish-booth .wish-recognition__note { margin-top: 1.25rem; }
+.wish-booth figure { margin: 0; min-width: 0; }
+.wish-booth__map-link { display: block; }
+.wish-booth__map-link:focus-visible { outline: 3px solid var(--brand-blue-800, #0f47b0); outline-offset: 5px; }
+.wish-booth img { display: block; width: 100%; height: auto; border: 1px solid var(--brand-line, #dbe7f6); }
+.wish-booth figcaption { margin-top: .75rem; line-height: 1.6; font-size: .8rem; }
 @media (max-width: 700px) {
   .wish-recognition { padding: 2rem 1rem; }
   .wish-recognition__shell { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
   .wish-recognition__mark { border-right: 0; border-bottom: 1px solid var(--brand-line, #dbe7f6); padding: 0 0 1.5rem; }
   .wish-recognition__pillars { grid-template-columns: 1fr; }
+  .wish-booth { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
 }
