@@ -1,0 +1,77 @@
+.wish-recognition {
+  padding: 3rem 1rem;
+  background: var(--brand-cream, #f7f3ea);
+  color: var(--brand-ink, #102247);
+  scroll-margin-top: 8rem;
+}
+.wish-recognition__shell {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.5rem;
+  background: #fff;
+  border-top: 4px solid var(--brand-gold-500, #e8a317);
+}
+.wish-recognition__mark {
+  color: var(--brand-blue-950, #08275f);
+  border-right: 1px solid var(--brand-line, #dbe7f6);
+  padding-right: 2rem;
+}
+.wish-recognition__mark strong {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+.wish-recognition__mark span {
+  display: block;
+  font-weight: 700;
+  letter-spacing: .14em;
+  margin-top: .5rem;
+}
+.wish-recognition__eyebrow {
+  color: var(--brand-blue-800, #0f47b0);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.wish-recognition h2 {
+  color: var(--brand-blue-950, #08275f);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+.wish-recognition__copy { line-height: 1.8; max-width: 65ch; }
+.wish-recognition__copy + .wish-recognition__copy { margin-top: 1rem; }
+.wish-recognition__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 1rem;
+  color: var(--brand-blue-800, #0f47b0);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .3em;
+}
+.wish-recognition__link:hover { color: var(--brand-blue-950, #08275f); }
+.wish-recognition__link:focus-visible { outline: 3px solid var(--brand-blue-800, #0f47b0); outline-offset: 5px; }
+.wish-recognition__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.wish-recognition__pillars dt { font-weight: 700; margin-bottom: .5rem; }
+.wish-recognition__pillars dd { margin: 0; font-size: .95rem; line-height: 1.7; }
+.wish-recognition__note { border-left: 3px solid var(--brand-gold-500, #e8a317); padding-left: 1rem; font-size: .9rem; line-height: 1.7; }
+@media (max-width: 700px) {
+  .wish-recognition { padding: 2rem 1rem; }
+  .wish-recognition__shell { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
+  .wish-recognition__mark { border-right: 0; border-bottom: 1px solid var(--brand-line, #dbe7f6); padding: 0 0 1.5rem; }
+  .wish-recognition__pillars { grid-template-columns: 1fr; }
+}
