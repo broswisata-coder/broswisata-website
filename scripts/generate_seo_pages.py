@@ -14,14 +14,21 @@ DEFAULT_LASTMOD = "2026-07-14"
 # Keep sitemap dates deterministic and honest. Add an override only when the
 # page's main copy, structured data, or internal links change materially.
 LASTMOD_OVERRIDES = {
-    f"{SITE}/en/": "2026-08-29",
+    f"{SITE}/en/": "2026-10-10",
+    f"{SITE}/en/bros-wisata-about": "2026-10-10",
     f"{SITE}/en/bukit-lawang-orangutan-trekking": "2026-08-29",
     f"{SITE}/en/destination-bukit-lawang-tangkahan": "2026-08-29",
     f"{SITE}/en/lake-toba-samosir-private-tour": "2026-08-29",
+    f"{SITE}/en/meet-ahmad": "2026-09-09",
     f"{SITE}/en/private-north-sumatra-tour": "2026-08-29",
+    f"{SITE}/id/": "2026-10-10",
+    f"{SITE}/id/bros-wisata-about": "2026-10-10",
     f"{SITE}/id/destinasi-bukit-lawang-tangkahan": "2026-08-29",
-    f"{SITE}/ms/": "2026-08-29",
+    f"{SITE}/id/meet-ahmad": "2026-09-09",
+    f"{SITE}/ms/": "2026-10-10",
+    f"{SITE}/ms/bros-wisata-about": "2026-10-10",
     f"{SITE}/ms/destinasi-bukit-lawang-tangkahan": "2026-08-29",
+    f"{SITE}/ms/meet-ahmad": "2026-09-09",
     f"{SITE}/ms/pakej-lake-toba-samosir": "2026-08-29",
     f"{SITE}/ms/pakej-private-tour-sumatera-utara": "2026-08-29",
 }
