@@ -5,13 +5,21 @@ const root = path.resolve(__dirname, "..");
 const checkOnly = process.argv.includes("--check");
 const profileUrl = "https://share.google/Uv9LJLkbDjYHhMzTj";
 const reviewUrl = "https://g.page/r/CX9qI0qT4zLYEAE/review";
-// Verified against the public Google Maps profile on 9 October 2026.
+// Verified against the public Google Maps profile on 11 October 2026.
 // This is a dated snapshot, not a live Google rating widget.
-const googleRating = { value: 4.6, count: 7 };
+const googleRating = { value: 4.7, count: 10 };
 const reviewsPageUrl =
   "https://www.google.com/maps/place/Bros+Wisata/@3.5861596,98.6271794,17z/data=!4m8!3m7!1s0x30312fecda7f828b:0xd832e3934a236a7f!8m2!3d3.5861596!4d98.6271794!9m1!1b1!16s%2Fg%2F11m5qcc1q1";
 
 const reviews = [
+  {
+    initials: "SL",
+    name: "Steven Lie",
+    quote:
+      "Bukit Lawang holds a special place in my heart. My brother Ahmad is a wonderful, experienced, and friendly guide.",
+    excerpt: true,
+    url: reviewsPageUrl,
+  },
   {
     initials: "LO",
     name: "Ling Oh",
@@ -45,15 +53,15 @@ const locales = {
     intro:
       "Pengalaman yang dibagikan langsung melalui profil Google Business BROS Wisata.",
     basedOn: `Berdasarkan ${googleRating.count} ulasan Google`,
-    updated: "Rating diverifikasi 9 Oktober 2026",
+    updated: "Rating diverifikasi 11 Oktober 2026",
     original: "Kutipan ulasan ditampilkan dalam bahasa asli reviewer.",
     excerpt: "Kutipan ulasan",
     aboutRating: "Rating Google",
-    ratingValue: "4,6",
+    ratingValue: "4,7",
     source: "Lihat di Google",
     allReviews: "Lihat semua ulasan",
     writeReview: "Tulis ulasan Google",
-    ratingLabel: `Rating Google 4,6 dari 5 berdasarkan ${googleRating.count} ulasan`,
+    ratingLabel: `Rating Google 4,7 dari 5 berdasarkan ${googleRating.count} ulasan`,
   },
   en: {
     files: ["en/index.html", "en/bros-wisata-homepage.html"],
@@ -62,15 +70,15 @@ const locales = {
     intro:
       "Experiences shared directly through the BROS Wisata Google Business profile.",
     basedOn: `Based on ${googleRating.count} Google reviews`,
-    updated: "Rating verified 9 October 2026",
+    updated: "Rating verified 11 October 2026",
     original: "Review excerpts shown in each reviewer's original language.",
     excerpt: "Review excerpt",
     aboutRating: "Google rating",
-    ratingValue: "4.6",
+    ratingValue: "4.7",
     source: "View on Google",
     allReviews: "See all reviews",
     writeReview: "Write a Google review",
-    ratingLabel: `Google rating 4.6 out of 5 based on ${googleRating.count} reviews`,
+    ratingLabel: `Google rating 4.7 out of 5 based on ${googleRating.count} reviews`,
   },
   ms: {
     files: ["ms/index.html", "ms/bros-wisata-homepage.html"],
@@ -79,15 +87,15 @@ const locales = {
     intro:
       "Pengalaman yang dikongsi terus melalui profil Google Business BROS Wisata.",
     basedOn: `Berdasarkan ${googleRating.count} ulasan Google`,
-    updated: "Rating disahkan 9 Oktober 2026",
+    updated: "Rating disahkan 11 Oktober 2026",
     original: "Petikan ulasan dipaparkan dalam bahasa asal pengulas.",
     excerpt: "Petikan ulasan",
     aboutRating: "Penilaian Google",
-    ratingValue: "4.6",
+    ratingValue: "4.7",
     source: "Lihat di Google",
     allReviews: "Lihat semua ulasan",
     writeReview: "Tulis ulasan Google",
-    ratingLabel: `Rating Google 4.6 daripada 5 berdasarkan ${googleRating.count} ulasan`,
+    ratingLabel: `Rating Google 4.7 daripada 5 berdasarkan ${googleRating.count} ulasan`,
   },
 };
 
@@ -146,7 +154,7 @@ function reviewsSection(labels) {
 <p class="text-xs text-bros-charcoal/65 mt-4">${labels.basedOn}<br/>${labels.updated}</p>
 </div>
 </div>
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 ${reviewCards(labels)}
 </div>
 <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
