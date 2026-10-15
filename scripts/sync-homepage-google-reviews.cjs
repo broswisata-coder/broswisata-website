@@ -5,13 +5,22 @@ const root = path.resolve(__dirname, "..");
 const checkOnly = process.argv.includes("--check");
 const profileUrl = "https://share.google/Uv9LJLkbDjYHhMzTj";
 const reviewUrl = "https://g.page/r/CX9qI0qT4zLYEAE/review";
-// Verified against the public Google Maps profile on 11 October 2026.
+// Verified against the public Google Maps profile on 15 October 2026.
 // This is a dated snapshot, not a live Google rating widget.
-const googleRating = { value: 4.7, count: 10 };
+const googleRating = { value: 4.7, count: 11 };
 const reviewsPageUrl =
   "https://www.google.com/maps/place/Bros+Wisata/@3.5861596,98.6271794,17z/data=!4m8!3m7!1s0x30312fecda7f828b:0xd832e3934a236a7f!8m2!3d3.5861596!4d98.6271794!9m1!1b1!16s%2Fg%2F11m5qcc1q1";
 
 const reviews = [
+  {
+    initials: "GS",
+    name: "guntur siregar",
+    quote:
+      "Saya pernah memakai travel Bros Wisata dengan guid bro ahmad ke samosir selama 2 hari,orangnya sangat ramah dan sopan...",
+    language: "id",
+    excerpt: true,
+    url: reviewsPageUrl,
+  },
   {
     initials: "SL",
     name: "Steven Lie",
@@ -53,7 +62,7 @@ const locales = {
     intro:
       "Pengalaman yang dibagikan langsung melalui profil Google Business BROS Wisata.",
     basedOn: `Berdasarkan ${googleRating.count} ulasan Google`,
-    updated: "Rating diverifikasi 11 Oktober 2026",
+    updated: "Rating diverifikasi 15 Oktober 2026",
     original: "Kutipan ulasan ditampilkan dalam bahasa asli reviewer.",
     excerpt: "Kutipan ulasan",
     aboutRating: "Rating Google",
@@ -70,7 +79,7 @@ const locales = {
     intro:
       "Experiences shared directly through the BROS Wisata Google Business profile.",
     basedOn: `Based on ${googleRating.count} Google reviews`,
-    updated: "Rating verified 11 October 2026",
+    updated: "Rating verified 15 October 2026",
     original: "Review excerpts shown in each reviewer's original language.",
     excerpt: "Review excerpt",
     aboutRating: "Google rating",
@@ -87,7 +96,7 @@ const locales = {
     intro:
       "Pengalaman yang dikongsi terus melalui profil Google Business BROS Wisata.",
     basedOn: `Berdasarkan ${googleRating.count} ulasan Google`,
-    updated: "Rating disahkan 11 Oktober 2026",
+    updated: "Rating disahkan 15 Oktober 2026",
     original: "Petikan ulasan dipaparkan dalam bahasa asal pengulas.",
     excerpt: "Petikan ulasan",
     aboutRating: "Penilaian Google",
@@ -126,7 +135,7 @@ function reviewCards(labels) {
 </div>
 <span class="text-[10px] uppercase tracking-[0.16em] text-bros-blue font-bold">Google</span>
 </div>
-${review.excerpt ? `<p class="text-[10px] uppercase tracking-[0.12em] text-bros-charcoal/55 font-bold mb-3">${labels.excerpt}</p>\n` : ""}<blockquote lang="en" class="text-bros-charcoal leading-relaxed flex-1">&ldquo;${escapeHtml(review.quote)}&rdquo;</blockquote>
+${review.excerpt ? `<p class="text-[10px] uppercase tracking-[0.12em] text-bros-charcoal/55 font-bold mb-3">${labels.excerpt}</p>\n` : ""}<blockquote lang="${escapeHtml(review.language || "en")}" class="text-bros-charcoal leading-relaxed flex-1">&ldquo;${escapeHtml(review.quote)}&rdquo;</blockquote>
 <a class="mt-6 text-xs font-bold text-bros-blue hover:text-bros-navy transition inline-flex items-center gap-1" href="${escapeHtml(review.url || profileUrl)}" rel="noopener noreferrer" target="_blank">${labels.source} <span aria-hidden="true">&#8599;</span></a>
 </article>`,
     )
