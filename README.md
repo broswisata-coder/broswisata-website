@@ -17,6 +17,9 @@ Malay, and English content.
 - `scripts/sync-global-rental-navigation.cjs` — enforces localized rental links
   across every primary navigation, mobile menu, and footer.
 - `scripts/audit_site.py` — read-only local integrity audit.
+- `scripts/sync-tour-package-links.cjs` — maintains the localized package-detail
+  directory and matching itinerary buttons on tour listings; use `--check` to
+  detect drift without writing files.
 - `scripts/submit-indexnow.ps1` — submits URLs to IndexNow; this makes external
   requests and should only be run intentionally after deployment.
 - `ops/` — internal operations tools. Cloudflare `_headers` and `robots.txt`

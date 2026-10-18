@@ -829,6 +829,89 @@
   font-size: .9rem;
 }
 
+.quote-card-actions .quote-btn.detail {
+  color: #08275f;
+  border: 1px solid #08275f;
+  background: #fff;
+}
+
+.quote-card-actions .quote-btn.detail:hover {
+  background: #f7f3ea;
+}
+
+.quote-package-index {
+  margin-bottom: 2rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid rgba(8, 39, 95, .16);
+  border-top: 4px solid #e8a317;
+  background: #fff;
+  scroll-margin-top: 7rem;
+}
+
+.quote-package-index h2 {
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.quote-package-index > p {
+  max-width: 60rem;
+  margin-top: .75rem;
+  color: rgba(31, 41, 55, .78);
+  line-height: 1.65;
+}
+
+.quote-package-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.quote-package-groups h3 {
+  color: #08275f;
+  font-weight: 800;
+}
+
+.quote-package-groups ul {
+  list-style: none;
+  margin-top: .5rem;
+  padding: 0;
+}
+
+.quote-package-groups a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  min-height: 2.75rem;
+  padding-block: .65rem;
+  border-bottom: 1px solid rgba(8, 39, 95, .12);
+  color: #0f47b0;
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.quote-package-groups a span {
+  flex-shrink: 0;
+  color: #08275f;
+  font-size: .8rem;
+}
+
+.quote-package-groups a:hover {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.quote-package-groups a:focus-visible,
+.quote-card-actions .quote-btn.detail:focus-visible {
+  outline: 3px solid #0f47b0;
+  outline-offset: 3px;
+}
+
 .quote-no-price {
   color: rgba(31, 41, 55, .56);
   font-size: .78rem;
