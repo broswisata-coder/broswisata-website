@@ -7,11 +7,18 @@ const root = path.resolve(__dirname, '..');
 const checkOnly = process.argv.includes('--check');
 const start = '<!-- ======= WISH 2026 RECOGNITION ======= -->';
 const end = '<!-- ======= END WISH 2026 RECOGNITION ======= -->';
-const stylesheet = '<link href="/assets/wish-recognition.css?v=20261018-catalog" rel="stylesheet"/>';
+const stylesheet = '<link href="/assets/wish-recognition.css?v=20261018-photos" rel="stylesheet"/>';
 // BROS confirmed public use of the supplied catalog on 18 Oct 2026.
 // Link to the organizer's shared copy, without claiming this Pre Final is final.
 const catalogUrl = 'https://drive.google.com/file/d/1duBC6OKA1vzYe9fNBNjHhfwBsOFC5Vsm/view';
 const catalogPreview = '/assets/events/wish-2026/catalog-bros-preview-20261018.webp';
+// Supplied event photographs retain their original framing. A booth visit is
+// documentation, not an endorsement or a claim of a formal partnership.
+const photos = [
+  {key: 'group', base: 'wish-2026-group', width: 1600, height: 1200, smallWidth: 800},
+  {key: 'team', base: 'wish-2026-bros-team', width: 1280, height: 576, smallWidth: 640},
+  {key: 'booth', base: 'witf-2026-booth-visit', width: 1280, height: 576, smallWidth: 640},
+];
 const route = 'Medan/Kualanamu – Bukit Lawang – Berastagi – Samosir/Danau Toba – Medan';
 const labels = {
   id: {
@@ -28,6 +35,18 @@ const labels = {
       ['Kehidupan masyarakat', 'Menghadirkan cerita masyarakat pembuat pangan sebagai bagian dari pengalaman perjalanan.'],
     ],
     note: 'Pengalaman gastronomi ini sedang dikembangkan. Detail hidangan, mitra, dan kegiatan akan dikonfirmasi sebelum ditawarkan sebagai bagian dari paket perjalanan.',
+    gallery: {
+      short: 'Dokumentasi WISH 2026',
+      title: 'Momen Bros di WISH & WITF 2026',
+      intro: 'Kebersamaan di panggung WISH dan kunjungan perwakilan Bros Wisata di area pameran WITF 2026.',
+      link: 'Lihat dokumentasi Bros di WISH & WITF 2026',
+      open: 'Lihat foto ukuran penuh (tab baru)',
+      photos: {
+        group: {caption: 'Kebersamaan di panggung WISH 2026.', alt: 'Foto bersama di atas panggung dengan latar WISH 2026.'},
+        team: {caption: 'Tim Bros Wisata di area panggung WISH.', alt: 'Tim Bros Wisata berfoto di area panggung dengan latar WISH 2026.'},
+        booth: {caption: 'Kunjungan perwakilan Bros Wisata ke booth Sobek Bali.', alt: 'Dua perwakilan Bros Wisata berfoto di booth Sobek Bali dalam pameran WITF 2026.'},
+      },
+    },
     catalog: {
       eyebrow: 'Kenali gagasan perjalanan kami',
       title: 'Bros Wisata dalam katalog WISH 2026',
@@ -56,6 +75,18 @@ const labels = {
       ['Kehidupan masyarakat', 'Menjadikan kisah masyarakat penghasil makanan sebahagian daripada pengalaman perjalanan.'],
     ],
     note: 'Pengalaman gastronomi ini sedang dibangunkan. Hidangan, rakan tempatan dan aktiviti akan disahkan sebelum ditawarkan sebagai sebahagian daripada pakej perjalanan.',
+    gallery: {
+      short: 'Dokumentasi WISH 2026',
+      title: 'Momen Bros di WISH & WITF 2026',
+      intro: 'Kebersamaan di pentas WISH dan kunjungan wakil Bros Wisata di kawasan pameran WITF 2026.',
+      link: 'Lihat dokumentasi Bros di WISH & WITF 2026',
+      open: 'Lihat foto bersaiz penuh (tab baharu)',
+      photos: {
+        group: {caption: 'Kebersamaan di pentas WISH 2026.', alt: 'Foto berkumpulan di atas pentas berlatar WISH 2026.'},
+        team: {caption: 'Pasukan Bros Wisata di kawasan pentas WISH.', alt: 'Ahli pasukan Bros Wisata bergambar di kawasan pentas berlatar WISH 2026.'},
+        booth: {caption: 'Kunjungan wakil Bros Wisata ke reruai Sobek Bali.', alt: 'Dua wakil Bros Wisata bergambar di reruai Sobek Bali semasa pameran WITF 2026.'},
+      },
+    },
     catalog: {
       eyebrow: 'Kenali konsep perjalanan kami',
       title: 'Bros Wisata dalam katalog WISH 2026',
@@ -84,6 +115,18 @@ const labels = {
       ['Community life', 'Making the stories of local food producers part of the travel experience.'],
     ],
     note: 'This gastronomy experience is under development. Dishes, local partners, and activities will be confirmed before being offered as part of a tour package.',
+    gallery: {
+      short: 'WISH 2026 in pictures',
+      title: 'Bros moments at WISH & WITF 2026',
+      intro: 'Shared moments on the WISH stage and visits by Bros Wisata representatives around the WITF 2026 exhibition.',
+      link: 'See Bros photos from WISH & WITF 2026',
+      open: 'View full-size photo (new tab)',
+      photos: {
+        group: {caption: 'A group moment on the WISH 2026 stage.', alt: 'A group photograph on stage with a WISH 2026 backdrop.'},
+        team: {caption: 'The Bros Wisata team at the WISH stage area.', alt: 'Bros Wisata team members photographed in the stage area with a WISH 2026 backdrop.'},
+        booth: {caption: 'Bros Wisata representatives visiting the Sobek Bali booth.', alt: 'Two Bros Wisata representatives photographed at the Sobek Bali booth during WITF 2026.'},
+      },
+    },
     catalog: {
       eyebrow: 'Discover our travel concept',
       title: 'Bros Wisata in the WISH 2026 catalog',
@@ -107,6 +150,38 @@ function escape(value) {
 function catalogLink(text, location) {
   const c = text.catalog;
   return `<a class="wish-recognition__link wish-recognition__link--primary" href="${catalogUrl}" data-cta="wish_catalog_${location}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}">${escape(c.link)} <span aria-hidden="true">&nbsp;↗</span></a>`;
+}
+
+function photoImage(photo, alt, sizes) {
+  const base = '/assets/events/wish-2026/' + photo.base;
+  return `<img src="${base}-${photo.smallWidth}.webp" srcset="${base}-${photo.smallWidth}.webp ${photo.smallWidth}w, ${base}-${photo.width}.webp ${photo.width}w" sizes="${sizes}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" alt="${escape(alt)}"/>`;
+}
+
+function homepagePhoto(locale, text) {
+  return `<figure class="wish-recognition__photo">
+<a class="wish-photo-link" href="/${locale}/bros-wisata-about#dokumentasi-wish-2026" aria-label="${escape(text.gallery.link)}">${photoImage(photos[0], text.gallery.photos.group.alt, '(max-width: 700px) calc(100vw - 5rem), 500px')}</a>
+<figcaption>${escape(text.gallery.short)}</figcaption>
+</figure>`;
+}
+
+function galleryDetails(text) {
+  const g = text.gallery;
+  return `<section class="wish-gallery" id="dokumentasi-wish-2026" aria-labelledby="wish-gallery-title">
+<h3 class="font-display" id="wish-gallery-title">${escape(g.title)}</h3>
+<p class="wish-recognition__copy">${escape(g.intro)}</p>
+<div class="wish-gallery__grid">
+${photos.map(photo => {
+  const label = g.photos[photo.key];
+  const sizes = photo.key === 'group'
+    ? '(max-width: 700px) calc(100vw - 5rem), 600px'
+    : '(max-width: 700px) calc(100vw - 5rem), 480px';
+  return `<figure>
+<a class="wish-photo-link" href="/assets/events/wish-2026/${photo.base}-${photo.width}.webp" target="_blank" rel="noopener noreferrer" aria-label="${escape(label.caption + ' ' + g.open)}">${photoImage(photo, label.alt, sizes)}</a>
+<figcaption>${escape(label.caption)}</figcaption>
+</figure>`;
+}).join('\n')}
+</div>
+</section>`;
 }
 
 function catalogDetails(text) {
@@ -141,9 +216,9 @@ ${text.pillars.map(([title, copy]) => `<div><dt>${escape(title)}</dt><dd>${escap
     : `<div class="wish-recognition__links">${catalogLink(text, 'homepage')}
 <a class="wish-recognition__link" href="/${locale}/bros-wisata-about#wish-2026">${escape(text.link)} <span aria-hidden="true">&nbsp;→</span></a></div>`;
   return `${start}
-<section class="wish-recognition" id="wish-2026" aria-labelledby="wish-2026-title">
+<section class="wish-recognition${detailed ? '' : ' wish-recognition--photo'}" id="wish-2026" aria-labelledby="wish-2026-title">
 <div class="wish-recognition__shell">
-<div class="wish-recognition__mark" aria-hidden="true"><strong class="font-display">Top 25</strong><span>WISH 2026</span></div>
+${detailed ? '<div class="wish-recognition__mark" aria-hidden="true"><strong class="font-display">Top 25</strong><span>WISH 2026</span></div>' : homepagePhoto(locale, text)}
 <div>
 <p class="wish-recognition__eyebrow">${escape(text.eyebrow)}</p>
 <h2 class="font-display" id="wish-2026-title">${escape(detailed ? text.title : text.shortTitle)}</h2>
@@ -151,7 +226,7 @@ ${text.pillars.map(([title, copy]) => `<div><dt>${escape(title)}</dt><dd>${escap
 ${body}
 </div>
 </div>
-${detailed ? catalogDetails(text) + '\n' : ''}</section>
+${detailed ? galleryDetails(text) + '\n' + catalogDetails(text) + '\n' : ''}</section>
 ${end}`;
 }
 
