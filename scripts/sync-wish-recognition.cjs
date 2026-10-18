@@ -7,15 +7,18 @@ const root = path.resolve(__dirname, '..');
 const checkOnly = process.argv.includes('--check');
 const start = '<!-- ======= WISH 2026 RECOGNITION ======= -->';
 const end = '<!-- ======= END WISH 2026 RECOGNITION ======= -->';
-const stylesheet = '<link href="/assets/wish-recognition.css?v=20260925-booth" rel="stylesheet"/>';
-// Source: organizer's Information WISH 2026-1.pdf, page 4, layout 22 Sep 2026.
-// Publish only the floor-plan page, not the complete participant information PDF.
-const floorPlan = '/assets/events/wish-2026/witf-layout-booth-71-20260922.jpg';
+const stylesheet = '<link href="/assets/wish-recognition.css?v=20261018-catalog" rel="stylesheet"/>';
+// BROS confirmed public use of the supplied catalog on 18 Oct 2026.
+// Link to the organizer's shared copy, without claiming this Pre Final is final.
+const catalogUrl = 'https://drive.google.com/file/d/1duBC6OKA1vzYe9fNBNjHhfwBsOFC5Vsm/view';
+const catalogPreview = '/assets/events/wish-2026/catalog-bros-preview-20261018.webp';
 const route = 'Medan/Kualanamu – Bukit Lawang – Berastagi – Samosir/Danau Toba – Medan';
 const labels = {
   id: {
     eyebrow: 'Pengembangan wisata tematik · Gastronomi',
     title: 'Bros Wisata terpilih sebagai Top 25 WISH 2026',
+    shortTitle: 'Bros Wisata, Top 25 WISH 2026',
+    shortIntro: 'Terpilih dalam kategori Gastronomi, kami sedang mengembangkan perjalanan Sumatra Utara melalui cerita pangan lokal, budaya, dan masyarakatnya. Kenali gagasannya dalam katalog WISH 2026.',
     intro: 'Bros Wisata terpilih sebagai salah satu dari 25 peserta Demoday WISH 2026 dalam kategori Gastronomi. Melalui program ini, kami mengembangkan perjalanan Sumatra Utara yang menghubungkan asal pangan, pengetahuan lokal, dan kehidupan masyarakat pembuatnya.',
     link: 'Tentang perjalanan kami di WISH',
     detail: 'Proses mentoring dan penyusunan storyline membantu kami mempertajam rancangan perjalanan 7 hari 6 malam di rute ' + route + '. Fokusnya bukan hanya mencicipi makanan, tetapi memahami hubungan antara sajian, tempat, dan orang-orang di baliknya.',
@@ -25,24 +28,25 @@ const labels = {
       ['Kehidupan masyarakat', 'Menghadirkan cerita masyarakat pembuat pangan sebagai bagian dari pengalaman perjalanan.'],
     ],
     note: 'Pengalaman gastronomi ini sedang dikembangkan. Detail hidangan, mitra, dan kegiatan akan dikonfirmasi sebelum ditawarkan sebagai bagian dari paket perjalanan.',
-    booth: {
-      short: 'WITF 2026 · Booth bersama WISH No. 71',
-      title: 'Temui Bros di booth bersama WISH No. 71',
-      dates: '15–17 Oktober 2026',
-      venue: 'Grand Ballroom, JIExpo Jakarta',
-      copy: 'Bros Wisata bergabung di booth WISH yang digunakan bersama oleh 25 peserta. Pada denah panitia, booth No. 71 berada di antara booth 70 dan 72, di sebelah kanan area Main Stage.',
-      link: 'Lokasi dan denah booth',
-      full: 'Lihat denah ukuran penuh (tab baru)',
-      alt: 'Denah WITF dari panitia, versi 22 September 2026, menunjukkan booth bersama WISH No. 71 di sebelah kanan Main Stage.',
-      source: 'Sumber: Panitia WISH 2026, halaman 4 dokumen informasi peserta.',
-      version: 'Denah versi 22 September 2026. Lokasi mengikuti pembaruan panitia jika ada perubahan.',
-      chat: 'Jadwalkan pertemuan via WhatsApp',
-      message: 'Halo BROS Wisata, saya ingin menjadwalkan pertemuan di booth bersama WISH No. 71 saat WITF 2026 (15–17 Oktober). Nama/perusahaan: __. Tanggal dan waktu pilihan: __.',
+    catalog: {
+      eyebrow: 'Kenali gagasan perjalanan kami',
+      title: 'Bros Wisata dalam katalog WISH 2026',
+      copy: 'Profil Bros memperkenalkan perjalanan gastronomi 7 hari 6 malam di Sumatra Utara: dari asal bahan pangan hingga kisah masyarakat di balik hidangan. Baca profil kami bersama peserta WISH lainnya dalam katalog.',
+      meta: 'Katalog berbahasa Indonesia · Profil Bros: halaman PDF 52–53 (halaman cetak 50–51).',
+      link: 'Lihat katalog WISH 2026',
+      open: 'Lihat katalog WISH 2026, PDF berbahasa Indonesia (tab baru)',
+      alt: 'Cuplikan halaman profil Bros Wisata dalam katalog WISH 2026, menampilkan buah tropis, sajian lokal, rumah tradisional, dan air terjun.',
+      source: 'Cuplikan profil Bros · Sumber: Katalog WISH 2026.',
+      followup: 'Untuk diskusi lanjutan setelah WITF 2026 atau peluang kerja sama perjalanan Sumatra Utara, hubungi tim Bros.',
+      chat: 'Diskusikan kerja sama',
+      message: 'Halo BROS Wisata, saya melihat profil Bros dalam katalog WISH 2026 dan ingin berdiskusi tentang kerja sama perjalanan Sumatra Utara. Nama/perusahaan: __. Rencana kerja sama: __.',
     },
   },
   ms: {
     eyebrow: 'Pembangunan pelancongan bertema · Gastronomi',
     title: 'Bros Wisata terpilih dalam Top 25 WISH 2026',
+    shortTitle: 'Bros Wisata dalam Top 25 WISH 2026',
+    shortIntro: 'Terpilih dalam kategori Gastronomi, kami sedang membangunkan pengalaman perjalanan di Sumatera Utara melalui kisah makanan tempatan, budaya dan masyarakat setempat. Kenali konsepnya dalam katalog WISH 2026.',
     intro: 'Bros Wisata terpilih sebagai salah satu daripada 25 peserta Demoday WISH 2026 dalam kategori Gastronomi. Melalui program ini, kami membangunkan pengalaman perjalanan di Sumatera Utara yang menghubungkan asal-usul makanan, pengetahuan tempatan dan kehidupan masyarakat yang menghasilkannya.',
     link: 'Perjalanan kami dalam WISH',
     detail: 'Proses bimbingan dan penyediaan jalan cerita membantu kami memperhalus rancangan perjalanan 7 hari 6 malam melalui laluan ' + route + '. Tumpuannya bukan sekadar mencuba makanan, tetapi memahami hubungan antara hidangan, tempat dan masyarakat di sebaliknya.',
@@ -52,46 +56,46 @@ const labels = {
       ['Kehidupan masyarakat', 'Menjadikan kisah masyarakat penghasil makanan sebahagian daripada pengalaman perjalanan.'],
     ],
     note: 'Pengalaman gastronomi ini sedang dibangunkan. Hidangan, rakan tempatan dan aktiviti akan disahkan sebelum ditawarkan sebagai sebahagian daripada pakej perjalanan.',
-    booth: {
-      short: 'WITF 2026 · Reruai bersama WISH No. 71',
-      title: 'Temui Bros di reruai bersama WISH No. 71',
-      dates: '15–17 Oktober 2026',
-      venue: 'Grand Ballroom, JIExpo Jakarta',
-      copy: 'Bros Wisata menyertai reruai WISH yang dikongsi oleh 25 peserta. Dalam pelan penganjur, reruai No. 71 terletak di antara reruai 70 dan 72, di sebelah kanan kawasan Main Stage.',
-      link: 'Lokasi dan pelan reruai',
-      full: 'Lihat pelan bersaiz penuh (tab baharu)',
-      alt: 'Pelan WITF daripada penganjur, versi 22 September 2026, menunjukkan reruai bersama WISH No. 71 di sebelah kanan Main Stage.',
-      source: 'Sumber: Penganjur WISH 2026, halaman 4 dokumen maklumat peserta.',
-      version: 'Pelan versi 22 September 2026. Lokasi reruai tertakluk pada perubahan mengikut kemas kini penganjur.',
-      chat: 'Atur pertemuan melalui WhatsApp',
-      message: 'Hai BROS Wisata, saya ingin mengatur pertemuan di reruai bersama WISH No. 71 semasa WITF 2026 (15–17 Oktober). Nama/syarikat: __. Tarikh dan masa pilihan: __.',
+    catalog: {
+      eyebrow: 'Kenali konsep perjalanan kami',
+      title: 'Bros Wisata dalam katalog WISH 2026',
+      copy: 'Profil Bros memperkenalkan perjalanan gastronomi 7 hari 6 malam di Sumatera Utara: daripada asal-usul bahan makanan hingga kisah masyarakat di sebalik hidangan. Baca profil kami bersama peserta WISH yang lain dalam katalog.',
+      meta: 'Katalog dalam bahasa Indonesia · Profil Bros: halaman PDF 52–53 (halaman bercetak 50–51).',
+      link: 'Lihat katalog WISH 2026',
+      open: 'Lihat katalog WISH 2026, PDF dalam bahasa Indonesia (tab baharu)',
+      alt: 'Pratonton halaman profil Bros Wisata dalam katalog WISH 2026, memaparkan buah-buahan tropika, hidangan tempatan, rumah tradisional dan air terjun.',
+      source: 'Pratonton profil Bros · Sumber: Katalog WISH 2026.',
+      followup: 'Untuk perbincangan susulan selepas WITF 2026 atau peluang kerjasama perjalanan Sumatera Utara, hubungi pasukan Bros.',
+      chat: 'Bincangkan kerjasama',
+      message: 'Hai BROS Wisata, saya melihat profil Bros dalam katalog WISH 2026 dan ingin berbincang tentang kerjasama perjalanan Sumatera Utara. Nama/syarikat: __. Cadangan kerjasama: __.',
     },
   },
   en: {
     eyebrow: 'Themed travel development · Gastronomy',
     title: 'Bros Wisata selected for the WISH 2026 Top 25',
-    intro: 'Bros Wisata has been selected as one of 25 Demoday WISH 2026 participants in the Gastronomy category. Through the program, we are developing a North Sumatra journey that connects the origins of food, local knowledge, and the lives of the people who produce it.',
+    shortTitle: 'Bros Wisata in the WISH 2026 Top 25',
+    shortIntro: 'Selected in the Gastronomy category, we are developing a North Sumatra journey around local food stories, culture, and communities. Discover the idea in the WISH 2026 catalog.',
+    intro: 'Bros Wisata was selected as one of 25 Demoday WISH 2026 participants in the Gastronomy category. Through the program, we are developing a North Sumatra journey that connects the origins of food, local knowledge, and the lives of the people who produce it.',
     link: 'Our journey with WISH',
-    detail: 'Mentoring and storyline development are helping us shape a 7-day, 6-night journey through Medan/Kualanamu, Bukit Lawang, Berastagi, Samosir/Lake Toba, and back to Medan. The focus goes beyond tasting food to explore the connections between dishes, places, and people.',
+    detail: 'Mentoring and storyline development have helped us shape a 7-day, 6-night journey through Medan/Kualanamu, Bukit Lawang, Berastagi, Samosir/Lake Toba, and back to Medan. The focus goes beyond tasting food to explore the connections between dishes, places, and people.',
     pillars: [
       ['Origins of food', 'Discovering local ingredients and their connection to the landscapes where they are grown.'],
       ['Knowledge passed down', 'Exploring stories, preparation methods, and culinary knowledge shared across generations.'],
       ['Community life', 'Making the stories of local food producers part of the travel experience.'],
     ],
     note: 'This gastronomy experience is under development. Dishes, local partners, and activities will be confirmed before being offered as part of a tour package.',
-    booth: {
-      short: 'WITF 2026 · Shared WISH booth No. 71',
-      title: 'Meet Bros at the shared WISH booth, No. 71',
-      dates: '15–17 October 2026',
-      venue: 'Grand Ballroom, JIExpo Jakarta',
-      copy: 'Bros Wisata joins the WISH booth shared by 25 participants. On the organizer’s floor plan, booth No. 71 is between booths 70 and 72, to the right of the Main Stage area.',
-      link: 'Booth location and floor plan',
-      full: 'View full-size floor plan (new tab)',
-      alt: 'Organizer’s WITF floor plan dated 22 September 2026, showing the shared WISH booth No. 71 to the right of the Main Stage.',
-      source: 'Source: WISH 2026 organizer, page 4 of the participant information document.',
-      version: 'Floor plan dated 22 September 2026. Booth location is subject to change based on organizer updates.',
-      chat: 'Arrange a meeting via WhatsApp',
-      message: 'Hi BROS Wisata, I would like to arrange a meeting at the shared WISH booth No. 71 during WITF 2026 (15–17 October). Name/company: __. Preferred date and time: __.',
+    catalog: {
+      eyebrow: 'Discover our travel concept',
+      title: 'Bros Wisata in the WISH 2026 catalog',
+      copy: 'Our profile introduces a 7-day, 6-night gastronomy journey through North Sumatra, from the origins of local ingredients to the communities behind each dish. Read about Bros and other WISH participants in the catalog.',
+      meta: 'Indonesian-language catalog · Bros profile: PDF pages 52–53 (printed pages 50–51).',
+      link: 'View WISH 2026 catalog',
+      open: 'View WISH 2026 catalog, Indonesian-language PDF (new tab)',
+      alt: 'Preview of the Bros Wisata profile in the WISH 2026 catalog, showing tropical fruit, a local dish, a traditional house, and a waterfall.',
+      source: 'Bros profile preview · Source: WISH 2026 catalog.',
+      followup: 'For follow-up conversations after WITF 2026 or North Sumatra travel partnerships, get in touch with the Bros team.',
+      chat: 'Discuss a partnership',
+      message: 'Hi BROS Wisata, I saw your profile in the WISH 2026 catalog and would like to discuss a North Sumatra travel partnership. Name/company: __. Partnership idea: __.',
     },
   },
 };
@@ -100,22 +104,28 @@ function escape(value) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
 
-function boothDetails(text) {
-  const b = text.booth;
-  const whatsapp = 'https://wa.me/6281260139399?text=' + encodeURIComponent(b.message);
-  return `<div class="wish-booth" id="booth-wish-2026" aria-labelledby="wish-booth-title">
+function catalogLink(text, location) {
+  const c = text.catalog;
+  return `<a class="wish-recognition__link wish-recognition__link--primary" href="${catalogUrl}" data-cta="wish_catalog_${location}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}">${escape(c.link)} <span aria-hidden="true">&nbsp;↗</span></a>`;
+}
+
+function catalogDetails(text) {
+  const c = text.catalog;
+  const whatsapp = 'https://wa.me/6281260139399?text=' + encodeURIComponent(c.message);
+  return `<div class="wish-catalog" id="katalog-wish-2026" aria-labelledby="wish-catalog-title">
+<span class="wish-catalog__legacy-anchor" id="booth-wish-2026" aria-hidden="true"></span>
 <div>
-<p class="wish-recognition__eyebrow">WITF 2026 · ${escape(b.dates)}</p>
-<h3 id="wish-booth-title">${escape(b.title)}</h3>
-<p class="wish-booth__venue">${escape(b.venue)}</p>
-<p class="wish-recognition__copy">${escape(b.copy)}</p>
-<p class="wish-recognition__note">${escape(b.version)}</p>
-<a class="wish-recognition__link" href="${escape(whatsapp)}" data-cta="wish_booth_meeting" target="_blank" rel="noopener noreferrer">${escape(b.chat)}</a>
+<p class="wish-recognition__eyebrow">${escape(c.eyebrow)}</p>
+<h3 class="font-display" id="wish-catalog-title">${escape(c.title)}</h3>
+<p class="wish-recognition__copy">${escape(c.copy)}</p>
+<p class="wish-catalog__meta">${escape(c.meta)}</p>
+${catalogLink(text, 'about')}
+<p class="wish-recognition__note">${escape(c.followup)}</p>
+<a class="wish-recognition__link" href="${escape(whatsapp)}" data-cta="wish_partnership" target="_blank" rel="noopener noreferrer">${escape(c.chat)} <span aria-hidden="true">&nbsp;→</span></a>
 </div>
 <figure>
-<a class="wish-booth__map-link" href="${floorPlan}" target="_blank" rel="noopener noreferrer" aria-label="${escape(b.full)}"><img src="${floorPlan}" width="2400" height="1350" loading="lazy" decoding="async" alt="${escape(b.alt)}"/></a>
-<figcaption>${escape(b.source)}</figcaption>
-<a class="wish-recognition__link" href="${floorPlan}" target="_blank" rel="noopener noreferrer">${escape(b.full)}</a>
+<a class="wish-catalog__preview" href="${catalogUrl}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}"><img src="${catalogPreview}" width="619" height="1100" loading="lazy" decoding="async" alt="${escape(c.alt)}"/></a>
+<figcaption>${escape(c.source)}</figcaption>
 </figure>
 </div>`;
 }
@@ -128,21 +138,20 @@ function section(locale, detailed) {
 ${text.pillars.map(([title, copy]) => `<div><dt>${escape(title)}</dt><dd>${escape(copy)}</dd></div>`).join('\n')}
 </dl>
 <p class="wish-recognition__note">${escape(text.note)}</p>`
-    : `<p class="wish-recognition__visit"><strong>${escape(text.booth.short)}</strong><br/>${escape(text.booth.dates)} · ${escape(text.booth.venue)}</p>
-<div class="wish-recognition__links"><a class="wish-recognition__link" href="/${locale}/bros-wisata-about#wish-2026">${escape(text.link)} <span aria-hidden="true">&nbsp;→</span></a>
-<a class="wish-recognition__link" href="/${locale}/bros-wisata-about#booth-wish-2026">${escape(text.booth.link)} <span aria-hidden="true">&nbsp;→</span></a></div>`;
+    : `<div class="wish-recognition__links">${catalogLink(text, 'homepage')}
+<a class="wish-recognition__link" href="/${locale}/bros-wisata-about#wish-2026">${escape(text.link)} <span aria-hidden="true">&nbsp;→</span></a></div>`;
   return `${start}
 <section class="wish-recognition" id="wish-2026" aria-labelledby="wish-2026-title">
 <div class="wish-recognition__shell">
 <div class="wish-recognition__mark" aria-hidden="true"><strong class="font-display">Top 25</strong><span>WISH 2026</span></div>
 <div>
 <p class="wish-recognition__eyebrow">${escape(text.eyebrow)}</p>
-<h2 class="font-display" id="wish-2026-title">${escape(text.title)}</h2>
-<p class="wish-recognition__copy">${escape(text.intro)}</p>
+<h2 class="font-display" id="wish-2026-title">${escape(detailed ? text.title : text.shortTitle)}</h2>
+<p class="wish-recognition__copy">${escape(detailed ? text.intro : text.shortIntro)}</p>
 ${body}
 </div>
 </div>
-${detailed ? boothDetails(text) + '\n' : ''}</section>
+${detailed ? catalogDetails(text) + '\n' : ''}</section>
 ${end}`;
 }
 
