@@ -3,7 +3,7 @@ const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 const checkOnly = process.argv.includes("--check");
-const updated = "2026-10-18";
+const updated = "2026-10-21";
 const start = "<!-- BROS PACKAGE DIRECTORY START -->";
 const end = "<!-- BROS PACKAGE DIRECTORY END -->";
 const packages = [
