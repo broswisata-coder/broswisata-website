@@ -16,24 +16,31 @@ DEFAULT_LASTMOD = "2026-07-14"
 LASTMOD_OVERRIDES = {
     f"{SITE}/en/": "2026-10-10",
     f"{SITE}/en/bros-wisata-about": "2026-10-10",
-    f"{SITE}/en/bros-wisata-tour-listing": "2026-10-18",
-    f"{SITE}/en/bukit-lawang-orangutan-trekking": "2026-08-29",
+    f"{SITE}/en/bros-wisata-tour-listing": "2026-10-21",
+    f"{SITE}/en/bukit-lawang-orangutan-trekking": "2026-10-21",
     f"{SITE}/en/destination-bukit-lawang-tangkahan": "2026-08-29",
-    f"{SITE}/en/lake-toba-samosir-private-tour": "2026-08-29",
+    f"{SITE}/en/lake-toba-samosir-private-tour": "2026-10-21",
     f"{SITE}/en/meet-ahmad": "2026-09-09",
-    f"{SITE}/en/private-north-sumatra-tour": "2026-08-29",
+    f"{SITE}/en/private-north-sumatra-tour": "2026-10-21",
+    f"{SITE}/en/singapore-to-north-sumatra-tour": "2026-10-21",
     f"{SITE}/id/": "2026-10-10",
     f"{SITE}/id/bros-wisata-about": "2026-10-10",
-    f"{SITE}/id/bros-wisata-tour-listing": "2026-10-18",
+    f"{SITE}/id/bros-wisata-tour-listing": "2026-10-21",
     f"{SITE}/id/destinasi-bukit-lawang-tangkahan": "2026-08-29",
     f"{SITE}/id/meet-ahmad": "2026-09-09",
+    f"{SITE}/id/private-tour-lake-toba-samosir": "2026-10-21",
+    f"{SITE}/id/private-tour-sumatra-utara": "2026-10-21",
+    f"{SITE}/id/tour-sumatra-utara-dari-singapore": "2026-10-21",
+    f"{SITE}/id/wisata-bukit-lawang-orangutan": "2026-10-21",
     f"{SITE}/ms/": "2026-10-10",
     f"{SITE}/ms/bros-wisata-about": "2026-10-10",
-    f"{SITE}/ms/bros-wisata-tour-listing": "2026-10-18",
+    f"{SITE}/ms/bros-wisata-tour-listing": "2026-10-21",
     f"{SITE}/ms/destinasi-bukit-lawang-tangkahan": "2026-08-29",
     f"{SITE}/ms/meet-ahmad": "2026-09-09",
-    f"{SITE}/ms/pakej-lake-toba-samosir": "2026-08-29",
-    f"{SITE}/ms/pakej-private-tour-sumatera-utara": "2026-08-29",
+    f"{SITE}/ms/bukit-lawang-orangutan-trekking": "2026-10-21",
+    f"{SITE}/ms/pakej-lake-toba-samosir": "2026-10-21",
+    f"{SITE}/ms/pakej-private-tour-sumatera-utara": "2026-10-21",
+    f"{SITE}/ms/pakej-sumatera-utara-dari-singapore": "2026-10-21",
 }
 LANG_ORDER = ["en", "ms", "id"]
 
@@ -58,6 +65,12 @@ LANG = {
         "planning_label": "Planning Hubs",
         "planning_title": "Planning pages for specific searches.",
         "planning_copy": "These pages answer the exact questions travelers search before asking for a quotation. Each route still ends in a private plan with Ahmad.",
+        "faq_title": "Questions before planning your trip",
+        "faq_copy": "Check the route, trip length, and arrangements before asking Ahmad for a private quotation.",
+        "itinerary_kicker": "Day-by-day itineraries",
+        "itinerary_title": "Read the routes before requesting a quote",
+        "itinerary_copy": "These published itineraries are starting points, not fixed departures. Read the daily route, then confirm your dates, hotel preferences, activities, and final arrangements with Ahmad.",
+        "itinerary_link": "Read the day-by-day itinerary",
         "cta_title": "Tell Ahmad your date, pax, and route idea.",
         "cta_copy": "BROS Wisata prepares private quotations by request because hotel class, route distance, ferry timing, and guest pace can change the final plan.",
         "related": "Related BROS Wisata pages",
@@ -81,6 +94,12 @@ LANG = {
         "planning_label": "Halaman Rencana",
         "planning_title": "Halaman untuk pencarian yang lebih spesifik.",
         "planning_copy": "Halaman ini menjawab pertanyaan yang biasa dicari tamu sebelum minta quotation. Setiap rute tetap disusun private bersama Ahmad.",
+        "faq_title": "Pertanyaan sebelum merencanakan perjalanan",
+        "faq_copy": "Kenali rute, pilihan durasi, dan pengaturan perjalanan sebelum meminta penawaran private kepada Ahmad.",
+        "itinerary_kicker": "Itinerary harian",
+        "itinerary_title": "Baca rutenya sebelum meminta penawaran",
+        "itinerary_copy": "Itinerary yang sudah tersedia ini menjadi referensi, bukan jadwal keberangkatan tetap. Baca rute harian, lalu konfirmasikan tanggal, pilihan hotel, aktivitas, dan pengaturan akhir bersama Ahmad.",
+        "itinerary_link": "Baca itinerary harian",
         "cta_title": "Ceritakan tanggal, pax, dan ide rute ke Ahmad.",
         "cta_copy": "BROS Wisata menyiapkan quotation private by request karena kelas hotel, jarak rute, jadwal ferry, dan tempo tamu bisa mengubah rencana akhir.",
         "related": "Halaman BROS Wisata terkait",
@@ -104,6 +123,12 @@ LANG = {
         "planning_label": "Halaman Rancangan",
         "planning_title": "Halaman untuk carian yang lebih spesifik.",
         "planning_copy": "Halaman ini menjawab soalan yang biasa dicari tetamu sebelum minta sebut harga. Setiap laluan tetap disusun private bersama Ahmad.",
+        "faq_title": "Soalan sebelum merancang perjalanan",
+        "faq_copy": "Semak laluan, pilihan tempoh, dan aturan perjalanan sebelum meminta sebut harga peribadi daripada Ahmad.",
+        "itinerary_kicker": "Itinerari harian",
+        "itinerary_title": "Baca laluan sebelum meminta sebut harga",
+        "itinerary_copy": "Itinerari yang tersedia ini ialah rujukan, bukan jadual pelepasan tetap. Semak laluan harian, kemudian sahkan tarikh, pilihan penginapan, aktiviti dan aturan akhir bersama Ahmad.",
+        "itinerary_link": "Baca itinerari harian",
         "cta_title": "Ceritakan tarikh, pax, dan idea laluan kepada Ahmad.",
         "cta_copy": "BROS Wisata menyediakan sebut harga private by request kerana kelas hotel, jarak laluan, jadual ferry, dan tempo tetamu boleh mengubah rancangan akhir.",
         "related": "Halaman BROS Wisata berkaitan",
@@ -226,13 +251,13 @@ HUBS = [
                 "sections": [
                     ("Choose the right trekking level", ["A shorter guided trek can introduce the rainforest to first-time visitors, families, or guests who prefer a lighter physical day.", "A half-day or full-day route gives more trail time, but the guide still adapts the pace to heat, rain, mud, river conditions, and group fitness.", "An overnight jungle option requires a separate equipment, camp, porter, and safety check; it should be requested before the quotation is prepared.", "River tubing is optional and only operates when the local guide considers the water level, weather, and guest ability suitable."]),
                     ("Medan to Bukit Lawang logistics", ["The road transfer from Medan usually takes around three and a half hours, but airport timing, city traffic, road works, and weather can extend the journey.", "A very late arrival is often better followed by a Medan night instead of forcing a tiring road transfer after the flight.", "Lodges sit around the Bahorok riverside area, so luggage size, walking access, and room comfort should be discussed before booking.", "BROS Wisata confirms the pickup point, vehicle fit, lodge plan, guide meeting, and next transfer in one written itinerary."]),
-                    ("Bukit Lawang to Lake Toba", ["Travelers searching for Bukit Lawang to Lake Toba should treat it as a multi-stop North Sumatra route, not a short transfer between nearby attractions.", "Berastagi can be used as a highland stop between the rainforest and Lake Toba when the total trip has enough days and the road sequence works.", "A 5D4N version is possible for selected flight times and a compact pace, while 6D5N or longer gives Bukit Lawang, Berastagi, Samosir, and Lake Toba more breathing room.", "The final order is checked against trekking day, ferry or Samosir access, hotel availability, and the airport or Medan drop-off requested by the guest."]),
+                    ("Bukit Lawang to Lake Toba: plan the route", ["Plan the rainforest and Lake Toba as a multi-day journey, allowing time for the road transfer, your chosen lake-side base, and recovery after trekking.", "Our published 7D6N itinerary travels from Bukit Lawang to Berastagi on day 4, continues to Lake Toba and Samosir on day 5, and leaves day 6 for Samosir. The full trip also includes Tangkahan; it is not a fixed two-day transfer service.", "The published 6D5N itinerary combines the same main destinations in the opposite order: Lake Toba and Samosir, Berastagi, then Bukit Lawang. Compare the day-by-day plans below before choosing a direction.", "Send Ahmad your dates, flight times, trekking plans, room needs, and preferred final stop. The route, hotels, lake crossing, and included services must be checked in the written quotation; no fixed transfer time or departure is promised here."]),
                     ("Responsible wildlife practice", ["Orangutans and other wildlife are free-ranging, so sightings, distance, and duration can never be guaranteed.", "Guests must follow the local guide, keep a respectful distance, and never feed, touch, call, chase, or crowd an animal for a photograph.", "Trail choice may change when wildlife, weather, river conditions, or park guidance make another route more responsible.", "A strong tour is measured by safe observation and local knowledge, not by promising a staged encounter."]),
                     ("What to send for a quotation", ["Share travel date, pax, pickup point, flight timing, and whether Bukit Lawang is the full trip or part of a Lake Toba route.", "Tell Ahmad the preferred trek length, normal walking ability, child ages, knee or mobility concerns, and interest in tubing or an overnight trek.", "Add the lodge style, room composition, luggage amount, meal preference, and desired final drop-off.", "The quote is prepared after the vehicle, lodge, local guide, route timing, and optional activities are checked for the requested date."]),
                 ],
                 "faqs": [
                     ("Is Bukit Lawang suitable for first-time trekkers?", "Often yes, if the trekking level is matched to your fitness and the route is not overloaded."),
-                    ("Can I travel from Bukit Lawang to Lake Toba?", "Yes. The more comfortable plan usually includes enough time for a highland stop such as Berastagi before Samosir or Lake Toba; the exact order depends on flight, road, and hotel timing."),
+                    ("Can I travel from Bukit Lawang to Lake Toba?", "Yes. The published 7D6N reference route goes from Bukit Lawang to Berastagi on day 4 and onwards to Lake Toba and Samosir on day 5. Its full program also includes Tangkahan. A custom route needs separate checks of your dates, flights, hotels, and lake crossing before quotation."),
                     ("Can you guarantee seeing orangutans?", "No responsible operator should guarantee wildlife. The route can be planned well, but wildlife remains natural."),
                     ("How long is the transfer from Medan to Bukit Lawang?", "Allow roughly three and a half hours in normal conditions, with extra margin for airport timing, Medan traffic, road works, weather, and rest stops."),
                     ("What should I send before asking for a quote?", "Send the date, pax, pickup and drop-off, flight details, preferred trekking level, fitness or mobility notes, lodge style, and whether Lake Toba is part of the route."),
@@ -251,11 +276,12 @@ HUBS = [
                 "sections": [
                     ("Tamu yang paling cocok", ["Tamu yang ingin rainforest dan wildlife dengan rute yang lebih pelan dan hati-hati.", "Couple, solo traveler, keluarga, dan small group dengan fitness normal.", "Tamu yang lebih percaya pada planning jujur daripada janji satwa pasti terlihat."]),
                     ("Opsi rute", ["Day trek dengan lodge tepi sungai dan transfer Medan.", "2H1M jungle trekking atau jungle camp by request.", "Bukit Lawang dikombinasikan dengan Tangkahan, Berastagi, atau Lake Toba.", "Tempo fleksibel mengikuti cuaca, kondisi trail, dan fitness tamu."]),
+                    ("Dari Bukit Lawang ke Danau Toba", ["Susun hutan dan Danau Toba sebagai perjalanan beberapa hari, dengan waktu untuk berkendara, memilih tempat menginap di danau, dan beristirahat setelah trekking.", "Contoh itinerary 7H6M kami berjalan dari Bukit Lawang ke Berastagi pada hari ke-4, berlanjut ke Danau Toba dan Samosir pada hari ke-5, lalu eksplorasi Samosir pada hari ke-6. Program lengkapnya juga mencakup Tangkahan, bukan layanan transfer tetap dua hari.", "Itinerary 6H5M menggabungkan destinasi utama dengan arah sebaliknya: Danau Toba dan Samosir, Berastagi, lalu Bukit Lawang. Bandingkan rincian harian di bawah sebelum memilih arah perjalanan.", "Kirim tanggal, jam penerbangan, rencana trekking, kebutuhan kamar, dan tujuan akhir kepada Ahmad. Rute, hotel, penyeberangan, serta layanan yang termasuk diperiksa dalam penawaran tertulis; waktu transfer dan jadwal keberangkatan tidak dijanjikan tetap."]),
                     ("Catatan responsible travel", ["Satwa liar tidak dijamin dan tidak boleh dipaksa.", "Tamu mengikuti instruksi guide lokal, menjaga jarak, dan tidak memberi makan.", "BROS Wisata memprioritaskan partner lokal dan feasibility rute sebelum quotation."]),
                 ],
                 "faqs": [
                     ("Cocok untuk pemula?", "Sering cocok, asalkan level trekking disesuaikan dengan fitness dan rute tidak dipadatkan berlebihan."),
-                    ("Bisa digabung dengan Lake Toba?", "Bisa. Rute 5H4M atau 6H5M dapat menggabungkan Bukit Lawang dengan Berastagi, Samosir, dan Lake Toba."),
+                    ("Bisa melanjutkan dari Bukit Lawang ke Danau Toba?", "Bisa. Contoh itinerary 7H6M berjalan dari Bukit Lawang ke Berastagi pada hari ke-4, lalu Danau Toba dan Samosir pada hari ke-5. Program lengkapnya juga mencakup Tangkahan. Rute custom perlu pemeriksaan tanggal, penerbangan, hotel, dan penyeberangan sebelum penawaran disiapkan."),
                     ("Bisa menjamin lihat orangutan?", "Tidak ada operator bertanggung jawab yang seharusnya menjamin satwa liar. Rute bisa direncanakan baik, tapi wildlife tetap natural."),
                 ],
             },
@@ -272,11 +298,12 @@ HUBS = [
                 "sections": [
                     ("Tetamu yang paling sesuai", ["Tetamu yang mahu rainforest dan wildlife dengan laluan yang lebih santai dan berhati-hati.", "Pasangan, solo traveler, keluarga, dan small group dengan fitness biasa.", "Tetamu yang lebih percaya pada planning jujur berbanding janji wildlife pasti kelihatan."]),
                     ("Pilihan laluan", ["Day trek dengan lodge tepi sungai dan transfer Medan.", "2H1M jungle trekking atau jungle camp by request.", "Bukit Lawang digabung dengan Tangkahan, Berastagi, atau Lake Toba.", "Tempo fleksibel mengikut cuaca, keadaan trail, dan fitness tetamu."]),
+                    ("Dari Bukit Lawang ke Danau Toba", ["Rancang hutan dan Danau Toba sebagai perjalanan beberapa hari, dengan masa untuk perjalanan darat, pilihan penginapan di tasik, dan rehat selepas trekking.", "Contoh itinerari 7H6M kami bergerak dari Bukit Lawang ke Berastagi pada hari ke-4, bersambung ke Danau Toba dan Samosir pada hari ke-5, kemudian meneroka Samosir pada hari ke-6. Program penuh turut merangkumi Tangkahan, bukan perkhidmatan pemindahan tetap dua hari.", "Itinerari 6H5M menggabungkan destinasi utama dalam arah sebaliknya: Danau Toba dan Samosir, Berastagi, kemudian Bukit Lawang. Bandingkan jadual harian di bawah sebelum memilih arah perjalanan.", "Kirim tarikh, waktu penerbangan, rancangan trekking, keperluan bilik, dan lokasi akhir kepada Ahmad. Laluan, penginapan, penyeberangan tasik, serta perkhidmatan yang termasuk disemak dalam sebut harga bertulis; masa perjalanan dan jadual berlepas tidak dijanjikan tetap."]),
                     ("Nota responsible travel", ["Wildlife tidak dijamin dan tidak patut dipaksa.", "Tetamu ikut arahan guide lokal, menjaga jarak, dan tidak memberi makan.", "BROS Wisata mengutamakan partner lokal dan feasibility laluan sebelum sebut harga."]),
                 ],
                 "faqs": [
                     ("Sesuai untuk beginner?", "Selalunya sesuai, jika tahap trekking disesuaikan dengan fitness dan laluan tidak terlalu padat."),
-                    ("Boleh gabung dengan Lake Toba?", "Boleh. Laluan 5H4M atau 6H5M boleh gabungkan Bukit Lawang dengan Berastagi, Samosir, dan Lake Toba."),
+                    ("Boleh sambung dari Bukit Lawang ke Danau Toba?", "Boleh. Contoh itinerari 7H6M bergerak dari Bukit Lawang ke Berastagi pada hari ke-4, kemudian Danau Toba dan Samosir pada hari ke-5. Program penuh turut merangkumi Tangkahan. Laluan tersuai memerlukan semakan tarikh, penerbangan, penginapan, dan penyeberangan tasik sebelum sebut harga disediakan."),
                     ("Boleh jamin lihat orangutan?", "Tiada operator bertanggungjawab yang patut menjamin wildlife. Laluan boleh dirancang baik, tapi wildlife tetap natural."),
                 ],
             },
@@ -451,6 +478,53 @@ HUBS = [
 ]
 
 
+# Link only to existing itinerary pages. A shorter custom route must not be
+# presented as a different published package merely to add another detail link.
+ITINERARIES = {
+    "paket-halal_3h2m_medan_toba": {
+        "days": 3, "nights": 2,
+        "labels": {"en": "Halal Medan–Toba", "id": "Medan–Toba Halal", "ms": "Medan–Toba Halal"},
+    },
+    "paket-halal_4h3m_medan_toba": {
+        "days": 4, "nights": 3,
+        "labels": {"en": "Halal Medan–Toba", "id": "Medan–Toba Halal", "ms": "Medan–Toba Halal"},
+    },
+    "paket-halal_5h4m_medan_toba": {
+        "days": 5, "nights": 4,
+        "labels": {"en": "Halal Medan–Toba", "id": "Medan–Toba Halal", "ms": "Medan–Toba Halal"},
+    },
+    "paket-bukit_lawang_4h3m": {
+        "days": 4, "nights": 3,
+        "labels": {"en": "Bukit Lawang Jungle Trek", "id": "Trekking Hutan Bukit Lawang", "ms": "Kembara Hutan Bukit Lawang"},
+    },
+    "paket-combo_sumut_6h5m": {
+        "days": 6, "nights": 5,
+        "labels": {"en": "North Sumatra Grand Tour", "id": "Jelajah Sumatra Utara", "ms": "Jelajah Sumatera Utara"},
+        "route_notes": {
+            "en": "Route order: Lake Toba and Samosir, Berastagi, then Bukit Lawang.",
+            "id": "Urutan rute: Danau Toba dan Samosir, Berastagi, lalu Bukit Lawang.",
+            "ms": "Urutan laluan: Danau Toba dan Samosir, Berastagi, kemudian Bukit Lawang.",
+        },
+    },
+    "paket-western_7d6n_ultimate": {
+        "days": 7, "nights": 6,
+        "labels": {"en": "Ultimate North Sumatra Eco-Tour", "id": "Jelajah Lengkap Sumatra Utara", "ms": "Kembara Lengkap Sumatera Utara"},
+        "route_notes": {
+            "en": "Includes Tangkahan, then Bukit Lawang, Berastagi, Lake Toba and Samosir.",
+            "id": "Mencakup Tangkahan, lalu Bukit Lawang, Berastagi, Danau Toba dan Samosir.",
+            "ms": "Merangkumi Tangkahan, kemudian Bukit Lawang, Berastagi, Danau Toba dan Samosir.",
+        },
+    },
+}
+
+HUB_ITINERARIES = {
+    "private-north-sumatra-tour": ["paket-bukit_lawang_4h3m", "paket-combo_sumut_6h5m", "paket-western_7d6n_ultimate"],
+    "bukit-lawang-orangutan-trekking": ["paket-bukit_lawang_4h3m", "paket-western_7d6n_ultimate", "paket-combo_sumut_6h5m"],
+    "lake-toba-samosir-private-tour": ["paket-halal_3h2m_medan_toba", "paket-halal_4h3m_medan_toba", "paket-halal_5h4m_medan_toba"],
+    "singapore-to-north-sumatra-tour": ["paket-halal_4h3m_medan_toba", "paket-bukit_lawang_4h3m", "paket-combo_sumut_6h5m"],
+}
+
+
 def esc(value: str) -> str:
     return html.escape(value, quote=True)
 
@@ -578,6 +652,39 @@ def faq_markup(faqs: list[tuple[str, str]]) -> str:
 </article>"""
         for q, a in faqs
     )
+
+
+def itinerary_markup(hub: dict, lang: str) -> str:
+    label = LANG[lang]
+    itinerary_cards = []
+    for slug in HUB_ITINERARIES[hub["key"]]:
+        itinerary = ITINERARIES[slug]
+        target = ROOT / lang / f"{slug}.html"
+        canonical, _ = extract_links(target.read_text(encoding="utf-8"))
+        expected = f"{SITE}/{lang}/{slug}"
+        if canonical != expected:
+            raise ValueError(f"Unexpected itinerary canonical: {target}")
+        duration = (
+            f"{itinerary['days']}D{itinerary['nights']}N" if lang == "en"
+            else f"{itinerary['days']}H{itinerary['nights']}M"
+        )
+        title = f"{itinerary['labels'][lang]} {duration}"
+        route_note = itinerary.get("route_notes", {}).get(lang)
+        note_markup = f"  <p>{esc(route_note)}</p>\n" if route_note else ""
+        itinerary_cards.append(f"""<article class="seo-route-card">
+  <h2>{esc(title)}</h2>
+{note_markup}  <ul><li><a class="seo-itinerary-link" href="/{lang}/{slug}">{esc(label['itinerary_link'])}: {esc(title)} <span aria-hidden="true">→</span></a></li></ul>
+</article>""")
+    return f"""<section class="seo-content-band" aria-labelledby="related-itineraries-title">
+  <div class="seo-shell">
+    <div class="seo-section-head">
+      <div class="seo-kicker">{esc(label['itinerary_kicker'])}</div>
+      <h2 id="related-itineraries-title">{esc(label['itinerary_title'])}</h2>
+      <p>{esc(label['itinerary_copy'])}</p>
+    </div>
+    <div class="seo-route-grid">{''.join(itinerary_cards)}</div>
+  </div>
+</section>"""
 
 
 def schema_for(hub: dict, lang: str) -> str:
@@ -743,12 +850,13 @@ def build_page(hub: dict, lang: str) -> str:
     <div class="seo-route-grid">{section_cards(c['sections'])}</div>
   </div>
 </section>
+{itinerary_markup(hub, lang)}
 <section class="seo-faq-band">
   <div class="seo-shell">
     <div class="seo-section-head">
       <div class="seo-kicker">FAQ</div>
-      <h2>{esc(label['planning_title'])}</h2>
-      <p>{esc(label['planning_copy'])}</p>
+      <h2>{esc(label['faq_title'])}</h2>
+      <p>{esc(label['faq_copy'])}</p>
     </div>
     <div class="seo-faq-grid">{faq_markup(c['faqs'])}</div>
   </div>
