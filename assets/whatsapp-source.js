@@ -190,6 +190,11 @@
   }
 
   function trackAnalyticsWhatsapp(anchor) {
+    try {
+      if (window.BrosStats && typeof window.BrosStats.track === "function") {
+        window.BrosStats.track("whatsapp_click");
+      }
+    } catch (error) { /* Optional statistics must not interrupt contact tracking. */ }
     if (typeof window.gtag === "function") {
       var payload = analyticsPayload(anchor);
       // GA4 receives one canonical click-to-chat event per user action.

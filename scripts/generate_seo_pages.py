@@ -22,6 +22,7 @@ LASTMOD_OVERRIDES = {
     f"{SITE}/en/lake-toba-samosir-private-tour": "2026-10-21",
     f"{SITE}/en/meet-ahmad": "2026-09-09",
     f"{SITE}/en/private-north-sumatra-tour": "2026-10-21",
+    f"{SITE}/en/privacy-policy": "2026-10-21",
     f"{SITE}/en/singapore-to-north-sumatra-tour": "2026-10-21",
     f"{SITE}/id/": "2026-10-10",
     f"{SITE}/id/bros-wisata-about": "2026-10-10",
@@ -30,6 +31,7 @@ LASTMOD_OVERRIDES = {
     f"{SITE}/id/meet-ahmad": "2026-09-09",
     f"{SITE}/id/private-tour-lake-toba-samosir": "2026-10-21",
     f"{SITE}/id/private-tour-sumatra-utara": "2026-10-21",
+    f"{SITE}/id/privacy-policy": "2026-10-21",
     f"{SITE}/id/tour-sumatra-utara-dari-singapore": "2026-10-21",
     f"{SITE}/id/wisata-bukit-lawang-orangutan": "2026-10-21",
     f"{SITE}/ms/": "2026-10-10",
@@ -40,6 +42,7 @@ LASTMOD_OVERRIDES = {
     f"{SITE}/ms/bukit-lawang-orangutan-trekking": "2026-10-21",
     f"{SITE}/ms/pakej-lake-toba-samosir": "2026-10-21",
     f"{SITE}/ms/pakej-private-tour-sumatera-utara": "2026-10-21",
+    f"{SITE}/ms/privacy-policy": "2026-10-21",
     f"{SITE}/ms/pakej-sumatera-utara-dari-singapore": "2026-10-21",
 }
 LANG_ORDER = ["en", "ms", "id"]

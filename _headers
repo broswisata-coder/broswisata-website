@@ -6,3 +6,21 @@
 
 /assets/bros-ops.js
   X-Robots-Tag: noindex, nofollow, noarchive
+
+/assets/bros-stats-dashboard.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+
+/assets/bros-stats-dashboard
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+
+/assets/bros-stats-dashboard.js
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/api/stats/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store
+
+/migrations/*
+  X-Robots-Tag: noindex, nofollow, noarchive
