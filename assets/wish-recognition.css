@@ -88,9 +88,8 @@
 .wish-gallery figcaption { margin-top: .75rem; font-size: .85rem; line-height: 1.7; }
 .wish-gallery { max-width: 76rem; margin: 1.5rem auto 0; padding: 2.5rem; background: #fff; scroll-margin-top: 7rem; }
 .wish-gallery h3 { margin: 0 0 1rem; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; line-height: 1.3; color: var(--brand-blue-950, #08275f); }
-.wish-gallery__grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; margin-top: 1.5rem; }
+.wish-gallery__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; margin-top: 1.5rem; }
 .wish-gallery figure { min-width: 0; margin: 0; }
-.wish-gallery figure:first-child { grid-row: span 2; }
 .wish-catalog {
   position: relative;
   max-width: 76rem;
@@ -121,5 +120,4 @@
   .wish-catalog { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
   .wish-gallery { padding: 1.5rem; }
   .wish-gallery__grid { grid-template-columns: 1fr; }
-  .wish-gallery figure:first-child { grid-row: auto; }
 }

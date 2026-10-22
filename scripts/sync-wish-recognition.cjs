@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '..');
 const checkOnly = process.argv.includes('--check');
 const start = '<!-- ======= WISH 2026 RECOGNITION ======= -->';
 const end = '<!-- ======= END WISH 2026 RECOGNITION ======= -->';
-const stylesheet = '<link href="/assets/wish-recognition.css?v=20261018-photos" rel="stylesheet"/>';
+const stylesheet = '<link href="/assets/wish-recognition.css?v=20261022-pitching" rel="stylesheet"/>';
 // BROS confirmed public use of the supplied catalog on 18 Oct 2026.
 // Link to the organizer's shared copy, without claiming this Pre Final is final.
 const catalogUrl = 'https://drive.google.com/file/d/1duBC6OKA1vzYe9fNBNjHhfwBsOFC5Vsm/view';
@@ -15,6 +15,9 @@ const catalogPreview = '/assets/events/wish-2026/catalog-bros-preview-20261018.w
 // Supplied event photographs retain their original framing. A booth visit is
 // documentation, not an endorsement or a claim of a formal partnership.
 const photos = [
+  {key: 'pitching', base: 'wish-2026-indra-pitching', width: 1280, height: 852, smallWidth: 640},
+  {key: 'concept', base: 'wish-2026-indra-7d6n', width: 1280, height: 852, smallWidth: 640},
+  {key: 'discussion', base: 'wish-2026-indra-discussion', width: 1280, height: 852, smallWidth: 640},
   {key: 'group', base: 'wish-2026-group', width: 1600, height: 1200, smallWidth: 800},
   {key: 'team', base: 'wish-2026-bros-team', width: 1280, height: 576, smallWidth: 640},
   {key: 'booth', base: 'witf-2026-booth-visit', width: 1280, height: 576, smallWidth: 640},
@@ -25,8 +28,8 @@ const labels = {
     eyebrow: 'Pengembangan wisata tematik · Gastronomi',
     title: 'Bros Wisata terpilih sebagai Top 25 WISH 2026',
     shortTitle: 'Bros Wisata, Top 25 WISH 2026',
-    shortIntro: 'Terpilih dalam kategori Gastronomi, kami sedang mengembangkan perjalanan Sumatra Utara melalui cerita pangan lokal, budaya, dan masyarakatnya. Kenali gagasannya dalam katalog WISH 2026.',
-    intro: 'Bros Wisata terpilih sebagai salah satu dari 25 peserta Demoday WISH 2026 dalam kategori Gastronomi. Melalui program ini, kami mengembangkan perjalanan Sumatra Utara yang menghubungkan asal pangan, pengetahuan lokal, dan kehidupan masyarakat pembuatnya.',
+    shortIntro: 'Mewakili Bros Wisata, Pak Indra mempresentasikan konsep perjalanan gastronomi Sumatra Utara 7 hari 6 malam di Demoday WISH 2026. Konsep yang sedang dikembangkan ini menghubungkan asal pangan, pengetahuan lokal, dan cerita masyarakat. Lihat dokumentasi dan gagasannya dalam katalog WISH 2026.',
+    intro: 'Bros Wisata terpilih sebagai salah satu dari 25 peserta Demoday WISH 2026 dalam kategori Gastronomi. Mewakili Bros Wisata, Pak Indra mempresentasikan konsep perjalanan gastronomi Sumatra Utara 7 hari 6 malam yang menghubungkan asal pangan, pengetahuan lokal, dan kehidupan masyarakat pembuatnya.',
     link: 'Tentang perjalanan kami di WISH',
     detail: 'Proses mentoring dan penyusunan storyline membantu kami mempertajam rancangan perjalanan 7 hari 6 malam di rute ' + route + '. Fokusnya bukan hanya mencicipi makanan, tetapi memahami hubungan antara sajian, tempat, dan orang-orang di baliknya.',
     pillars: [
@@ -36,12 +39,15 @@ const labels = {
     ],
     note: 'Pengalaman gastronomi ini sedang dikembangkan. Detail hidangan, mitra, dan kegiatan akan dikonfirmasi sebelum ditawarkan sebagai bagian dari paket perjalanan.',
     gallery: {
-      short: 'Dokumentasi WISH 2026',
+      short: 'Pak Indra mempresentasikan konsep perjalanan Bros di Demoday WISH 2026.',
       title: 'Momen Bros di WISH & WITF 2026',
-      intro: 'Kebersamaan di panggung WISH dan kunjungan perwakilan Bros Wisata di area pameran WITF 2026.',
+      intro: 'Presentasi konsep perjalanan oleh Pak Indra, momen berbicara dalam forum, kebersamaan di panggung WISH, dan kunjungan perwakilan Bros Wisata di area pameran WITF 2026.',
       link: 'Lihat dokumentasi Bros di WISH & WITF 2026',
       open: 'Lihat foto ukuran penuh (tab baru)',
       photos: {
+        pitching: {caption: 'Pak Indra mempresentasikan konsep perjalanan Bros Wisata di Demoday WISH 2026.', alt: 'Pak Indra berdiri di panggung saat presentasi, dengan huruf WISH menyala di bagian depan panggung.'},
+        concept: {caption: 'Konsep gastronomi 7 hari 6 malam: Medan/Kualanamu – Bukit Lawang – Berastagi – Samosir/Danau Toba – Medan.', alt: 'Pak Indra mempresentasikan slide konsep perjalanan gastronomi Sumatra Utara 7 hari 6 malam di panggung WISH 2026.'},
+        discussion: {caption: 'Pak Indra berbicara dalam forum WISH 2026.', alt: 'Pak Indra memegang mikrofon sambil berdiri di antara peserta forum WISH 2026.'},
         group: {caption: 'Kebersamaan di panggung WISH 2026.', alt: 'Foto bersama di atas panggung dengan latar WISH 2026.'},
         team: {caption: 'Tim Bros Wisata di area panggung WISH.', alt: 'Tim Bros Wisata berfoto di area panggung dengan latar WISH 2026.'},
         booth: {caption: 'Kunjungan perwakilan Bros Wisata ke booth Sobek Bali.', alt: 'Dua perwakilan Bros Wisata berfoto di booth Sobek Bali dalam pameran WITF 2026.'},
@@ -65,8 +71,8 @@ const labels = {
     eyebrow: 'Pembangunan pelancongan bertema · Gastronomi',
     title: 'Bros Wisata terpilih dalam Top 25 WISH 2026',
     shortTitle: 'Bros Wisata dalam Top 25 WISH 2026',
-    shortIntro: 'Terpilih dalam kategori Gastronomi, kami sedang membangunkan pengalaman perjalanan di Sumatera Utara melalui kisah makanan tempatan, budaya dan masyarakat setempat. Kenali konsepnya dalam katalog WISH 2026.',
-    intro: 'Bros Wisata terpilih sebagai salah satu daripada 25 peserta Demoday WISH 2026 dalam kategori Gastronomi. Melalui program ini, kami membangunkan pengalaman perjalanan di Sumatera Utara yang menghubungkan asal-usul makanan, pengetahuan tempatan dan kehidupan masyarakat yang menghasilkannya.',
+    shortIntro: 'Mewakili Bros Wisata, Pak Indra membentangkan konsep perjalanan gastronomi Sumatera Utara 7 hari 6 malam di Demoday WISH 2026. Konsep yang sedang dibangunkan ini menghubungkan asal-usul makanan, pengetahuan tempatan dan kisah masyarakat. Lihat dokumentasi serta konsepnya dalam katalog WISH 2026.',
+    intro: 'Bros Wisata terpilih sebagai salah satu daripada 25 peserta Demoday WISH 2026 dalam kategori Gastronomi. Mewakili Bros Wisata, Pak Indra membentangkan konsep perjalanan gastronomi Sumatera Utara 7 hari 6 malam yang menghubungkan asal-usul makanan, pengetahuan tempatan dan kehidupan masyarakat yang menghasilkannya.',
     link: 'Perjalanan kami dalam WISH',
     detail: 'Proses bimbingan dan penyediaan jalan cerita membantu kami memperhalus rancangan perjalanan 7 hari 6 malam melalui laluan ' + route + '. Tumpuannya bukan sekadar mencuba makanan, tetapi memahami hubungan antara hidangan, tempat dan masyarakat di sebaliknya.',
     pillars: [
@@ -76,12 +82,15 @@ const labels = {
     ],
     note: 'Pengalaman gastronomi ini sedang dibangunkan. Hidangan, rakan tempatan dan aktiviti akan disahkan sebelum ditawarkan sebagai sebahagian daripada pakej perjalanan.',
     gallery: {
-      short: 'Dokumentasi WISH 2026',
+      short: 'Pak Indra membentangkan konsep perjalanan Bros di Demoday WISH 2026.',
       title: 'Momen Bros di WISH & WITF 2026',
-      intro: 'Kebersamaan di pentas WISH dan kunjungan wakil Bros Wisata di kawasan pameran WITF 2026.',
+      intro: 'Pembentangan konsep perjalanan oleh Pak Indra, momen beliau bercakap dalam forum, kebersamaan di pentas WISH dan kunjungan wakil Bros Wisata di kawasan pameran WITF 2026.',
       link: 'Lihat dokumentasi Bros di WISH & WITF 2026',
       open: 'Lihat foto bersaiz penuh (tab baharu)',
       photos: {
+        pitching: {caption: 'Pak Indra membentangkan konsep perjalanan Bros Wisata di Demoday WISH 2026.', alt: 'Pak Indra berdiri di pentas semasa pembentangan, dengan huruf WISH berlampu di bahagian hadapan pentas.'},
+        concept: {caption: 'Konsep gastronomi 7 hari 6 malam: Medan/Kualanamu – Bukit Lawang – Berastagi – Samosir/Danau Toba – Medan.', alt: 'Pak Indra membentangkan slaid konsep perjalanan gastronomi Sumatera Utara 7 hari 6 malam di pentas WISH 2026.'},
+        discussion: {caption: 'Pak Indra bercakap dalam forum WISH 2026.', alt: 'Pak Indra memegang mikrofon sambil berdiri di antara peserta forum WISH 2026.'},
         group: {caption: 'Kebersamaan di pentas WISH 2026.', alt: 'Foto berkumpulan di atas pentas berlatar WISH 2026.'},
         team: {caption: 'Pasukan Bros Wisata di kawasan pentas WISH.', alt: 'Ahli pasukan Bros Wisata bergambar di kawasan pentas berlatar WISH 2026.'},
         booth: {caption: 'Kunjungan wakil Bros Wisata ke reruai Sobek Bali.', alt: 'Dua wakil Bros Wisata bergambar di reruai Sobek Bali semasa pameran WITF 2026.'},
@@ -105,8 +114,8 @@ const labels = {
     eyebrow: 'Themed travel development · Gastronomy',
     title: 'Bros Wisata selected for the WISH 2026 Top 25',
     shortTitle: 'Bros Wisata in the WISH 2026 Top 25',
-    shortIntro: 'Selected in the Gastronomy category, we are developing a North Sumatra journey around local food stories, culture, and communities. Discover the idea in the WISH 2026 catalog.',
-    intro: 'Bros Wisata was selected as one of 25 Demoday WISH 2026 participants in the Gastronomy category. Through the program, we are developing a North Sumatra journey that connects the origins of food, local knowledge, and the lives of the people who produce it.',
+    shortIntro: 'Representing Bros Wisata, Pak Indra presented our 7-day, 6-night North Sumatra gastronomy travel concept at Demoday WISH 2026. Still under development, the concept connects food origins, local knowledge, and community stories. Explore the photos and our idea in the WISH 2026 catalog.',
+    intro: 'Bros Wisata was selected as one of 25 Demoday WISH 2026 participants in the Gastronomy category. Representing Bros Wisata, Pak Indra presented our 7-day, 6-night North Sumatra gastronomy travel concept, connecting food origins, local knowledge, and the lives of the people who produce it.',
     link: 'Our journey with WISH',
     detail: 'Mentoring and storyline development have helped us shape a 7-day, 6-night journey through Medan/Kualanamu, Bukit Lawang, Berastagi, Samosir/Lake Toba, and back to Medan. The focus goes beyond tasting food to explore the connections between dishes, places, and people.',
     pillars: [
@@ -116,12 +125,15 @@ const labels = {
     ],
     note: 'This gastronomy experience is under development. Dishes, local partners, and activities will be confirmed before being offered as part of a tour package.',
     gallery: {
-      short: 'WISH 2026 in pictures',
+      short: 'Pak Indra presenting the Bros travel concept at Demoday WISH 2026.',
       title: 'Bros moments at WISH & WITF 2026',
-      intro: 'Shared moments on the WISH stage and visits by Bros Wisata representatives around the WITF 2026 exhibition.',
+      intro: 'Pak Indra presenting the travel concept and speaking in the forum, shared moments on the WISH stage, and visits by Bros Wisata representatives around the WITF 2026 exhibition.',
       link: 'See Bros photos from WISH & WITF 2026',
       open: 'View full-size photo (new tab)',
       photos: {
+        pitching: {caption: 'Pak Indra presenting the Bros Wisata travel concept at Demoday WISH 2026.', alt: 'Pak Indra standing on stage during his presentation, with illuminated WISH letters at the front of the stage.'},
+        concept: {caption: 'The 7-day, 6-night gastronomy concept: Medan/Kualanamu – Bukit Lawang – Berastagi – Samosir/Lake Toba – Medan.', alt: 'Pak Indra presenting a slide about the 7-day, 6-night North Sumatra gastronomy travel concept on the WISH 2026 stage.'},
+        discussion: {caption: 'Pak Indra speaking in the WISH 2026 forum.', alt: 'Pak Indra holding a microphone while standing among participants in the WISH 2026 forum.'},
         group: {caption: 'A group moment on the WISH 2026 stage.', alt: 'A group photograph on stage with a WISH 2026 backdrop.'},
         team: {caption: 'The Bros Wisata team at the WISH stage area.', alt: 'Bros Wisata team members photographed in the stage area with a WISH 2026 backdrop.'},
         booth: {caption: 'Bros Wisata representatives visiting the Sobek Bali booth.', alt: 'Two Bros Wisata representatives photographed at the Sobek Bali booth during WITF 2026.'},
@@ -158,8 +170,9 @@ function photoImage(photo, alt, sizes) {
 }
 
 function homepagePhoto(locale, text) {
+  const photo = photos.find(item => item.key === 'pitching');
   return `<figure class="wish-recognition__photo">
-<a class="wish-photo-link" href="/${locale}/bros-wisata-about#dokumentasi-wish-2026" aria-label="${escape(text.gallery.link)}">${photoImage(photos[0], text.gallery.photos.group.alt, '(max-width: 700px) calc(100vw - 5rem), 500px')}</a>
+<a class="wish-photo-link" href="/${locale}/bros-wisata-about#dokumentasi-wish-2026" aria-label="${escape(text.gallery.link)}">${photoImage(photo, text.gallery.photos.pitching.alt, '(max-width: 700px) calc(100vw - 5rem), 500px')}</a>
 <figcaption>${escape(text.gallery.short)}</figcaption>
 </figure>`;
 }
@@ -172,9 +185,7 @@ function galleryDetails(text) {
 <div class="wish-gallery__grid">
 ${photos.map(photo => {
   const label = g.photos[photo.key];
-  const sizes = photo.key === 'group'
-    ? '(max-width: 700px) calc(100vw - 5rem), 600px'
-    : '(max-width: 700px) calc(100vw - 5rem), 480px';
+  const sizes = '(max-width: 700px) calc(100vw - 5rem), (max-width: 1280px) calc((100vw - 8.5rem) / 2), 556px';
   return `<figure>
 <a class="wish-photo-link" href="/assets/events/wish-2026/${photo.base}-${photo.width}.webp" target="_blank" rel="noopener noreferrer" aria-label="${escape(label.caption + ' ' + g.open)}">${photoImage(photo, label.alt, sizes)}</a>
 <figcaption>${escape(label.caption)}</figcaption>
