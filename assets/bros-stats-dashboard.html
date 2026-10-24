@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="same-origin">
+  <meta name="color-scheme" content="light">
+  <title>Statistik Website — BROS Wisata</title>
+  <meta name="description" content="Dashboard internal statistik website BROS Wisata.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/bros-wisata-logos/bros-wisata-icon-square-favicon-32px.png">
+  <link rel="stylesheet" href="/assets/bros-stats-dashboard.css">
+  <script src="/assets/bros-stats-dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke statistik</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <img class="brand-logo" src="/bros-wisata-logos/bros-wisata-logo-horizontal-medium-800px.png" width="800" height="213" alt="BROS Wisata — Hub of Sumatra">
+      <div class="header-actions">
+        <span class="private-label"><span aria-hidden="true">●</span> Internal tim</span>
+        <a class="logout-link" href="/cdn-cgi/access/logout">Keluar <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="dashboard-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">BROS WISATA / RINGKASAN AKTIVITAS</p>
+        <h1 id="page-title">Statistik <span>Website.</span></h1>
+        <p class="intro-description">Dari halaman yang dibaca hingga niat menghubungi tim. Lihat aktivitas website dalam satu tempat.</p>
+      </div>
+      <form class="report-controls" id="report-controls" aria-label="Rentang laporan">
+        <label for="report-days">Rentang waktu</label>
+        <div class="control-row">
+          <select id="report-days" name="days">
+            <option value="7">7 hari terakhir</option>
+            <option value="28" selected>28 hari terakhir</option>
+            <option value="90">90 hari terakhir</option>
+          </select>
+          <button class="refresh-button" type="submit" id="refresh-button">
+            <svg class="refresh-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 7a7 7 0 0 1 11.6-1.6L20 8M4 16l2.3 2.6A7 7 0 0 0 17.9 17"/></svg>
+            <span>Muat ulang</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <div class="report-meta">
+      <div class="period"><span class="calendar-mark" aria-hidden="true"></span><span id="report-period">28 hari terakhir · WIB</span></div>
+      <div class="load-meta"><span class="status-badge" id="report-status" data-status="loading">Memuat</span><span id="last-updated">Terakhir dimuat: —</span></div>
+    </div>
+    <p class="sr-only" id="status-announcement" role="status" aria-live="polite" aria-atomic="true">Menyiapkan laporan statistik.</p>
+
+    <section class="notice" id="report-notice" hidden aria-labelledby="notice-title">
+      <span class="notice-symbol" id="notice-symbol" aria-hidden="true">i</span>
+      <div>
+        <h2 id="notice-title"></h2>
+        <p id="notice-description"></p>
+        <a id="notice-action" class="notice-action" href="/ops/analytics" hidden>Buka ulang akses dashboard <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div id="report-content" class="report-content is-loading" aria-busy="true">
+      <section class="metric-grid" aria-label="Ringkasan metrik">
+        <article class="metric-card metric-card-featured">
+          <div class="metric-heading"><h2>Kunjungan</h2><span class="metric-index" aria-hidden="true">01</span></div>
+          <p class="metric-value" id="metric-sessions">—</p>
+          <p class="metric-description">Sesi browser sementara, <strong>bukan jumlah orang unik.</strong></p>
+        </article>
+        <article class="metric-card">
+          <div class="metric-heading"><h2>Tayangan halaman</h2><span class="metric-index" aria-hidden="true">02</span></div>
+          <p class="metric-value" id="metric-pageviews">—</p>
+          <p class="metric-description">Pembukaan halaman, termasuk halaman yang dibaca ulang.</p>
+        </article>
+        <article class="metric-card">
+          <div class="metric-heading"><h2>Klik WhatsApp</h2><span class="metric-index" aria-hidden="true">03</span></div>
+          <p class="metric-value" id="metric-whatsapp">—</p>
+          <p class="metric-description">Niat menghubungi tim, <strong>bukan pesan terkirim atau booking.</strong></p>
+        </article>
+        <article class="metric-card">
+          <div class="metric-heading"><h2>Pilihan detail paket</h2><span class="metric-index" aria-hidden="true">04</span></div>
+          <p class="metric-value" id="metric-packages">—</p>
+          <p class="metric-description">Klik menuju detail paket, bukan pembelian paket.</p>
+        </article>
+      </section>
+
+      <section class="panel trend-panel" aria-labelledby="trend-title">
+        <div class="panel-heading">
+          <div><p class="section-kicker">POLA HARIAN</p><h2 id="trend-title">Aktivitas dari hari ke hari</h2></div>
+          <ul class="chart-legend" aria-label="Keterangan grafik"><li><span class="legend-dot legend-sessions" aria-hidden="true"></span>Kunjungan</li><li><span class="legend-dot legend-views" aria-hidden="true"></span>Tayangan</li></ul>
+        </div>
+        <figure class="activity-figure" aria-describedby="chart-description">
+          <div class="chart-loading" id="chart-loading" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <p class="chart-message" id="chart-message" hidden>Data harian belum tersedia.</p>
+          <div class="daily-chart" id="daily-chart" aria-hidden="true" hidden></div>
+          <div class="chart-axis" id="chart-axis" aria-hidden="true" hidden><span id="chart-first-date"></span><span id="chart-last-date"></span></div>
+          <figcaption id="chart-description">Grafik membandingkan kunjungan dan tayangan dengan skala yang sama. Angka lengkap, termasuk klik WhatsApp dan pilihan paket, tersedia dalam tabel harian.</figcaption>
+        </figure>
+        <details class="daily-details" id="daily-details">
+          <summary>Lihat tabel aktivitas harian <span aria-hidden="true">↓</span></summary>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel aktivitas harian dapat digeser">
+            <table><caption class="sr-only">Aktivitas setiap hari dalam rentang laporan</caption><thead><tr><th scope="col">Tanggal (WIB)</th><th scope="col" class="numeric">Kunjungan</th><th scope="col" class="numeric">Tayangan</th><th scope="col" class="numeric">Klik WA</th><th scope="col" class="numeric">Pilihan paket</th></tr></thead><tbody id="daily-table-body"><tr><td colspan="5" class="table-placeholder">Menunggu data laporan…</td></tr></tbody></table>
+          </div>
+        </details>
+      </section>
+
+      <div class="detail-grid">
+        <section class="panel detail-panel" aria-labelledby="pages-title">
+          <div class="panel-heading"><div><p class="section-kicker">MINAT PENGUNJUNG</p><h2 id="pages-title">Halaman teratas</h2></div><span class="table-limit">Maks. 10</span></div>
+          <p class="panel-description">Urut berdasarkan tayangan. Alamat ditampilkan tanpa parameter atau fragmen.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel halaman teratas dapat digeser"><table><caption class="sr-only">Halaman dengan tayangan terbanyak</caption><thead><tr><th scope="col">Halaman</th><th scope="col" class="numeric">Tayangan</th><th scope="col" class="numeric">Klik WA</th></tr></thead><tbody id="pages-table-body"><tr><td colspan="3" class="table-placeholder">Menunggu data laporan…</td></tr></tbody></table></div>
+        </section>
+        <section class="panel detail-panel" aria-labelledby="sources-title">
+          <div class="panel-heading"><div><p class="section-kicker">ASAL KUNJUNGAN</p><h2 id="sources-title">Sumber trafik</h2></div><span class="table-limit">Maks. 10</span></div>
+          <p class="panel-description">Google mencakup hasil penelusuran maupun iklan; keduanya tidak dipisahkan di sini. Ini bukan laporan khusus trafik organik atau kata kunci.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel sumber trafik dapat digeser"><table><caption class="sr-only">Sumber trafik berdasarkan kunjungan terbanyak</caption><thead><tr><th scope="col">Sumber</th><th scope="col" class="numeric">Kunjungan</th><th scope="col" class="numeric">Tayangan</th><th scope="col" class="numeric">Klik WA</th></tr></thead><tbody id="sources-table-body"><tr><td colspan="4" class="table-placeholder">Menunggu data laporan…</td></tr></tbody></table></div>
+        </section>
+        <section class="panel detail-panel" aria-labelledby="packages-title">
+          <div class="panel-heading"><div><p class="section-kicker">LANJUT KE ITINERARY</p><h2 id="packages-title">Paket yang dipilih</h2></div><span class="table-limit">Maks. 10</span></div>
+          <p class="panel-description">Pilihan tautan detail paket. Satu sesi dapat memilih lebih dari satu paket.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel paket yang dipilih dapat digeser"><table><caption class="sr-only">Paket dengan pilihan detail terbanyak</caption><thead><tr><th scope="col">Paket</th><th scope="col" class="numeric">Pilihan detail</th></tr></thead><tbody id="packages-table-body"><tr><td colspan="2" class="table-placeholder">Menunggu data laporan…</td></tr></tbody></table></div>
+        </section>
+        <section class="panel detail-panel" aria-labelledby="devices-title">
+          <div class="panel-heading"><div><p class="section-kicker">CARA MENGAKSES</p><h2 id="devices-title">Perangkat</h2></div></div>
+          <p class="panel-description">Kategori perangkat yang dikenali saat mengunjungi website.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel perangkat dapat digeser"><table><caption class="sr-only">Kategori perangkat berdasarkan kunjungan terbanyak</caption><thead><tr><th scope="col">Perangkat</th><th scope="col" class="numeric">Kunjungan</th><th scope="col" class="numeric">Tayangan</th></tr></thead><tbody id="devices-table-body"><tr><td colspan="3" class="table-placeholder">Menunggu data laporan…</td></tr></tbody></table></div>
+        </section>
+        <section class="panel detail-panel languages-panel" aria-labelledby="languages-title">
+          <div class="panel-heading"><div><p class="section-kicker">VERSI WEBSITE</p><h2 id="languages-title">Bahasa halaman</h2></div></div>
+          <p class="panel-description">Bahasa halaman yang dibuka, bukan kewarganegaraan atau bahasa pribadi pengunjung.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel bahasa halaman dapat digeser"><table><caption class="sr-only">Bahasa halaman berdasarkan tayangan terbanyak</caption><thead><tr><th scope="col">Bahasa</th><th scope="col" class="numeric">Tayangan</th><th scope="col" class="numeric">Klik WA</th></tr></thead><tbody id="languages-table-body"><tr><td colspan="3" class="table-placeholder">Menunggu data laporan…</td></tr></tbody></table></div>
+        </section>
+      </div>
+    </div>
+
+    <section class="methodology" aria-labelledby="methodology-title">
+      <div class="methodology-heading"><p class="eyebrow">BACA ANGKA DENGAN KONTEKS</p><h2 id="methodology-title">Apa yang dihitung, apa yang tidak.</h2><p>Ringkasan ini membantu membaca aktivitas website, bukan menggantikan data penjualan atau laporan mesin pencari.</p></div>
+      <div class="methodology-grid">
+        <article><span class="method-number" aria-hidden="true">01 /</span><h3>Sesi bukan orang unik</h3><p>Kunjungan memakai sesi browser sementara. Perangkat berbeda, pengaturan browser, atau sesi baru dapat membuat satu orang terhitung lebih dari sekali.</p></article>
+        <article><span class="method-number" aria-hidden="true">02 /</span><h3>Interaksi bukan transaksi</h3><p>Klik WhatsApp mencatat niat membuka kontak. Sistem ini tidak memastikan pesan terkirim, percakapan terjadi, pembayaran, atau booking selesai.</p></article>
+        <article><span class="method-number" aria-hidden="true">03 /</span><h3>Mulai sejak diaktifkan</h3><p>Data statistik sendiri dimulai ketika pencatatan diaktifkan. Ini bukan riwayat GSC atau Bing dan angkanya tidak harus sama dengan GA4 karena metode pengukuran berbeda.</p></article>
+        <article><span class="method-number" aria-hidden="true">04 /</span><h3>Jendela laporan 90 hari</h3><p>Tidak menyimpan alamat IP, isi formulir, atau isi pesan WhatsApp. Data lama dibersihkan bertahap saat sistem diakses, bukan lewat jadwal tetap. Pemblokir atau jaringan dapat mengurangi pencatatan; aktivitas bot juga dapat menambah hitungan. Pratinjau biasa tidak dicatat.</p></article>
+      </div>
+    </section>
+    <noscript><div class="notice no-script"><div><h2>JavaScript diperlukan untuk memuat laporan</h2><p>Aktifkan JavaScript, lalu muat ulang halaman. Tanda — berarti data belum dimuat, bukan nol kunjungan.</p></div></div></noscript>
+    <footer class="dashboard-footer"><span>BROS WISATA — Hub of Sumatra</span><span>Statistik internal · Zona waktu Asia/Jakarta (WIB)</span></footer>
+  </main>
+</body>
+</html>

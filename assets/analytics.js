@@ -4,6 +4,15 @@
   if (window.__brosAnalyticsInitialized) return;
   window.__brosAnalyticsInitialized = true;
 
+  // First-party statistics stay disabled until the protected backend is configured.
+  // This does not create another Google tag or another WhatsApp click listener.
+  if (!document.querySelector('script[src="/assets/bros-stats.js"]')) {
+    var statsScript = document.createElement("script");
+    statsScript.async = true;
+    statsScript.src = "/assets/bros-stats.js";
+    document.head.appendChild(statsScript);
+  }
+
   var MEASUREMENT_ID = "G-JVH9HY8P8P";
 
   window.dataLayer = window.dataLayer || [];
