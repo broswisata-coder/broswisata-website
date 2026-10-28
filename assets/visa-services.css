@@ -264,6 +264,9 @@ details.visa-faq p { max-width: 75ch; margin-bottom: 1.35rem; padding-right: 2re
 .visa-rate-card h3 { min-height: 2.4em; margin-top: 1.25rem; color: var(--visa-navy); font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(1.65rem, 2.45vw, 2rem); line-height: 1.2; font-weight: 800; letter-spacing: -.02em; }
 .visa-rate-amount { margin: 1.4rem 0; color: var(--visa-navy); font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(1.65rem, 2.5vw, 2.1rem); line-height: 1.2; font-weight: 800; font-variant-numeric: tabular-nums; }
 .visa-rate-amount > span { display: block; min-height: 1.5em; margin-top: .35rem; color: var(--visa-muted); font-family: "Plus Jakarta Sans", sans-serif; font-size: .8rem; line-height: 1.6; font-weight: 500; }
+.visa-rate-amount > .visa-usd-estimate { margin-top: .65rem; padding-top: .55rem; border-top: 1px solid #c7d3e4; font-size: .9rem; font-weight: 600; }
+.visa-usd-note { margin-top: 1rem; color: var(--visa-muted); font-size: .8rem; line-height: 1.8; }
+.visa-rate-list .visa-usd-estimate { font-size: .8rem; }
 .visa-rate-card > .visa-text-link { margin-top: auto; }
 .visa-rate-card > .visa-detail-link { justify-content: space-between; width: 100%; padding: .65rem .85rem; border: 1px solid #c7d3e4; border-radius: 3px; background: #fff; text-decoration: none; }
 .visa-rate-directory { margin-top: 1.5rem; border: 1px solid var(--visa-line); background: #fff; }
@@ -316,6 +319,8 @@ details.visa-service-card[open] .visa-category-toggle > span { transform: rotate
 .visa-detail-rate .visa-entry-label { border-color: var(--visa-gold); background: #1a3971; color: #fff; }
 .visa-detail-rate .visa-rate-amount { margin: 1.1rem 0; color: #fff; font-size: clamp(1.7rem, 3vw, 2.6rem); }
 .visa-detail-rate .visa-rate-amount > span, .visa-detail-rate .visa-small { color: #d9e3f4; }
+.visa-detail-rate .visa-usd-estimate { border-color: #48608b; }
+.visa-detail-rate .visa-usd-note { padding-top: .85rem; border-top: 1px solid #48608b; color: #d9e3f4; }
 .visa-detail-rate > .visa-button { width: 100%; background: var(--visa-gold); border-color: var(--visa-gold); color: var(--visa-navy); }
 .visa-detail-rate > .visa-button:hover { background: #fff; border-color: #fff; }
 .visa-detail-rate > .visa-button:focus-visible { outline-color: var(--visa-gold); }

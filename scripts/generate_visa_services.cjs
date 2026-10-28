@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const {synchronizePage, locales: navigationLabels} = require('./sync-global-rental-navigation.cjs');
-const {rates, labels: rateLabels} = require('./visa-rate-card.cjs');
+const {rates, labels: rateLabels, formatRateAmount} = require('./visa-rate-card.cjs');
 const {icon} = require('./visa-illustrations.cjs');
 const {countryMark,typeBadge,entryLabel} = require('./visa-visuals.cjs');
 const {productCodes: categoryProducts, copy: categoryCopy} = require('./visa-category-details.cjs');
@@ -219,8 +219,6 @@ function whatsapp(c, key, label = c.chat, extra = '') {
 function pricing(lang, c) {
   const l = rateLabels[lang];
   const featuredCodes = ['C1', 'C2', 'D2'];
-  const price = r => `Rp${new Intl.NumberFormat('id-ID').format(r.amount)}`;
-  const period = r => r.basis === 'single' ? '' : l[r.basis];
   const name = r => r.names[l.index];
   const detail = {id:'Lihat detail visa',en:'Read visa details',ms:'Baca butiran visa'}[lang];
   const link = r => `<a class="visa-text-link visa-detail-link" href="/${lang}/indonesia-visa-${r.code.toLowerCase()}" data-cta="visa_detail_${r.code.toLowerCase()}" aria-label="${escape(detail + ': ' + r.code + ' · ' + name(r))}">${escape(detail)} <span aria-hidden="true">→</span></a>`;
@@ -228,8 +226,9 @@ function pricing(lang, c) {
   const others = rates.filter(r => !featuredCodes.includes(r.code));
   return `<section class="visa-section visa-pricing" id="visa-pricing" aria-labelledby="visa-pricing-title"><div class="visa-shell">
 <div class="visa-pricing-heading"><div class="visa-section-heading"><p class="visa-eyebrow">${escape(l.eyebrow)}</p><h2 class="font-display" id="visa-pricing-title">${escape(l.title)}</h2><p>${escape(l.intro)}</p></div>${countryMark(lang)}</div>
-<div class="visa-featured-rates">${featured.map(r => `<article class="visa-rate-card" data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div class="visa-rate-top">${typeBadge(r)}${entryLabel(r,lang)}</div><h3 class="visa-type-name">${escape(name(r))}</h3><p class="visa-rate-amount">${price(r)}<span>${escape(period(r))}</span></p>${link(r)}</article>`).join('\n')}</div>
-<details class="visa-rate-directory"><summary>${escape(l.more)} <span class="visa-rate-count">${others.length}</span></summary><ul class="visa-rate-list">${others.map(r => `<li data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div class="visa-rate-identity">${typeBadge(r)}<div><h3 class="visa-type-name">${escape(name(r))}</h3>${entryLabel(r,lang)}</div></div><p class="visa-rate-amount">${price(r)}<span>${escape(period(r))}</span></p>${link(r)}</li>`).join('\n')}</ul></details>
+<div class="visa-featured-rates">${featured.map(r => `<article class="visa-rate-card" data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div class="visa-rate-top">${typeBadge(r)}${entryLabel(r,lang)}</div><h3 class="visa-type-name">${escape(name(r))}</h3><p class="visa-rate-amount">${formatRateAmount(r,lang)}</p>${link(r)}</article>`).join('\n')}</div>
+<details class="visa-rate-directory"><summary>${escape(l.more)} <span class="visa-rate-count">${others.length}</span></summary><ul class="visa-rate-list">${others.map(r => `<li data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div class="visa-rate-identity">${typeBadge(r)}<div><h3 class="visa-type-name">${escape(name(r))}</h3>${entryLabel(r,lang)}</div></div><p class="visa-rate-amount">${formatRateAmount(r,lang)}</p>${link(r)}</li>`).join('\n')}</ul></details>
+<p class="visa-usd-note">${escape(l.usdNote)}</p>
 <div class="visa-rate-consultation"><div><h3>${escape(l.consultationTitle)}</h3><p>${escape(l.consultation)}</p></div>${whatsapp(c, 'rate_consultation')}</div>
 <p class="visa-note">${escape(l.disclaimer)}</p><p class="visa-small visa-rate-reviewed">${escape(l.checked)}</p>
 </div></section>`;
@@ -368,7 +367,7 @@ ${Object.values(copy).filter(other => other !== c).map(other => `<meta property=
 ${fonts}
 <link href="/assets/style.css" rel="stylesheet"/>
 <link href="/assets/bros-ui.css" rel="stylesheet"/>
-<link href="/assets/visa-services.css?v=20261028-types" rel="stylesheet"/>
+<link href="/assets/visa-services.css?v=20261028-usd" rel="stylesheet"/>
 <script type="application/ld+json">${JSON.stringify(schema(lang, c), null, 2).replace(/</g, '\\u003c')}</script>
 ${analytics}
 </head>
@@ -406,8 +405,8 @@ for (const [lang, c] of Object.entries(copy)) {
       if (!html.includes(anchor)) throw new Error(`Missing home entry anchor ${lang}/${file}`);
       html = html.replace(anchor, block + '\n' + anchor);
     }
-    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028-types" rel="stylesheet"/>\n</head>');
-    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261028-types"');
+    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028-usd" rel="stylesheet"/>\n</head>');
+    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261028-usd"');
     save(`${lang}/${file}`, html.replace(/\n/g, newline));
   }
 }

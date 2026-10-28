@@ -14,10 +14,27 @@ const rates = [
   {code: 'E28A', amount: 15350000, basis: 'twoYears', names: ['Investor · opsi 2 tahun', 'Investor · 2-year option', 'Pelabur · pilihan 2 tahun']},
 ];
 
+// Static budget estimates, not USD quotations or a payment-currency offer.
+// The dated calculation receipt and rate provenance remain internal.
+const usdEstimates = {
+  C1: 205,
+  C2: 260,
+  C6: 260,
+  C7: 260,
+  C9: 260,
+  C15: 260,
+  C17: 260,
+  D2: 320,
+  D12: 320,
+  D17: 320,
+  E28A: 885,
+};
+
 const labels = {
   id: {
     index: 0, eyebrow: 'Rate card · Indonesia Visa Desk', title: 'Tarif layanan, lebih jelas sejak awal.',
-    intro: 'Tarif acuan layanan BROS Wisata dalam rupiah (IDR). Ms Yana akan mengonfirmasi kategori, kelayakan, cakupan dan rincian biaya untuk kebutuhan Anda sebelum pembayaran.',
+    intro: 'Tarif acuan BROS Wisata tetap dalam rupiah (IDR), dengan estimasi anggaran USD sebagai informasi tambahan. Kategori, kelayakan dan rincian biaya dikonfirmasi Ms Yana sebelum pembayaran.',
+    usdNote: 'Estimasi anggaran USD memakai acuan Bank Notes Mandiri 28 Oktober 2026 dengan cadangan fluktuasi kurs dan pembulatan. Bukan penawaran atau tagihan USD; tarif dan penagihan tetap Rupiah (IDR). Jumlah akhir mengikuti penawaran tertulis.',
     jump: 'Lihat rate card visa', ask: 'Tanya tarif ini', more: 'Buka tarif layanan lainnya',
     single: 'Sekali masuk', year: '/ tahun', twoYears: '/ 2 tahun',
     consultationTitle: 'Layanan lain? Konsultasikan dulu.',
@@ -28,7 +45,8 @@ const labels = {
   },
   en: {
     index: 1, eyebrow: 'Rate card · Indonesia Visa Desk', title: 'Clearer service rates from the start.',
-    intro: 'BROS Wisata reference service rates in Indonesian rupiah (IDR). Before payment, Ms Yana will confirm the category, eligibility, scope and fee breakdown for your needs.',
+    intro: 'BROS Wisata reference rates remain in Indonesian rupiah (IDR), with a supplementary USD budget estimate. Ms Yana confirms the category, eligibility and fee breakdown before payment.',
+    usdNote: 'USD budget estimates use the Mandiri Bank Notes reference dated 28 October 2026 with an exchange-rate allowance and rounding. They are not USD quotations or payment offers; prices and invoices remain in IDR. The written quotation determines the final amount.',
     jump: 'View the visa rate card', ask: 'Enquire about this rate', more: 'View other service rates',
     single: 'Single entry', year: '/ year', twoYears: '/ 2 years',
     consultationTitle: 'Looking for another service?',
@@ -39,7 +57,8 @@ const labels = {
   },
   ms: {
     index: 2, eyebrow: 'Rate card · Indonesia Visa Desk', title: 'Kadar perkhidmatan, lebih jelas dari awal.',
-    intro: 'Kadar rujukan perkhidmatan BROS Wisata dalam rupiah Indonesia (IDR). Ms Yana akan mengesahkan kategori, kelayakan, skop dan pecahan bayaran untuk keperluan anda sebelum pembayaran.',
+    intro: 'Kadar rujukan BROS Wisata kekal dalam rupiah Indonesia (IDR), dengan anggaran bajet USD sebagai maklumat tambahan. Ms Yana mengesahkan kategori, kelayakan dan pecahan bayaran sebelum pembayaran.',
+    usdNote: 'Anggaran bajet USD menggunakan rujukan Bank Notes Mandiri 28 Oktober 2026 dengan peruntukan turun naik kadar tukaran dan pembundaran. Bukan sebut harga atau tawaran pembayaran USD; kadar dan invois kekal dalam IDR. Jumlah akhir mengikut sebut harga bertulis.',
     jump: 'Lihat rate card visa', ask: 'Tanya kadar ini', more: 'Buka kadar perkhidmatan lain',
     single: 'Sekali masuk', year: '/ tahun', twoYears: '/ 2 tahun',
     consultationTitle: 'Perlukan perkhidmatan lain?',
@@ -50,4 +69,17 @@ const labels = {
   },
 };
 
-module.exports = {rates, labels};
+function formatRateAmount(rate, lang) {
+  const l = labels[lang];
+  const estimate = usdEstimates[rate.code];
+  if (!l || !Number.isFinite(estimate)) throw new Error('Unknown visa rate or language');
+  const amount = `Rp${new Intl.NumberFormat('id-ID').format(rate.amount)}`;
+  const period = rate.basis === 'single' ? '' : l[rate.basis];
+  if (typeof period !== 'string') throw new Error('Unknown visa rate period: ' + rate.basis);
+  const prefix = {id: 'Estimasi', en: 'Approx.', ms: 'Anggaran'}[lang];
+  const periodMarkup = period ? `<span>${period}</span>` : '';
+  const estimatePeriod = period ? ` ${period}` : '';
+  return `${amount}${periodMarkup}<span class="visa-usd-estimate" data-currency="USD" data-estimate-usd="${estimate}">${prefix} US$${estimate}${estimatePeriod}</span>`;
+}
+
+module.exports = {rates, labels, usdEstimates, formatRateAmount};
