@@ -1,0 +1,214 @@
+/* Decorative BROS brand layer. Existing layouts, content and controls stay intact. */
+body[data-bros-polish] .bros-title-motif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 0 .85rem;
+  padding: 7px;
+  border: 1px solid #dbe2ed;
+  border-top: 2px solid #e8a317;
+  border-radius: 7px;
+  background: #f7f3ea;
+  color: #0f47b0;
+  line-height: 0;
+  letter-spacing: 0;
+  pointer-events: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+body[data-bros-polish] .bros-title-motif > .bros-brand-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+}
+
+body[data-bros-polish] .text-center .bros-title-motif,
+body[data-bros-polish] h1.text-center > .bros-title-motif {
+  margin-inline: auto;
+}
+
+body[data-bros-polish="policy"] .bros-title-motif {
+  width: 36px;
+  height: 36px;
+  padding: 5px;
+  margin-bottom: .75rem;
+}
+
+/* Package cover text sits inside a fixed-height photo: keep the badge inline. */
+body[data-bros-polish="package"] .bros-title-motif {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  margin: 0 .65rem .15em 0;
+  vertical-align: middle;
+}
+
+body[data-bros-polish] .bros-brand-lockup {
+  position: relative;
+  width: 100%;
+  padding: 1.1rem 0;
+  border-top: 2px solid #e8a317;
+  background: #f7f3ea;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+  user-select: none;
+}
+
+body[data-bros-polish] .bros-brand-lockup-inner {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 100px;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  width: min(calc(100% - 3rem), 80rem);
+  min-height: 142px;
+  margin-inline: auto;
+}
+
+body[data-bros-polish] .bros-brand-lockup-inner > * {
+  min-width: 0;
+}
+
+body[data-bros-polish] .bros-brand-mark {
+  display: block;
+  width: 190px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+body[data-bros-polish] .bros-brand-route {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: 64px;
+  overflow: hidden;
+  opacity: .65;
+}
+
+body[data-bros-polish] .bros-brand-route > svg {
+  display: block;
+  width: 100%;
+  height: 64px;
+  max-width: 100%;
+  flex: 1 1 auto;
+}
+
+body[data-bros-polish] .bros-travel-companion {
+  display: block;
+  align-self: end;
+  justify-self: end;
+  width: 94px;
+  max-width: 100%;
+  height: 141px;
+  object-fit: contain;
+  transform-origin: center bottom;
+}
+
+body[data-bros-polish] .bros-brand-lockup--quiet {
+  padding-block: 1.3rem;
+  border-top-color: #dbe2ed;
+}
+
+body[data-bros-polish] .bros-brand-lockup--quiet .bros-brand-lockup-inner {
+  grid-template-columns: 190px minmax(0, 1fr);
+  min-height: 52px;
+}
+
+@keyframes bros-polish-badge-intro {
+  from { transform: translateY(4px) rotate(-4deg); }
+  to { transform: translateY(0) rotate(0); }
+}
+
+@keyframes bros-polish-companion-welcome {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(1.2deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body[data-bros-polish]:not([data-bros-polish="policy"]) .bros-title-motif > .bros-brand-icon {
+    animation: bros-polish-badge-intro 1.2s ease-out 1;
+  }
+
+  body[data-bros-polish] .bros-travel-companion {
+    animation: bros-polish-companion-welcome 2.2s ease-in-out 2;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body[data-bros-polish] :is(.quote-tour-card,.trust-card,.seo-route-card,.seo-hub-card,.fleet-card,.rental-service-card,.channel-card,.team-card) {
+    transition: transform .18s ease, border-color .18s ease;
+  }
+
+  body[data-bros-polish] :is(.quote-tour-card,.trust-card,.seo-route-card,.seo-hub-card,.fleet-card,.rental-service-card,.channel-card,.team-card):hover {
+    transform: translateY(-3px);
+    border-color: #e8a317;
+  }
+}
+
+@media (max-width: 600px) {
+  body[data-bros-polish] .bros-title-motif {
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+    margin-bottom: .75rem;
+  }
+
+  body[data-bros-polish="policy"] .bros-title-motif {
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+  }
+
+  body[data-bros-polish="package"] .bros-title-motif {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    margin: 0 .5rem .12em 0;
+  }
+
+  body[data-bros-polish] .bros-brand-lockup-inner {
+    grid-template-columns: 150px minmax(0, 1fr) 80px;
+    width: calc(100% - 2rem);
+    min-height: 120px;
+    gap: .75rem;
+  }
+
+  body[data-bros-polish] .bros-brand-mark {
+    width: 150px;
+  }
+
+  body[data-bros-polish] .bros-brand-route,
+  body[data-bros-polish] .bros-brand-route > svg {
+    height: 48px;
+  }
+
+  body[data-bros-polish] .bros-travel-companion {
+    width: 80px;
+    height: 120px;
+  }
+
+  body[data-bros-polish] .bros-brand-lockup--quiet .bros-brand-lockup-inner {
+    grid-template-columns: 150px minmax(0, 1fr);
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-bros-polish] .bros-title-motif,
+  body[data-bros-polish] .bros-title-motif > .bros-brand-icon,
+  body[data-bros-polish] .bros-travel-companion,
+  body[data-bros-polish] :is(.quote-tour-card,.trust-card,.seo-route-card,.seo-hub-card,.fleet-card,.rental-service-card,.channel-card,.team-card) {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}

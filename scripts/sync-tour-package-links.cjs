@@ -42,7 +42,9 @@ const locales = {
 const esc = (value) => value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 let stale = false;
 function save(relative, before, after) {
-  if (before === after) return;
+  // Windows checkouts may mix CRLF with generator-owned LF blocks. A cosmetic
+  // synchronization must not treat line endings alone as package-content drift.
+  if (before.replace(/\r\n/g, '\n') === after.replace(/\r\n/g, '\n')) return;
   if (checkOnly) {
     stale = true;
     console.error(`Out of sync: ${relative}`);

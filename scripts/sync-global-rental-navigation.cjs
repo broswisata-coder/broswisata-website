@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const {synchronizeBrandPolish} = require('./sync-brand-polish.cjs');
 
 const root = path.resolve(__dirname, "..");
 const checkOnly = process.argv.includes("--check");
@@ -537,10 +538,10 @@ function synchronizePage(original, locale, labels, relativePath) {
       throw new Error(`${relativePath}: contains wrong-locale rental link ${wrongHref}`);
     }
   }
-  return updated;
+  return synchronizeBrandPolish(updated, relativePath);
 }
 
-// Reuse the same navigation contract in page generators without rewriting files.
+// Reuse the same navigation and decorative-brand contract in page generators.
 module.exports = { synchronizePage, locales };
 if (require.main === module) {
 const updates = [];
