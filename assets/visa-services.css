@@ -121,6 +121,8 @@
   box-shadow: 0 20px 45px rgba(8, 39, 95, .12);
 }
 .visa-desk-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.visa-person-avatar { display: block; flex: 0 0 auto; width: 80px; height: 80px; border: 2px solid var(--visa-gold); border-radius: 50%; background: var(--visa-cream); object-fit: cover; object-position: center; }
+.visa-desk-top > div { min-width: 0; }
 .visa-desk-illustration { display: grid; grid-template-columns: minmax(0, 1fr) 116px; align-items: center; gap: .75rem; }
 .visa-desk-illustration > div { min-width: 0; }
 .visa-desk-illustration .visa-mascot { display: block; width: 116px; height: 174px; object-fit: contain; transform-origin: center bottom; }
@@ -324,8 +326,8 @@ details.visa-service-card[open] .visa-category-toggle > span { transform: rotate
 .visa-detail-rate > .visa-button { width: 100%; background: var(--visa-gold); border-color: var(--visa-gold); color: var(--visa-navy); }
 .visa-detail-rate > .visa-button:hover { background: #fff; border-color: #fff; }
 .visa-detail-rate > .visa-button:focus-visible { outline-color: var(--visa-gold); }
-.visa-detail-contact { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 1rem; margin: 1.25rem 0; padding-top: 1rem; border-top: 1px solid #48608b; }
-.visa-detail-contact > img { display: block; width: 64px; height: 96px; object-fit: contain; }
+.visa-detail-contact { display: grid; grid-template-columns: 80px minmax(0, 1fr); align-items: center; gap: 1rem; margin: 1.25rem 0; padding-top: 1rem; border-top: 1px solid #48608b; }
+.visa-detail-contact > .visa-person-avatar { width: 80px; height: 80px; object-fit: cover; }
 .visa-detail-contact strong { font-family: "Bricolage Grotesque",sans-serif; font-size: 1.35rem; font-weight: 800; }
 .visa-detail-contact p { margin-top: .35rem; color: #d9e3f4; font-size: .8rem; line-height: 1.7; }
 .visa-related-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin-bottom: 1rem; }
@@ -343,6 +345,10 @@ details.visa-service-card[open] .visa-category-toggle > span { transform: rotate
 .visa-home-contact strong { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.5rem; line-height: 1.3; font-weight: 700; }
 .visa-home-contact p { line-height: 1.8; }
 .visa-home-contact h3 { font-size: 1.6rem; font-weight: 800; }
+.visa-home-person { display: flex; align-items: center; gap: 1rem; margin-block: 1rem; }
+.visa-home-person > div { min-width: 0; }
+.visa-home-person > .visa-person-avatar { width: 64px; height: 64px; }
+.visa-home-person p { font-size: .82rem; }
 .visa-home-contact .visa-small { color: #d9e3f4; }
 .visa-home-contact .visa-text-link { color: #fff; }
 .visa-home-contact .visa-button { width: 100%; margin-top: 1rem; background: var(--visa-gold); border-color: var(--visa-gold); color: var(--visa-navy); }
@@ -417,6 +423,9 @@ details.visa-service-card[open] .visa-category-toggle > span { transform: rotate
   .visa-home-band { padding: 2.5rem 0; }
   .visa-home-grid { gap: 1.5rem; padding: 1.5rem; }
   .visa-home-contact { padding: 1.25rem; }
+  .visa-home-person { gap: .75rem; }
+  .visa-home-person > .visa-person-avatar { width: 56px; height: 56px; }
+  .visa-home-person p { font-size: .76rem; }
 }
 @keyframes visa-companion-welcome {
   0%, 100% { transform: translateY(0) rotate(0); }
