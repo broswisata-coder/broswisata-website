@@ -10,7 +10,7 @@ const symbols = fs.readFileSync(path.join(root, 'assets/bros/icons/bros-icons.sv
 
 function familyFor(relative, html) {
   const stem = path.basename(relative, '.html');
-  if (stem === 'indonesia-visa') return 'visa';
+  if (/^indonesia-visa(?:-[a-z0-9]+)?$/.test(stem)) return 'visa';
   if (['privacy-policy', 'terms-of-service'].includes(stem)) return 'policy';
   if (['index', 'bros-wisata-homepage'].includes(stem)) return 'home';
   if (stem === 'bros-wisata-tour-listing') return 'tours';
@@ -47,6 +47,32 @@ function motif(name) {
   return `<svg class="bros-brand-icon" width="52" height="52" viewBox="0 0 64 64" aria-hidden="true" focusable="false">${drawing}</svg>`;
 }
 
+function homeRouteIcon(name) {
+  const drawings = {
+    forest: '<path d="m20 9-12 18h7L5 44h30L25 27h7L20 9Zm25 6L35 31h6l-9 15h26l-9-15h6L45 15Z"/><path d="M20 44v12m25-10v10" stroke="#e8a317"/>',
+    meal: '<path d="M10 42h44M15 42v-3a17 17 0 0 1 34 0v3M8 50h48M32 22v-5"/><path d="M28 17h8" stroke="#e8a317"/>',
+    route: '<path d="M14 48h25a10 10 0 0 0 0-20H25a8 8 0 0 1 0-16h23"/><circle cx="14" cy="48" r="4.5" fill="#f7f3ea"/><circle cx="48" cy="12" r="4.5" fill="#e8a317"/>',
+    quote: '<path d="M10 13h44v32H31L18 55V45h-8V13Z"/><path d="M20 24h24M20 33h16"/><path d="M43 33h2" stroke="#e8a317"/>',
+  };
+  if (!drawings[name]) throw new Error('Unknown homepage route-note icon: ' + name);
+  return `<span class="home-route-note-icon" data-route-icon="${name}" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${drawings[name]}</svg></span>`;
+}
+
+function synchronizeHomeRouteNotes(html) {
+  const icons = ['forest', 'meal', 'route', 'quote'];
+  let count = 0;
+  html = html.replace(/<article\b(?=[^>]*\bclass="[^"]*\bhome-route-note\b)[^>]*>[\s\S]*?<\/article>/g, card => {
+    const index = count++;
+    if (!icons[index]) throw new Error('Unexpected extra homepage route-note card');
+    const marker = /^(<article\b[^>]*>\s*)(?:<strong>\s*0([1-4])\s*<\/strong>|<span\b(?=[^>]*\bclass="home-route-note-icon")[^>]*>[\s\S]*?<\/span>)/;
+    const match = card.match(marker);
+    if (!match || (match[2] && Number(match[2]) !== index + 1)) throw new Error('Unexpected homepage route-note decoration at ' + (index + 1));
+    return card.replace(marker, (_, prefix) => prefix + homeRouteIcon(icons[index]));
+  });
+  if (count !== icons.length) throw new Error('Expected four homepage route-note cards, found ' + count);
+  return html;
+}
+
 function lockup(commercial) {
   const route = '<svg viewBox="0 0 560 64" width="560" height="64" aria-hidden="true" focusable="false"><path d="M2 39c81-46 117 24 195-8S338 7 397 33s103 13 161-9" fill="none" stroke="#0f47b0" stroke-width="2" stroke-dasharray="5 9" stroke-linecap="round"/><circle cx="8" cy="36" r="5" fill="#e8a317"/><circle cx="552" cy="27" r="5" fill="#0f47b0"/></svg>';
   const companion = commercial ? '<img class="bros-travel-companion" src="/assets/visa/bros-visa-companion.webp" width="512" height="768" alt="" aria-hidden="true" loading="lazy" decoding="async"/>' : '';
@@ -60,6 +86,7 @@ function synchronizeBrandPolish(original, relative) {
   html = html.replace(/<!-- BROS TITLE MOTIF START -->[\s\S]*?<!-- BROS TITLE MOTIF END -->/g, '');
   html = html.replace(/<!-- BROS BRAND POLISH START -->[\s\S]*?<!-- BROS BRAND POLISH END -->\n?/g, '');
   const family = familyFor(relative, html);
+  if (family === 'home') html = synchronizeHomeRouteNotes(html);
   html = html.replace(/<body\b[^>]*>/i, tag => tag.replace(/\sdata-bros-polish=["'][^"']*["']/g, '').replace(/>$/, ` data-bros-polish="${family}">`));
   if (family !== 'visa') {
     if ((html.match(/<h1\b/gi) || []).length !== 1) throw new Error('Expected one public page heading: ' + relative);
@@ -69,7 +96,8 @@ function synchronizeBrandPolish(original, relative) {
     html = html.replace(/<footer\b/i, `${lockup(commercial)}\n<footer`);
   }
   // The visa page already has its own icons, official logo and mascot.
-  const link = `<link id="bros-brand-polish-style" href="${cssHref}" rel="stylesheet"/>`;
+  const pageCssHref = family === 'home' ? cssHref + '-home-icons' : cssHref;
+  const link = `<link id="bros-brand-polish-style" href="${pageCssHref}" rel="stylesheet"/>`;
   if (html.includes('id="bros-brand-polish-style"')) {
     html = html.replace(/<link\b(?=[^>]*\bid="bros-brand-polish-style")[^>]*>/, link);
   } else {
@@ -78,7 +106,7 @@ function synchronizeBrandPolish(original, relative) {
   return html.replace(/\n/g, newline);
 }
 
-module.exports = {synchronizeBrandPolish, familyFor, iconFor};
+module.exports = {synchronizeBrandPolish, familyFor, iconFor, homeRouteIcon, synchronizeHomeRouteNotes};
 if (require.main === module) {
   const check = process.argv.includes('--check');
   const changed = [];

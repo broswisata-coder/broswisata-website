@@ -186,4 +186,14 @@ test('normal tour route and page type remain unchanged', () => {
   assert.equal(h.calls.gtag[0][2].contact_team, 'tour');
 });
 
+for (const suffix of ['-c1', '-c7.html', '-d2', '-e28a.html']) test(`visa detail ${suffix} retains product routing and page classification`, () => {
+  const a=anchor('https://wa.me/6281370233750?text=Visa%20C1','visa_product_contact');
+  const h=harness({url:'https://broswisata.id/en/indonesia-visa'+suffix,anchors:[a]});
+  assert.equal(h.calls.gtag.length,0);
+  h.click(a);
+  assert.equal(h.calls.gtag.length,1);
+  assert.equal(h.calls.gtag[0][2].page_type,'visa_service');
+  assert.equal(h.calls.gtag[0][2].contact_team,'visa');
+});
+
 console.log(`PASS WhatsApp visa regression: ${tests} offline checks; one shared handler, two exact destinations, no page-load leads.`);

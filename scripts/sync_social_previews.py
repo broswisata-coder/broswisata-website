@@ -204,7 +204,7 @@ def page_title(html: str) -> str:
 
 def category_for(stem: str) -> str:
     value = stem.lower().replace("_", "-")
-    if value == "indonesia-visa":
+    if value == "indonesia-visa" or re.fullmatch(r"indonesia-visa-[a-z0-9]+", value):
         return "visa"
     if value in {"index", "bros-wisata-homepage"}:
         return "home"

@@ -129,14 +129,15 @@ function visaNavLink({ locale, labels, mobile, seo, fixed, active }) {
     fixed,
     active,
   });
-  const current = active ? ' aria-current="page"' : "";
+  const current = active ? ` aria-current="${active === 'section' ? 'location' : 'page'}"` : "";
   return link.replace("<a ", `<a aria-label="${labels.visaAriaLabel}"${current} `);
 }
 
 function synchronizeVisaNav(fragment, locale, labels, relativePath, options) {
   const rentalHref = `/${locale}/bros-wisata-car-rental`;
   const visaHref = `/${locale}/indonesia-visa`;
-  const active = path.basename(relativePath) === "indonesia-visa.html";
+  const visaStem = path.basename(relativePath);
+  const active = visaStem === 'indonesia-visa.html' ? true : /^indonesia-visa-[a-z0-9]+\.html$/.test(visaStem) ? 'section' : false;
   const existing = countHref(fragment, visaHref);
   const rentalPattern = new RegExp(
     `<a\\b(?=[^>]*href=["']${escapeRegex(rentalHref)}["'])[^>]*>[\\s\\S]*?<\\/a>`,
@@ -249,7 +250,7 @@ function missingMobileMenuMarkup(locale, labels, whatsappHref, relativePath) {
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-tour-listing">${labels.toursLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-custom-tour">${labels.customLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-car-rental">${labels.navLabel}</a>
-${visaNavLink({ locale, labels, mobile: true, seo: false, fixed: false, active: path.basename(relativePath) === "indonesia-visa.html" })}
+${visaNavLink({ locale, labels, mobile: true, seo: false, fixed: false, active: path.basename(relativePath) === 'indonesia-visa.html' ? true : /^indonesia-visa-[a-z0-9]+\.html$/.test(path.basename(relativePath)) ? 'section' : false })}
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-about">${labels.aboutLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-contact">${labels.contactLabel}</a>
 <a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" href="${whatsappHref}" rel="noopener noreferrer" target="_blank">📱 ${labels.whatsappLabel}</a>
@@ -531,7 +532,7 @@ function synchronizePage(original, locale, labels, relativePath) {
   updated = updateFooter(updated, locale, labels, relativePath);
   // Keep the shared two-contact WhatsApp handler fresh without adding listeners.
   updated = updated.replace(/(<script\b[^>]*\bsrc=["'])\/assets\/whatsapp-source\.js(?:\?[^"']*)?(["'])/g,
-    '$1/assets/whatsapp-source.js?v=20261028-visa$2');
+    '$1/assets/whatsapp-source.js?v=20261028-visa-details$2');
   for (const otherLocale of Object.keys(locales).filter((candidate) => candidate !== locale)) {
     const wrongHref = `/${otherLocale}/bros-wisata-car-rental`;
     if (updated.includes(`href="${wrongHref}"`)) {
