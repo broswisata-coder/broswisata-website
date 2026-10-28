@@ -303,7 +303,7 @@ function page(lang, c, homepage) {
 </div>
 <aside class="visa-desk-card" aria-labelledby="visa-desk-name">
 <img src="/bros-wisata-logos/bros-wisata-logo-horizontal-white.svg" width="300" height="80" alt="BROS Wisata — Hub of Sumatra"/>
-<p class="visa-eyebrow">${escape(c.desk)}</p><div class="visa-desk-top"><span class="visa-initials" aria-hidden="true">Y</span><div><h2 id="visa-desk-name">Ms Yana</h2><p>${escape(c.role)}</p></div></div>
+<p class="visa-eyebrow">${escape(c.desk)}</p><div class="visa-desk-top"><img class="visa-person-avatar" src="/assets/visa/ms-yana-avatar-v1.webp" width="80" height="80" alt="${lang==='en'?'Illustrated avatar for Ms Yana':'Ilustrasi avatar Ms Yana'}" decoding="async"/><div><h2 id="visa-desk-name">Ms Yana</h2><p>${escape(c.role)}</p></div></div>
 <div class="visa-desk-illustration"><div><p>${escape(c.deskCopy)}</p><div class="visa-travel-motif" aria-hidden="true">${icon('passport')}${icon('coordinate')}</div></div><img class="visa-mascot" src="/assets/visa/bros-visa-companion.webp" width="512" height="768" alt="" aria-hidden="true" decoding="async"/></div><a class="visa-desk-phone" href="https://wa.me/${phone}?text=${encodeURIComponent(c.message)}" data-cta="visa_desk_phone" target="_blank" rel="noopener noreferrer">${icon('chat')}<span>+62 813-7023-3750</span> <span aria-hidden="true">↗</span></a>
 <div class="visa-partner">${escape(c.deskNote)}</div>
 </aside>
@@ -367,7 +367,7 @@ ${Object.values(copy).filter(other => other !== c).map(other => `<meta property=
 ${fonts}
 <link href="/assets/style.css" rel="stylesheet"/>
 <link href="/assets/bros-ui.css" rel="stylesheet"/>
-<link href="/assets/visa-services.css?v=20261028-usd" rel="stylesheet"/>
+<link href="/assets/visa-services.css?v=20261028-yana" rel="stylesheet"/>
 <script type="application/ld+json">${JSON.stringify(schema(lang, c), null, 2).replace(/</g, '\\u003c')}</script>
 ${analytics}
 </head>
@@ -385,7 +385,7 @@ function homeBand(lang, c) {
   return `<!-- INDONESIA VISA SERVICE START -->
 <section class="visa-home-band" id="indonesia-visa-service" aria-labelledby="visa-home-title"><div class="visa-shell visa-home-grid">
 <div class="visa-home-copy"><p class="visa-eyebrow">${escape(c.homeEyebrow)}</p><h2 class="font-display" id="visa-home-title">${escape(c.homeTitle)}</h2><p>${escape(c.homeCopy)}</p><a class="visa-text-link" href="/${lang}/indonesia-visa">${escape(c.homeView)} <span aria-hidden="true">→</span></a></div>
-<div class="visa-home-contact"><p class="visa-eyebrow">${escape(c.desk)}</p><h3>Ms Yana</h3><p>+62 813-7023-3750</p>${whatsapp(c, 'homepage')}<p class="visa-small">${escape(c.deskNote)}</p></div>
+<div class="visa-home-contact"><p class="visa-eyebrow">${escape(c.desk)}</p><div class="visa-home-person"><img class="visa-person-avatar" src="/assets/visa/ms-yana-avatar-v1.webp" width="80" height="80" alt="${lang==='en'?'Illustrated avatar for Ms Yana':'Ilustrasi avatar Ms Yana'}" loading="lazy" decoding="async"/><div><h3>Ms Yana</h3><p>+62 813-7023-3750</p></div></div>${whatsapp(c, 'homepage')}<p class="visa-small">${escape(c.deskNote)}</p></div>
 </div></section>
 <!-- INDONESIA VISA SERVICE END -->`;
 }
@@ -405,8 +405,8 @@ for (const [lang, c] of Object.entries(copy)) {
       if (!html.includes(anchor)) throw new Error(`Missing home entry anchor ${lang}/${file}`);
       html = html.replace(anchor, block + '\n' + anchor);
     }
-    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028-usd" rel="stylesheet"/>\n</head>');
-    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261028-usd"');
+    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028-yana" rel="stylesheet"/>\n</head>');
+    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261028-yana"');
     save(`${lang}/${file}`, html.replace(/\n/g, newline));
   }
 }
