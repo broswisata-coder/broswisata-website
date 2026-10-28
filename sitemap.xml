@@ -1,8 +1,38 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://broswisata.id/en/indonesia-visa</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/indonesia-visa" />
+  </url>
+  <url>
+    <loc>https://broswisata.id/id/indonesia-visa</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/indonesia-visa" />
+  </url>
+  <url>
+    <loc>https://broswisata.id/ms/indonesia-visa</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://broswisata.id/en/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://broswisata.id/id/indonesia-visa" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://broswisata.id/ms/indonesia-visa" />
+  </url>
+  <url>
     <loc>https://broswisata.id/en/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/" />
@@ -12,7 +42,7 @@
   </url>
   <url>
     <loc>https://broswisata.id/id/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/" />
@@ -22,7 +52,7 @@
   </url>
   <url>
     <loc>https://broswisata.id/ms/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/en/" />
@@ -232,7 +262,7 @@
   </url>
   <url>
     <loc>https://broswisata.id/en/privacy-policy</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/privacy-policy" />
@@ -462,7 +492,7 @@
   </url>
   <url>
     <loc>https://broswisata.id/id/privacy-policy</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/privacy-policy" />
@@ -752,7 +782,7 @@
   </url>
   <url>
     <loc>https://broswisata.id/ms/privacy-policy</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://broswisata.id/id/privacy-policy" />

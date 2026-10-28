@@ -92,6 +92,16 @@ COPY = {
             "tangkahan": "RAINFOREST & ELEPHANT CONSERVATION",
             "singapore": "NORTH SUMATRA FROM SINGAPORE",
             "policy": "TRAVEL INFORMATION",
+            "visa": "INDONESIA VISA SERVICES",
+        },
+        "visa": {
+            "eyebrow": "APPLICATION ASSISTANCE • BROS WISATA",
+            "location": "Ms Yana • +62 813-7023-3750",
+            "alt": "BROS Wisata preview for {title}: Indonesia visa assistance, contact Ms Yana at +62 813-7023-3750. Illustrated document, not an issued visa.",
+            "panel_subtitle": "VISA ASSISTANCE",
+            "panel_steps": ("Purpose of visit", "Document review", "Coordination"),
+            "panel_contact": "CONSULT MS YANA",
+            "panel_note": "Independent application assistance",
         },
     },
     "id": {
@@ -113,6 +123,16 @@ COPY = {
             "tangkahan": "HUTAN HUJAN & KONSERVASI GAJAH",
             "singapore": "SUMATRA UTARA DARI SINGAPURA",
             "policy": "INFORMASI PERJALANAN",
+            "visa": "LAYANAN VISA INDONESIA",
+        },
+        "visa": {
+            "eyebrow": "PENDAMPINGAN PENGAJUAN • BROS WISATA",
+            "location": "Ms Yana • +62 813-7023-3750",
+            "alt": "Pratinjau BROS Wisata untuk {title}: layanan visa Indonesia, hubungi Ms Yana di +62 813-7023-3750. Ilustrasi dokumen, bukan visa yang telah diterbitkan.",
+            "panel_subtitle": "PENDAMPINGAN VISA",
+            "panel_steps": ("Tujuan kunjungan", "Pemeriksaan berkas", "Koordinasi"),
+            "panel_contact": "KONSULTASI MS YANA",
+            "panel_note": "Bantuan administrasi independen",
         },
     },
     "ms": {
@@ -134,6 +154,16 @@ COPY = {
             "tangkahan": "HUTAN HUJAN & PEMULIHARAAN GAJAH",
             "singapore": "SUMATERA UTARA DARI SINGAPURA",
             "policy": "MAKLUMAT PERJALANAN",
+            "visa": "PERKHIDMATAN VISA INDONESIA",
+        },
+        "visa": {
+            "eyebrow": "BANTUAN PERMOHONAN • BROS WISATA",
+            "location": "Ms Yana • +62 813-7023-3750",
+            "alt": "Pratonton BROS Wisata untuk {title}: perkhidmatan visa Indonesia, hubungi Ms Yana di +62 813-7023-3750. Ilustrasi dokumen, bukan visa yang telah dikeluarkan.",
+            "panel_subtitle": "BANTUAN VISA",
+            "panel_steps": ("Tujuan lawatan", "Semakan dokumen", "Penyelarasan"),
+            "panel_contact": "HUBUNGI MS YANA",
+            "panel_note": "Khidmat pengurusan visa",
         },
     },
 }
@@ -174,6 +204,8 @@ def page_title(html: str) -> str:
 
 def category_for(stem: str) -> str:
     value = stem.lower().replace("_", "-")
+    if value == "indonesia-visa":
+        return "visa"
     if value in {"index", "bros-wisata-homepage"}:
         return "home"
     if "car-rental" in value or "sewa-mobil" in value or "kereta-sewa" in value:
@@ -299,33 +331,73 @@ def title_layout(
     return selected, lines
 
 
+def make_visa_panel(lang: str, width: int, height: int) -> Image.Image:
+    """Draw a branded intake-document illustration, never an official visa."""
+    copy = COPY[lang]["visa"]
+    panel = Image.new("RGB", (width, height), CREAM)
+    draw = ImageDraw.Draw(panel)
+    draw.ellipse((width - 140, -105, width + 160, 195), fill="#e5ebf7")
+    draw.ellipse((-140, height - 145, 125, height + 120), fill="#eee3c9")
+
+    left, top, right, bottom = 60, 87, width - 50, height - 85
+    draw.rounded_rectangle((left + 12, top + 14, right + 12, bottom + 14), radius=20, fill="#d8dfeb")
+    draw.rounded_rectangle((left, top, right, bottom), radius=20, fill=WHITE, outline="#ccd8eb", width=2)
+    draw.rounded_rectangle((left, top, right, top + 13), radius=6, fill=BLUE)
+    x = left + 26
+    draw.text((x, top + 36), "INDONESIA", font=font(FONT_BOLD, 29), fill=NAVY)
+    draw.text((x, top + 81), copy["panel_subtitle"], font=font(FONT_BOLD, 17), fill=BLUE)
+    draw.rectangle((x, top + 116, x + 62, top + 120), fill=GOLD)
+
+    for index, label in enumerate(copy["panel_steps"], start=1):
+        y = top + 151 + (index - 1) * 67
+        draw.rounded_rectangle((x, y, right - 25, y + 49), radius=8, fill="#f1f5fb")
+        draw.text((x + 12, y + 14), f"0{index}", font=font(FONT_BOLD, 15), fill=BLUE)
+        draw.text((x + 49, y + 14), label, font=font(FONT_REGULAR, 16), fill=NAVY)
+
+    draw.rounded_rectangle((x, bottom - 69, right - 25, bottom - 24), radius=8, fill=NAVY)
+    draw.text((x + 14, bottom - 54), copy["panel_contact"], font=font(FONT_BOLD, 15), fill=WHITE)
+    note_font = font(FONT_REGULAR, 14)
+    note_width = draw.textbbox((0, 0), copy["panel_note"], font=note_font)[2]
+    draw.text(((width - note_width) // 2, height - 42), copy["panel_note"], font=note_font, fill=NAVY)
+    return panel
+
+
+def preview_alt(lang: str, stem: str, title: str) -> str:
+    copy = COPY[lang]
+    template = copy["visa"]["alt"] if category_for(stem) == "visa" else copy["alt"]
+    return template.format(title=title)
+
+
 def make_preview(lang: str, stem: str, title: str) -> bytes:
     canvas = Image.new("RGB", (OG_WIDTH, OG_HEIGHT), NAVY)
     draw = ImageDraw.Draw(canvas)
     photo_x = 742
     photo_width = OG_WIDTH - photo_x
     category = category_for(stem)
-    source_path, contain = source_for(stem, category)
-    if not source_path.exists():
-        raise FileNotFoundError(f"Missing preview source: {source_path}")
-
-    source = Image.open(source_path).convert("RGB")
-    if contain:
-        panel = Image.new("RGB", (photo_width, OG_HEIGHT), CREAM)
-        vehicle = source.copy()
-        vehicle.thumbnail((photo_width - 54, 430), Image.Resampling.LANCZOS)
-        x = (photo_width - vehicle.width) // 2
-        y = (OG_HEIGHT - vehicle.height) // 2 - 12
-        panel.paste(vehicle, (x, y))
+    if category == "visa":
+        panel = make_visa_panel(lang, photo_width, OG_HEIGHT)
     else:
-        panel = ImageOps.fit(
-            source,
-            (photo_width, OG_HEIGHT),
-            method=Image.Resampling.LANCZOS,
-            centering=(0.5, 0.48),
-        )
-        panel = ImageEnhance.Color(panel).enhance(0.92)
-        panel = ImageEnhance.Contrast(panel).enhance(1.05)
+        source_path, contain = source_for(stem, category)
+        if not source_path.exists():
+            raise FileNotFoundError(f"Missing preview source: {source_path}")
+
+        source = Image.open(source_path).convert("RGB")
+        if contain:
+            panel = Image.new("RGB", (photo_width, OG_HEIGHT), CREAM)
+            vehicle = source.copy()
+            vehicle.thumbnail((photo_width - 54, 430), Image.Resampling.LANCZOS)
+            x = (photo_width - vehicle.width) // 2
+            y = (OG_HEIGHT - vehicle.height) // 2 - 12
+            panel.paste(vehicle, (x, y))
+        else:
+            panel = ImageOps.fit(
+                source,
+                (photo_width, OG_HEIGHT),
+                method=Image.Resampling.LANCZOS,
+                centering=(0.5, 0.48),
+            )
+            panel = ImageEnhance.Color(panel).enhance(0.92)
+            panel = ImageEnhance.Contrast(panel).enhance(1.05)
     canvas.paste(panel, (photo_x, 0))
 
     # A clear gold edge separates the copy from the photographic panel.
@@ -340,6 +412,7 @@ def make_preview(lang: str, stem: str, title: str) -> bytes:
     canvas.paste(logo, (68, 54), logo)
 
     copy = COPY[lang]
+    service_copy = copy["visa"] if category == "visa" else copy
     eyebrow_font = font(FONT_BOLD, 18)
     draw.text((68, 164), copy["categories"][category], font=eyebrow_font, fill=GOLD)
 
@@ -357,14 +430,14 @@ def make_preview(lang: str, stem: str, title: str) -> bytes:
     divider_y = min(462, title_y + len(lines) * line_height + 26)
     draw.rectangle((68, divider_y, 132, divider_y + 5), fill=GOLD)
     sub_font = font(FONT_REGULAR, 21)
-    draw.text((68, divider_y + 27), copy["eyebrow"], font=sub_font, fill=MUTED)
+    draw.text((68, divider_y + 27), service_copy["eyebrow"], font=sub_font, fill=MUTED)
 
     bottom_font = font(FONT_BOLD, 19)
     draw.text((68, 568), "broswisata.id", font=bottom_font, fill=WHITE)
-    location_bbox = draw.textbbox((0, 0), copy["location"], font=font(FONT_REGULAR, 18))
+    location_bbox = draw.textbbox((0, 0), service_copy["location"], font=font(FONT_REGULAR, 18))
     draw.text(
         (688 - (location_bbox[2] - location_bbox[0]), 570),
-        copy["location"],
+        service_copy["location"],
         font=font(FONT_REGULAR, 18),
         fill=MUTED,
     )
@@ -428,7 +501,7 @@ def fingerprint(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()[:12]
 
 
-def run(check: bool) -> int:
+def run(check: bool, only_stem: str | None = None) -> int:
     stale: list[str] = []
     changed_html = 0
     changed_images = 0
@@ -436,6 +509,8 @@ def run(check: bool) -> int:
 
     for lang in LANGUAGES:
         for page in sorted((ROOT / lang).rglob("*.html")):
+            if only_stem and page.stem != only_stem:
+                continue
             processed += 1
             original = page.read_text(encoding="utf-8")
             title = page_title(original)
@@ -443,7 +518,7 @@ def run(check: bool) -> int:
             relative_asset = Path("assets") / "og" / lang / f"{stem}.jpg"
             image_path = ROOT / relative_asset
             image_url = f"{SITE_ORIGIN}/{relative_asset.as_posix()}"
-            alt = COPY[lang]["alt"].format(title=title)
+            alt = preview_alt(lang, page.stem, title)
 
             image_bytes = make_preview(lang, page.stem, title)
             current_image = image_path.read_bytes() if image_path.exists() else None
@@ -483,12 +558,16 @@ def run(check: bool) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
+        "--only-stem",
+        help="Limit generation/checks to a single page stem without changing other previews.",
+    )
+    parser.add_argument(
         "--check",
         action="store_true",
         help="Report stale files without changing them.",
     )
     args = parser.parse_args()
-    return run(check=args.check)
+    return run(check=args.check, only_stem=args.only_stem)
 
 
 if __name__ == "__main__":

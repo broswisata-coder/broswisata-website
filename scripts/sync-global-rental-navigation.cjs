@@ -15,6 +15,9 @@ const locales = {
     aboutLabel: "Tentang",
     contactLabel: "Kontak",
     whatsappLabel: "WhatsApp Kami",
+    visaNavLabel: "Visa",
+    visaAriaLabel: "Layanan visa Indonesia",
+    visaFooterLabel: "Visa Indonesia",
   },
   en: {
     navLabel: "Car Rental",
@@ -26,6 +29,9 @@ const locales = {
     aboutLabel: "About",
     contactLabel: "Contact",
     whatsappLabel: "WhatsApp Us",
+    visaNavLabel: "Visa",
+    visaAriaLabel: "Indonesia visa assistance",
+    visaFooterLabel: "Indonesia Visa Assistance",
   },
   ms: {
     navLabel: "Sewa Kereta",
@@ -37,6 +43,9 @@ const locales = {
     aboutLabel: "Tentang",
     contactLabel: "Hubungi",
     whatsappLabel: "WhatsApp Kami",
+    visaNavLabel: "Visa",
+    visaAriaLabel: "Perkhidmatan visa Indonesia",
+    visaFooterLabel: "Visa Indonesia",
   },
 };
 
@@ -110,6 +119,51 @@ function navLink({ href, label, mobile, seo, fixed, active }) {
   return `<a class="${classes}" href="${href}">\n${label}\n</a>`;
 }
 
+function visaNavLink({ locale, labels, mobile, seo, fixed, active }) {
+  const link = navLink({
+    href: `/${locale}/indonesia-visa`,
+    label: labels.visaNavLabel,
+    mobile,
+    seo,
+    fixed,
+    active,
+  });
+  const current = active ? ' aria-current="page"' : "";
+  return link.replace("<a ", `<a aria-label="${labels.visaAriaLabel}"${current} `);
+}
+
+function synchronizeVisaNav(fragment, locale, labels, relativePath, options) {
+  const rentalHref = `/${locale}/bros-wisata-car-rental`;
+  const visaHref = `/${locale}/indonesia-visa`;
+  const active = path.basename(relativePath) === "indonesia-visa.html";
+  const existing = countHref(fragment, visaHref);
+  const rentalPattern = new RegExp(
+    `<a\\b(?=[^>]*href=["']${escapeRegex(rentalHref)}["'])[^>]*>[\\s\\S]*?<\\/a>`,
+    "g",
+  );
+  const visaPattern = new RegExp(
+    `<a\\b(?=[^>]*href=["']${escapeRegex(visaHref)}["'])[^>]*>[\\s\\S]*?<\\/a>`,
+    "g",
+  );
+  function linkAt(offset) {
+    const mobileOffset = fragment.indexOf('id="mobile-menu"');
+    const mobile = options.mobile || (mobileOffset >= 0 && offset > mobileOffset);
+    return visaNavLink({ locale, labels, mobile, seo: options.seo, fixed: options.fixed, active });
+  }
+  if (existing === 0) {
+    fragment = fragment.replace(rentalPattern, (anchor, offset) => `${anchor}\n${linkAt(offset)}`);
+  } else if (existing !== options.expected) {
+    throw new Error(`${relativePath}: expected ${options.expected} visa links in navigation, found ${existing}`);
+  } else {
+    // Also normalize a copied header on the visa page, without changing tour contacts.
+    fragment = fragment.replace(visaPattern, (anchor, offset) => linkAt(offset));
+  }
+  if (countHref(fragment, visaHref) !== options.expected) {
+    throw new Error(`${relativePath}: failed to synchronize visa navigation`);
+  }
+  return fragment;
+}
+
 function updatePrimaryNav(html, locale, labels, relativePath) {
   const tourHref = `/${locale}/bros-wisata-tour-listing`;
   const rentalHref = `/${locale}/bros-wisata-car-rental`;
@@ -162,6 +216,10 @@ function updatePrimaryNav(html, locale, labels, relativePath) {
     throw new Error(`${relativePath}: primary rental navigation has the wrong localized label`);
   }
 
+  nav = synchronizeVisaNav(nav, locale, labels, relativePath, {
+    expected: tourMatches.length, mobile: false, seo, fixed,
+  });
+
   return {
     html: replaceRange(html, section, nav),
     mobileInsideNav: mobileMenuOffset >= 0,
@@ -184,12 +242,13 @@ function mobileMenuSection(html, relativePath) {
   };
 }
 
-function missingMobileMenuMarkup(locale, labels, whatsappHref) {
+function missingMobileMenuMarkup(locale, labels, whatsappHref, relativePath) {
   return `<div class="hidden flex-col lg:hidden bg-white border-t border-bros-charcoal/10 shadow-lg fixed top-20 left-0 right-0 py-4 px-4 overflow-y-auto" id="mobile-menu" style="z-index: 9999; max-height: calc(100vh - 80px); background-color: #ffffff;">
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/">${labels.homeLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-tour-listing">${labels.toursLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-custom-tour">${labels.customLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-car-rental">${labels.navLabel}</a>
+${visaNavLink({ locale, labels, mobile: true, seo: false, fixed: false, active: path.basename(relativePath) === "indonesia-visa.html" })}
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-about">${labels.aboutLabel}</a>
 <a class="py-3 border-b border-bros-charcoal/10 text-bros-charcoal font-medium" href="/${locale}/bros-wisata-contact">${labels.contactLabel}</a>
 <a class="mt-3 bg-bros-blue text-white text-center py-3 font-bold rounded-sm" href="${whatsappHref}" rel="noopener noreferrer" target="_blank">📱 ${labels.whatsappLabel}</a>
@@ -251,7 +310,7 @@ function createMissingMobileMenu(html, locale, labels, relativePath) {
   );
   navWithMobileMenu = navWithMobileMenu.replace(
     /<\/nav>\s*$/,
-    `${missingMobileMenuMarkup(locale, labels, whatsappHref)}\n</nav>`,
+    `${missingMobileMenuMarkup(locale, labels, whatsappHref, relativePath)}\n</nav>`,
   );
   let updated = replaceRange(html, nav, navWithMobileMenu);
   if (!updated.includes("data-global-mobile-menu")) {
@@ -302,6 +361,10 @@ function updateExternalMobileMenu(html, locale, labels, relativePath, mobileInsi
     throw new Error(`${relativePath}: mobile rental navigation has the wrong localized label`);
   }
 
+  mobile = synchronizeVisaNav(mobile, locale, labels, relativePath, {
+    expected: 1, mobile: true, seo: false, fixed: false,
+  });
+
   return replaceRange(html, section, mobile);
 }
 
@@ -335,6 +398,15 @@ function updateRichFooter(footer, locale, labels, relativePath) {
   if (countHref(services, rentalHref) !== 1) {
     throw new Error(`${relativePath}: rich footer rental link is not unique`);
   }
+  const visaHref = `/${locale}/indonesia-visa`;
+  if (countHref(services, visaHref) === 0) {
+    const rentalItemPattern = new RegExp(
+      `<li>\\s*<a\\b(?=[^>]*href=["']${escapeRegex(rentalHref)}["'])[^>]*>[\\s\\S]*?<\\/a>\\s*<\\/li>`,
+    );
+    if (!rentalItemPattern.test(services)) throw new Error(`${relativePath}: rental footer item not found for visa insertion`);
+    services = services.replace(rentalItemPattern, (item) =>
+      `${item}\n<li><a class="hover:text-bros-gold transition" href="${visaHref}">${labels.visaFooterLabel}</a></li>`);
+  }
   return replaceRange(footer, list, services);
 }
 
@@ -367,6 +439,14 @@ function updateSeoFooter(footer, locale, labels, relativePath) {
   if (countHref(updatedBlock, rentalHref) !== 1) {
     throw new Error(`${relativePath}: SEO footer rental link is not unique`);
   }
+  const visaHref = `/${locale}/indonesia-visa`;
+  if (countHref(updatedBlock, visaHref) === 0) {
+    const rentalAnchorPattern = new RegExp(
+      `<a\\b(?=[^>]*href=["']${escapeRegex(rentalHref)}["'])[^>]*>[\\s\\S]*?<\\/a>`,
+    );
+    updatedBlock = updatedBlock.replace(rentalAnchorPattern, (anchor) =>
+      `${anchor}\n      <a href="${visaHref}">${labels.visaFooterLabel}</a>`);
+  }
   return footer.replace(serviceBlockPattern, updatedBlock);
 }
 
@@ -384,6 +464,15 @@ function updateCompactFooter(footer, locale, labels, relativePath) {
 
   if (countHref(footer, rentalHref) !== 1) {
     throw new Error(`${relativePath}: compact footer rental link is not unique`);
+  }
+  const visaHref = `/${locale}/indonesia-visa`;
+  if (countHref(footer, visaHref) === 0) {
+    const innerClosingIndex = footer.lastIndexOf("</div>");
+    if (innerClosingIndex < 0) {
+      throw new Error(`${relativePath}: compact footer container not found for visa insertion`);
+    }
+    const visaLink = `<p class="text-xs mt-4"><a class="text-bros-gold hover:text-white transition" href="${visaHref}">${labels.visaFooterLabel}</a></p>\n`;
+    footer = footer.slice(0, innerClosingIndex) + visaLink + footer.slice(innerClosingIndex);
   }
   return footer;
 }
@@ -418,6 +507,13 @@ function updateFooter(html, locale, labels, relativePath) {
   if (anchorsForHref(footer, rentalHref).some((anchor) => !anchorHasLabel(anchor, labels.footerLabel))) {
     throw new Error(`${relativePath}: footer rental link has the wrong localized label`);
   }
+  const visaHref = `/${locale}/indonesia-visa`;
+  if (countHref(footer, visaHref) !== 1) {
+    throw new Error(`${relativePath}: footer visa link is missing or not unique`);
+  }
+  if (anchorsForHref(footer, visaHref).some((anchor) => !anchorHasLabel(anchor, labels.visaFooterLabel))) {
+    throw new Error(`${relativePath}: footer visa link has the wrong localized label`);
+  }
 
   return replaceRange(html, section, footer);
 }
@@ -432,6 +528,9 @@ function synchronizePage(original, locale, labels, relativePath) {
     navResult.mobileInsideNav,
   );
   updated = updateFooter(updated, locale, labels, relativePath);
+  // Keep the shared two-contact WhatsApp handler fresh without adding listeners.
+  updated = updated.replace(/(<script\b[^>]*\bsrc=["'])\/assets\/whatsapp-source\.js(?:\?[^"']*)?(["'])/g,
+    '$1/assets/whatsapp-source.js?v=20261028-visa$2');
   for (const otherLocale of Object.keys(locales).filter((candidate) => candidate !== locale)) {
     const wrongHref = `/${otherLocale}/bros-wisata-car-rental`;
     if (updated.includes(`href="${wrongHref}"`)) {
@@ -441,6 +540,9 @@ function synchronizePage(original, locale, labels, relativePath) {
   return updated;
 }
 
+// Reuse the same navigation contract in page generators without rewriting files.
+module.exports = { synchronizePage, locales };
+if (require.main === module) {
 const updates = [];
 let pageCount = 0;
 const localePageCounts = [];
@@ -488,3 +590,4 @@ console.log(
     ? "Global rental navigation already synchronized."
     : `Updated global rental navigation in ${updates.length} HTML pages.`,
 );
+}
