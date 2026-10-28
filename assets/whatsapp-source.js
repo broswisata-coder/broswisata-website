@@ -2,7 +2,10 @@
   if (window.__brosWhatsappSourceInitialized) return;
   window.__brosWhatsappSourceInitialized = true;
 
-  var AHMAD_PHONE = "6281260139399";
+  var CONTACT_TEAMS = {
+    "6281260139399": "tour",
+    "6281370233750": "visa"
+  };
   var SOURCE_MARKER = "[WEB INQUIRY - BROS WISATA]";
   var ATTRIBUTION_KEY = "bros_attribution_v1";
 
@@ -38,6 +41,7 @@
   function pageType() {
     var path = window.location.pathname;
     if (/\/(en|id|ms)\/?$/.test(path)) return "homepage";
+    if (/\/indonesia-visa(?:\.html)?\/?$/.test(path)) return "visa_service";
     if (path.indexOf("contact") !== -1) return "contact";
     if (path.indexOf("custom-tour") !== -1) return "custom_tour";
     if (path.indexOf("meet-ahmad") !== -1) return "meet_ahmad";
@@ -182,6 +186,7 @@
       page_language: pageLanguage(),
       market_segment: marketSegment(),
       page_type: pageType(),
+      contact_team: contactTeamForAnchor(anchor),
       traffic_source: attr.source || "",
       traffic_medium: attr.medium || "",
       traffic_campaign: attr.campaign || "",
@@ -235,11 +240,18 @@
     return lines.join("\n");
   }
 
-  function isAhmadWhatsapp(url) {
-    return (
-      /(^|\D)6281260139399(\D|$)/.test(url.pathname + url.search) ||
-      url.href.indexOf(AHMAD_PHONE) !== -1
-    );
+  function whatsappContact(url) {
+    if (url.protocol !== "https:" || url.hostname !== "wa.me" || url.port || url.username || url.password) return "";
+    var match = /^\/(\d+)\/?$/.exec(url.pathname);
+    return match ? CONTACT_TEAMS[match[1]] || "" : "";
+  }
+
+  function contactTeamForAnchor(anchor) {
+    try {
+      return whatsappContact(new URL(anchor.getAttribute("href"), window.location.href));
+    } catch (error) {
+      return "";
+    }
   }
 
   function updateWhatsappLink(anchor) {
@@ -248,7 +260,7 @@
 
     try {
       var url = new URL(rawHref, window.location.href);
-      if (!isAhmadWhatsapp(url)) return;
+      if (!whatsappContact(url)) return;
 
       var currentText = url.searchParams.get("text") || "";
       if (currentText.indexOf(SOURCE_MARKER) !== -1) return;
@@ -282,7 +294,7 @@
     "click",
     function (event) {
       var anchor = event.target.closest && event.target.closest('a[href*="wa.me"]');
-      if (anchor) {
+      if (anchor && contactTeamForAnchor(anchor)) {
         updateWhatsappLink(anchor);
         trackClarityWhatsapp(anchor);
         trackAnalyticsWhatsapp(anchor);

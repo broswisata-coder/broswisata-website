@@ -24,6 +24,16 @@
 /en/bros-wisata-homepage.html    /en/    301
 
 # ============================================================
+# INDONESIA VISA SERVICE ROUTES
+# ============================================================
+/id/indonesia-visa.html    /id/indonesia-visa    301
+/en/indonesia-visa.html    /en/indonesia-visa    301
+/ms/indonesia-visa.html    /ms/indonesia-visa    301
+/visa    /en/indonesia-visa    301
+/indonesia-visa    /en/indonesia-visa    301
+/visa-indonesia    /id/indonesia-visa    301
+
+# ============================================================
 # CAR RENTAL ROUTES
 # ============================================================
 # Localized clean URLs are served directly. Normalize .html and campaign aliases.
