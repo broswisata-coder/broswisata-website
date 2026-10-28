@@ -41,7 +41,7 @@
   function pageType() {
     var path = window.location.pathname;
     if (/\/(en|id|ms)\/?$/.test(path)) return "homepage";
-    if (/\/indonesia-visa(?:\.html)?\/?$/.test(path)) return "visa_service";
+    if (/\/indonesia-visa(?:-[a-z0-9]+)?(?:\.html)?\/?$/.test(path)) return "visa_service";
     if (path.indexOf("contact") !== -1) return "contact";
     if (path.indexOf("custom-tour") !== -1) return "custom_tour";
     if (path.indexOf("meet-ahmad") !== -1) return "meet_ahmad";

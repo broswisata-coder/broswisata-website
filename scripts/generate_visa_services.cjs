@@ -3,11 +3,13 @@ const path = require('node:path');
 const {synchronizePage, locales: navigationLabels} = require('./sync-global-rental-navigation.cjs');
 const {rates, labels: rateLabels} = require('./visa-rate-card.cjs');
 const {icon} = require('./visa-illustrations.cjs');
+const {countryMark,typeBadge,entryLabel} = require('./visa-visuals.cjs');
+const {productCodes: categoryProducts, copy: categoryCopy} = require('./visa-category-details.cjs');
 const root = path.resolve(__dirname, '..');
 const check = process.argv.includes('--check');
 const date = '2026-10-28';
 const phone = '6281370233750';
-const sharedScript = '/assets/whatsapp-source.js?v=20261028-visa';
+const sharedScript = '/assets/whatsapp-source.js?v=20261028-visa-details';
 const sourceLinks = {
   immigration: 'https://kanwilsultra.imigrasi.go.id/wna/daftar-visa-indonesia',
   portal: 'https://evisa.imigrasi.go.id/',
@@ -220,16 +222,27 @@ function pricing(lang, c) {
   const price = r => `Rp${new Intl.NumberFormat('id-ID').format(r.amount)}`;
   const period = r => r.basis === 'single' ? '' : l[r.basis];
   const name = r => r.names[l.index];
-  const link = r => whatsapp(c, `rate_${r.code.toLowerCase()}`, l.ask, `${r.code} · ${name(r)}`).replace('class="visa-button"', 'class="visa-text-link"');
+  const detail = {id:'Lihat detail visa',en:'Read visa details',ms:'Baca butiran visa'}[lang];
+  const link = r => `<a class="visa-text-link visa-detail-link" href="/${lang}/indonesia-visa-${r.code.toLowerCase()}" data-cta="visa_detail_${r.code.toLowerCase()}" aria-label="${escape(detail + ': ' + r.code + ' · ' + name(r))}">${escape(detail)} <span aria-hidden="true">→</span></a>`;
   const featured = featuredCodes.map(code => rates.find(r => r.code === code));
   const others = rates.filter(r => !featuredCodes.includes(r.code));
   return `<section class="visa-section visa-pricing" id="visa-pricing" aria-labelledby="visa-pricing-title"><div class="visa-shell">
-<div class="visa-section-heading"><p class="visa-eyebrow">${escape(l.eyebrow)}</p><h2 class="font-display" id="visa-pricing-title">${escape(l.title)}</h2><p>${escape(l.intro)}</p></div>
-<div class="visa-featured-rates">${featured.map(r => `<article class="visa-rate-card" data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><p class="visa-rate-code">${r.code}${r.basis === 'single' ? ' · ' + escape(l.single) : ''}</p><h3>${escape(name(r))}</h3><p class="visa-rate-amount">${price(r)}<span>${escape(period(r))}</span></p>${link(r)}</article>`).join('\n')}</div>
-<details class="visa-rate-directory"><summary>${escape(l.more)} <span class="visa-rate-count">${others.length}</span></summary><ul class="visa-rate-list">${others.map(r => `<li data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div><span class="visa-rate-code">${r.code}</span><h3>${escape(name(r))}</h3>${r.basis === 'single' ? '<p class="visa-small">' + escape(l.single) + '</p>' : ''}</div><p class="visa-rate-amount">${price(r)}<span>${escape(period(r))}</span></p>${link(r)}</li>`).join('\n')}</ul></details>
+<div class="visa-pricing-heading"><div class="visa-section-heading"><p class="visa-eyebrow">${escape(l.eyebrow)}</p><h2 class="font-display" id="visa-pricing-title">${escape(l.title)}</h2><p>${escape(l.intro)}</p></div>${countryMark(lang)}</div>
+<div class="visa-featured-rates">${featured.map(r => `<article class="visa-rate-card" data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div class="visa-rate-top">${typeBadge(r)}${entryLabel(r,lang)}</div><h3 class="visa-type-name">${escape(name(r))}</h3><p class="visa-rate-amount">${price(r)}<span>${escape(period(r))}</span></p>${link(r)}</article>`).join('\n')}</div>
+<details class="visa-rate-directory"><summary>${escape(l.more)} <span class="visa-rate-count">${others.length}</span></summary><ul class="visa-rate-list">${others.map(r => `<li data-visa-rate="${r.code}" data-rate-idr="${r.amount}"><div class="visa-rate-identity">${typeBadge(r)}<div><h3 class="visa-type-name">${escape(name(r))}</h3>${entryLabel(r,lang)}</div></div><p class="visa-rate-amount">${price(r)}<span>${escape(period(r))}</span></p>${link(r)}</li>`).join('\n')}</ul></details>
 <div class="visa-rate-consultation"><div><h3>${escape(l.consultationTitle)}</h3><p>${escape(l.consultation)}</p></div>${whatsapp(c, 'rate_consultation')}</div>
 <p class="visa-note">${escape(l.disclaimer)}</p><p class="visa-small visa-rate-reviewed">${escape(l.checked)}</p>
 </div></section>`;
+}
+function serviceCards(lang,c) {
+  const l=categoryCopy[lang];
+  return c.services.map(([key,title,description],i)=>{
+    const related=categoryProducts[key].map(code=>{
+      const r=rates.find(r=>r.code===code);
+      return `<li><a class="visa-text-link visa-detail-link" href="/${lang}/indonesia-visa-${code.toLowerCase()}">${code} · ${escape(r.names[rateLabels[lang].index])} <span aria-hidden="true">→</span></a></li>`;
+    }).join('');
+    return `<details class="visa-service-card"><summary><span class="visa-service-top">${icon(['passport','business','multiple','permit','home','extension'][i])}<span class="visa-service-no" aria-hidden="true">${String(i+1).padStart(2,'0')}</span></span><span class="visa-category-name">${escape(title)}</span><span class="visa-category-description">${escape(description)}</span><span class="visa-category-toggle">${escape(l.read)} <span aria-hidden="true">+</span></span></summary><div class="visa-category-body"><h3>${escape(title)}</h3><h4>${escape(l.prepare)}</h4><p>${escape(l.notes[key])}</p><p>${escape(l.basic)}</p>${related?`<h4>${escape(l.products)}</h4><ul>${related}</ul>`:''}${whatsapp(c,key,c.cardChat,title).replace('class="visa-button"','class="visa-text-link"')}</div></details>`;
+  }).join('\n');
 }
 function schema(lang, c) {
   const url = `https://broswisata.id/${lang}/indonesia-visa`;
@@ -284,7 +297,7 @@ function page(lang, c, homepage) {
 <section class="visa-hero" id="visa-intro" aria-labelledby="visa-title">
 <div class="visa-shell">
 <div class="visa-hero-grid">
-<div><p class="visa-eyebrow">${escape(c.eyebrow)}</p>
+<div><div class="visa-heading-meta">${countryMark(lang)}<p class="visa-eyebrow">${escape(c.eyebrow)}</p></div>
 <h1 class="visa-title font-display" id="visa-title">${escape(c.heading)}</h1>
 <p class="visa-lead">${escape(c.intro)}</p>
 <div class="visa-actions">${whatsapp(c, 'hero')}<a class="visa-text-link" href="#visa-pricing">${escape(rateLabels[lang].jump)} <span aria-hidden="true">↓</span></a></div>
@@ -300,7 +313,7 @@ function page(lang, c, homepage) {
 ${pricing(lang, c)}
 <section class="visa-section visa-section--white" id="visa-services" aria-labelledby="visa-services-title"><div class="visa-shell">
 <div class="visa-section-heading"><p class="visa-eyebrow">${escape(c.servicesEyebrow)}</p><h2 class="font-display" id="visa-services-title">${escape(c.servicesTitle)}</h2><p>${escape(c.servicesIntro)}</p></div>
-<div class="visa-services-grid">${c.services.map(([key, title, description], i) => `<article class="visa-service-card"><div class="visa-service-top">${icon(['passport','business','multiple','permit','home','extension'][i])}<span class="visa-service-no" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span></div><h3>${escape(title)}</h3><p>${escape(description)}</p>${whatsapp(c, key, c.cardChat, title).replace('class="visa-button"', 'class="visa-text-link"')}</article>`).join('\n')}</div>
+<div class="visa-services-grid">${serviceCards(lang,c)}</div>
 <p class="visa-note">${escape(c.scopeNote)}</p></div></section>
 <section class="visa-section" id="visa-process" aria-labelledby="visa-process-title"><div class="visa-shell">
 <div class="visa-section-heading"><p class="visa-eyebrow">${escape(c.processEyebrow)}</p><h2 class="font-display" id="visa-process-title">${escape(c.processTitle)}</h2></div>
@@ -355,7 +368,7 @@ ${Object.values(copy).filter(other => other !== c).map(other => `<meta property=
 ${fonts}
 <link href="/assets/style.css" rel="stylesheet"/>
 <link href="/assets/bros-ui.css" rel="stylesheet"/>
-<link href="/assets/visa-services.css?v=20261028" rel="stylesheet"/>
+<link href="/assets/visa-services.css?v=20261028-types" rel="stylesheet"/>
 <script type="application/ld+json">${JSON.stringify(schema(lang, c), null, 2).replace(/</g, '\\u003c')}</script>
 ${analytics}
 </head>
@@ -393,7 +406,8 @@ for (const [lang, c] of Object.entries(copy)) {
       if (!html.includes(anchor)) throw new Error(`Missing home entry anchor ${lang}/${file}`);
       html = html.replace(anchor, block + '\n' + anchor);
     }
-    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028" rel="stylesheet"/>\n</head>');
+    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028-types" rel="stylesheet"/>\n</head>');
+    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261028-types"');
     save(`${lang}/${file}`, html.replace(/\n/g, newline));
   }
 }
