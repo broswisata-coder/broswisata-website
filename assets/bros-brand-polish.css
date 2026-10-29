@@ -48,6 +48,34 @@ body[data-bros-polish="home"] .home-route-note h3 {
   line-height: 1.22;
 }
 
+/* Only the label over the photograph: the blue label on cream stays blue. */
+body[data-bros-polish="home"] .home-route-map-content .home-route-kicker {
+  display: inline-block;
+  max-width: 100%;
+  padding: .35rem .65rem;
+  border: 1px solid rgb(248 207 114 / 30%);
+  border-radius: 5px;
+  background: #08275f;
+  color: #f8cf72;
+  line-height: 1.5;
+}
+
+/* Bound the grid item, not the document. Slides keep their native scroll. */
+body[data-bros-polish="package"] .bros-package-gallery-column {
+  min-width: 0;
+}
+
+body[data-bros-polish="package"] .bros-package-gallery {
+  min-width: 0;
+  max-width: calc(100% + 2rem);
+  overscroll-behavior-x: contain;
+}
+
+body[data-bros-polish="package"] .bros-package-gallery:focus-visible {
+  outline: 3px solid #0f47b0;
+  outline-offset: -3px;
+}
+
 body[data-bros-polish] .bros-title-motif {
   display: flex;
   align-items: center;
