@@ -1,12 +1,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const cssHref = '/assets/bros-brand-polish.css?v=20261028';
+const cssHref = '/assets/bros-brand-polish.css?v=20261029-3d';
 const titleStart = '<!-- BROS TITLE MOTIF START -->';
 const titleEnd = '<!-- BROS TITLE MOTIF END -->';
 const brandStart = '<!-- BROS BRAND POLISH START -->';
 const brandEnd = '<!-- BROS BRAND POLISH END -->';
-const symbols = fs.readFileSync(path.join(root, 'assets/bros/icons/bros-icons.svg'), 'utf8');
+const {iconMarkup} = require('./bros-3d-icons.cjs');
 
 function familyFor(relative, html) {
   const stem = path.basename(relative, '.html');
@@ -38,24 +38,29 @@ function iconFor(relative, family) {
 }
 
 function motif(name) {
-  const extra = {
-    document: '<path d="M16 8h24l10 10v38H16V8Z" fill="#0f47b0"/><path d="M40 8v12h10" fill="#e8a317"/><path d="M24 29h18m-18 9h18m-18 9h10" fill="none" stroke="#f7f3ea" stroke-width="3" stroke-linecap="round"/>',
-    forest: '<path d="m19 9-13 22h8L3 48h20V30L19 9Z" fill="#0f47b0"/><path d="m41 6-16 27h10L22 53h38L47 33h10L41 6Z" fill="#0f47b0"/><path d="M41 41v17M18 47v10" stroke="#e8a317" stroke-width="4" stroke-linecap="round"/>',
-  };
-  const drawing = extra[name] || symbols.match(new RegExp(`<symbol id="bros-icon-${name}"[^>]*>([\\s\\S]*?)<\\/symbol>`))?.[1];
-  if (!drawing) throw new Error('Missing Bros motif: ' + name);
-  return `<svg class="bros-brand-icon" width="52" height="52" viewBox="0 0 64 64" aria-hidden="true" focusable="false">${drawing}</svg>`;
+  return iconMarkup(name, 'bros-brand-icon', 52);
 }
 
 function homeRouteIcon(name) {
-  const drawings = {
-    forest: '<path d="m20 9-12 18h7L5 44h30L25 27h7L20 9Zm25 6L35 31h6l-9 15h26l-9-15h6L45 15Z"/><path d="M20 44v12m25-10v10" stroke="#e8a317"/>',
-    meal: '<path d="M10 42h44M15 42v-3a17 17 0 0 1 34 0v3M8 50h48M32 22v-5"/><path d="M28 17h8" stroke="#e8a317"/>',
-    route: '<path d="M14 48h25a10 10 0 0 0 0-20H25a8 8 0 0 1 0-16h23"/><circle cx="14" cy="48" r="4.5" fill="#f7f3ea"/><circle cx="48" cy="12" r="4.5" fill="#e8a317"/>',
-    quote: '<path d="M10 13h44v32H31L18 55V45h-8V13Z"/><path d="M20 24h24M20 33h16"/><path d="M43 33h2" stroke="#e8a317"/>',
-  };
-  if (!drawings[name]) throw new Error('Unknown homepage route-note icon: ' + name);
-  return `<span class="home-route-note-icon" data-route-icon="${name}" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${drawings[name]}</svg></span>`;
+  if (!['forest','meal','route','quote'].includes(name)) throw new Error('Unknown homepage route-note icon: ' + name);
+  return `<span class="home-route-note-icon" data-route-icon="${name}" aria-hidden="true">${iconMarkup(name, '', 52)}</span>`;
+}
+
+function synchronizeContextIcons(html) {
+  const proofIcons = {guide:'guide',eco:'forest',local:'home'};
+  html = html.replace(/<span\b(?=[^>]*\bclass="[^"]*\bahmad-proof-icon\b)[^>]*>[\s\S]*?<\/span>/g, tag => {
+    const classes = tag.match(/class="([^"]*)"/)?.[1].split(/\s+/) || [];
+    const kind = classes.find(name => Object.hasOwn(proofIcons,name));
+    if (!kind) throw new Error('Unknown Ahmad proof icon');
+    return tag.replace(/>[\s\S]*<\/span>$/, '>' + iconMarkup(proofIcons[kind], '', 28) + '</span>');
+  });
+  html = html.replace(/(<div\b(?=[^>]*\bclass="[^"]*\bquote-category-icon\b)[^>]*>)([\s\S]*?)(<\/div>)/g, (_,open,content,close) => {
+    const key = content.match(/#bros-icon-([a-z-]+)["']/)?.[1] || content.match(/data-bros-icon="([a-z-]+)"/)?.[1];
+    if (!key) throw new Error('Missing tour category icon key');
+    // The listing's Eco & Wildlife category describes rainforest destinations.
+    return open + iconMarkup(key === 'mountain' ? 'forest' : key, '', 40) + close;
+  });
+  return html;
 }
 
 function synchronizeHomeRouteNotes(html) {
@@ -87,6 +92,7 @@ function synchronizeBrandPolish(original, relative) {
   html = html.replace(/<!-- BROS BRAND POLISH START -->[\s\S]*?<!-- BROS BRAND POLISH END -->\n?/g, '');
   const family = familyFor(relative, html);
   if (family === 'home') html = synchronizeHomeRouteNotes(html);
+  html = synchronizeContextIcons(html);
   html = html.replace(/<body\b[^>]*>/i, tag => tag.replace(/\sdata-bros-polish=["'][^"']*["']/g, '').replace(/>$/, ` data-bros-polish="${family}">`));
   if (family !== 'visa') {
     if ((html.match(/<h1\b/gi) || []).length !== 1) throw new Error('Expected one public page heading: ' + relative);
@@ -106,7 +112,7 @@ function synchronizeBrandPolish(original, relative) {
   return html.replace(/\n/g, newline);
 }
 
-module.exports = {synchronizeBrandPolish, familyFor, iconFor, homeRouteIcon, synchronizeHomeRouteNotes};
+module.exports = {synchronizeBrandPolish, familyFor, iconFor, homeRouteIcon, synchronizeHomeRouteNotes, synchronizeContextIcons};
 if (require.main === module) {
   const check = process.argv.includes('--check');
   const changed = [];

@@ -127,12 +127,13 @@
 .visa-desk-illustration > div { min-width: 0; }
 .visa-desk-illustration .visa-mascot { display: block; width: 116px; height: 174px; object-fit: contain; transform-origin: center bottom; }
 .visa-travel-motif { display: flex; gap: .75rem; margin-top: 1.15rem; }
-.visa-travel-motif .visa-icon { width: 36px; height: 36px; padding: 4px; border-radius: 7px; background: #f7f3ea; }
-.visa-icon { display: block; flex: 0 0 auto; }
+.visa-travel-motif .visa-icon { width: 40px; height: 40px; padding: 2px; border: 1px solid #fff4d8; border-radius: 10px; background: linear-gradient(145deg, #fffdf8, #f0e8d7); box-shadow: 0 3px 0 #c4c9d0, 0 6px 12px rgb(0 0 0 / 13%), inset 0 1px 0 #fff; }
+.visa-icon { display: block; flex: 0 0 auto; object-fit: contain; user-select: none; }
 .visa-service-top, .visa-step-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 1.25rem; }
 .visa-service-top .visa-service-no { margin: 0; }
-.visa-service-top .visa-icon { padding: 7px; width: 56px; height: 56px; border-radius: 10px; background: var(--visa-cream); }
-.visa-step-top .visa-icon { width: 40px; height: 40px; }
+.visa-service-top .visa-icon { padding: 3px; width: 64px; height: 64px; border: 1px solid #d8e4f3; border-radius: 17px; background: linear-gradient(145deg, #fff, #e6f0ff); box-shadow: 0 4px 0 #cbd9ed, 0 9px 16px rgb(8 39 95 / 10%), inset 0 1px 0 #fff; }
+.visa-service-card:nth-child(even) .visa-service-top .visa-icon { border-color: #ebd8ad; background: linear-gradient(145deg, #fffdf6, #f5e7c4); box-shadow: 0 4px 0 #e2d0a4, 0 9px 16px rgb(8 39 95 / 8%), inset 0 1px 0 #fff; }
+.visa-step-top .visa-icon { width: 44px; height: 44px; }
 .visa-step-top + h3 { margin-top: 0; }
 .visa-initials {
   display: inline-flex;
@@ -311,7 +312,7 @@ details.visa-service-card[open] .visa-category-toggle > span { transform: rotate
 .visa-detail-hero { padding-top: 1.5rem; }
 .visa-detail-hero .visa-title { max-width: 15ch; font-size: clamp(2.6rem, 4.6vw, 4.5rem); line-height: 1.08; }
 .visa-detail-hero .visa-hero-grid { align-items: start; }
-.visa-detail-symbol > svg { width: 52px; height: 52px; margin-bottom: 1rem; }
+.visa-detail-symbol > .visa-icon { width: 64px; height: 64px; padding: 2px; margin-bottom: 1rem; border: 1px solid #d8e4f3; border-radius: 17px; background: linear-gradient(145deg, #fff, #e6f0ff); box-shadow: 0 4px 0 #cbd9ed, 0 9px 16px rgb(8 39 95 / 10%); }
 .visa-detail-rate { padding: 2rem; border-top: 4px solid var(--visa-gold); border-radius: 4px; background: var(--visa-navy); color: #fff; }
 .visa-detail-logo { display: block; width: 220px; max-width: 100%; height: auto; margin-bottom: 2rem; }
 .visa-detail-rate .visa-eyebrow { color: #f8cf72; }

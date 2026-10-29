@@ -1,25 +1,47 @@
 /* Decorative BROS brand layer. Existing layouts, content and controls stay intact. */
-/* Homepage themes are not ordered steps: keep their icons quiet and contextual. */
+/* Decorative enamel-style 3D vectors; never replace navigation or process data. */
+body[data-bros-polish] .bros-3d-icon {
+  display: block;
+  flex-shrink: 0;
+  max-width: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* These themes are not ordered steps; their imagery remains contextual. */
 body[data-bros-polish="home"] .home-route-note {
-  grid-template-columns: 2.25rem minmax(0, 1fr);
+  grid-template-columns: 3.25rem minmax(0, 1fr);
   align-items: start;
   gap: 1rem;
 }
 
 body[data-bros-polish="home"] .home-route-note-icon {
-  display: block;
-  width: 36px;
-  height: 36px;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
   margin-top: .1rem;
   color: #0f47b0;
+  border: 1px solid #d8e4f3;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fff 0%, #e8f1ff 65%, #dce9fb 100%);
+  box-shadow: 0 3px 0 #c7d7ed, 0 7px 13px rgb(8 39 95 / 10%), inset 0 1px 0 #fff;
   line-height: 0;
   pointer-events: none;
 }
 
-body[data-bros-polish="home"] .home-route-note-icon > svg {
+body[data-bros-polish="home"] .home-route-note-icon > .bros-3d-icon {
   display: block;
   width: 100%;
   height: 100%;
+  padding: 3px;
+}
+
+body[data-bros-polish="home"] .home-route-note:nth-child(even) .home-route-note-icon {
+  border-color: #ebd8ad;
+  background: linear-gradient(145deg, #fffdf5 0%, #f9edcf 70%, #efdfb9 100%);
+  box-shadow: 0 3px 0 #dfcca0, 0 7px 13px rgb(8 39 95 / 9%), inset 0 1px 0 #fff;
 }
 
 body[data-bros-polish="home"] .home-route-note h3 {
@@ -30,14 +52,15 @@ body[data-bros-polish] .bros-title-motif {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   margin: 0 0 .85rem;
-  padding: 7px;
-  border: 1px solid #dbe2ed;
+  padding: 5px;
+  border: 1px solid #d7e1ee;
   border-top: 2px solid #e8a317;
-  border-radius: 7px;
-  background: #f7f3ea;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fffdf8 0%, #f7f3ea 55%, #dce7f7 100%);
+  box-shadow: 0 4px 0 #cdd9e9, 0 10px 20px rgb(8 39 95 / 13%), inset 0 1px 0 #fff;
   color: #0f47b0;
   line-height: 0;
   letter-spacing: 0;
@@ -62,8 +85,10 @@ body[data-bros-polish] h1.text-center > .bros-title-motif {
 body[data-bros-polish="policy"] .bros-title-motif {
   width: 36px;
   height: 36px;
-  padding: 5px;
+  padding: 2px;
   margin-bottom: .75rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 0 #d9e1eb, 0 4px 8px rgb(8 39 95 / 7%);
 }
 
 /* Package cover text sits inside a fixed-height photo: keep the badge inline. */
@@ -71,9 +96,31 @@ body[data-bros-polish="package"] .bros-title-motif {
   display: inline-flex;
   width: 32px;
   height: 32px;
-  padding: 4px;
+  padding: 2px;
   margin: 0 .65rem .15em 0;
   vertical-align: middle;
+  border-radius: 9px;
+  box-shadow: 0 2px 0 #b8cbe3, 0 4px 10px rgb(8 39 95 / 15%);
+}
+
+body[data-bros-polish="home"] .ahmad-proof-icon {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border-radius: 0;
+  transform: none;
+  opacity: 1;
+}
+
+body[data-bros-polish="home"] .ahmad-proof-icon > .bros-3d-icon,
+body[data-bros-polish] .quote-category-icon > .bros-3d-icon {
+  width: 100%;
+  height: 100%;
+}
+
+body[data-bros-polish] .quote-category-icon {
+  width: 44px;
+  height: 44px;
 }
 
 body[data-bros-polish] .bros-brand-lockup {
@@ -182,34 +229,38 @@ body[data-bros-polish] .bros-brand-lockup--quiet .bros-brand-lockup-inner {
 
 @media (max-width: 600px) {
   body[data-bros-polish="home"] .home-route-note {
-    grid-template-columns: 1.75rem minmax(0, 1fr);
+    grid-template-columns: 2.75rem minmax(0, 1fr);
     gap: .8rem;
   }
 
   body[data-bros-polish="home"] .home-route-note-icon {
-    width: 28px;
-    height: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
   }
 
   body[data-bros-polish] .bros-title-motif {
-    width: 44px;
-    height: 44px;
-    padding: 6px;
+    width: 52px;
+    height: 52px;
+    padding: 4px;
     margin-bottom: .75rem;
+    border-radius: 15px;
   }
 
   body[data-bros-polish="policy"] .bros-title-motif {
     width: 34px;
     height: 34px;
-    padding: 5px;
+    padding: 2px;
+    border-radius: 9px;
   }
 
   body[data-bros-polish="package"] .bros-title-motif {
     display: inline-flex;
     width: 28px;
     height: 28px;
-    padding: 4px;
+    padding: 2px;
     margin: 0 .5rem .12em 0;
+    border-radius: 8px;
   }
 
   body[data-bros-polish] .bros-brand-lockup-inner {
@@ -240,6 +291,15 @@ body[data-bros-polish] .bros-brand-lockup--quiet .bros-brand-lockup-inner {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Override the base theme's tiny-but-nonzero universal transition rule. */
+  body[data-bros-polish] .bros-3d-icon,
+  body[data-bros-polish] .home-route-note-icon,
+  body[data-bros-polish] .bros-title-motif {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
   body[data-bros-polish] .bros-title-motif,
   body[data-bros-polish] .bros-title-motif > .bros-brand-icon,
   body[data-bros-polish] .bros-travel-companion,

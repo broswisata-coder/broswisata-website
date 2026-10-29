@@ -367,7 +367,7 @@ ${Object.values(copy).filter(other => other !== c).map(other => `<meta property=
 ${fonts}
 <link href="/assets/style.css" rel="stylesheet"/>
 <link href="/assets/bros-ui.css" rel="stylesheet"/>
-<link href="/assets/visa-services.css?v=20261028-yana" rel="stylesheet"/>
+<link href="/assets/visa-services.css?v=20261029-3d" rel="stylesheet"/>
 <script type="application/ld+json">${JSON.stringify(schema(lang, c), null, 2).replace(/</g, '\\u003c')}</script>
 ${analytics}
 </head>
@@ -405,8 +405,8 @@ for (const [lang, c] of Object.entries(copy)) {
       if (!html.includes(anchor)) throw new Error(`Missing home entry anchor ${lang}/${file}`);
       html = html.replace(anchor, block + '\n' + anchor);
     }
-    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261028-yana" rel="stylesheet"/>\n</head>');
-    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261028-yana"');
+    if (!html.includes('/assets/visa-services.css')) html = html.replace('</head>', '<link href="/assets/visa-services.css?v=20261029-3d" rel="stylesheet"/>\n</head>');
+    html = html.replace(/(<link\b[^>]*href="\/assets\/visa-services\.css)(?:\?[^\"]*)?"/g, '$1?v=20261029-3d"');
     save(`${lang}/${file}`, html.replace(/\n/g, newline));
   }
 }
