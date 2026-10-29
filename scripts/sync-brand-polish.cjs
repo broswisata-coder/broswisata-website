@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const cssHref = '/assets/bros-brand-polish.css?v=20261029-3d';
+const galleryContrastCssHref = '/assets/bros-brand-polish.css?v=20261029-gallery-contrast';
 const titleStart = '<!-- BROS TITLE MOTIF START -->';
 const titleEnd = '<!-- BROS TITLE MOTIF END -->';
 const brandStart = '<!-- BROS BRAND POLISH START -->';
@@ -63,6 +64,23 @@ function synchronizeContextIcons(html) {
   return html;
 }
 
+function synchronizeBerastagiGallery(html, relative) {
+  if (!/^(id|en|ms)\/paket-berastagi_3h2m\.html$/.test(relative)) return html;
+  let columns = 0, galleries = 0;
+  html = html.replace(/<div\b[^>]*\bclass="[^"]*\blg:col-span-8\b[^"]*"[^>]*>/g, tag => {
+    columns++;
+    return tag.replace(/class="([^"]*)"/, (_,classes) => `class="${[...new Set([...classes.split(/\s+/), 'bros-package-gallery-column'])].join(' ')}"`);
+  });
+  const label = {id:'Galeri visual paket Berastagi',en:'Berastagi package photo gallery',ms:'Galeri visual pakej Berastagi'}[relative.slice(0,2)];
+  html = html.replace(/<div\b[^>]*\bclass="[^"]*\big-carousel\b[^"]*"[^>]*>/g, tag => {
+    galleries++;
+    tag = tag.replace(/class="([^"]*)"/, (_,classes) => `class="${[...new Set([...classes.split(/\s+/), 'bros-package-gallery'])].join(' ')}"`);
+    return tag.replace(/\s(?:tabindex|role|aria-label)="[^"]*"/g, '').replace(/>$/, ` tabindex="0" role="region" aria-label="${label}">`);
+  });
+  if (columns !== 1 || galleries !== 1) throw new Error('Unexpected Berastagi gallery structure: ' + relative);
+  return html;
+}
+
 function synchronizeHomeRouteNotes(html) {
   const icons = ['forest', 'meal', 'route', 'quote'];
   let count = 0;
@@ -93,6 +111,7 @@ function synchronizeBrandPolish(original, relative) {
   const family = familyFor(relative, html);
   if (family === 'home') html = synchronizeHomeRouteNotes(html);
   html = synchronizeContextIcons(html);
+  html = synchronizeBerastagiGallery(html, relative);
   html = html.replace(/<body\b[^>]*>/i, tag => tag.replace(/\sdata-bros-polish=["'][^"']*["']/g, '').replace(/>$/, ` data-bros-polish="${family}">`));
   if (family !== 'visa') {
     if ((html.match(/<h1\b/gi) || []).length !== 1) throw new Error('Expected one public page heading: ' + relative);
@@ -102,7 +121,7 @@ function synchronizeBrandPolish(original, relative) {
     html = html.replace(/<footer\b/i, `${lockup(commercial)}\n<footer`);
   }
   // The visa page already has its own icons, official logo and mascot.
-  const pageCssHref = family === 'home' ? cssHref + '-home-icons' : cssHref;
+  const pageCssHref = family === 'home' ? galleryContrastCssHref + '-home-icons' : /^(id|en|ms)\/paket-berastagi_3h2m\.html$/.test(relative) ? galleryContrastCssHref : cssHref;
   const link = `<link id="bros-brand-polish-style" href="${pageCssHref}" rel="stylesheet"/>`;
   if (html.includes('id="bros-brand-polish-style"')) {
     html = html.replace(/<link\b(?=[^>]*\bid="bros-brand-polish-style")[^>]*>/, link);
@@ -112,7 +131,7 @@ function synchronizeBrandPolish(original, relative) {
   return html.replace(/\n/g, newline);
 }
 
-module.exports = {synchronizeBrandPolish, familyFor, iconFor, homeRouteIcon, synchronizeHomeRouteNotes, synchronizeContextIcons};
+module.exports = {synchronizeBrandPolish, familyFor, iconFor, homeRouteIcon, synchronizeHomeRouteNotes, synchronizeContextIcons, synchronizeBerastagiGallery};
 if (require.main === module) {
   const check = process.argv.includes('--check');
   const changed = [];
