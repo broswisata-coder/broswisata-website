@@ -40,7 +40,18 @@
       },
       messageTitle: "[PERMINTAAN CUSTOM TOUR]",
       messageIntro: "Halo BROS Wisata, saya ingin meminta rancangan itinerary pribadi berdasarkan detail berikut:",
-      draftNotice: "WhatsApp dibuka dengan draf pesan. Pesan tidak dikirim otomatis."
+      draftNotice: "WhatsApp dibuka dengan draf pesan. Pesan tidak dikirim otomatis.",
+      route: {
+        label: "Rute awal yang bisa disesuaikan",
+        reference: "Rute referensi",
+        state: "Status rute",
+        editable: "Titik awal saja, bukan rute tetap. Destinasi dan durasi boleh diubah.",
+        changed: "Referensi, bukan rute tetap. Destinasi atau durasi sudah Anda ubah; tim akan menyesuaikan rancangan.",
+        detail: "Lihat detail paket",
+        compare: "Bandingkan paket",
+        clear: "Hapus referensi rute",
+        cleared: "Referensi rute dihapus. Pilihan dan isian Anda tetap tersimpan di formulir ini."
+      }
     },
     ms: {
       locale: "ms-MY",
@@ -76,7 +87,18 @@
       },
       messageTitle: "[PERMINTAAN CUSTOM TOUR]",
       messageIntro: "Hai BROS Wisata, saya ingin meminta itinerari peribadi berdasarkan butiran berikut:",
-      draftNotice: "WhatsApp dibuka dengan draf mesej. Mesej tidak dihantar secara automatik."
+      draftNotice: "WhatsApp dibuka dengan draf mesej. Mesej tidak dihantar secara automatik.",
+      route: {
+        label: "Laluan awal yang boleh disesuaikan",
+        reference: "Laluan rujukan",
+        state: "Status laluan",
+        editable: "Titik permulaan sahaja, bukan laluan tetap. Destinasi dan tempoh boleh diubah.",
+        changed: "Rujukan, bukan laluan tetap. Destinasi atau tempoh telah anda ubah; pasukan akan menyesuaikan itinerari.",
+        detail: "Lihat butiran pakej",
+        compare: "Bandingkan pakej",
+        clear: "Buang rujukan laluan",
+        cleared: "Rujukan laluan dibuang. Pilihan dan isian anda kekal dalam borang ini."
+      }
     },
     en: {
       locale: "en-GB",
@@ -112,7 +134,18 @@
       },
       messageTitle: "[CUSTOM TOUR REQUEST]",
       messageIntro: "Hi BROS Wisata, I would like a personalised itinerary based on the following details:",
-      draftNotice: "WhatsApp opens with a message draft. Nothing is sent automatically."
+      draftNotice: "WhatsApp opens with a message draft. Nothing is sent automatically.",
+      route: {
+        label: "An editable starting route",
+        reference: "Reference route",
+        state: "Route status",
+        editable: "A starting point, not a fixed route. You can change the destinations and duration.",
+        changed: "Reference only, not a fixed route. You changed the destinations or duration; our team will tailor the itinerary.",
+        detail: "View package details",
+        compare: "Compare packages",
+        clear: "Remove route reference",
+        cleared: "Route reference removed. Your choices and entries remain in this form."
+      }
     }
   }[language] || null;
 
@@ -124,10 +157,15 @@
   var summary = form.querySelector("[data-summary]");
   var whatsappLink = form.querySelector("[data-whatsapp-link]");
   var currentStep = 0;
+  var routeContext = null;
+  var routeBanner = null;
+  var routeStatus = null;
+  var languageLinks = [];
 
   form.noValidate = true;
   form.classList.add("custom-tour-ready");
   setMinimumDate();
+  applyRoutePreset();
   syncCards();
   showStep(0, false);
 
@@ -146,11 +184,13 @@
   form.addEventListener("change", function () {
     syncCards();
     clearResolvedErrors();
+    updateRouteStatus();
     renderSummary();
   });
 
   form.addEventListener("input", function (event) {
     clearControlError(event.target);
+    updateRouteStatus();
     renderSummary();
   });
 
@@ -359,6 +399,145 @@
     date.min = year + "-" + month + "-" + day;
   }
 
+  function applyRoutePreset() {
+    var source = document.getElementById("bros-tour-presets");
+    if (!source || source.getAttribute("type") !== "application/json") return;
+
+    try {
+      var url = new URL(window.location.href);
+      var routes = url.searchParams.getAll("route");
+      if (routes.length !== 1 || !/^[a-z0-9][a-z0-9_-]{0,99}$/.test(routes[0])) return;
+      var slug = routes[0];
+      var raw = source.textContent || "";
+      if (raw.length > 65536) return;
+      var presets = JSON.parse(raw);
+      if (!presets || Array.isArray(presets) || !Object.prototype.hasOwnProperty.call(presets, slug)) return;
+      var preset = presets[slug];
+      var allowedDestinations = ["medan_city", "toba_samosir", "berastagi_karo", "bukit_lawang", "tangkahan"];
+      if (!preset || typeof preset.title !== "string" || !preset.title.trim() || preset.title.length > 250) return;
+      if (!Number.isInteger(preset.days) || preset.days < 3 || preset.days > 60) return;
+      if (!Array.isArray(preset.destinations) || !preset.destinations.length || preset.destinations.length > allowedDestinations.length) return;
+      if (preset.destinations.some(function (destination, index) {
+        return allowedDestinations.indexOf(destination) < 0 || preset.destinations.indexOf(destination) !== index;
+      })) return;
+      if (typeof preset.detailPath !== "string" || !new RegExp("^/" + language + "/paket-[a-z0-9_-]+$").test(preset.detailPath)) return;
+      if (typeof preset.routeSummary !== "string" || preset.routeSummary.length > 600) return;
+
+      var duration = field("duration");
+      if (!duration || !duration.options) return;
+      var expectedDays = Math.min(preset.days, 7);
+      var durationOption = Array.prototype.slice.call(duration.options).find(function (option) {
+        return parseInt(option.value, 10) === expectedDays;
+      });
+      if (!durationOption) return;
+      var destinations = Array.prototype.slice.call(form.querySelectorAll('[name="destinations"]'));
+      if (!preset.destinations.every(function (destination) {
+        return destinations.some(function (control) { return control.value === destination; });
+      })) return;
+
+      // Apply trusted route preferences once. Later user input is never re-prefilled.
+      destinations.forEach(function (control) {
+        control.checked = preset.destinations.indexOf(control.value) >= 0;
+      });
+      duration.value = durationOption.value;
+      routeContext = {
+        slug: slug,
+        title: preset.title,
+        description: preset.routeSummary,
+        detailPath: preset.detailPath,
+        destinations: preset.destinations.slice().sort().join("|"),
+        duration: duration.value
+      };
+      renderRouteBanner();
+      preserveRouteLanguageLinks();
+    } catch (error) {
+      // Malformed, missing or unknown route data leaves the ordinary form untouched.
+    }
+  }
+
+  function routeHasChanged() {
+    return routeContext && (value("duration") !== routeContext.duration || checked("destinations").map(function (control) {
+      return control.value;
+    }).sort().join("|") !== routeContext.destinations);
+  }
+
+  function routeStateText() {
+    return routeHasChanged() ? copy.route.changed : copy.route.editable;
+  }
+
+  function renderRouteBanner() {
+    routeBanner = document.createElement("section");
+    routeBanner.className = "ct-route-banner";
+    routeBanner.setAttribute("aria-label", copy.route.label);
+    var label = document.createElement("p");
+    label.className = "ct-route-label";
+    label.textContent = copy.route.label;
+    var title = document.createElement("h2");
+    title.className = "ct-route-title";
+    title.textContent = routeContext.title;
+    var description = document.createElement("p");
+    description.className = "ct-route-description";
+    description.textContent = routeContext.description;
+    routeStatus = document.createElement("p");
+    routeStatus.className = "ct-route-status";
+    routeStatus.setAttribute("role", "status");
+    routeStatus.setAttribute("aria-live", "polite");
+    routeStatus.textContent = routeStateText();
+    var actions = document.createElement("div");
+    actions.className = "ct-route-actions";
+    var detail = document.createElement("a");
+    detail.href = routeContext.detailPath;
+    detail.textContent = copy.route.detail;
+    var compare = document.createElement("a");
+    compare.href = "/" + language + "/bros-wisata-tour-listing#compare-tours";
+    compare.textContent = copy.route.compare;
+    var clear = document.createElement("button");
+    clear.type = "button";
+    clear.textContent = copy.route.clear;
+    clear.addEventListener("click", clearRouteContext);
+    actions.appendChild(detail);
+    actions.appendChild(compare);
+    actions.appendChild(clear);
+    [label, title, description, routeStatus, actions].forEach(function (element) { routeBanner.appendChild(element); });
+    form.insertBefore(routeBanner, form.firstChild);
+  }
+
+  function updateRouteStatus() {
+    if (routeContext && routeStatus) routeStatus.textContent = routeStateText();
+  }
+
+  function preserveRouteLanguageLinks() {
+    ["lang-id", "lang-my", "lang-en"].forEach(function (id) {
+      var link = document.getElementById(id);
+      if (!link) return;
+      var href = link.getAttribute("href") || "";
+      if (!/^\/(id|ms|en)\/bros-wisata-custom-tour(?:\.html)?\/?$/.test(href)) return;
+      languageLinks.push({ element: link, href: href });
+      // Share only the recognized route. Never copy arbitrary queries or private form values.
+      link.setAttribute("href", href + "?route=" + encodeURIComponent(routeContext.slug));
+    });
+  }
+
+  function clearRouteContext() {
+    routeContext = null;
+    if (routeBanner) routeBanner.remove();
+    routeBanner = null;
+    routeStatus = null;
+    languageLinks.forEach(function (link) { link.element.setAttribute("href", link.href); });
+    languageLinks = [];
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.delete("route");
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+    } catch (error) {
+      // Removing the optional URL context must not interfere with form entries.
+    }
+    renderSummary();
+    if (status) status.textContent = copy.route.cleared;
+    var heading = steps[currentStep] && steps[currentStep].querySelector("h2");
+    if (heading) heading.focus({ preventScroll: true });
+  }
+
   function syncCards() {
     form.querySelectorAll(".ct-card").forEach(function (card) {
       var input = card.querySelector("input");
@@ -408,7 +587,7 @@
   }
 
   function summaryRows() {
-    return [
+    var rows = [
       [copy.labels.destinations, selectedChoices("destinations").join(", ")],
       [copy.labels.specific_places, value("specific_places")],
       [copy.labels.departure_date, displayDate(value("departure_date"))],
@@ -425,6 +604,11 @@
       [copy.labels.email, value("email")],
       [copy.labels.notes, value("notes")]
     ];
+    if (routeContext) {
+      rows.unshift([copy.route.state, routeStateText()]);
+      rows.unshift([copy.route.reference, routeContext.title + (routeContext.description ? " — " + routeContext.description : "")]);
+    }
+    return rows;
   }
 
   function renderSummary() {
