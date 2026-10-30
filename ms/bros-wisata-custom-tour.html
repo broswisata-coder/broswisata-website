@@ -44,7 +44,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
-<link href="/assets/custom-tour.css" rel="stylesheet"/>
+<link href="/assets/custom-tour.css?v=20261030-tour-choice" rel="stylesheet"/>
 <!-- ===== ANALYTICS & TRACKING ===== -->
 <!-- Google Analytics 4 -->
 <script src="/assets/analytics.js"></script>
@@ -209,7 +209,7 @@ Beritahu kami beberapa perkara — minat, tempoh, gaya perjalanan. Kami susun it
 <section class="py-16 lg:py-24" id="custom-tour-builder">
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 <!-- STEP INDICATOR -->
-<form action="https://wa.me/6281260139399" data-custom-tour-form="" data-lang="ms" method="get" target="_blank">
+<form action="https://wa.me/6281260139399" data-custom-tour-form="" data-lang="ms" id="custom-tour-form" method="get" target="_blank">
 <input name="text" type="hidden" value="Hai BROS Wisata, saya sudah mengisi borang Custom Tour di laman web dan ingin berunding."/>
 <p class="ct-sr-only" data-step-status="" role="status" aria-live="polite">Langkah 1 daripada 4: Destinasi</p>
 <div class="bg-white p-6 lg:p-8 mb-1 border border-bros-charcoal/10">
@@ -305,20 +305,28 @@ Highland &amp; Adventure
 <div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">03</div>
 <h3 class="font-display text-xl font-bold text-bros-navy mb-2">
 
-Bukit Lawang &amp; Tangkahan
+Bukit Lawang
 
 </h3>
-<p class="text-xs text-bros-charcoal/70 mb-3">Trekking orang utan · Pemerhatian gajah berjarak tanpa sentuhan tetamu · River tubing · Leuser</p>
+<p class="text-xs text-bros-charcoal/70 mb-3">Trekking orang utan · River tubing · Hutan Leuser</p>
 <div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-bold">
 
 Eco &amp; Wildlife
 
 </div>
-<input class="ct-card-input" data-choice="Bukit Lawang &amp; Tangkahan" name="destinations" type="checkbox" value="bukit_lawang_tangkahan"/>
+<input class="ct-card-input" data-choice="Bukit Lawang" name="destinations" type="checkbox" value="bukit_lawang"/>
 </label>
 <label class="select-card ct-card p-6 block relative cursor-pointer">
 <div class="check-mark absolute top-4 right-4">✓</div>
 <div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">04</div>
+<h3 class="font-display text-xl font-bold text-bros-navy mb-2">Tangkahan</h3>
+<p class="text-xs text-bros-charcoal/70 mb-3">Hutan dan sungai · Pemerhatian gajah berjarak tanpa sentuhan tetamu</p>
+<div class="text-[10px] tracking-wider uppercase text-bros-charcoal/60 font-bold">Alam &amp; Komuniti</div>
+<input class="ct-card-input" data-choice="Tangkahan" name="destinations" type="checkbox" value="tangkahan"/>
+</label>
+<label class="select-card ct-card p-6 block relative cursor-pointer">
+<div class="check-mark absolute top-4 right-4">✓</div>
+<div class="text-bros-blue text-[10px] tracking-[0.2em] uppercase font-bold mb-2">05</div>
 <h3 class="font-display text-xl font-bold text-bros-navy mb-2">
 
 Bandar Medan
@@ -404,6 +412,7 @@ Bilangan Pax
 </label>
 <select class="field-input" id="ct-ms-travelers" name="travelers" required="">
 <option value="">Pilih jumlah tetamu</option>
+<option>1 tetamu (solo)</option>
 <option>2 pax</option>
 <option>3-4 pax</option>
 <option>5-6 pax</option>
@@ -1041,7 +1050,126 @@ Pejabat
     });
   }
 </script>
-<script src="/assets/custom-tour.js" defer></script>
+<!-- BROS TOUR PRESETS START -->
+<script type="application/json" id="bros-tour-presets">
+{
+  "halal_3h2m_medan_toba": {
+    "title": "Percutian Medan–Toba 3H2M",
+    "days": 3,
+    "destinations": [
+      "toba_samosir",
+      "berastagi_karo",
+      "medan_city"
+    ],
+    "detailPath": "/ms/paket-halal_3h2m_medan_toba",
+    "routeSummary": "Kualanamu → Parapat / Samosir → Berastagi → Medan → Kualanamu"
+  },
+  "halal_4h3m_medan_toba": {
+    "title": "Percutian Medan–Toba 4H3M",
+    "days": 4,
+    "destinations": [
+      "toba_samosir",
+      "berastagi_karo",
+      "medan_city"
+    ],
+    "detailPath": "/ms/paket-halal_4h3m_medan_toba",
+    "routeSummary": "Kualanamu → Parapat / Samosir → Berastagi → Medan → Kualanamu"
+  },
+  "halal_5h4m_medan_toba": {
+    "title": "Percutian Medan–Toba Extended 5H4M",
+    "days": 5,
+    "destinations": [
+      "toba_samosir",
+      "berastagi_karo",
+      "medan_city"
+    ],
+    "detailPath": "/ms/paket-halal_5h4m_medan_toba",
+    "routeSummary": "Kualanamu → Parapat / Samosir → Berastagi → Medan → Kualanamu"
+  },
+  "combo_sumut_6h5m": {
+    "title": "Jelajah Sumatera Utara 6H5M",
+    "days": 6,
+    "destinations": [
+      "toba_samosir",
+      "berastagi_karo",
+      "bukit_lawang"
+    ],
+    "detailPath": "/ms/paket-combo_sumut_6h5m",
+    "routeSummary": "Kualanamu → Parapat / Samosir → Berastagi → Bukit Lawang → Kualanamu"
+  },
+  "bukit_lawang_4h3m": {
+    "title": "Kembara Hutan Bukit Lawang 4H3M",
+    "days": 4,
+    "destinations": [
+      "bukit_lawang"
+    ],
+    "detailPath": "/ms/paket-bukit_lawang_4h3m",
+    "routeSummary": "Kualanamu → Bukit Lawang → Kualanamu"
+  },
+  "tangkahan_3h2m": {
+    "title": "Kembara Hutan Tangkahan 3H2M",
+    "days": 3,
+    "destinations": [
+      "tangkahan"
+    ],
+    "detailPath": "/ms/paket-tangkahan_3h2m",
+    "routeSummary": "Kualanamu → Tangkahan → Kualanamu"
+  },
+  "berastagi_3h2m": {
+    "title": "Tanah Tinggi Berastagi 3H2M",
+    "days": 3,
+    "destinations": [
+      "berastagi_karo"
+    ],
+    "detailPath": "/ms/paket-berastagi_3h2m",
+    "routeSummary": "Kualanamu → Berastagi / Sipiso-piso → Kualanamu"
+  },
+  "western_4d3n_jungle": {
+    "title": "Jungle \u0026 Wildlife Getaway 4H3M",
+    "days": 4,
+    "destinations": [
+      "bukit_lawang",
+      "tangkahan",
+      "medan_city"
+    ],
+    "detailPath": "/ms/paket-western_4d3n_jungle",
+    "routeSummary": "Kualanamu → Bukit Lawang → Tangkahan → Medan → Kualanamu"
+  },
+  "western_5d4n_volcano": {
+    "title": "Orangutan \u0026 Volcano Adventure 5H4M",
+    "days": 5,
+    "destinations": [
+      "bukit_lawang",
+      "berastagi_karo"
+    ],
+    "detailPath": "/ms/paket-western_5d4n_volcano",
+    "routeSummary": "Kualanamu → Bukit Lawang → Berastagi / Sibayak → Medan → Kualanamu"
+  },
+  "medan_heritage_3h2m": {
+    "title": "Warisan Medan \u0026 Kuliner 3H2M",
+    "days": 3,
+    "destinations": [
+      "medan_city"
+    ],
+    "detailPath": "/ms/paket-medan_heritage_3h2m",
+    "routeSummary": "Kualanamu → Medan / Kesawan / pusat bandar → Kualanamu"
+  },
+  "western_7d6n_ultimate": {
+    "title": "Ultimate North Sumatra Eco-Tour 7H6M",
+    "days": 7,
+    "destinations": [
+      "tangkahan",
+      "bukit_lawang",
+      "berastagi_karo",
+      "toba_samosir"
+    ],
+    "detailPath": "/ms/paket-western_7d6n_ultimate",
+    "routeSummary": "Kualanamu → Tangkahan → Bukit Lawang → Berastagi / Sibayak → Samosir / Tasik Toba → Kualanamu"
+  }
+}
+</script>
+<!-- BROS TOUR PRESETS END -->
+<script src="/assets/custom-tour.js?v=20261030-tour-choice" defer></script>
 <script src="/assets/whatsapp-source.js?v=20261028-visa-details" defer></script>
 </body>
 </html>

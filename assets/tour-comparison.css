@@ -1,0 +1,217 @@
+/* Static route comparison; deliberately scoped to leave existing tour cards alone. */
+/* The long route directory cannot reach the legacy 10% reveal threshold on
+   smaller screens. Keep its wrapper readable, including direct anchor visits. */
+#tour-routes > .quote-container.fade-up {
+  opacity: 1;
+  transform: none;
+}
+.bros-tour-comparison__jump {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  min-height: 44px;
+  max-width: 100%;
+  margin: .35rem 0 .7rem;
+  color: #f8cf72;
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+.bros-tour-comparison__jump:focus-visible {
+  outline: 3px solid #f8cf72;
+  outline-offset: 4px;
+}
+.bros-tour-comparison {
+  --comparison-navy: #08275f;
+  --comparison-blue: #0f47b0;
+  --comparison-gold: #e8a317;
+  --comparison-cream: #f7f3ea;
+  margin: 2.5rem 0 3rem;
+  min-width: 0;
+  color: var(--comparison-navy);
+  scroll-margin-top: 7rem;
+}
+.bros-tour-comparison *,
+.bros-tour-comparison *::before,
+.bros-tour-comparison *::after {
+  box-sizing: border-box;
+}
+.bros-tour-comparison__heading {
+  max-width: 51rem;
+  margin-bottom: 1.5rem;
+}
+.bros-tour-comparison__heading h2 {
+  margin: .45rem 0 .8rem;
+  color: var(--comparison-navy);
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+.bros-tour-comparison__heading > p:last-child {
+  margin: 0;
+  color: #42516b;
+  line-height: 1.75;
+}
+.bros-tour-comparison__eyebrow {
+  margin: 0;
+  color: var(--comparison-blue);
+  font-size: .72rem;
+  font-weight: 800;
+  line-height: 1.6;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.bros-tour-comparison .bros-tour-comparison__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bros-tour-comparison__item {
+  display: flex;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+.bros-tour-comparison__card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border: 1px solid #d9dfeb;
+  border-top: 3px solid var(--comparison-gold);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 5px 18px rgb(8 39 95 / 4%);
+}
+.bros-tour-comparison__card header {
+  min-width: 0;
+}
+.bros-tour-comparison__card h3 {
+  margin: .65rem 0 0;
+  color: var(--comparison-navy);
+  font-size: 1.18rem;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.bros-tour-comparison__duration {
+  display: inline-block;
+  margin: 0;
+  padding: .24rem .65rem;
+  border: 1px solid #e3d3ac;
+  border-radius: 100px;
+  background: var(--comparison-cream);
+  color: var(--comparison-navy);
+  font-size: .74rem;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: .04em;
+}
+.bros-tour-comparison__card dl {
+  display: grid;
+  gap: 1rem;
+  margin: 1.15rem 0 1.35rem;
+}
+.bros-tour-comparison__card dt {
+  margin: 0 0 .3rem;
+  color: var(--comparison-navy);
+  font-size: .7rem;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.bros-tour-comparison__card dd {
+  margin: 0;
+  color: #42516b;
+  font-size: .88rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.bros-tour-comparison__card dl > div:first-child dd {
+  color: var(--comparison-navy);
+  font-weight: 650;
+}
+.bros-tour-comparison__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .65rem 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #e3e7ee;
+}
+.bros-tour-comparison__actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  font-size: .8rem;
+  font-weight: 750;
+  line-height: 1.5;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.bros-tour-comparison__actions .bros-tour-comparison__detail {
+  justify-content: flex-start;
+  gap: .2rem;
+  color: var(--comparison-blue);
+}
+.bros-tour-comparison__actions .bros-tour-comparison__custom {
+  padding: .6rem .85rem;
+  border: 1px solid var(--comparison-navy);
+  border-radius: .5rem;
+  background: var(--comparison-navy);
+  color: #fff;
+  text-align: center;
+}
+.bros-tour-comparison__detail:hover {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.bros-tour-comparison__custom:hover {
+  background: var(--comparison-blue);
+  border-color: var(--comparison-blue);
+}
+.bros-tour-comparison__actions a:focus-visible {
+  outline: 3px solid var(--comparison-blue);
+  outline-offset: 4px;
+}
+.bros-tour-comparison__note {
+  margin: 1.2rem 0 0;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--comparison-gold);
+  border-radius: 0 .5rem .5rem 0;
+  background: var(--comparison-cream);
+  color: #42516b;
+  font-size: .82rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 680px) {
+  .bros-tour-comparison .bros-tour-comparison__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bros-tour-comparison__actions {
+    align-items: stretch;
+  }
+  .bros-tour-comparison__actions a {
+    flex: 1 1 11rem;
+  }
+}
+@media print {
+  .bros-tour-comparison__card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,150 @@
+/* Bound legacy package gallery grid items; preserve native horizontal scrolling.
+   Berastagi already has its PR31 classes and does not receive these classes. */
+body[data-bros-polish="package"] .tour-booking-gallery-column {
+  min-width: 0;
+}
+
+body[data-bros-polish="package"] .tour-booking-gallery {
+  min-width: 0;
+  max-width: calc(100% + 2rem);
+  overscroll-behavior-x: contain;
+}
+
+/* Scoped pre-deposit information. Existing package policies stay intact. */
+.tour-booking {
+  min-width: 0;
+  max-width: 100%;
+  padding: 1.25rem;
+  border: 1px solid #d9e0eb;
+  border-top: 3px solid #e8a317;
+  border-radius: 8px;
+  background: #f7f3ea;
+  color: #253550;
+  overflow-wrap: break-word;
+  scroll-margin-top: 6rem;
+}
+
+.tour-booking h2 {
+  margin: 0 0 .55rem;
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.tour-booking .tour-booking-intro,
+.tour-booking .tour-booking-note,
+.tour-booking-question > p {
+  margin: 0;
+  font-size: .875rem;
+  line-height: 1.65;
+}
+
+.tour-booking-questions {
+  margin-top: .85rem;
+  border-top: 1px solid #d9e0eb;
+}
+
+.tour-booking-question {
+  min-width: 0;
+  border-bottom: 1px solid #d9e0eb;
+}
+
+.tour-booking-question > summary {
+  display: list-item;
+  min-height: 44px;
+  padding: .75rem 0;
+  color: #08275f;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.tour-booking-question > summary::marker {
+  color: #0f47b0;
+}
+
+.tour-booking-question > p {
+  padding: 0 0 .85rem;
+}
+
+.tour-booking .tour-booking-note {
+  margin-top: .85rem;
+  font-size: .8rem;
+}
+
+.tour-booking a {
+  text-underline-offset: .2em;
+}
+
+.tour-booking .tour-booking-terms,
+.tour-booking .tour-booking-compare {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: #0f47b0;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: underline;
+}
+
+.tour-booking-actions {
+  display: grid;
+  min-width: 0;
+  gap: .15rem;
+  margin-top: .4rem;
+}
+
+.tour-booking .tour-booking-customize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  padding: .75rem 1rem;
+  border: 1px solid #08275f;
+  border-radius: 5px;
+  background: #08275f;
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+}
+
+.tour-booking .tour-booking-compare {
+  justify-content: center;
+  text-align: center;
+}
+
+.tour-booking .tour-booking-customize:hover {
+  border-color: #0f47b0;
+  background: #0f47b0;
+}
+
+.tour-booking .tour-booking-terms:hover,
+.tour-booking .tour-booking-compare:hover,
+.tour-booking-question > summary:hover {
+  color: #08275f;
+}
+
+.tour-booking a:focus-visible,
+.tour-booking-question > summary:focus-visible {
+  outline: 3px solid #0f47b0;
+  outline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+  .tour-booking {
+    padding: 1rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .tour-booking .tour-booking-customize {
+    border-color: ButtonText;
+  }
+}

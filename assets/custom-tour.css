@@ -1,4 +1,74 @@
 /* Custom Tour wizard — scoped to [data-custom-tour-form]. */
+[data-custom-tour-form] {
+  scroll-margin-top: 7rem;
+}
+
+[data-custom-tour-form] .ct-route-banner {
+  background: #f7f3ea;
+  border: 1px solid rgba(15, 71, 176, 0.2);
+  border-left: 4px solid #e8a317;
+  border-radius: 0.5rem;
+  color: #08275f;
+  margin-bottom: 2rem;
+  overflow-wrap: anywhere;
+  padding: 1.25rem;
+}
+
+[data-custom-tour-form] .ct-route-label {
+  color: #0f47b0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+}
+
+[data-custom-tour-form] .ct-route-title {
+  color: #08275f;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+}
+
+[data-custom-tour-form] .ct-route-description,
+[data-custom-tour-form] .ct-route-status {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0.4rem 0;
+}
+
+[data-custom-tour-form] .ct-route-status {
+  font-weight: 600;
+}
+
+[data-custom-tour-form] .ct-route-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.1rem;
+  margin-top: 1rem;
+}
+
+[data-custom-tour-form] .ct-route-actions a,
+[data-custom-tour-form] .ct-route-actions button {
+  color: #0f47b0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-height: 2.75rem;
+  padding: 0.6rem 0;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+[data-custom-tour-form] .ct-route-actions button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
 [data-custom-tour-form] .step-circle {
   align-items: center;
   background: rgba(31, 41, 55, 0.08);
