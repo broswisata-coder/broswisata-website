@@ -8,11 +8,19 @@ const checkOnly = process.argv.includes('--check');
 const start = '<!-- ======= WISH 2026 RECOGNITION ======= -->';
 const end = '<!-- ======= END WISH 2026 RECOGNITION ======= -->';
 const stylesheet = '<link href="/assets/wish-recognition.css?v=20261022-pitching" rel="stylesheet"/>';
-// BROS approved replacing the old catalog with the supplied Indonesian Rev 4
-// on 27 Oct 2026. This web copy preserves all 80 pages, text and layout; only
-// photographs are recompressed. Do not describe the supplied Pre Final as final.
-const catalogUrl = '/assets/pdf/wish-2026-katalog-bahasa-indonesia-rev4-20261027.pdf';
-const catalogPreview = '/assets/events/wish-2026/catalog-bros-preview-id-rev4-20261027.webp';
+// BROS supplied and approved these final English and Indonesian catalogs on
+// 31 Oct 2026. The web copies preserve all 80 pages, text and layout; only
+// photographs are recompressed. Malay readers use the Indonesian edition.
+const catalogs = {
+  id: {
+    url: '/assets/pdf/wish-2026-katalog-bahasa-indonesia-final-20261031.pdf',
+    preview: '/assets/events/wish-2026/catalog-bros-preview-id-final-20261031.webp',
+  },
+  en: {
+    url: '/assets/pdf/wish-2026-catalog-english-final-20261031.pdf',
+    preview: '/assets/events/wish-2026/catalog-bros-preview-en-final-20261031.webp',
+  },
+};
 // Supplied event photographs retain their original framing. A booth visit is
 // documentation, not an endorsement or a claim of a formal partnership.
 const photos = [
@@ -55,10 +63,11 @@ const labels = {
       },
     },
     catalog: {
+      ...catalogs.id,
       eyebrow: 'Kenali gagasan perjalanan kami',
       title: 'Bros Wisata dalam katalog WISH 2026',
       copy: 'Profil Bros memperkenalkan perjalanan gastronomi 7 hari 6 malam di Sumatra Utara: dari asal bahan pangan hingga kisah masyarakat di balik hidangan. Baca profil kami bersama peserta WISH lainnya dalam katalog.',
-      meta: 'Katalog bahasa Indonesia · Revisi 4 · Profil Bros: halaman PDF 52–53 (halaman cetak 50–51).',
+      meta: 'Katalog final bahasa Indonesia · Profil Bros: halaman PDF 52–53 (halaman cetak 50–51).',
       link: 'Lihat katalog WISH 2026 (Bahasa Indonesia)',
       open: 'Lihat katalog WISH 2026, PDF berbahasa Indonesia (tab baru)',
       alt: 'Cuplikan halaman profil Bros Wisata dalam katalog WISH 2026, menampilkan buah tropis, sajian lokal, rumah tradisional, dan air terjun.',
@@ -98,10 +107,11 @@ const labels = {
       },
     },
     catalog: {
+      ...catalogs.id,
       eyebrow: 'Kenali konsep perjalanan kami',
       title: 'Bros Wisata dalam katalog WISH 2026',
       copy: 'Profil Bros memperkenalkan perjalanan gastronomi 7 hari 6 malam di Sumatera Utara: daripada asal-usul bahan makanan hingga kisah masyarakat di sebalik hidangan. Baca profil kami bersama peserta WISH yang lain dalam katalog.',
-      meta: 'Katalog dalam bahasa Indonesia · Semakan 4 · Profil Bros: halaman PDF 52–53 (halaman bercetak 50–51).',
+      meta: 'Katalog akhir dalam bahasa Indonesia · Profil Bros: halaman PDF 52–53 (halaman bercetak 50–51).',
       link: 'Lihat katalog WISH 2026 (bahasa Indonesia)',
       open: 'Lihat katalog WISH 2026, PDF dalam bahasa Indonesia (tab baharu)',
       alt: 'Pratonton halaman profil Bros Wisata dalam katalog WISH 2026, memaparkan buah-buahan tropika, hidangan tempatan, rumah tradisional dan air terjun.',
@@ -141,12 +151,13 @@ const labels = {
       },
     },
     catalog: {
+      ...catalogs.en,
       eyebrow: 'Discover our travel concept',
       title: 'Bros Wisata in the WISH 2026 catalog',
       copy: 'Our profile introduces a 7-day, 6-night gastronomy journey through North Sumatra, from the origins of local ingredients to the communities behind each dish. Read about Bros and other WISH participants in the catalog.',
-      meta: 'Indonesian-language catalog · Revision 4 · Bros profile: PDF pages 52–53 (printed pages 50–51).',
-      link: 'View WISH 2026 catalog (Indonesian)',
-      open: 'View WISH 2026 catalog, Indonesian-language PDF (new tab)',
+      meta: 'Final English-language catalog · Bros profile: PDF pages 52–53 (printed pages 50–51).',
+      link: 'View WISH 2026 catalog (English)',
+      open: 'View WISH 2026 catalog, English-language PDF (new tab)',
       alt: 'Preview of the Bros Wisata profile in the WISH 2026 catalog, showing tropical fruit, a local dish, a traditional house, and a waterfall.',
       source: 'Bros profile preview · Source: WISH 2026 catalog.',
       followup: 'For follow-up conversations after WITF 2026 or North Sumatra travel partnerships, get in touch with the Bros team.',
@@ -162,7 +173,7 @@ function escape(value) {
 
 function catalogLink(text, location) {
   const c = text.catalog;
-  return `<a class="wish-recognition__link wish-recognition__link--primary" href="${catalogUrl}" data-cta="wish_catalog_${location}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}">${escape(c.link)} <span aria-hidden="true">&nbsp;↗</span></a>`;
+  return `<a class="wish-recognition__link wish-recognition__link--primary" href="${c.url}" data-cta="wish_catalog_${location}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}">${escape(c.link)} <span aria-hidden="true">&nbsp;↗</span></a>`;
 }
 
 function photoImage(photo, alt, sizes) {
@@ -211,7 +222,7 @@ ${catalogLink(text, 'about')}
 <a class="wish-recognition__link" href="${escape(whatsapp)}" data-cta="wish_partnership" target="_blank" rel="noopener noreferrer">${escape(c.chat)} <span aria-hidden="true">&nbsp;→</span></a>
 </div>
 <figure>
-<a class="wish-catalog__preview" href="${catalogUrl}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}"><img src="${catalogPreview}" width="619" height="1100" loading="lazy" decoding="async" alt="${escape(c.alt)}"/></a>
+<a class="wish-catalog__preview" href="${c.url}" target="_blank" rel="noopener noreferrer" aria-label="${escape(c.open)}"><img src="${c.preview}" width="619" height="1100" loading="lazy" decoding="async" alt="${escape(c.alt)}"/></a>
 <figcaption>${escape(c.source)}</figcaption>
 </figure>
 </div>`;
