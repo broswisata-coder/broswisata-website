@@ -66,6 +66,161 @@
   line-height: 1.8;
 }
 
+.rental-route-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 750;
+  text-decoration: underline;
+  text-decoration-color: var(--rental-gold);
+  text-underline-offset: 0.3em;
+}
+
+.rental-route-section {
+  padding: 4rem 0;
+  scroll-margin-top: 6rem;
+  background: #fff;
+}
+
+.rental-route-kicker {
+  margin: 0 0 0.85rem;
+  color: var(--rental-blue);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.rental-route-section h2 {
+  max-width: 26ch;
+  margin: 0;
+  color: var(--rental-navy);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.rental-route-intro {
+  max-width: 52rem;
+  margin: 1rem 0 0;
+  color: #505d73;
+  line-height: 1.75;
+}
+
+.rental-route-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.rental-route-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid var(--rental-line);
+  border-top: 3px solid var(--rental-gold);
+  border-radius: 1rem;
+  background: var(--rental-cream);
+}
+
+.rental-route-card > img {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.rental-route-card h3 {
+  margin: 0 0 0.75rem;
+  color: var(--rental-navy);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.rental-route-card p {
+  margin: 0 0 1.25rem;
+  color: #505d73;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.rental-route-links {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.rental-route-links a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--rental-blue);
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.rental-route-links a[data-cta] {
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.4rem;
+  background: var(--rental-navy);
+  color: #fff;
+  text-decoration: none;
+}
+
+.rental-service-boundary {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-left: 3px solid var(--rental-gold);
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: var(--rental-navy);
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.rental-service-boundary h3 {
+  margin: 0 0 0.6rem;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.rental-service-boundary p {
+  max-width: 64rem;
+  margin: 0 0 0.65rem;
+}
+
+.rental-service-boundary a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  color: #ffd279;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.rental-route-section a:focus-visible,
+.rental-route-jump:focus-visible {
+  outline: 3px solid var(--rental-gold);
+  outline-offset: 4px;
+}
+
 .rental-trust-row {
   display: flex;
   flex-wrap: wrap;
@@ -493,6 +648,10 @@
 }
 
 @media (min-width: 640px) {
+  .rental-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .fleet-grid,
   .rental-service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -504,6 +663,10 @@
 }
 
 @media (min-width: 1024px) {
+  .rental-route-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .rental-hero-grid {
     grid-template-columns: minmax(0, 1.1fr) minmax(24rem, 0.9fr);
   }

@@ -16,6 +16,7 @@ DEFAULT_LASTMOD = "2026-07-14"
 LASTMOD_OVERRIDES = {
     f"{SITE}/en/": "2026-10-31",
     f"{SITE}/en/bros-wisata-about": "2026-10-31",
+    f"{SITE}/en/bros-wisata-car-rental": "2026-11-02",
     f"{SITE}/en/bros-wisata-tour-listing": "2026-10-21",
     f"{SITE}/en/bukit-lawang-orangutan-trekking": "2026-10-27",
     f"{SITE}/en/destination-bukit-lawang-tangkahan": "2026-10-27",
@@ -25,6 +26,7 @@ LASTMOD_OVERRIDES = {
     f"{SITE}/en/singapore-to-north-sumatra-tour": "2026-10-27",
     f"{SITE}/id/": "2026-10-31",
     f"{SITE}/id/bros-wisata-about": "2026-10-31",
+    f"{SITE}/id/bros-wisata-car-rental": "2026-11-02",
     f"{SITE}/id/bros-wisata-tour-listing": "2026-10-21",
     f"{SITE}/id/destinasi-bukit-lawang-tangkahan": "2026-10-27",
     f"{SITE}/id/meet-ahmad": "2026-09-09",
@@ -34,6 +36,7 @@ LASTMOD_OVERRIDES = {
     f"{SITE}/id/wisata-bukit-lawang-orangutan": "2026-10-27",
     f"{SITE}/ms/": "2026-10-31",
     f"{SITE}/ms/bros-wisata-about": "2026-10-31",
+    f"{SITE}/ms/bros-wisata-car-rental": "2026-11-02",
     f"{SITE}/ms/bros-wisata-tour-listing": "2026-10-21",
     f"{SITE}/ms/destinasi-bukit-lawang-tangkahan": "2026-10-27",
     f"{SITE}/ms/meet-ahmad": "2026-09-09",

@@ -1,7 +1,19 @@
 const fs = require("fs");
 const path = require("path");
+const { synchronizeBrandPolish } = require("./sync-brand-polish.cjs");
+const { iconMarkup } = require("./bros-3d-icons.cjs");
 
 const root = path.resolve(__dirname, "..");
+const checkOnly = process.argv.includes("--check");
+const faqStart = "<!-- CAR RENTAL FAQ SCHEMA START -->";
+const faqEnd = "<!-- CAR RENTAL FAQ SCHEMA END -->";
+const fleetCssHref = "/assets/car-rental-fleet.css?v=20261102-routes";
+const routeOptions = [
+  { id: "kualanamu-medan", leadCode: "CAR-ROUTE-AIRPORT", icon: "car" },
+  { id: "medan-berastagi", leadCode: "CAR-ROUTE-BERASTAGI", icon: "route" },
+  { id: "medan-lake-toba", leadCode: "CAR-ROUTE-TOBA", icon: "lake" },
+  { id: "medan-bukit-lawang", leadCode: "CAR-ROUTE-LAWANG", icon: "forest" },
+];
 
 const vehicles = [
   {
@@ -59,16 +71,55 @@ const copy = {
   id: {
     file: "id/bros-wisata-car-rental.html",
     heroEyebrow: "Rental mobil dengan supir di Medan",
-    heroTitle: "Armada yang tepat.<br/><em>Rute yang masuk akal.</em>",
+    heroTitle: "Sewa mobil + supir<br/><em>di Medan.</em>",
     heroCopy:
       "Pilih kendaraan berdasarkan jumlah tamu, bagasi, dan rute—bukan hanya jumlah kursi. BROS membantu mencocokkan armada untuk penjemputan Kualanamu, perjalanan harian, dan rute multi-hari di Sumatra Utara.",
     viewFleet: "Lihat armada",
+    chooseRoute: "Pilih rute perjalanan",
     checkAvailability: "Cek ketersediaan",
     trust: ["Dengan supir", "Quote tertulis", "Rute disesuaikan"],
     visualHead: "Contoh model resmi",
     visualTag: "Comfort MPV",
     heroImageAlt: "Ilustrasi resmi Toyota Innova",
     prompt: ["Tanggal perjalanan", "Jumlah tamu", "Waktu penerbangan", "Bagasi & tujuan"],
+    routeEyebrow: "Mulai dari rute",
+    routeTitle: "Jemput di mana, berakhir di mana?",
+    routeIntro: "Pilih rute yang mendekati rencana Anda, lalu kirim titik jemput, titik antar, tanggal, dan jam. Tim akan mengecek kebutuhan kendaraan dan rincian quote sebelum Anda memutuskan.",
+    routeCta: "Minta quote rute ini",
+    routeMessage(title, code, detail) {
+      return `[${code}] Halo BROS Wisata, saya ingin meminta quote mobil + supir untuk rute ${title}. Jemput (lokasi, tanggal & jam): __ | Antar akhir (lokasi, tanggal & jam): __ | Jumlah tamu: __ | Bagasi: __ | ${detail}: __. Mohon cek kebutuhan rute dan kirim quote tertulis.`;
+    },
+    routes: {
+      "kualanamu-medan": {
+        title: "Kualanamu–Medan / hotel",
+        body: "Kirim nomor penerbangan, tanggal dan jam tiba atau berangkat, nama hotel, serta jumlah dan ukuran bagasi. Jelaskan bila membutuhkan penjemputan dan pengantaran pada tanggal berbeda.",
+        messageDetail: "Nomor & jadwal penerbangan / hotel",
+      },
+      "medan-berastagi": {
+        title: "Medan–Berastagi",
+        body: "Sebutkan perjalanan pulang-pergi atau menginap, lokasi hotel, tempat singgah yang diinginkan, dan titik akhir perjalanan agar kebutuhan jam penggunaan dapat diperiksa.",
+        messageDetail: "Pulang-pergi / menginap / tempat singgah",
+        guideSlug: "paket-berastagi_3h2m",
+        guideLabel: "Lihat itinerary Berastagi",
+      },
+      "medan-lake-toba": {
+        title: "Medan–Danau Toba / Samosir",
+        body: "Kirim lokasi menginap di tepi danau atau Samosir, jumlah malam, rencana penyeberangan bila ada, dan titik akhir. Pengaturan feri perlu dibahas tersendiri dalam quote.",
+        messageDetail: "Hotel / jumlah malam / rencana penyeberangan",
+        guideSlug: "private-tour-lake-toba-samosir",
+        guideLabel: "Panduan Danau Toba & Samosir",
+      },
+      "medan-bukit-lawang": {
+        title: "Medan–Bukit Lawang",
+        body: "Kirim nama lodge, tanggal menginap, bagasi, dan rencana trekking. Sampaikan kebutuhan bantuan akses lodge; titik turun kendaraan dan perjalanan berjalan kaki perlu dikonfirmasi.",
+        messageDetail: "Lodge / tanggal menginap / rencana trekking",
+        guideSlug: "wisata-bukit-lawang-orangutan",
+        guideLabel: "Panduan Bukit Lawang",
+      },
+    },
+    serviceBoundaryTitle: "Mobil + supir bukan otomatis paket tour lengkap.",
+    serviceBoundaryBody: "Pemandu aktivitas, tiket masuk, hotel, makan, dan feri hanya termasuk bila disebut jelas dalam quote tertulis. Jika Anda juga membutuhkan itinerary dan pengaturan aktivitas, lihat pilihan paket tour untuk dibahas dengan tim.",
+    packageLinkLabel: "Lihat pilihan paket tour",
     fleetEyebrow: "Pilihan armada",
     fleetTitle: "Pilih sesuai kebutuhan perjalanan.",
     fleetIntro:
@@ -89,10 +140,10 @@ const copy = {
     vehicleCta: "Pilih unit ini",
     leadCodeLabel: "Kode lead",
     vehicleMessage(name, code) {
-      return `[${code}] Halo BROS Wisata, saya tertarik dengan ${name} untuk sewa mobil + supir. Tanggal: __ | Jemput: __ | Tujuan: __ | Jumlah tamu: __ | Bagasi: __. Mohon cek ketersediaan dan tarif final.`;
+      return `[${code}] Halo BROS Wisata, saya tertarik dengan ${name} untuk sewa mobil + supir. Jemput (lokasi, tanggal & jam): __ | Antar akhir (lokasi, tanggal & jam): __ | Jumlah tamu: __ | Bagasi: __. Mohon cek ketersediaan dan tarif final.`;
     },
     genericMessage:
-      "[CAR-PAGE] Halo BROS Wisata, saya membutuhkan mobil + supir. Tanggal: __ | Jemput: __ | Tujuan: __ | Jumlah tamu: __ | Bagasi: __. Mohon rekomendasi armada dan tarif final.",
+      "[CAR-PAGE] Halo BROS Wisata, saya membutuhkan mobil + supir. Jemput (lokasi, tanggal & jam): __ | Antar akhir (lokasi, tanggal & jam): __ | Jumlah tamu: __ | Bagasi: __. Mohon rekomendasi armada dan tarif final.",
     vehicleDetails: {
       avanza: {
         type: "Compact MPV",
@@ -202,6 +253,10 @@ const copy = {
         a: "Bisa diatur dengan pemesanan sebelumnya. Kirim nomor penerbangan, jadwal tiba, nama penumpang utama, tujuan, jumlah tamu, dan bagasi.",
       },
       {
+        q: "Bisa meminta rute sekali jalan atau titik jemput dan antar yang berbeda?",
+        a: "Sampaikan lokasi, tanggal, dan jam penjemputan serta pengantaran akhir, termasuk tempat singgah atau malam menginap. Tim akan mengecek rute dan kebutuhan kendaraan sebelum memberi quote; jangan menganggap semua kombinasi rute tersedia.",
+      },
+      {
         q: "Bagaimana kebijakan perubahan atau pembatalan?",
         a: "Ketentuan mengikuti konfirmasi booking tertulis dan Syarat & Ketentuan BROS yang berlaku. Mohon tinjau ketentuannya sebelum membayar deposit.",
       },
@@ -216,16 +271,55 @@ const copy = {
   en: {
     file: "en/bros-wisata-car-rental.html",
     heroEyebrow: "Car rental with driver in Medan",
-    heroTitle: "The right vehicle.<br/><em>A route that works.</em>",
+    heroTitle: "Medan car rental<br/><em>with a driver.</em>",
     heroCopy:
       "Choose by guest count, luggage, and route—not seat count alone. BROS matches vehicles for Kualanamu pick-ups, day journeys, and multi-day travel across North Sumatra.",
     viewFleet: "View the fleet",
+    chooseRoute: "Choose your route",
     checkAvailability: "Check availability",
     trust: ["Driver included", "Written quote", "Route-matched"],
     visualHead: "Official model example",
     visualTag: "Comfort MPV",
     heroImageAlt: "Official Toyota Innova model illustration",
     prompt: ["Travel dates", "Guest count", "Flight times", "Luggage & route"],
+    routeEyebrow: "Start with the route",
+    routeTitle: "Where will your journey start and finish?",
+    routeIntro: "Choose the route closest to your plan, then send your pick-up and drop-off locations, dates, and times. The team will check the vehicle requirements and written quote before you decide.",
+    routeCta: "Request a route quote",
+    routeMessage(title, code, detail) {
+      return `[${code}] Hi BROS Wisata, I would like a car + driver quote for ${title}. Pick-up (location, date & time): __ | Final drop-off (location, date & time): __ | Guests: __ | Luggage: __ | ${detail}: __. Please check the route requirements and send a written quote.`;
+    },
+    routes: {
+      "kualanamu-medan": {
+        title: "Kualanamu–Medan / hotel",
+        body: "Send your flight number, arrival or departure date and time, hotel name, and luggage quantity and size. Tell us if your pick-up and drop-off are on different dates.",
+        messageDetail: "Flight number & schedule / hotel",
+      },
+      "medan-berastagi": {
+        title: "Medan–Berastagi",
+        body: "Tell us whether it is a return day journey or an overnight stay, your hotel location, planned stops, and final destination so operating-hour requirements can be checked.",
+        messageDetail: "Return day journey / overnight stay / stops",
+        guideSlug: "paket-berastagi_3h2m",
+        guideLabel: "View the Berastagi itinerary",
+      },
+      "medan-lake-toba": {
+        title: "Medan–Lake Toba / Samosir",
+        body: "Send your lakeside or Samosir accommodation, number of nights, any planned crossing, and final destination. Ferry arrangements need to be discussed separately in the quote.",
+        messageDetail: "Accommodation / nights / crossing plan",
+        guideSlug: "lake-toba-samosir-private-tour",
+        guideLabel: "Lake Toba & Samosir guide",
+      },
+      "medan-bukit-lawang": {
+        title: "Medan–Bukit Lawang",
+        body: "Send your lodge name, stay dates, luggage, and trekking plans. Mention any lodge-access support you need; the vehicle drop-off point and any walk to the lodge must be confirmed.",
+        messageDetail: "Lodge / stay dates / trekking plan",
+        guideSlug: "bukit-lawang-orangutan-trekking",
+        guideLabel: "Bukit Lawang guide",
+      },
+    },
+    serviceBoundaryTitle: "A car + driver is not automatically a full tour package.",
+    serviceBoundaryBody: "Activity guides, entrance tickets, hotels, meals, and ferries are included only when the written quote explicitly says so. If you also need an itinerary and activity arrangements, explore the tour options to discuss with the team.",
+    packageLinkLabel: "Explore tour packages",
     fleetEyebrow: "Vehicle options",
     fleetTitle: "Choose for the journey—not just the seats.",
     fleetIntro:
@@ -246,10 +340,10 @@ const copy = {
     vehicleCta: "Choose this vehicle",
     leadCodeLabel: "Lead code",
     vehicleMessage(name, code) {
-      return `[${code}] Hi BROS Wisata, I am interested in ${name} with driver. Date: __ | Pick-up: __ | Destination: __ | Guests: __ | Luggage: __. Please check availability and the final rate.`;
+      return `[${code}] Hi BROS Wisata, I am interested in ${name} with driver. Pick-up (location, date & time): __ | Final drop-off (location, date & time): __ | Guests: __ | Luggage: __. Please check availability and the final rate.`;
     },
     genericMessage:
-      "[CAR-PAGE] Hi BROS Wisata, I need a car with driver. Date: __ | Pick-up: __ | Destination: __ | Guests: __ | Luggage: __. Please recommend a suitable vehicle and final rate.",
+      "[CAR-PAGE] Hi BROS Wisata, I need a car with driver. Pick-up (location, date & time): __ | Final drop-off (location, date & time): __ | Guests: __ | Luggage: __. Please recommend a suitable vehicle and final rate.",
     vehicleDetails: {
       avanza: {
         type: "Compact MPV",
@@ -359,6 +453,10 @@ const copy = {
         a: "It can be arranged with advance booking. Send the flight number, arrival time, lead passenger name, destination, guest count, and luggage.",
       },
       {
+        q: "Can I request a one-way journey or different pick-up and drop-off points?",
+        a: "Send the locations, dates, and times for pick-up and final drop-off, including planned stops or overnight stays. The team will check the route and vehicle requirements before quoting; do not assume every route combination is available.",
+      },
+      {
         q: "What is the change or cancellation policy?",
         a: "The applicable terms follow the written booking confirmation and current BROS Terms & Conditions. Please review them before paying a deposit.",
       },
@@ -373,16 +471,55 @@ const copy = {
   ms: {
     file: "ms/bros-wisata-car-rental.html",
     heroEyebrow: "Sewa kereta dengan pemandu di Medan",
-    heroTitle: "Kenderaan yang tepat.<br/><em>Laluan yang munasabah.</em>",
+    heroTitle: "Sewa kereta di Medan<br/><em>dengan pemandu.</em>",
     heroCopy:
       "Pilih mengikut jumlah tetamu, bagasi, dan laluan—bukan jumlah tempat duduk semata-mata. BROS memadankan kenderaan untuk jemputan Kualanamu, perjalanan harian, dan trip beberapa hari di Sumatera Utara.",
     viewFleet: "Lihat armada",
+    chooseRoute: "Pilih laluan perjalanan",
     checkAvailability: "Semak ketersediaan",
     trust: ["Pemandu disertakan", "Sebut harga bertulis", "Laluan disesuaikan"],
     visualHead: "Contoh model rasmi",
     visualTag: "Comfort MPV",
     heroImageAlt: "Ilustrasi rasmi Toyota Innova",
     prompt: ["Tarikh perjalanan", "Jumlah tetamu", "Waktu penerbangan", "Bagasi & destinasi"],
+    routeEyebrow: "Mulakan dengan laluan",
+    routeTitle: "Di mana perjalanan bermula dan berakhir?",
+    routeIntro: "Pilih laluan yang hampir dengan rancangan anda, kemudian hantar lokasi jemput dan hantar, tarikh, serta waktu. Pasukan akan menyemak keperluan kenderaan dan sebut harga bertulis sebelum anda membuat keputusan.",
+    routeCta: "Minta sebut harga laluan",
+    routeMessage(title, code, detail) {
+      return `[${code}] Hai BROS Wisata, saya ingin meminta sebut harga kereta + pemandu untuk laluan ${title}. Jemput (lokasi, tarikh & waktu): __ | Hantar akhir (lokasi, tarikh & waktu): __ | Tetamu: __ | Bagasi: __ | ${detail}: __. Mohon semak keperluan laluan dan hantar sebut harga bertulis.`;
+    },
+    routes: {
+      "kualanamu-medan": {
+        title: "Kualanamu–Medan / hotel",
+        body: "Hantar nombor penerbangan, tarikh dan waktu tiba atau berlepas, nama hotel, serta kuantiti dan saiz bagasi. Nyatakan jika jemputan dan penghantaran anda pada tarikh berbeza.",
+        messageDetail: "Nombor & jadual penerbangan / hotel",
+      },
+      "medan-berastagi": {
+        title: "Medan–Berastagi",
+        body: "Nyatakan perjalanan pergi balik pada hari yang sama atau bermalam, lokasi hotel, tempat singgah, dan destinasi akhir supaya keperluan waktu penggunaan dapat disemak.",
+        messageDetail: "Pergi balik / bermalam / tempat singgah",
+        guideSlug: "paket-berastagi_3h2m",
+        guideLabel: "Lihat itinerari Berastagi",
+      },
+      "medan-lake-toba": {
+        title: "Medan–Danau Toba / Samosir",
+        body: "Hantar lokasi penginapan di tepi danau atau Samosir, jumlah malam, rancangan penyeberangan jika ada, dan destinasi akhir. Pengaturan feri perlu dibincangkan secara berasingan dalam sebut harga.",
+        messageDetail: "Penginapan / jumlah malam / rancangan penyeberangan",
+        guideSlug: "pakej-lake-toba-samosir",
+        guideLabel: "Panduan Danau Toba & Samosir",
+      },
+      "medan-bukit-lawang": {
+        title: "Medan–Bukit Lawang",
+        body: "Hantar nama lodge, tarikh penginapan, bagasi, dan rancangan trekking. Nyatakan bantuan akses lodge yang diperlukan; lokasi turun kenderaan dan laluan berjalan kaki perlu disahkan.",
+        messageDetail: "Lodge / tarikh penginapan / rancangan trekking",
+        guideSlug: "bukit-lawang-orangutan-trekking",
+        guideLabel: "Panduan Bukit Lawang",
+      },
+    },
+    serviceBoundaryTitle: "Kereta + pemandu bukan secara automatik pakej tour lengkap.",
+    serviceBoundaryBody: "Pemandu aktiviti, tiket masuk, hotel, makanan, dan feri hanya termasuk jika dinyatakan dengan jelas dalam sebut harga bertulis. Jika anda turut memerlukan itinerari dan pengaturan aktiviti, lihat pilihan pakej tour untuk dibincangkan dengan pasukan.",
+    packageLinkLabel: "Lihat pilihan pakej tour",
     fleetEyebrow: "Pilihan armada",
     fleetTitle: "Pilih untuk perjalanan—bukan kerusi sahaja.",
     fleetIntro:
@@ -403,10 +540,10 @@ const copy = {
     vehicleCta: "Pilih unit ini",
     leadCodeLabel: "Kod lead",
     vehicleMessage(name, code) {
-      return `[${code}] Hai BROS Wisata, saya berminat dengan ${name} bersama pemandu. Tarikh: __ | Jemput: __ | Destinasi: __ | Tetamu: __ | Bagasi: __. Mohon semak ketersediaan dan kadar akhir.`;
+      return `[${code}] Hai BROS Wisata, saya berminat dengan ${name} bersama pemandu. Jemput (lokasi, tarikh & waktu): __ | Hantar akhir (lokasi, tarikh & waktu): __ | Tetamu: __ | Bagasi: __. Mohon semak ketersediaan dan kadar akhir.`;
     },
     genericMessage:
-      "[CAR-PAGE] Hai BROS Wisata, saya perlukan kereta dengan pemandu. Tarikh: __ | Jemput: __ | Destinasi: __ | Tetamu: __ | Bagasi: __. Mohon cadangkan armada yang sesuai dan kadar akhir.",
+      "[CAR-PAGE] Hai BROS Wisata, saya perlukan kereta dengan pemandu. Jemput (lokasi, tarikh & waktu): __ | Hantar akhir (lokasi, tarikh & waktu): __ | Tetamu: __ | Bagasi: __. Mohon cadangkan armada yang sesuai dan kadar akhir.",
     vehicleDetails: {
       avanza: {
         type: "Compact MPV",
@@ -516,6 +653,10 @@ const copy = {
         a: "Boleh diatur dengan tempahan awal. Hantar nombor penerbangan, waktu tiba, nama penumpang utama, destinasi, jumlah tetamu, dan bagasi.",
       },
       {
+        q: "Boleh meminta perjalanan sehala atau lokasi jemput dan hantar yang berbeza?",
+        a: "Hantar lokasi, tarikh, dan waktu jemputan serta penghantaran akhir, termasuk tempat singgah atau penginapan semalaman. Pasukan akan menyemak laluan dan keperluan kenderaan sebelum memberi sebut harga; jangan anggap semua gabungan laluan tersedia.",
+      },
+      {
         q: "Bagaimana polisi perubahan atau pembatalan?",
         a: "Syarat yang terpakai mengikut pengesahan tempahan bertulis dan Terma & Syarat BROS semasa. Sila semak sebelum membayar deposit.",
       },
@@ -540,6 +681,69 @@ function escapeHtml(value) {
 
 function whatsappLink(message) {
   return `https://wa.me/6281260139399?text=${encodeURIComponent(message)}`;
+}
+
+function renderRoutes(lang, c) {
+  const cards = routeOptions.map((route) => {
+    const detail = c.routes[route.id];
+    const href = whatsappLink(c.routeMessage(detail.title, route.leadCode, detail.messageDetail));
+    const guide = detail.guideSlug
+      ? `<a class="rental-route-guide" href="/${lang}/${detail.guideSlug}">${escapeHtml(detail.guideLabel)} <span aria-hidden="true">→</span></a>`
+      : "";
+    return `<article class="rental-route-card">
+${iconMarkup(route.icon, "rental-route-icon", 48)}
+<h3>${escapeHtml(detail.title)}</h3>
+<p>${escapeHtml(detail.body)}</p>
+<div class="rental-route-links">
+<a class="rental-route-cta" data-cta="car_rental_route_quote" data-route="${route.id}" data-lead-code="${route.leadCode}" href="${href}" rel="noopener noreferrer" target="_blank">${escapeHtml(c.routeCta)} <span aria-hidden="true">↗</span></a>
+${guide}
+</div>
+</article>`;
+  }).join("\n");
+
+  return `<section class="rental-route-section" id="rental-routes" aria-labelledby="rental-routes-title">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl">
+<p class="rental-route-kicker">${escapeHtml(c.routeEyebrow)}</p>
+<h2 id="rental-routes-title" class="rental-route-title">${escapeHtml(c.routeTitle)}</h2>
+<p class="rental-route-intro">${escapeHtml(c.routeIntro)}</p>
+</div>
+<div class="rental-route-grid">
+${cards}
+</div>
+<div class="rental-service-boundary">
+<h3>${escapeHtml(c.serviceBoundaryTitle)}</h3>
+<p>${escapeHtml(c.serviceBoundaryBody)}</p>
+<a class="rental-package-link" href="/${lang}/bros-wisata-tour-listing">${escapeHtml(c.packageLinkLabel)} <span aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>`;
+}
+
+function renderFaqSchema(c) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: c.faqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+  const json = JSON.stringify(schema, null, 2).replace(/</g, "\\u003c");
+  return `${faqStart}\n<script type="application/ld+json">\n${json}\n</script>\n${faqEnd}`;
+}
+
+function synchronizeFaqSchema(html, c) {
+  const blocks = html.match(/<!-- CAR RENTAL FAQ SCHEMA START -->[\s\S]*?<!-- CAR RENTAL FAQ SCHEMA END -->/g) || [];
+  if (blocks.length > 1 || html.split(faqStart).length - 1 !== blocks.length || html.split(faqEnd).length - 1 !== blocks.length) {
+    throw new Error(`${c.file}: invalid rental FAQ schema markers`);
+  }
+  if (blocks.length === 1) return html.replace(blocks[0], renderFaqSchema(c));
+  if ((html.match(/<\/head>/g) || []).length !== 1) {
+    throw new Error(`${c.file}: expected one closing head tag for rental FAQ schema`);
+  }
+  return html.replace("</head>", `${renderFaqSchema(c)}\n</head>`);
 }
 
 function renderVehicleCard(vehicle, c) {
@@ -621,6 +825,7 @@ function renderMain(lang, c) {
 <a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 font-bold hover:bg-white transition" href="#fleet">${escapeHtml(c.viewFleet)} <span aria-hidden="true">↓</span></a>
 <a class="inline-flex items-center justify-center gap-2 border border-white/30 bg-white/10 text-white px-7 py-4 font-bold hover:bg-white/20 transition" data-cta="car_rental_quote" href="${genericHref}" rel="noopener noreferrer" target="_blank">${escapeHtml(c.checkAvailability)} <span aria-hidden="true">→</span></a>
 </div>
+<a class="rental-route-jump" href="#rental-routes">${escapeHtml(c.chooseRoute)} <span aria-hidden="true">↓</span></a>
 <div class="rental-trust-row" aria-label="Service highlights">
 ${trust}
 </div>
@@ -634,6 +839,8 @@ ${prompt}
 </div>
 </div>
 </section>
+
+${renderRoutes(lang, c)}
 
 <section class="py-20 lg:py-28 bg-bros-cream" id="fleet">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -724,6 +931,7 @@ function renderMobileSticky(c) {
 <!-- FLOATING WHATSAPP -->`;
 }
 
+const changedFiles = [];
 for (const [lang, c] of Object.entries(copy)) {
   const filePath = path.join(root, c.file);
   const original = fs.readFileSync(filePath, "utf8");
@@ -733,9 +941,13 @@ for (const [lang, c] of Object.entries(copy)) {
   if (!html.includes('/assets/car-rental-fleet.css')) {
     html = html.replace(
       '<link href="/assets/style.css" rel="stylesheet"/>',
-      '<link href="/assets/style.css" rel="stylesheet"/>\n<link href="/assets/car-rental-fleet.css" rel="stylesheet"/>'
+      `<link href="/assets/style.css" rel="stylesheet"/>\n<link href="${fleetCssHref}" rel="stylesheet"/>`
     );
   }
+  html = html.replace(
+    /<link href="\/assets\/car-rental-fleet\.css(?:\?[^"<>]*)?" rel="stylesheet"\/>/,
+    `<link href="${fleetCssHref}" rel="stylesheet"/>`
+  );
 
   if (!html.includes('/assets/car-rental-fleet.js')) {
     html = html.replace(
@@ -744,25 +956,31 @@ for (const [lang, c] of Object.entries(copy)) {
     );
   }
 
-  html = html.replace(
-    /<main id="main-content">[\s\S]*?<\/main>/,
-    renderMain(lang, c)
-  );
-  html = html.replace(
-    /<!-- MOBILE STICKY CTA -->[\s\S]*?<!-- FLOATING WHATSAPP -->/,
-    renderMobileSticky(c)
-  );
-  html = html.replace(
-    /"paymentAccepted": "[^"]*"/,
-    '"paymentAccepted": "Bank transfer after written confirmation"'
-  );
+  const mainPattern = /<main id="main-content">[\s\S]*?<\/main>/g;
+  const stickyPattern = /<!-- MOBILE STICKY CTA -->[\s\S]*?<!-- FLOATING WHATSAPP -->/g;
+  if ((html.match(mainPattern) || []).length !== 1 || (html.match(stickyPattern) || []).length !== 1) {
+    throw new Error(`${c.file}: expected one main section and one mobile sticky CTA`);
+  }
+  html = html.replace(mainPattern, renderMain(lang, c));
+  html = html.replace(stickyPattern, renderMobileSticky(c));
+  html = synchronizeFaqSchema(html, c);
+  // Keep the shared title motif and footer lockup stable after replacing <main>.
+  html = synchronizeBrandPolish(html, c.file).replace(/\r\n/g, "\n");
 
   const normalizedOriginal = original.replace(/\r\n/g, "\n");
   if (html === normalizedOriginal) {
-    console.log(`No changes needed for ${c.file}`);
+    console.log(`${checkOnly ? "Synchronized" : "No changes needed for"} ${c.file}`);
     continue;
   }
 
-  fs.writeFileSync(filePath, html.replace(/\n/g, eol), "utf8");
-  console.log(`Updated ${c.file}`);
+  changedFiles.push(c.file);
+  if (!checkOnly) {
+    fs.writeFileSync(filePath, html.replace(/\n/g, eol), "utf8");
+    console.log(`Updated ${c.file}`);
+  }
+}
+
+if (checkOnly && changedFiles.length) {
+  console.error(`Car rental pages out of sync: ${changedFiles.join(", ")}`);
+  process.exitCode = 1;
 }
