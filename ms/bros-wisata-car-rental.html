@@ -122,7 +122,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
-<link href="/assets/car-rental-fleet.css" rel="stylesheet"/>
+<link href="/assets/car-rental-fleet.css?v=20261102-routes" rel="stylesheet"/>
 <!-- ===== ANALYTICS & TRACKING ===== -->
 <!-- Google Analytics 4 -->
 <script src="/assets/analytics.js"></script>
@@ -191,6 +191,72 @@
 <noscript><img height="1" src="https://www.facebook.com/tr?id=981676474387568&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
 <link id="bros-brand-polish-style" href="/assets/bros-brand-polish.css?v=20261029-3d" rel="stylesheet"/>
+<!-- CAR RENTAL FAQ SCHEMA START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Adakah sewa pandu sendiri tersedia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Halaman ini khusus untuk perkhidmatan kenderaan dengan pemandu. Jika keperluan anda berbeza, mesej pasukan supaya pilihan yang betul dapat disemak tanpa menjanjikan unit terlebih dahulu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Adakah minyak, tol, parkir, dan overtime termasuk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jangan anggap semuanya termasuk secara automatik. Sebut harga bertulis akan menyatakan kenderaan, pemandu, minyak, tol atau parkir, had waktu, overtime, dan penginapan pemandu jika berkaitan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bagaimana memilih kenderaan yang sesuai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hantar jumlah tetamu, kuantiti dan saiz bagasi, laluan, serta keutamaan keselesaan. Kami mencadangkan kapasiti yang selesa, bukan hanya jumlah kerusi maksimum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Adakah kenderaan sebenar sama seperti gambar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gambar ialah ilustrasi model rasmi. Model, varian, warna, tahun, dan susunan tempat duduk sebenar bergantung pada ketersediaan dan disahkan bertulis sebelum bayaran."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Boleh aturkan jemputan di Lapangan Terbang Kualanamu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Boleh diatur dengan tempahan awal. Hantar nombor penerbangan, waktu tiba, nama penumpang utama, destinasi, jumlah tetamu, dan bagasi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Boleh meminta perjalanan sehala atau lokasi jemput dan hantar yang berbeza?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hantar lokasi, tarikh, dan waktu jemputan serta penghantaran akhir, termasuk tempat singgah atau penginapan semalaman. Pasukan akan menyemak laluan dan keperluan kenderaan sebelum memberi sebut harga; jangan anggap semua gabungan laluan tersedia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bagaimana polisi perubahan atau pembatalan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Syarat yang terpakai mengikut pengesahan tempahan bertulis dan Terma & Syarat BROS semasa. Sila semak sebelum membayar deposit."
+      }
+    }
+  ]
+}
+</script>
+<!-- CAR RENTAL FAQ SCHEMA END -->
 </head>
 <body data-bros-polish="rental">
 <!-- TOP UTILITY BAR -->
@@ -267,12 +333,13 @@ Tentang
 <div class="rental-hero-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div>
 <div class="rental-eyebrow">Sewa kereta dengan pemandu di Medan</div>
-<h1 class="rental-hero-title"><!-- BROS TITLE MOTIF START --><span class="bros-title-motif" aria-hidden="true"><img class="bros-3d-icon bros-brand-icon" src="/assets/bros/icons/3d/car-v1.svg" width="52" height="52" alt="" aria-hidden="true" data-bros-icon="car" loading="lazy" decoding="async" draggable="false"/></span><!-- BROS TITLE MOTIF END -->Kenderaan yang tepat.<br/><em>Laluan yang munasabah.</em></h1>
+<h1 class="rental-hero-title"><!-- BROS TITLE MOTIF START --><span class="bros-title-motif" aria-hidden="true"><img class="bros-3d-icon bros-brand-icon" src="/assets/bros/icons/3d/car-v1.svg" width="52" height="52" alt="" aria-hidden="true" data-bros-icon="car" loading="lazy" decoding="async" draggable="false"/></span><!-- BROS TITLE MOTIF END -->Sewa kereta di Medan<br/><em>dengan pemandu.</em></h1>
 <p class="rental-hero-copy">Pilih mengikut jumlah tetamu, bagasi, dan laluan—bukan jumlah tempat duduk semata-mata. BROS memadankan kenderaan untuk jemputan Kualanamu, perjalanan harian, dan trip beberapa hari di Sumatera Utara.</p>
 <div class="flex flex-col sm:flex-row gap-3 mt-8">
 <a class="inline-flex items-center justify-center gap-2 bg-bros-gold text-bros-navy px-7 py-4 font-bold hover:bg-white transition" href="#fleet">Lihat armada <span aria-hidden="true">↓</span></a>
-<a class="inline-flex items-center justify-center gap-2 border border-white/30 bg-white/10 text-white px-7 py-4 font-bold hover:bg-white/20 transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=%5BCAR-PAGE%5D%20Hai%20BROS%20Wisata%2C%20saya%20perlukan%20kereta%20dengan%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20cadangkan%20armada%20yang%20sesuai%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">Semak ketersediaan <span aria-hidden="true">→</span></a>
+<a class="inline-flex items-center justify-center gap-2 border border-white/30 bg-white/10 text-white px-7 py-4 font-bold hover:bg-white/20 transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=%5BCAR-PAGE%5D%20Hai%20BROS%20Wisata%2C%20saya%20perlukan%20kereta%20dengan%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20cadangkan%20armada%20yang%20sesuai%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">Semak ketersediaan <span aria-hidden="true">→</span></a>
 </div>
+<a class="rental-route-jump" href="#rental-routes">Pilih laluan perjalanan <span aria-hidden="true">↓</span></a>
 <div class="rental-trust-row" aria-label="Service highlights">
 <span class="rental-trust-chip">Pemandu disertakan</span>
 <span class="rental-trust-chip">Sebut harga bertulis</span>
@@ -288,6 +355,59 @@ Tentang
 <span>Waktu penerbangan</span>
 <span>Bagasi &amp; destinasi</span>
 </div>
+</div>
+</div>
+</section>
+
+<section class="rental-route-section" id="rental-routes" aria-labelledby="rental-routes-title">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl">
+<p class="rental-route-kicker">Mulakan dengan laluan</p>
+<h2 id="rental-routes-title" class="rental-route-title">Di mana perjalanan bermula dan berakhir?</h2>
+<p class="rental-route-intro">Pilih laluan yang hampir dengan rancangan anda, kemudian hantar lokasi jemput dan hantar, tarikh, serta waktu. Pasukan akan menyemak keperluan kenderaan dan sebut harga bertulis sebelum anda membuat keputusan.</p>
+</div>
+<div class="rental-route-grid">
+<article class="rental-route-card">
+<img class="bros-3d-icon rental-route-icon" src="/assets/bros/icons/3d/car-v1.svg" width="48" height="48" alt="" aria-hidden="true" data-bros-icon="car" loading="lazy" decoding="async" draggable="false"/>
+<h3>Kualanamu–Medan / hotel</h3>
+<p>Hantar nombor penerbangan, tarikh dan waktu tiba atau berlepas, nama hotel, serta kuantiti dan saiz bagasi. Nyatakan jika jemputan dan penghantaran anda pada tarikh berbeza.</p>
+<div class="rental-route-links">
+<a class="rental-route-cta" data-cta="car_rental_route_quote" data-route="kualanamu-medan" data-lead-code="CAR-ROUTE-AIRPORT" href="https://wa.me/6281260139399?text=%5BCAR-ROUTE-AIRPORT%5D%20Hai%20BROS%20Wisata%2C%20saya%20ingin%20meminta%20sebut%20harga%20kereta%20%2B%20pemandu%20untuk%20laluan%20Kualanamu%E2%80%93Medan%20%2F%20hotel.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__%20%7C%20Nombor%20%26%20jadual%20penerbangan%20%2F%20hotel%3A%20__.%20Mohon%20semak%20keperluan%20laluan%20dan%20hantar%20sebut%20harga%20bertulis." rel="noopener noreferrer" target="_blank">Minta sebut harga laluan <span aria-hidden="true">↗</span></a>
+
+</div>
+</article>
+<article class="rental-route-card">
+<img class="bros-3d-icon rental-route-icon" src="/assets/bros/icons/3d/route-v1.svg" width="48" height="48" alt="" aria-hidden="true" data-bros-icon="route" loading="lazy" decoding="async" draggable="false"/>
+<h3>Medan–Berastagi</h3>
+<p>Nyatakan perjalanan pergi balik pada hari yang sama atau bermalam, lokasi hotel, tempat singgah, dan destinasi akhir supaya keperluan waktu penggunaan dapat disemak.</p>
+<div class="rental-route-links">
+<a class="rental-route-cta" data-cta="car_rental_route_quote" data-route="medan-berastagi" data-lead-code="CAR-ROUTE-BERASTAGI" href="https://wa.me/6281260139399?text=%5BCAR-ROUTE-BERASTAGI%5D%20Hai%20BROS%20Wisata%2C%20saya%20ingin%20meminta%20sebut%20harga%20kereta%20%2B%20pemandu%20untuk%20laluan%20Medan%E2%80%93Berastagi.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__%20%7C%20Pergi%20balik%20%2F%20bermalam%20%2F%20tempat%20singgah%3A%20__.%20Mohon%20semak%20keperluan%20laluan%20dan%20hantar%20sebut%20harga%20bertulis." rel="noopener noreferrer" target="_blank">Minta sebut harga laluan <span aria-hidden="true">↗</span></a>
+<a class="rental-route-guide" href="/ms/paket-berastagi_3h2m">Lihat itinerari Berastagi <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rental-route-card">
+<img class="bros-3d-icon rental-route-icon" src="/assets/bros/icons/3d/lake-v1.svg" width="48" height="48" alt="" aria-hidden="true" data-bros-icon="lake" loading="lazy" decoding="async" draggable="false"/>
+<h3>Medan–Danau Toba / Samosir</h3>
+<p>Hantar lokasi penginapan di tepi danau atau Samosir, jumlah malam, rancangan penyeberangan jika ada, dan destinasi akhir. Pengaturan feri perlu dibincangkan secara berasingan dalam sebut harga.</p>
+<div class="rental-route-links">
+<a class="rental-route-cta" data-cta="car_rental_route_quote" data-route="medan-lake-toba" data-lead-code="CAR-ROUTE-TOBA" href="https://wa.me/6281260139399?text=%5BCAR-ROUTE-TOBA%5D%20Hai%20BROS%20Wisata%2C%20saya%20ingin%20meminta%20sebut%20harga%20kereta%20%2B%20pemandu%20untuk%20laluan%20Medan%E2%80%93Danau%20Toba%20%2F%20Samosir.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__%20%7C%20Penginapan%20%2F%20jumlah%20malam%20%2F%20rancangan%20penyeberangan%3A%20__.%20Mohon%20semak%20keperluan%20laluan%20dan%20hantar%20sebut%20harga%20bertulis." rel="noopener noreferrer" target="_blank">Minta sebut harga laluan <span aria-hidden="true">↗</span></a>
+<a class="rental-route-guide" href="/ms/pakej-lake-toba-samosir">Panduan Danau Toba &amp; Samosir <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<article class="rental-route-card">
+<img class="bros-3d-icon rental-route-icon" src="/assets/bros/icons/3d/forest-v1.svg" width="48" height="48" alt="" aria-hidden="true" data-bros-icon="forest" loading="lazy" decoding="async" draggable="false"/>
+<h3>Medan–Bukit Lawang</h3>
+<p>Hantar nama lodge, tarikh penginapan, bagasi, dan rancangan trekking. Nyatakan bantuan akses lodge yang diperlukan; lokasi turun kenderaan dan laluan berjalan kaki perlu disahkan.</p>
+<div class="rental-route-links">
+<a class="rental-route-cta" data-cta="car_rental_route_quote" data-route="medan-bukit-lawang" data-lead-code="CAR-ROUTE-LAWANG" href="https://wa.me/6281260139399?text=%5BCAR-ROUTE-LAWANG%5D%20Hai%20BROS%20Wisata%2C%20saya%20ingin%20meminta%20sebut%20harga%20kereta%20%2B%20pemandu%20untuk%20laluan%20Medan%E2%80%93Bukit%20Lawang.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__%20%7C%20Lodge%20%2F%20tarikh%20penginapan%20%2F%20rancangan%20trekking%3A%20__.%20Mohon%20semak%20keperluan%20laluan%20dan%20hantar%20sebut%20harga%20bertulis." rel="noopener noreferrer" target="_blank">Minta sebut harga laluan <span aria-hidden="true">↗</span></a>
+<a class="rental-route-guide" href="/ms/bukit-lawang-orangutan-trekking">Panduan Bukit Lawang <span aria-hidden="true">→</span></a>
+</div>
+</article>
+</div>
+<div class="rental-service-boundary">
+<h3>Kereta + pemandu bukan secara automatik pakej tour lengkap.</h3>
+<p>Pemandu aktiviti, tiket masuk, hotel, makanan, dan feri hanya termasuk jika dinyatakan dengan jelas dalam sebut harga bertulis. Jika anda turut memerlukan itinerari dan pengaturan aktiviti, lihat pilihan pakej tour untuk dibincangkan dengan pasukan.</p>
+<a class="rental-package-link" href="/ms/bros-wisata-tour-listing">Lihat pilihan pakej tour <span aria-hidden="true">→</span></a>
 </div>
 </div>
 </section>
@@ -325,7 +445,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>Medan &amp; transfer lapangan terbang</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="family" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-AVANZA" data-vehicle="Toyota Avanza" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-AVANZA%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Avanza%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="family" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-AVANZA" data-vehicle="Toyota Avanza" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-AVANZA%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Avanza%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-AVANZA</p>
@@ -345,7 +465,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>Overland Sumatera Utara</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="premium" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-INNOVA" data-vehicle="Toyota Innova Reborn" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-INNOVA%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Innova%20Reborn%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="premium" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-INNOVA" data-vehicle="Toyota Innova Reborn" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-INNOVA%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Innova%20Reborn%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-INNOVA</p>
@@ -365,7 +485,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>Keluarga &amp; kumpulan tour</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="group" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-HIACE" data-vehicle="Toyota Hiace Commuter" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-HIACE%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Hiace%20Commuter%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="group" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-HIACE" data-vehicle="Toyota Hiace Commuter" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-HIACE%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Hiace%20Commuter%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-HIACE</p>
@@ -385,7 +505,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>Bandar &amp; bagasi ringan</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="family" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-BRIO" data-vehicle="Honda Brio" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-BRIO%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Honda%20Brio%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="family" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-BRIO" data-vehicle="Honda Brio" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-BRIO%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Honda%20Brio%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-BRIO</p>
@@ -405,7 +525,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>Keluarga &amp; laluan bandar</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="family" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-CALYA" data-vehicle="Toyota Calya" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-CALYA%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Calya%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="family" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-CALYA" data-vehicle="Toyota Calya" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-CALYA%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Calya%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-CALYA</p>
@@ -425,7 +545,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>Perjalanan jalan raya premium</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="premium" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-FORTUNER" data-vehicle="Toyota Fortuner" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-FORTUNER%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Fortuner%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="premium" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-FORTUNER" data-vehicle="Toyota Fortuner" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-FORTUNER%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Fortuner%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-FORTUNER</p>
@@ -445,7 +565,7 @@ Tentang
 <div><dt>Sesuai untuk</dt><dd>VIP &amp; executive transfer</dd></div>
 </dl>
 <p class="fleet-card-service">Perkhidmatan dengan pemandu</p>
-<a class="fleet-card-cta" data-category="premium" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-ALPHARD" data-vehicle="Toyota Alphard" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-ALPHARD%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Alphard%20bersama%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
+<a class="fleet-card-cta" data-category="premium" data-cta="car_rental_vehicle_quote" data-lead-code="CAR-ALPHARD" data-vehicle="Toyota Alphard" data-vehicle-cta href="https://wa.me/6281260139399?text=%5BCAR-ALPHARD%5D%20Hai%20BROS%20Wisata%2C%20saya%20berminat%20dengan%20Toyota%20Alphard%20bersama%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20semak%20ketersediaan%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">
 <span>Pilih unit ini</span><span aria-hidden="true">→</span>
 </a>
 <p class="fleet-card-code">Kod lead: CAR-ALPHARD</p>
@@ -546,6 +666,10 @@ Tentang
 <p>Boleh diatur dengan tempahan awal. Hantar nombor penerbangan, waktu tiba, nama penumpang utama, destinasi, jumlah tetamu, dan bagasi.</p>
 </details>
 <details>
+<summary>Boleh meminta perjalanan sehala atau lokasi jemput dan hantar yang berbeza?</summary>
+<p>Hantar lokasi, tarikh, dan waktu jemputan serta penghantaran akhir, termasuk tempat singgah atau penginapan semalaman. Pasukan akan menyemak laluan dan keperluan kenderaan sebelum memberi sebut harga; jangan anggap semua gabungan laluan tersedia.</p>
+</details>
+<details>
 <summary>Bagaimana polisi perubahan atau pembatalan?</summary>
 <p>Syarat yang terpakai mengikut pengesahan tempahan bertulis dan Terma &amp; Syarat BROS semasa. Sila semak sebelum membayar deposit.</p>
 </details>
@@ -558,7 +682,7 @@ Tentang
 <div class="text-bros-gold text-xs tracking-[0.3em] uppercase font-bold mb-5">✦ Perlukan cadangan armada?</div>
 <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[0.95]">Hantar tarikh, laluan, tetamu, dan bagasi.</h2>
 <p class="max-w-2xl mx-auto mt-6 text-white/75 leading-relaxed">Kami akan menyemak pilihan kenderaan yang realistik dan menghantar sebut harga bertulis melalui WhatsApp.</p>
-<a class="inline-flex items-center justify-center gap-2 mt-8 bg-bros-gold text-bros-navy px-7 py-4 font-bold hover:bg-white transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=%5BCAR-PAGE%5D%20Hai%20BROS%20Wisata%2C%20saya%20perlukan%20kereta%20dengan%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20cadangkan%20armada%20yang%20sesuai%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">Mulakan di WhatsApp <span aria-hidden="true">→</span></a>
+<a class="inline-flex items-center justify-center gap-2 mt-8 bg-bros-gold text-bros-navy px-7 py-4 font-bold hover:bg-white transition" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=%5BCAR-PAGE%5D%20Hai%20BROS%20Wisata%2C%20saya%20perlukan%20kereta%20dengan%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20cadangkan%20armada%20yang%20sesuai%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">Mulakan di WhatsApp <span aria-hidden="true">→</span></a>
 </div>
 </section>
 </main>
@@ -646,7 +770,7 @@ Pejabat
 <div class="text-[10px] tracking-wider uppercase text-bros-charcoal/70 font-semibold">Perlukan kenderaan?</div>
 <div class="font-display text-lg font-bold text-bros-navy leading-tight">Semak ketersediaan</div>
 </div>
-<a class="bg-emerald-900 text-white px-5 py-3 rounded-sm font-bold text-sm flex items-center gap-2" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=%5BCAR-PAGE%5D%20Hai%20BROS%20Wisata%2C%20saya%20perlukan%20kereta%20dengan%20pemandu.%20Tarikh%3A%20__%20%7C%20Jemput%3A%20__%20%7C%20Destinasi%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20cadangkan%20armada%20yang%20sesuai%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">WhatsApp</a>
+<a class="bg-emerald-900 text-white px-5 py-3 rounded-sm font-bold text-sm flex items-center gap-2" data-cta="car_rental_quote" href="https://wa.me/6281260139399?text=%5BCAR-PAGE%5D%20Hai%20BROS%20Wisata%2C%20saya%20perlukan%20kereta%20dengan%20pemandu.%20Jemput%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Hantar%20akhir%20(lokasi%2C%20tarikh%20%26%20waktu)%3A%20__%20%7C%20Tetamu%3A%20__%20%7C%20Bagasi%3A%20__.%20Mohon%20cadangkan%20armada%20yang%20sesuai%20dan%20kadar%20akhir." rel="noopener noreferrer" target="_blank">WhatsApp</a>
 </div>
 </div>
 <!-- FLOATING WHATSAPP -->
