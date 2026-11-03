@@ -1,0 +1,227 @@
+[
+  {
+    "id": "10",
+    "slug": "lake-toba-panorama",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 137099,
+      "webp": 111334,
+      "smallWebp": 35034
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "20",
+    "slug": "orangutan-canopy",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 203033,
+      "webp": 168916,
+      "smallWebp": 69342
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "41",
+    "slug": "maimun-palace-exterior",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 132860,
+      "webp": 110654,
+      "smallWebp": 35764
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "13",
+    "slug": "lake-toba-viewpoint-guest",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 110573,
+      "webp": 82810,
+      "smallWebp": 27420
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "61",
+    "slug": "travel-group-jungle-inn",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 240568,
+      "webp": 218398,
+      "smallWebp": 78800
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "38",
+    "slug": "medan-grand-mosque-exterior",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 136973,
+      "webp": 100956,
+      "smallWebp": 36934
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "36",
+    "slug": "maimun-palace-interior",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 186251,
+      "webp": 140944,
+      "smallWebp": 54476
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "57",
+    "slug": "suspension-bridge-guests",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 205920,
+      "webp": 171116,
+      "smallWebp": 62820
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "55",
+    "slug": "young-orangutan-branches",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 144732,
+      "webp": 107070,
+      "smallWebp": 39906
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "08",
+    "slug": "traditional-roof-detail",
+    "width": 1066,
+    "height": 1600,
+    "smallWidth": 640,
+    "smallHeight": 961,
+    "bytecounts": {
+      "jpg": 292119,
+      "webp": 246594,
+      "smallWebp": 110698
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "27",
+    "slug": "forest-fungi-detail",
+    "width": 964,
+    "height": 1280,
+    "smallWidth": 640,
+    "smallHeight": 850,
+    "bytecounts": {
+      "jpg": 186281,
+      "webp": 197858,
+      "smallWebp": 107530
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "44",
+    "slug": "forest-primate-on-branch",
+    "width": 1066,
+    "height": 1600,
+    "smallWidth": 640,
+    "smallHeight": 961,
+    "bytecounts": {
+      "jpg": 180805,
+      "webp": 133262,
+      "smallWebp": 64780
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "05",
+    "slug": "waterfall-rockface",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 287619,
+      "webp": 301034,
+      "smallWebp": 91420
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "02",
+    "slug": "lakeside-windmill",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 212027,
+      "webp": 200950,
+      "smallWebp": 63004
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  },
+  {
+    "id": "37",
+    "slug": "medan-grand-mosque-interior",
+    "width": 1200,
+    "height": 800,
+    "smallWidth": 640,
+    "smallHeight": 426,
+    "bytecounts": {
+      "jpg": 171941,
+      "webp": 132810,
+      "smallWebp": 50084
+    },
+    "credit": "Ahmad and team",
+    "sourceNote": "Non-generative tonal correction; no content changes"
+  }
+]
