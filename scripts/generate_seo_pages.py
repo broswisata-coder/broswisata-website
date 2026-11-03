@@ -329,11 +329,16 @@ HUBS = [
     },
     {
         "key": "lake-toba-samosir-private-tour",
-        "image": "/assets/gallery/gallery_03_samosir_port.jpg",
+        "image": "/assets/gallery/field-collection-20261103/lake-toba-panorama.jpg",
+        "image_webp": "/assets/gallery/field-collection-20261103/lake-toba-panorama.webp",
+        "image_small": "/assets/gallery/field-collection-20261103/lake-toba-panorama-640.webp",
+        "image_width": 1200,
+        "image_height": 800,
+        "image_credit": "Ahmad and team",
         "image_alt": {
-            "en": "Samosir Island and Lake Toba private tour route",
-            "id": "Rute private tour Pulau Samosir dan Lake Toba",
-            "ms": "Laluan private tour Pulau Samosir dan Lake Toba",
+            "en": "Lake Toba and green hills under a cloudy sky",
+            "id": "Danau Toba dan perbukitan hijau di bawah langit berawan",
+            "ms": "Danau Toba dan bukit menghijau di bawah langit berawan",
         },
         "slugs": {
             "en": "lake-toba-samosir-private-tour",
@@ -781,6 +786,17 @@ def schema_for(hub: dict, lang: str) -> str:
     return json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
 
 
+def render_hub_photo(hub: dict, lang: str) -> str:
+    alt = esc(hub["image_alt"][lang])
+    if not hub.get("image_credit"):
+        return f'<figure class="seo-hero-photo">\n      <img src="{hub["image"]}" alt="{alt}" loading="eager" decoding="async"/>\n      <figcaption>{alt}</figcaption>\n    </figure>'
+    label = "Photo" if lang == "en" else "Foto"
+    return f'''<figure class="seo-hero-photo seo-hero-photo--field">
+      <picture><source type="image/webp" srcset="{hub['image_small']} 640w, {hub['image_webp']} {hub['image_width']}w" sizes="(max-width:900px) calc(100vw - 48px), 520px"/><img src="{hub['image']}" width="{hub['image_width']}" height="{hub['image_height']}" alt="{alt}" loading="eager" decoding="async"/></picture>
+      <figcaption>{alt}. {label}: {esc(hub['image_credit'])}.</figcaption>
+    </figure>'''
+
+
 def build_page(hub: dict, lang: str) -> str:
     c = hub["copy"][lang]
     label = LANG[lang]
@@ -842,6 +858,7 @@ def build_page(hub: dict, lang: str) -> str:
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/style.css" rel="stylesheet"/>
+{('<link href="/assets/photo-journal.css?v=20261103-field-collection" rel="stylesheet"/>') if hub.get('image_credit') else ''}
 <script type="application/ld+json">{schema_for(hub, lang)}</script>
 {analytics_snippet()}
 </head>
@@ -859,10 +876,7 @@ def build_page(hub: dict, lang: str) -> str:
         <a class="seo-secondary" href="/{lang}/bros-wisata-tour-listing">{esc(label['tours'])}</a>
       </div>
     </div>
-    <figure class="seo-hero-photo">
-      <img src="{hub['image']}" alt="{esc(hub['image_alt'][lang])}" loading="eager" decoding="async"/>
-      <figcaption>{esc(hub['image_alt'][lang])}</figcaption>
-    </figure>
+    {render_hub_photo(hub, lang)}
   </div>
 </section>
 <section class="seo-stat-band">
