@@ -5,13 +5,21 @@ const root = path.resolve(__dirname, "..");
 const checkOnly = process.argv.includes("--check");
 const profileUrl = "https://share.google/Uv9LJLkbDjYHhMzTj";
 const reviewUrl = "https://g.page/r/CX9qI0qT4zLYEAE/review";
-// Verified against the public Google Maps profile on 15 October 2026.
+// Verified against the public Google Maps profile on 6 November 2026.
 // This is a dated snapshot, not a live Google rating widget.
 const googleRating = { value: 4.7, count: 11 };
 const reviewsPageUrl =
   "https://www.google.com/maps/place/Bros+Wisata/@3.5861596,98.6271794,17z/data=!4m8!3m7!1s0x30312fecda7f828b:0xd832e3934a236a7f!8m2!3d3.5861596!4d98.6271794!9m1!1b1!16s%2Fg%2F11m5qcc1q1";
 
 const reviews = [
+  {
+    initials: "YH",
+    name: "Yolanda H",
+    quote:
+      "I spent a fantastic week touring N Sumatra with Ahmad. He is a friendly and professional guide and willing to adapt the itinerary as required.",
+    excerpt: true,
+    url: reviewsPageUrl,
+  },
   {
     initials: "GS",
     name: "guntur siregar",
@@ -51,6 +59,7 @@ const reviews = [
     initials: "HG",
     name: "Hazz Gaming",
     quote: "Highly recommend, very responsible and friendly guide",
+    featured: false,
   },
 ];
 
@@ -62,8 +71,8 @@ const locales = {
     intro:
       "Pengalaman yang dibagikan langsung melalui profil Google Business BROS Wisata.",
     basedOn: `Berdasarkan ${googleRating.count} ulasan Google`,
-    updated: "Rating diverifikasi 15 Oktober 2026",
-    original: "Kutipan ulasan ditampilkan dalam bahasa asli reviewer.",
+    updated: "Rating diverifikasi 6 November 2026",
+    original: "Kutipan pilihan ditampilkan dalam bahasa asli reviewer. Semua ulasan tersedia di Google.",
     excerpt: "Kutipan ulasan",
     aboutRating: "Rating Google",
     ratingValue: "4,7",
@@ -79,8 +88,8 @@ const locales = {
     intro:
       "Experiences shared directly through the BROS Wisata Google Business profile.",
     basedOn: `Based on ${googleRating.count} Google reviews`,
-    updated: "Rating verified 15 October 2026",
-    original: "Review excerpts shown in each reviewer's original language.",
+    updated: "Rating verified 6 November 2026",
+    original: "Selected excerpts are shown in each reviewer's original language. All reviews are available on Google.",
     excerpt: "Review excerpt",
     aboutRating: "Google rating",
     ratingValue: "4.7",
@@ -96,8 +105,8 @@ const locales = {
     intro:
       "Pengalaman yang dikongsi terus melalui profil Google Business BROS Wisata.",
     basedOn: `Berdasarkan ${googleRating.count} ulasan Google`,
-    updated: "Rating disahkan 15 Oktober 2026",
-    original: "Petikan ulasan dipaparkan dalam bahasa asal pengulas.",
+    updated: "Rating disahkan 6 November 2026",
+    original: "Petikan terpilih dipaparkan dalam bahasa asal pengulas. Semua ulasan tersedia di Google.",
     excerpt: "Petikan ulasan",
     aboutRating: "Penilaian Google",
     ratingValue: "4.7",
@@ -123,6 +132,7 @@ function reviewCards(labels) {
   ];
 
   return reviews
+    .filter((review) => review.featured !== false)
     .map(
       (review, index) => `<article class="bg-white p-7 sm:p-8 border-t-4 ${accents[index % accents.length]} shadow-sm flex flex-col h-full">
 <div class="flex items-center justify-between gap-4 mb-5">
