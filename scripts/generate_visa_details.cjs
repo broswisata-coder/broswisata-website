@@ -7,9 +7,15 @@ const {countryMark,typeBadge,entryLabel}=require('./visa-visuals.cjs');
 const {synchronizePage,locales:navigationLabels}=require('./sync-global-rental-navigation.cjs');
 const root=path.resolve(__dirname,'..');
 const check=process.argv.includes('--check');
+// A product-only preview must not rewrite other visas or discovery files.
+const productArg=process.argv.find(arg=>arg.startsWith('--product='));
+const selectedProduct=productArg?.slice('--product='.length).toUpperCase();
+if(productArg&&!rates.some(rate=>rate.code===selectedProduct))throw new Error('Unknown visa product: '+selectedProduct);
+const selectedRates=selectedProduct?rates.filter(rate=>rate.code===selectedProduct):rates;
 const languages=['id','en','ms'];
 const origin='https://broswisata.id';
 const date='2026-10-28';
+const modifiedDateFor=code=>products[code]?.modifiedDate||date;
 const phone='6281370233750';
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 const stem=code=>'indonesia-visa-'+code.toLowerCase();
@@ -21,6 +27,15 @@ const ui={
 };
 function save(relative,content){
   const file=path.join(root,relative),before=fs.existsSync(file)?fs.readFileSync(file,'utf8'):'';
+  // Image metadata is owned by sync_social_previews.py. Keep it untouched in
+  // a product-only copy preview instead of inheriting the catalog's captions.
+  if(selectedProduct&&before&&relative.endsWith('.html')){
+    for(const key of ['og:image','og:image:type','og:image:width','og:image:height','og:image:alt','twitter:card','twitter:image','twitter:image:alt']){
+      const re=new RegExp(`<meta\\b(?=[^>]*(?:name|property)="${key}")[^>]*>`);
+      const existing=before.match(re)?.[0];
+      if(existing)content=content.replace(re,existing);
+    }
+  }
   const normal=s=>s.replace(/\r\n/g,'\n');
   const withoutSocial=s=>normal(s).split('\n').filter(line=>line.trim()&&!/^<meta\b[^>]*(?:og:image|twitter:image|twitter:card)/.test(line)).join('\n');
   if(normal(before)===normal(content)||(check&&relative.endsWith('.html')&&withoutSocial(before)===withoutSocial(content)))return;
@@ -34,6 +49,8 @@ function contact(lang,rate,key){
 function build(lang,rate,template){
   const product=products[rate.code];if(!product?.copy?.[lang])throw new Error('Missing product copy: '+rate.code+'/'+lang);
   const c=product.copy[lang],l=ui[lang],r=rateLabels[lang],name=rate.names[r.index];
+  const description=c.description||c.summary;
+  const purposeDescription=c.purposeAnswer?`${c.purposeAnswer} ${c.purpose}`:c.purpose;
   const slug=stem(rate.code),url=`${origin}/${lang}/${slug}`,title=`Visa ${rate.code} · ${name} | BROS Wisata`;
   const entry=rate.basis==='single'?l.entrySingle:rate.basis==='year'?l.entryMultiple:l.entryLimited;
   const faq=l.fqs.map((q,i)=>[q,l.fas[i]]);
@@ -44,7 +61,7 @@ function build(lang,rate,template){
 <section class="visa-hero visa-detail-hero"><div class="visa-shell"><nav class="visa-breadcrumb" aria-label="Breadcrumb"><a href="/${lang}/">${esc(l.home)}</a><span aria-hidden="true">/</span><a href="/${lang}/indonesia-visa">${esc(l.catalog)}</a><span aria-hidden="true">/</span><span aria-current="page">${rate.code}</span></nav>
 <div class="visa-hero-grid"><div><div class="visa-heading-meta">${countryMark(lang)}<p class="visa-eyebrow">${rate.code} · ${esc(l.detail)}</p></div><div class="visa-detail-symbol">${icon(product.icon)}</div><h1 class="visa-title font-display">Visa ${rate.code}<br/>${esc(name)}</h1><p class="visa-lead">${esc(c.summary)}</p><div class="visa-actions"><a class="visa-button" href="#visa-detail-documents">${esc(l.requirements)} <span aria-hidden="true">↓</span></a><a class="visa-text-link" href="/${lang}/indonesia-visa#visa-pricing">${esc(l.compare)} <span aria-hidden="true">→</span></a></div></div>
 <aside class="visa-detail-rate" data-visa-rate="${rate.code}" data-rate-idr="${rate.amount}"><img class="visa-detail-logo" src="/bros-wisata-logos/bros-wisata-logo-horizontal-white.svg" alt="BROS Wisata — Hub of Sumatra" width="300" height="80"/><p class="visa-eyebrow">${esc(l.rate)}</p><div class="visa-rate-top">${typeBadge(rate,true)}${entryLabel(rate,lang)}</div><p class="visa-rate-amount">${formatRateAmount(rate,lang)}</p><p class="visa-usd-note">${esc(r.usdNote)}</p><p class="visa-small">${esc(l.rateNote)}</p><div class="visa-detail-contact"><img class="visa-person-avatar" src="/assets/visa/ms-yana-avatar-v1.webp" width="80" height="80" alt="${lang==='en'?'Illustrated avatar for Ms Yana':'Ilustrasi avatar Ms Yana'}" loading="lazy" decoding="async"/><div><strong>Ms Yana</strong><p>${esc(l.role)}</p><p>+62 813-7023-3750</p></div></div>${contact(lang,rate,'contact')}</aside></div></div></section>
-<section class="visa-section visa-section--white" id="visa-detail-overview"><div class="visa-shell visa-check-grid"><div><h2 class="font-display">${esc(l.purpose)}</h2><p>${esc(c.purpose)}</p><div class="visa-note"><h3>${esc(l.stay)}</h3><p>${esc(entry)}. ${esc(c.stay)}</p></div></div><div><h2 class="font-display">${esc(l.limits)}</h2>${bullets(c.limits)}</div></div></section>
+<section class="visa-section visa-section--white" id="visa-detail-overview"><div class="visa-shell visa-check-grid"><div><h2 class="font-display">${esc(c.purposeHeading||l.purpose)}</h2>${c.purposeAnswer?`<p class="visa-purpose-answer">${esc(c.purposeAnswer)}</p>`:''}<p>${esc(c.purpose)}</p><div class="visa-note"><h3>${esc(l.stay)}</h3><p>${esc(entry)}. ${esc(c.stay)}</p></div></div><div><h2 class="font-display">${esc(l.limits)}</h2>${bullets(c.limits)}</div></div></section>
 <section class="visa-section" id="visa-detail-documents"><div class="visa-shell visa-check-grid"><div><h2 class="font-display">${esc(l.documents)}</h2><p>${esc(l.docIntro)}</p>${bullets(c.documents)}</div><aside class="visa-note"><h3>${esc(l.privacyLink)}</h3><p>${esc(l.privacy)}</p><a class="visa-text-link" href="/${lang}/privacy-policy#visa-data-guidance">${esc(l.privacyLink)} <span aria-hidden="true">→</span></a></aside></div></section>
 <section class="visa-section visa-section--white" id="visa-detail-process"><div class="visa-shell"><div class="visa-section-heading"><h2 class="font-display">${esc(l.process)}</h2></div><ol class="visa-step-grid">${l.steps.map(([heading,body],i)=>`<li class="visa-step"><div class="visa-step-top">${icon(['chat','review','document','coordinate'][i])}<span class="visa-step-no" aria-hidden="true">${i+1}</span></div><h3>${esc(heading)}</h3><p>${esc(body)}</p></li>`).join('')}</ol></div></section>
 <section class="visa-section" id="visa-detail-faq"><div class="visa-shell"><div class="visa-section-heading"><h2 class="font-display">${esc(l.faq)}</h2></div><div class="visa-faq">${faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>
@@ -53,15 +70,15 @@ function build(lang,rate,template){
 <section class="visa-section visa-sources"><div class="visa-shell"><h2>${esc(l.sources)}</h2><ul class="visa-source-links">${product.sources.map(source=>`<li><a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(source.title)} <span aria-hidden="true">↗</span></a></li>`).join('')}</ul><p class="visa-small">${esc(l.reviewed)}</p></div></section>
 </main>`;
   const graph={'@context':'https://schema.org','@graph':[
-    {'@type':'WebPage','@id':url,url,name:title,description:c.summary,inLanguage:lang,dateModified:date,mainEntity:{'@id':url+'#service'},primaryImageOfPage:{'@type':'ImageObject',url:`${origin}/assets/og/${lang}/${slug}.jpg`,width:1200,height:630}},
-    {'@type':'Service','@id':url+'#service',name:`BROS Wisata · Visa ${rate.code} · ${name}`,description:c.purpose,url,serviceType:'Indonesia visa administrative assistance',areaServed:{'@type':'Country',name:'Indonesia'},provider:{'@type':'Organization','@id':origin+'/#localbusiness',name:'BROS Wisata',url:origin,logo:origin+'/bros-wisata-logos/bros-wisata-logo-horizontal.svg',contactPoint:{'@type':'ContactPoint',name:'Ms Yana',contactType:'Indonesia visa services',telephone:'+62-813-7023-3750',url:`https://wa.me/${phone}`}}},
+    {'@type':'WebPage','@id':url,url,name:title,description,inLanguage:lang,dateModified:modifiedDateFor(rate.code),mainEntity:{'@id':url+'#service'},primaryImageOfPage:{'@type':'ImageObject',url:`${origin}/assets/og/${lang}/${slug}.jpg`,width:1200,height:630}},
+    {'@type':'Service','@id':url+'#service',name:`BROS Wisata · Visa ${rate.code} · ${name}`,description:purposeDescription,url,serviceType:'Indonesia visa administrative assistance',areaServed:{'@type':'Country',name:'Indonesia'},provider:{'@type':'Organization','@id':origin+'/#localbusiness',name:'BROS Wisata',url:origin,logo:origin+'/bros-wisata-logos/bros-wisata-logo-horizontal.svg',contactPoint:{'@type':'ContactPoint',name:'Ms Yana',contactType:'Indonesia visa services',telephone:'+62-813-7023-3750',url:`https://wa.me/${phone}`}}},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:l.home,item:`${origin}/${lang}/`},{'@type':'ListItem',position:2,name:l.catalog,item:`${origin}/${lang}/indonesia-visa`},{'@type':'ListItem',position:3,name:`Visa ${rate.code}`,item:url}]},
     {'@type':'FAQPage','@id':url+'#faq',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))},
   ]};
   let html=template.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`);
   const meta=(key,value)=>{const re=new RegExp(`<meta\\b(?=[^>]*(?:name|property)="${key.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}")[^>]*>`);if(!re.test(html))throw new Error('Missing metadata '+key);html=html.replace(re,tag=>tag.replace(/content="[^"]*"/,`content="${esc(value)}"`));};
   for(const key of ['title','og:title','twitter:title'])meta(key,title);
-  for(const key of ['description','og:description','twitter:description'])meta(key,c.summary);
+  for(const key of ['description','og:description','twitter:description'])meta(key,description);
   meta('og:url',url);
   for(const key of ['og:image','twitter:image'])meta(key,`${origin}/assets/og/${lang}/${slug}.jpg`);
   html=html.replace(/<link\b(?=[^>]*\brel="canonical")[^>]*>/,tag=>tag.replace(/href="[^"]*"/,`href="${url}"`));
@@ -76,10 +93,11 @@ function build(lang,rate,template){
 }
 for(const lang of languages){
   const template=fs.readFileSync(path.join(root,lang,'indonesia-visa.html'),'utf8');
-  for(const rate of rates)save(`${lang}/${stem(rate.code)}.html`,build(lang,rate,template));
+  for(const rate of selectedRates)save(`${lang}/${stem(rate.code)}.html`,build(lang,rate,template));
 }
+if(!selectedProduct){
 const sitemapPath='sitemap.xml',sitemap=fs.readFileSync(path.join(root,sitemapPath),'utf8');
-const xml=languages.flatMap(lang=>rates.map(rate=>`  <url>\n    <loc>${origin}/${lang}/${stem(rate.code)}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n${['x-default',...languages].map(locale=>`    <xhtml:link rel="alternate" hreflang="${locale}" href="${origin}/${locale==='x-default'?'en':locale}/${stem(rate.code)}" />`).join('\n')}\n  </url>`)).join('\n');
+const xml=languages.flatMap(lang=>rates.map(rate=>`  <url>\n    <loc>${origin}/${lang}/${stem(rate.code)}</loc>\n    <lastmod>${modifiedDateFor(rate.code)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.70</priority>\n${['x-default',...languages].map(locale=>`    <xhtml:link rel="alternate" hreflang="${locale}" href="${origin}/${locale==='x-default'?'en':locale}/${stem(rate.code)}" />`).join('\n')}\n  </url>`)).join('\n');
 const sitemapClean=sitemap.replace(/\s*<!-- BROS VISA DETAILS START -->[\s\S]*?<!-- BROS VISA DETAILS END -->\s*/,'\n');
 save(sitemapPath,sitemapClean.replace('</urlset>',`  <!-- BROS VISA DETAILS START -->\n${xml}\n  <!-- BROS VISA DETAILS END -->\n</urlset>`));
 const redirectPath='_redirects',redirects=fs.readFileSync(path.join(root,redirectPath),'utf8');
@@ -89,5 +107,6 @@ save(redirectPath,redirects.includes('# BROS VISA DETAILS START')?redirects.repl
 const llmsPath='llms.txt',llms=fs.readFileSync(path.join(root,llmsPath),'utf8');
 const directory=`<!-- BROS VISA DETAILS START -->\n## Readable Indonesia Visa Details\n\nRead the purpose, preparation checklist, reference rate and limits before contacting Ms Yana. Information is not a complete eligibility decision; official requirements and applicant-specific documents are checked before submission.\n\n${rates.map(rate=>`- [Visa ${rate.code} — ${rate.names[1]}](${origin}/en/${stem(rate.code)})`).join('\n')}\n<!-- BROS VISA DETAILS END -->`;
 save(llmsPath,llms.includes('<!-- BROS VISA DETAILS START -->')?llms.replace(/<!-- BROS VISA DETAILS START -->[\s\S]*?<!-- BROS VISA DETAILS END -->/,directory):llms.trimEnd()+'\n\n'+directory+'\n');
+}
 if(check&&changed.length)throw new Error('Visa details out of sync: '+changed.join(', '));
 console.log(check?'Readable visa details synchronized in ID,EN,MS.':`Generated readable visa details in${changed.length}files; no publishing or indexing performed.`);
