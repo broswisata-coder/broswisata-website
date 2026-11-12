@@ -502,9 +502,13 @@ const products = {
   },
   D17: {
     icon: 'review', group: 'multiple', sources: [classification, officialList],
+    modifiedDate: '2026-11-12',
     copy: {
       id: {
         summary: 'Pilihan kunjungan beberapa kali untuk agenda audit, kendali mutu atau inspeksi yang berulang dan sesuai ruang lingkup izin yang diberikan.',
+        description: 'Visa D17 Indonesia untuk audit, kendali mutu produksi atau inspeksi pada cabang perusahaan. Baca tujuan, dokumen dan batasan bersama Ms Yana.',
+        purposeHeading: 'Visa D17 untuk apa?',
+        purposeAnswer: 'Visa D17 adalah visa kunjungan beberapa kali perjalanan untuk audit, kendali mutu produksi atau inspeksi pada cabang perusahaan di Indonesia. Kesesuaian kegiatan dan kelayakan pemohon tetap ditinjau Ms Yana; ini bukan izin bekerja umum.',
         purpose: 'Jelaskan perusahaan yang diperiksa, hubungan antarperusahaan, lokasi, jadwal dan tugas pada setiap kunjungan. Kebutuhan beberapa perjalanan perlu dinilai bersama kegiatan sebenarnya, bukan hanya berdasarkan frekuensi penerbangan.',
         stay: 'Multiple entry tidak berarti izin tinggal tanpa putus. Ms Yana meninjau pilihan masa berlaku dan ketentuan tinggal setiap kedatangan sebelum pengajuan.',
         documents: [
@@ -521,6 +525,9 @@ const products = {
       },
       en: {
         summary: 'A multiple-entry option for repeat audit, quality-control or inspection visits within the scope of the permission granted.',
+        description: 'Indonesia Visa D17 for audit, production quality control or inspection at company branches. Read the purpose, document preparation and limits with Ms Yana.',
+        purposeHeading: 'What is Indonesia Visa D17 for?',
+        purposeAnswer: 'Visa D17 is Indonesia’s multiple-entry visit category for audit, production quality control or inspection at company branches in Indonesia. Ms Yana still reviews the actual activities and applicant eligibility; this is not general work permission.',
         purpose: 'Explain the companies being inspected, company relationships, locations, schedule and tasks on each visit. The need for repeat travel is reviewed alongside the actual activities, not flight frequency alone.',
         stay: 'Multiple entry does not mean an uninterrupted right to stay. Ms Yana reviews the suitable validity option and stay conditions for each arrival before applying.',
         documents: [
@@ -537,6 +544,9 @@ const products = {
       },
       ms: {
         summary: 'Pilihan berbilang kemasukan bagi lawatan audit, kawalan mutu atau pemeriksaan berulang dalam skop permit yang diberikan.',
+        description: 'Visa D17 Indonesia untuk audit, kawalan mutu pengeluaran atau pemeriksaan di cawangan syarikat. Semak tujuan, dokumen dan batasan bersama Ms Yana.',
+        purposeHeading: 'Visa D17 untuk tujuan apa?',
+        purposeAnswer: 'Visa D17 ialah kategori visa lawatan berbilang kemasukan untuk audit, kawalan mutu pengeluaran atau pemeriksaan di cawangan syarikat di Indonesia. Ms Yana tetap menyemak aktiviti sebenar dan kelayakan pemohon; ini bukan kebenaran bekerja secara umum.',
         purpose: 'Nyatakan syarikat yang diperiksa, hubungan antara syarikat, lokasi, jadual serta tugas setiap lawatan. Keperluan perjalanan berulang dinilai bersama aktiviti sebenar, bukan berdasarkan kekerapan penerbangan sahaja.',
         stay: 'Berbilang kemasukan bukan hak tinggal tanpa putus. Ms Yana menyemak pilihan tempoh sah serta syarat tinggal setiap ketibaan sebelum permohonan.',
         documents: [
